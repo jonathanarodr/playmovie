@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import br.com.jonathanarodr.playmovie.R;
 import br.com.jonathanarodr.playmovie.model.Movie;
@@ -25,6 +26,7 @@ import br.com.jonathanarodr.playmovie.utils.NetworkUtils;
 public class MainActivity extends AppCompatActivity implements MovieAdapterOnClickHandler {
 
     private static final String STATE_BUNDLE_KEY = "state_bundle";
+    private static final String STATE_MOVIE_KEY = "state_movies";
     private static final String URI_POPULAR_MOVIE = "popular";
     private static final String URI_TOP_RATED_MOVIE = "top_rated";
 
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelable(STATE_BUNDLE_KEY, mListMovie.getLayoutManager().onSaveInstanceState());
+        outState.putParcelableArrayList(STATE_MOVIE_KEY, new ArrayList<>(mMovieAdapter.getMovies()));
     }
 
     @Override
@@ -90,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
 
         if (savedInstanceState != null) {
             mListMovie.getLayoutManager().onRestoreInstanceState(savedInstanceState.getParcelable(STATE_BUNDLE_KEY));
+            mMovieAdapter.setMovies(savedInstanceState.<Movie>getParcelableArrayList(STATE_MOVIE_KEY));
         }
 
     }
