@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_popular_movie"
+        android:enabled="true"
+        android:icon="@drawable/ic_movie_black_24dp"
+        android:title="@string/action_bar_popular_movie"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_top_rate_movie"
+        android:enabled="true"
+        android:icon="@drawable/ic_stars_black_24dp"
+        android:title="@string/action_bar_top_rate_movie"
+        app:showAsAction="ifRoom" />
+
+</menu>

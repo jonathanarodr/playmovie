@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Play Movie</string>
+    <string name="action_bar_popular_movie">Popular</string>
+    <string name="action_bar_top_rate_movie">Top rate</string>
+    <string name="message_error_api">Não foi possível conectar a Play Movie</string>
+    <string name="label_try_again">Tentar novamente</string>
+</resources>
