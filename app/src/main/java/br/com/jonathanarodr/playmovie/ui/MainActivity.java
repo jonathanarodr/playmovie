@@ -105,44 +105,10 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
         startActivity(intent);
     }
 
-    public class MovieTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            mListMovie.setVisibility(View.INVISIBLE);
-            mMessageError.setVisibility(View.INVISIBLE);
-            mLoadingIndicator.setVisibility(View.VISIBLE);
-            mMovieAdapter.setMovies(null);
-        }
-
-        @Override
-        protected String doInBackground(String... paths) {
-            if (paths.length == 0) {
-                return null;
-            }
-
-            try {
-                URL url = NetworkUtils.buildUrl(paths[0]);
-                return NetworkUtils.getResponseFromHttpUrl(url);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String jsonResponse) {
-            mLoadingIndicator.setVisibility(View.INVISIBLE);
-
-            if (jsonResponse != null) {
-                showListMovieView();
-                mMovieAdapter.setMovies(JsonUtils.fromJson(jsonResponse));
-            } else {
-                showErrorMessageView();
-            }
-        }
-
+    private void showErrorMessageView() {
+        mLoadingIndicator.setVisibility(View.INVISIBLE);
+        mListMovie.setVisibility(View.INVISIBLE);
+        mMessageError.setVisibility(View.VISIBLE);
     }
 
     private void bindView() {
@@ -171,14 +137,58 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
         new MovieTask().execute(URI_TOP_RATED_MOVIE);
     }
 
-    private void showErrorMessageView() {
-        mListMovie.setVisibility(View.INVISIBLE);
-        mMessageError.setVisibility(View.VISIBLE);
-    }
-
     private void showListMovieView() {
+        mLoadingIndicator.setVisibility(View.INVISIBLE);
         mMessageError.setVisibility(View.INVISIBLE);
         mListMovie.setVisibility(View.VISIBLE);
+    }
+
+    public class MovieTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mListMovie.setVisibility(View.INVISIBLE);
+            mMessageError.setVisibility(View.INVISIBLE);
+            mLoadingIndicator.setVisibility(View.VISIBLE);
+            mMovieAdapter.setMovies(null);
+        }
+
+        @Override
+        protected String doInBackground(String... paths) {
+            if (paths.length == 0) {
+                return null;
+            }
+
+            try {
+                if (!NetworkUtils.isActiveNetwork(MainActivity.this)) {
+                    cancel(true);
+                    return null;
+                }
+
+                URL url = NetworkUtils.buildUrl(paths[0]);
+                return NetworkUtils.getResponseFromHttpUrl(url);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String jsonResponse) {
+            if (jsonResponse == null) {
+                showErrorMessageView();
+            } else {
+                showListMovieView();
+                mMovieAdapter.setMovies(JsonUtils.fromJson(jsonResponse));
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            showErrorMessageView();
+        }
     }
 
 }

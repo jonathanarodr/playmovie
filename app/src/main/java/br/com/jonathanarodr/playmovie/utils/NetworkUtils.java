@@ -1,5 +1,8 @@
 package br.com.jonathanarodr.playmovie.utils;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.util.Log;
 
@@ -16,6 +19,15 @@ public class NetworkUtils {
 
     private static final String TAG = NetworkUtils.class.getSimpleName();
     private static final String URI_QUERY_API_KEY = "api_key";
+
+    public static boolean isActiveNetwork(Context context) {
+        Log.v(TAG, "Verificando conexão");
+
+        ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+    }
 
     public static URL buildUrl(String path) {
         Uri builtUri = Uri.parse(BuildConfig.SERVER_URL).buildUpon()

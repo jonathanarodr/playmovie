@@ -10,8 +10,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String" , "SERVER_URL", "\"https://api.themoviedb.org/3/movie\"")
-        buildConfigField("String" , "API_KEY", "\"[YOUR_API_KEY]\"")
+        buildConfigField("String" , "SERVER_URL", '"https://api.themoviedb.org/3/movie"')
+        buildConfigField("String" , "API_KEY", '"[YOUR_API_KEY]"')
     }
     buildTypes {
         release {
