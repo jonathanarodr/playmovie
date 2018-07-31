@@ -1,8 +1,10 @@
 package br.com.jonathanarodr.playmovie.ui;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,21 +16,21 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
 
 import br.com.jonathanarodr.playmovie.R;
 import br.com.jonathanarodr.playmovie.model.Movie;
-import br.com.jonathanarodr.playmovie.utils.JsonUtils;
-import br.com.jonathanarodr.playmovie.utils.NetworkUtils;
+import br.com.jonathanarodr.playmovie.util.NetworkUtils;
+import br.com.jonathanarodr.playmovie.viewmodel.MovieViewModel;
 
 public class MainActivity extends AppCompatActivity implements MovieAdapterOnClickHandler {
 
-    private static final String STATE_BUNDLE_KEY = "state_bundle";
-    private static final String STATE_MOVIE_KEY = "state_movies";
-    private static final String URI_POPULAR_MOVIE = "popular";
-    private static final String URI_TOP_RATED_MOVIE = "top_rated";
+    private static final String TAG = MainActivity.class.getSimpleName();
+
+    @Inject
+    private MovieViewModel mMovieViewModel;
 
     private ProgressBar mLoadingIndicator;
     private LinearLayout mMessageError;
@@ -74,28 +76,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
 
         bindView();
         buildAdapter();
-
-        if(savedInstanceState == null || !savedInstanceState.containsKey(STATE_BUNDLE_KEY)) {
-            searchPopularMovie();
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putParcelable(STATE_BUNDLE_KEY, mListMovie.getLayoutManager().onSaveInstanceState());
-        outState.putParcelableArrayList(STATE_MOVIE_KEY, new ArrayList<>(mMovieAdapter.getMovies()));
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        if (savedInstanceState != null) {
-            mListMovie.getLayoutManager().onRestoreInstanceState(savedInstanceState.getParcelable(STATE_BUNDLE_KEY));
-            mMovieAdapter.setMovies(savedInstanceState.<Movie>getParcelableArrayList(STATE_MOVIE_KEY));
-        }
-
+        buildProviders();
+        searchPopularMovie();
     }
 
     @Override
@@ -103,12 +85,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(Intent.EXTRA_INTENT, movie);
         startActivity(intent);
-    }
-
-    private void showErrorMessageView() {
-        mLoadingIndicator.setVisibility(View.INVISIBLE);
-        mListMovie.setVisibility(View.INVISIBLE);
-        mMessageError.setVisibility(View.VISIBLE);
     }
 
     private void bindView() {
@@ -129,66 +105,60 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
         mListMovie.setAdapter(mMovieAdapter);
     }
 
+    private void buildProviders() {
+         mMovieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
+    }
+
     private void searchPopularMovie() {
-        new MovieTask().execute(URI_POPULAR_MOVIE);
+        showLoadIndicator();
+
+        if (!NetworkUtils.isActiveNetwork(this)) {
+            showErrorMessageView();
+            return;
+        }
+
+        mMovieViewModel.getPopularMovies().observe(this, new Observer<List<Movie>>() {
+            @Override
+            public void onChanged(@Nullable List<Movie> movies) {
+                showListMovieView(movies);
+            }
+        });
     }
 
     private void searchTopRatedMovie() {
-        new MovieTask().execute(URI_TOP_RATED_MOVIE);
+        showLoadIndicator();
+
+        if (!NetworkUtils.isActiveNetwork(this)) {
+            showErrorMessageView();
+            return;
+        }
+
+        mMovieViewModel.getTopRatedMovies().observe(this, new Observer<List<Movie>>() {
+            @Override
+            public void onChanged(@Nullable List<Movie> movies) {
+                showListMovieView(movies);
+            }
+        });
     }
 
-    private void showListMovieView() {
+    private void showErrorMessageView() {
+        mLoadingIndicator.setVisibility(View.INVISIBLE);
+        mListMovie.setVisibility(View.INVISIBLE);
+        mMessageError.setVisibility(View.VISIBLE);
+    }
+
+    private void showLoadIndicator() {
+        mListMovie.setVisibility(View.INVISIBLE);
+        mMessageError.setVisibility(View.INVISIBLE);
+        mLoadingIndicator.setVisibility(View.VISIBLE);
+        mMovieAdapter.setMovies(null);
+    }
+
+    private void showListMovieView(List<Movie> movies) {
         mLoadingIndicator.setVisibility(View.INVISIBLE);
         mMessageError.setVisibility(View.INVISIBLE);
         mListMovie.setVisibility(View.VISIBLE);
-    }
-
-    public class MovieTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            mListMovie.setVisibility(View.INVISIBLE);
-            mMessageError.setVisibility(View.INVISIBLE);
-            mLoadingIndicator.setVisibility(View.VISIBLE);
-            mMovieAdapter.setMovies(null);
-        }
-
-        @Override
-        protected String doInBackground(String... paths) {
-            if (paths.length == 0) {
-                return null;
-            }
-
-            try {
-                if (!NetworkUtils.isActiveNetwork(MainActivity.this)) {
-                    cancel(true);
-                    return null;
-                }
-
-                URL url = NetworkUtils.buildUrl(paths[0]);
-                return NetworkUtils.getResponseFromHttpUrl(url);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String jsonResponse) {
-            if (jsonResponse == null) {
-                showErrorMessageView();
-            } else {
-                showListMovieView();
-                mMovieAdapter.setMovies(JsonUtils.fromJson(jsonResponse));
-            }
-        }
-
-        @Override
-        protected void onCancelled() {
-            super.onCancelled();
-            showErrorMessageView();
-        }
+        mMovieAdapter.setMovies(movies);
     }
 
 }
