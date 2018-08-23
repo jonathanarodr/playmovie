@@ -25,6 +25,8 @@ import br.com.jonathanarodr.playmovie.model.Movie;
 import br.com.jonathanarodr.playmovie.util.NetworkUtils;
 import br.com.jonathanarodr.playmovie.viewmodel.MovieViewModel;
 
+import static br.com.jonathanarodr.playmovie.ui.DetailActivity.EXTRA_MOVIE_ID;
+
 public class MainActivity extends AppCompatActivity implements MovieAdapterOnClickHandler {
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -49,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
                 case R.id.action_top_rate_movie:
                     searchTopRatedMovie();
                     return true;
+                case R.id.action_favorite_movie:
+                    searchFavoriteMovie();
+                    return true;
                 default:
                     return false;
             }
@@ -64,6 +69,11 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
                     break;
                 case R.id.action_top_rate_movie:
                     searchTopRatedMovie();
+                    break;
+                case R.id.action_favorite_movie:
+                    searchFavoriteMovie();
+                    break;
+                default:
                     break;
             }
         }
@@ -84,6 +94,11 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
     public void onClick(Movie movie) {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(Intent.EXTRA_INTENT, movie);
+
+        if (mNavigation.getSelectedItemId() == R.id.action_favorite_movie) {
+            intent.putExtra(EXTRA_MOVIE_ID, movie.getId());
+        }
+
         startActivity(intent);
     }
 
@@ -106,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
     }
 
     private void buildProviders() {
-         mMovieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
+        mMovieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
     }
 
     private void searchPopularMovie() {
@@ -134,6 +149,17 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
         }
 
         mMovieViewModel.getTopRatedMovies().observe(this, new Observer<List<Movie>>() {
+            @Override
+            public void onChanged(@Nullable List<Movie> movies) {
+                showListMovieView(movies);
+            }
+        });
+    }
+
+    private void searchFavoriteMovie() {
+        showLoadIndicator();
+
+        mMovieViewModel.getFavoriteMovies().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(@Nullable List<Movie> movies) {
                 showListMovieView(movies);

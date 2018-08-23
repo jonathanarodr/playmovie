@@ -7,10 +7,13 @@ import android.util.Log;
 import java.util.List;
 
 import br.com.jonathanarodr.playmovie.BuildConfig;
-import br.com.jonathanarodr.playmovie.api.ApiService;
 import br.com.jonathanarodr.playmovie.api.MovieService;
 import br.com.jonathanarodr.playmovie.model.Movie;
 import br.com.jonathanarodr.playmovie.model.MovieApi;
+import br.com.jonathanarodr.playmovie.model.MovieReview;
+import br.com.jonathanarodr.playmovie.model.MovieReviewApi;
+import br.com.jonathanarodr.playmovie.model.MovieVideo;
+import br.com.jonathanarodr.playmovie.model.MovieVideoApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,12 +21,18 @@ import retrofit2.Response;
 public class MovieRepository {
 
     private static final String TAG = MovieRepository.class.getSimpleName();
-    private MovieService movieService = ApiService.build().create(MovieService.class);
+    private final MovieService mMovieService;
+    private final MovieDao mMovieDao;
 
-    public LiveData<List<Movie>> searchPopularMovie() {
+    public MovieRepository(MovieService movieService, MovieDao movieDao) {
+        mMovieService = movieService;
+        mMovieDao = movieDao;
+    }
+
+    public LiveData<List<Movie>> searchPopularMovies() {
         final MutableLiveData<List<Movie>> data = new MutableLiveData<>();
 
-        movieService.searchPopularMovie(BuildConfig.API_KEY).enqueue(new Callback<MovieApi>() {
+        mMovieService.searchPopularMovies(BuildConfig.API_KEY).enqueue(new Callback<MovieApi>() {
             @Override
             public void onResponse(Call<MovieApi> call, Response<MovieApi> response) {
                 if (response.isSuccessful()) {
@@ -41,10 +50,10 @@ public class MovieRepository {
         return data;
     }
 
-    public LiveData<List<Movie>> searchTopRatedMovie() {
+    public LiveData<List<Movie>> searchTopRatedMovies() {
         final MutableLiveData<List<Movie>> data = new MutableLiveData<>();
 
-        movieService.searchTopRatedMovie(BuildConfig.API_KEY).enqueue(new Callback<MovieApi>() {
+        mMovieService.searchTopRatedMovies(BuildConfig.API_KEY).enqueue(new Callback<MovieApi>() {
             @Override
             public void onResponse(Call<MovieApi> call, Response<MovieApi> response) {
                 if (response.isSuccessful()) {
@@ -60,6 +69,60 @@ public class MovieRepository {
         });
 
         return data;
+    }
+
+    public LiveData<List<MovieVideo>> searchVideos(int movieId) {
+        final MutableLiveData<List<MovieVideo>> data = new MutableLiveData<>();
+
+        mMovieService.searchVideos(movieId, BuildConfig.API_KEY).enqueue(new Callback<MovieVideoApi>() {
+            @Override
+            public void onResponse(Call<MovieVideoApi> call, Response<MovieVideoApi> response) {
+                if (response.isSuccessful()) {
+                    data.setValue(response.body().getVideos());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MovieVideoApi> call, Throwable t) {
+                Log.e(TAG, t.getMessage());
+                data.setValue(null);
+            }
+        });
+
+        return data;
+    }
+
+    public LiveData<List<MovieReview>> searchReviews(int movieId) {
+        final MutableLiveData<List<MovieReview>> data = new MutableLiveData<>();
+
+        mMovieService.searchReviews(movieId, BuildConfig.API_KEY).enqueue(new Callback<MovieReviewApi>() {
+            @Override
+            public void onResponse(Call<MovieReviewApi> call, Response<MovieReviewApi> response) {
+                if (response.isSuccessful()) {
+                    data.setValue(response.body().getReviews());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MovieReviewApi> call, Throwable t) {
+                Log.e(TAG, t.getMessage());
+                data.setValue(null);
+            }
+        });
+
+        return data;
+    }
+
+    public LiveData<List<Movie>> searchFavoriteMovies() {
+        return mMovieDao.listMovies();
+    }
+
+    public void insertFavoriteMovie(Movie movie) {
+        mMovieDao.insertMovie(movie);
+    }
+
+    public void deleteFavoriteMovie(Movie movie) {
+        mMovieDao.deleteMovie(movie);
     }
 
 }

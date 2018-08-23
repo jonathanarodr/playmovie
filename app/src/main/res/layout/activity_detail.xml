@@ -18,20 +18,36 @@
 
             <ImageView
                 android:id="@+id/poster_detail"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="260dp"
                 android:contentDescription="@null"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
+                android:alpha="0.7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:background="@color/colorPrimary" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_play_circle_outline_black_48dp"
+                app:layout_constraintBottom_toBottomOf="@+id/poster_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/poster_detail" />
+
             <TextView
                 android:id="@+id/title_detail"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/poster_detail"
                 tools:text="Title movie" />
 
@@ -43,6 +59,7 @@
                 android:drawableLeft="@drawable/ic_star_black_24dp"
                 android:drawableStart="@drawable/ic_star_black_24dp"
                 android:textColor="@color/blue_grey_ECEFF1"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_detail"
                 tools:text="0.0" />
 
@@ -50,7 +67,6 @@
                 android:id="@+id/release_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:textColor="@color/blue_grey_ECEFF1"
@@ -60,16 +76,56 @@
 
             <TextView
                 android:id="@+id/overview_detail"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:lineSpacingExtra="5dp"
                 android:textColor="@color/blue_grey_ECEFF1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/average_detail"
                 tools:text="Lorem ipsum dolor sit amet, autem singulis eam ne, amet blandit ex vel." />
+
+            <TextView
+                android:id="@+id/reviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:lineSpacingExtra="5dp"
+                android:text="@string/label_review"
+                android:textColor="@color/blue_grey_ECEFF1"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/overview_detail" />
+
+            <ProgressBar
+                android:id="@+id/pb_loading_review"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/reviews"
+                app:layout_constraintStart_toEndOf="@+id/reviews"
+                app:layout_constraintTop_toTopOf="@+id/reviews" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_list_review"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/reviews"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_review" />
 
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        app:elevation="4dp"
+        android:src="@drawable/ic_favorite_border_black_24dp" />
 
 </FrameLayout>

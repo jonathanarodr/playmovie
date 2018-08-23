@@ -1,5 +1,8 @@
 package br.com.jonathanarodr.playmovie.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -7,12 +10,17 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
+@Entity(tableName = "movies")
 public class Movie implements Parcelable {
 
+    @Ignore
     private final String IMAGE_PATH = "http://image.tmdb.org/t/p";
+    @Ignore
     private final String IMAGE_SIZE_DEFAULT = "/w185";
+    @Ignore
     private final String IMAGE_SIZE_HIGHT = "/w780";
 
+    @PrimaryKey
     @SerializedName("id")
     private int id;
     @SerializedName("title")
@@ -39,6 +47,10 @@ public class Movie implements Parcelable {
     }
 
     public String getPoster() {
+        return poster;
+    }
+
+    public String getPosterDefault() {
         return IMAGE_PATH + IMAGE_SIZE_DEFAULT + poster;
     }
 
@@ -54,7 +66,16 @@ public class Movie implements Parcelable {
         return releaseDate;
     }
 
-    public Movie(Parcel in) {
+    public Movie(int id, String title, String overview, String poster, Double average, Date releaseDate) {
+        this.id = id;
+        this.title = title;
+        this.overview = overview;
+        this.poster = poster;
+        this.average = average;
+        this.releaseDate = releaseDate;
+    }
+
+    Movie(Parcel in) {
         id = in.readInt();
         title = in.readString();
         overview = in.readString();

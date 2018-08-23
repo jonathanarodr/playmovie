@@ -16,4 +16,11 @@
         android:title="@string/action_bar_top_rate_movie"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/action_favorite_movie"
+        android:enabled="true"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="@string/action_bar_favorite_movie"
+        app:showAsAction="ifRoom" />
+
 </menu>

@@ -3,6 +3,9 @@
     <string name="app_name">Play Movie</string>
     <string name="action_bar_popular_movie">Popular</string>
     <string name="action_bar_top_rate_movie">Top rate</string>
-    <string name="message_error_api">Não foi possível conectar a Play Movie</string>
-    <string name="label_try_again">Tentar novamente</string>
+    <string name="action_bar_favorite_movie">Favorites</string>
+    <string name="message_error_api">Could not connect to Play Movie</string>
+    <string name="label_try_again">Try again</string>
+    <string name="label_trailer">Trailers</string>
+    <string name="label_review">Reviews</string>
 </resources>

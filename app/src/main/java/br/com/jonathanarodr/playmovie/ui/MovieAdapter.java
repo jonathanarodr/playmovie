@@ -28,11 +28,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         notifyDataSetChanged();
     }
 
-    public List<Movie> getMovies() {
-        return mMovies;
-    }
-
-    public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private final ImageView mPoster;
 
@@ -49,7 +45,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     }
 
-
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -60,7 +55,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = mMovies.get(position);
-        Picasso.get().load(movie.getPoster()).placeholder(R.drawable.backgroud_grey).into(holder.mPoster);
+        Picasso.get().load(movie.getPosterDefault()).placeholder(R.drawable.backgroud_grey).into(holder.mPoster);
     }
 
     @Override
