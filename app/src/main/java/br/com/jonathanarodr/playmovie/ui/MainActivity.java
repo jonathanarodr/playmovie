@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -25,11 +26,13 @@ import br.com.jonathanarodr.playmovie.model.Movie;
 import br.com.jonathanarodr.playmovie.util.NetworkUtils;
 import br.com.jonathanarodr.playmovie.viewmodel.MovieViewModel;
 
-import static br.com.jonathanarodr.playmovie.ui.DetailActivity.EXTRA_MOVIE_ID;
+import static br.com.jonathanarodr.playmovie.ui.DetailActivity.STATE_FAVORITE;
 
 public class MainActivity extends AppCompatActivity implements MovieAdapterOnClickHandler {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String STATE_BUNDLE_KEY = "state_bundle";
+    private static final String STATE_MOVIE_KEY = "state_movies";
 
     @Inject
     private MovieViewModel mMovieViewModel;
@@ -87,7 +90,30 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
         bindView();
         buildAdapter();
         buildProviders();
-        searchPopularMovie();
+
+        if(mNavigation.getSelectedItemId() != R.id.action_favorite_movie
+                && savedInstanceState == null
+                || !savedInstanceState.containsKey(STATE_BUNDLE_KEY)) {
+            searchPopularMovie();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(STATE_BUNDLE_KEY, mListMovie.getLayoutManager().onSaveInstanceState());
+        outState.putParcelableArrayList(STATE_MOVIE_KEY, new ArrayList<>(mMovieAdapter.getMovies()));
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            mListMovie.getLayoutManager().onRestoreInstanceState(savedInstanceState.getParcelable(STATE_BUNDLE_KEY));
+            mMovieAdapter.setMovies(savedInstanceState.<Movie>getParcelableArrayList(STATE_MOVIE_KEY));
+        }
+
     }
 
     @Override
@@ -96,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
         intent.putExtra(Intent.EXTRA_INTENT, movie);
 
         if (mNavigation.getSelectedItemId() == R.id.action_favorite_movie) {
-            intent.putExtra(EXTRA_MOVIE_ID, movie.getId());
+            intent.putExtra(STATE_FAVORITE, movie.getId());
         }
 
         startActivity(intent);

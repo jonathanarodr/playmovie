@@ -34,13 +34,13 @@ import br.com.jonathanarodr.playmovie.viewmodel.MovieViewModel;
 public class DetailActivity extends AppCompatActivity {
 
     private static final String TAG = DetailActivity.class.getSimpleName();
-    public static final String EXTRA_MOVIE_ID = "extra.movie_id";
     private static final int DEFAULT_MOVIE_ID = -1;
     private static final String DATE_FORMAT = "yyyy";
+    public static final String STATE_FAVORITE = "state_favorite";
 
     private MovieViewModel mMovieViewModel;
     private String urlYouTube;
-    private int mMovieId;
+    private int mMovieId ;
     private Movie mMovie;
     private TextView mTitle;
     private TextView mOverview;
@@ -82,6 +82,23 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(STATE_FAVORITE, mMovieId);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            mMovieId = savedInstanceState.getInt(STATE_FAVORITE);
+            atualizaBotaoFavorito();
+        }
+
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -111,11 +128,6 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        if (getIntent().hasExtra(EXTRA_MOVIE_ID)) {
-            mMovieId = getIntent().getIntExtra(EXTRA_MOVIE_ID, DEFAULT_MOVIE_ID);
-            mAddFavorite.setImageResource(R.drawable.ic_favorite_black_24dp);
-        }
-
         if (getIntent().hasExtra(Intent.EXTRA_INTENT)) {
             mMovie = getIntent().getParcelableExtra(Intent.EXTRA_INTENT);
             mTitle.setText(mMovie.getTitle());
@@ -124,6 +136,11 @@ public class DetailActivity extends AppCompatActivity {
             mAverage.setText(mMovie.getAverage().toString());
             Picasso.get().load(mMovie.getPosterHight()).placeholder(R.drawable.backgroud_grey).into(mPoster);
             setTitle(mMovie.getTitle());
+        }
+
+        if (getIntent().hasExtra(STATE_FAVORITE)) {
+            mMovieId = getIntent().getIntExtra(STATE_FAVORITE, DEFAULT_MOVIE_ID);
+            atualizaBotaoFavorito();
         }
     }
 
@@ -172,8 +189,8 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void run() {
                 mMovieViewModel.insertFavoriteMovie(mMovie);
-                mAddFavorite.setImageResource(R.drawable.ic_favorite_black_24dp);
                 mMovieId = mMovie.getId();
+                atualizaBotaoFavorito();
             }
         });
     }
@@ -183,10 +200,18 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void run() {
                 mMovieViewModel.deleteFavoriteMovie(mMovie);
-                mAddFavorite.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                 mMovieId = DEFAULT_MOVIE_ID;
+                atualizaBotaoFavorito();
             }
         });
+    }
+
+    private void atualizaBotaoFavorito() {
+        if (mMovie.getId() == mMovieId) {
+            mAddFavorite.setImageResource(R.drawable.ic_favorite_black_24dp);
+        } else {
+            mAddFavorite.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+        }
     }
 
 }
