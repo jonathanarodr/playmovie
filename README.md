@@ -5,6 +5,6 @@ Para configurar a chave de consulta da API, acesse o arquivo `build.gradle` e in
 ```java
 ...
 //exemplo de configuração da API KEY:
-buildConfigField("String" , "API_KEY", "\"123456ABCDEF\"")
+buildConfigField("String" , "API_KEY", '"1234567890"')
 ...
 ```
