@@ -29,6 +29,8 @@ public class Movie implements Parcelable {
     private String overview;
     @SerializedName("poster_path")
     private String poster;
+    @SerializedName("backdrop_path")
+    private String backdrop;
     @SerializedName("vote_average")
     private Double average;
     @SerializedName("release_date")
@@ -58,6 +60,26 @@ public class Movie implements Parcelable {
         return IMAGE_PATH + IMAGE_SIZE_HIGHT + poster;
     }
 
+    public Movie(int id, String title, String overview, String poster, String backdrop, Double average, Date releaseDate) {
+        this.id = id;
+        this.title = title;
+        this.overview = overview;
+        this.poster = poster;
+        this.backdrop = backdrop;
+        this.average = average;
+        this.releaseDate = releaseDate;
+    }
+
+    private Movie(Parcel in) {
+        id = in.readInt();
+        title = in.readString();
+        overview = in.readString();
+        poster = in.readString();
+        backdrop = in.readString();
+        average = in.readDouble();
+        releaseDate = (Date) in.readSerializable();
+    }
+
     public Double getAverage() {
         return average;
     }
@@ -66,22 +88,8 @@ public class Movie implements Parcelable {
         return releaseDate;
     }
 
-    public Movie(int id, String title, String overview, String poster, Double average, Date releaseDate) {
-        this.id = id;
-        this.title = title;
-        this.overview = overview;
-        this.poster = poster;
-        this.average = average;
-        this.releaseDate = releaseDate;
-    }
-
-    Movie(Parcel in) {
-        id = in.readInt();
-        title = in.readString();
-        overview = in.readString();
-        poster = in.readString();
-        average = in.readDouble();
-        releaseDate = (Date) in.readSerializable();
+    public String getBackdrop() {
+        return backdrop;
     }
 
     @Override
@@ -95,6 +103,7 @@ public class Movie implements Parcelable {
         dest.writeString(title);
         dest.writeString(overview);
         dest.writeString(poster);
+        dest.writeString(backdrop);
         dest.writeDouble(average);
         dest.writeSerializable(releaseDate);
     }
