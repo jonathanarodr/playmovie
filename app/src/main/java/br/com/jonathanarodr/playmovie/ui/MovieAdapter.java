@@ -2,17 +2,17 @@ package br.com.jonathanarodr.playmovie.ui;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 import br.com.jonathanarodr.playmovie.R;
 import br.com.jonathanarodr.playmovie.model.Movie;
+import br.com.jonathanarodr.playmovie.util.GlideApp;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
@@ -59,7 +59,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = mMovies.get(position);
-        Picasso.get().load(movie.getPosterDefault()).placeholder(R.drawable.backgroud_grey).into(holder.mPoster);
+        GlideApp.with(holder.itemView.getContext())
+                .load(movie.getPosterDefault())
+                .centerCrop()
+                .placeholder(R.drawable.backgroud_grey)
+                .into(holder.mPoster);
     }
 
     @Override

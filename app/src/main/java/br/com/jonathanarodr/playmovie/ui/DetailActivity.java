@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
+
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,8 +19,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -134,8 +134,13 @@ public class DetailActivity extends AppCompatActivity {
             mOverview.setText(mMovie.getOverview());
             mRelease.setText(new SimpleDateFormat(DATE_FORMAT, Locale.getDefault()).format(mMovie.getReleaseDate()));
             mAverage.setText(mMovie.getAverage().toString());
-            Picasso.get().load(mMovie.getPosterHight()).placeholder(R.drawable.backgroud_grey).into(mPoster);
             setTitle(mMovie.getTitle());
+
+            Glide.with(this)
+                    .load(mMovie.getPosterHight())
+                    .centerCrop()
+                    .placeholder(R.drawable.backgroud_grey)
+                    .into(mPoster);
         }
 
         if (getIntent().hasExtra(STATE_FAVORITE)) {
