@@ -6,6 +6,5 @@
     <string name="action_bar_favorite_movie">Favorites</string>
     <string name="message_error_api">Could not connect to Play Movie</string>
     <string name="label_try_again">Try again</string>
-    <string name="label_trailer">Trailers</string>
     <string name="label_review">Reviews</string>
 </resources>
