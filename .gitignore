@@ -44,3 +44,5 @@ local.properties
 *.ipr
 *.iws
 /out/
+/captures
+.externalNativeBuild
