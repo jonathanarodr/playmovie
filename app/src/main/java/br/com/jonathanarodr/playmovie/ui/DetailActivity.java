@@ -167,7 +167,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<MovieVideo> movieVideos) {
                 Log.d(TAG, "Consutando detalhes do video via cache");
-                urlYouTube = movieVideos.get(0).getKey();
+                urlYouTube = movieVideos.get(0).getUrlVideo();
             }
         });
 
