@@ -1,19 +1,18 @@
 package br.com.jonathanarodr.playmovie.data;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import android.util.Log;
 
 import java.util.List;
 
 import br.com.jonathanarodr.playmovie.BuildConfig;
 import br.com.jonathanarodr.playmovie.api.MovieService;
 import br.com.jonathanarodr.playmovie.model.Movie;
-import br.com.jonathanarodr.playmovie.model.MovieApi;
 import br.com.jonathanarodr.playmovie.model.MovieReview;
-import br.com.jonathanarodr.playmovie.model.MovieReviewApi;
 import br.com.jonathanarodr.playmovie.model.MovieVideo;
-import br.com.jonathanarodr.playmovie.model.MovieVideoApi;
+import br.com.jonathanarodr.playmovie.model.ResultApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,16 +31,16 @@ public class MovieRepository {
     public LiveData<List<Movie>> searchPopularMovies() {
         final MutableLiveData<List<Movie>> data = new MutableLiveData<>();
 
-        mMovieService.searchPopularMovies(BuildConfig.API_KEY).enqueue(new Callback<MovieApi>() {
+        mMovieService.searchPopularMovies(BuildConfig.API_KEY).enqueue(new Callback<ResultApi<Movie>>() {
             @Override
-            public void onResponse(Call<MovieApi> call, Response<MovieApi> response) {
+            public void onResponse(Call<ResultApi<Movie>> call, Response<ResultApi<Movie>> response) {
                 if (response.isSuccessful()) {
-                    data.setValue(response.body().getMovies());
+                    data.setValue(response.body().getResults());
                 }
             }
 
             @Override
-            public void onFailure(Call<MovieApi> call, Throwable t) {
+            public void onFailure(Call<ResultApi<Movie>> call, Throwable t) {
                 Log.e(TAG, t.getMessage());
                 data.setValue(null);
             }
@@ -53,16 +52,16 @@ public class MovieRepository {
     public LiveData<List<Movie>> searchTopRatedMovies() {
         final MutableLiveData<List<Movie>> data = new MutableLiveData<>();
 
-        mMovieService.searchTopRatedMovies(BuildConfig.API_KEY).enqueue(new Callback<MovieApi>() {
+        mMovieService.searchTopRatedMovies(BuildConfig.API_KEY).enqueue(new Callback<ResultApi<Movie>>() {
             @Override
-            public void onResponse(Call<MovieApi> call, Response<MovieApi> response) {
+            public void onResponse(Call<ResultApi<Movie>> call, Response<ResultApi<Movie>> response) {
                 if (response.isSuccessful()) {
-                    data.setValue(response.body().getMovies());
+                    data.setValue(response.body().getResults());
                 }
             }
 
             @Override
-            public void onFailure(Call<MovieApi> call, Throwable t) {
+            public void onFailure(Call<ResultApi<Movie>> call, Throwable t) {
                 Log.e(TAG, t.getMessage());
                 data.setValue(null);
             }
@@ -74,16 +73,16 @@ public class MovieRepository {
     public LiveData<List<MovieVideo>> searchVideos(int movieId) {
         final MutableLiveData<List<MovieVideo>> data = new MutableLiveData<>();
 
-        mMovieService.searchVideos(movieId, BuildConfig.API_KEY).enqueue(new Callback<MovieVideoApi>() {
+        mMovieService.searchVideos(movieId, BuildConfig.API_KEY).enqueue(new Callback<ResultApi<MovieVideo>>() {
             @Override
-            public void onResponse(Call<MovieVideoApi> call, Response<MovieVideoApi> response) {
+            public void onResponse(Call<ResultApi<MovieVideo>> call, Response<ResultApi<MovieVideo>> response) {
                 if (response.isSuccessful()) {
-                    data.setValue(response.body().getVideos());
+                    data.setValue(response.body().getResults());
                 }
             }
 
             @Override
-            public void onFailure(Call<MovieVideoApi> call, Throwable t) {
+            public void onFailure(Call<ResultApi<MovieVideo>> call, Throwable t) {
                 Log.e(TAG, t.getMessage());
                 data.setValue(null);
             }
@@ -95,16 +94,16 @@ public class MovieRepository {
     public LiveData<List<MovieReview>> searchReviews(int movieId) {
         final MutableLiveData<List<MovieReview>> data = new MutableLiveData<>();
 
-        mMovieService.searchReviews(movieId, BuildConfig.API_KEY).enqueue(new Callback<MovieReviewApi>() {
+        mMovieService.searchReviews(movieId, BuildConfig.API_KEY).enqueue(new Callback<ResultApi<MovieReview>>() {
             @Override
-            public void onResponse(Call<MovieReviewApi> call, Response<MovieReviewApi> response) {
+            public void onResponse(Call<ResultApi<MovieReview>> call, Response<ResultApi<MovieReview>> response) {
                 if (response.isSuccessful()) {
-                    data.setValue(response.body().getReviews());
+                    data.setValue(response.body().getResults());
                 }
             }
 
             @Override
-            public void onFailure(Call<MovieReviewApi> call, Throwable t) {
+            public void onFailure(Call<ResultApi<MovieReview>> call, Throwable t) {
                 Log.e(TAG, t.getMessage());
                 data.setValue(null);
             }
