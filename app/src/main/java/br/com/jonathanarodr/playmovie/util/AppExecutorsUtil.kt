@@ -38,9 +38,9 @@ class AppExecutorsUtil(
     }
 
     companion object {
-        private val lock = Any()
         private var instance: AppExecutorsUtil? = null
 
+        @JvmStatic
         @Synchronized
         fun getInstance(): AppExecutorsUtil {
             if (instance == null) {
