@@ -1,20 +1,21 @@
 package br.com.jonathanarodr.playmovie.ui;
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ import br.com.jonathanarodr.playmovie.viewmodel.MovieViewModel;
 
 import static br.com.jonathanarodr.playmovie.ui.DetailActivity.STATE_FAVORITE;
 
-public class MainActivity extends AppCompatActivity implements MovieAdapterOnClickHandler {
+public class MainActivity extends BaseActivity implements MovieAdapterOnClickHandler {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final String STATE_BUNDLE_KEY = "state_bundle";
@@ -153,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
     private void searchPopularMovie() {
         showLoadIndicator();
 
-        if (!NetworkUtils.isActiveNetwork(this)) {
+        if (!NetworkUtils.hasNetworkConnection(this)) {
             showErrorMessageView();
             return;
         }
@@ -169,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapterOnCli
     private void searchTopRatedMovie() {
         showLoadIndicator();
 
-        if (!NetworkUtils.isActiveNetwork(this)) {
+        if (!NetworkUtils.hasNetworkConnection(this)) {
             showErrorMessageView();
             return;
         }
