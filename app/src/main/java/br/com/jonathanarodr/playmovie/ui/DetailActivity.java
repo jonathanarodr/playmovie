@@ -29,7 +29,7 @@ import br.com.jonathanarodr.playmovie.R;
 import br.com.jonathanarodr.playmovie.model.Movie;
 import br.com.jonathanarodr.playmovie.model.MovieReview;
 import br.com.jonathanarodr.playmovie.model.MovieVideo;
-import br.com.jonathanarodr.playmovie.util.AppExecutorsUtil;
+import br.com.jonathanarodr.playmovie.util.AppExecutorsUtils;
 import br.com.jonathanarodr.playmovie.viewmodel.MovieViewModel;
 
 public class DetailActivity extends AppCompatActivity {
@@ -191,7 +191,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void insertFavoriteMovie() {
-        AppExecutorsUtil.getInstance().diskIO().execute(new Runnable() {
+        AppExecutorsUtils.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
                 mMovieViewModel.insertFavoriteMovie(mMovie);
@@ -202,7 +202,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void deleteFavoriteMovie() {
-        AppExecutorsUtil.getInstance().diskIO().execute(new Runnable() {
+        AppExecutorsUtils.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
                 mMovieViewModel.deleteFavoriteMovie(mMovie);

@@ -5,7 +5,7 @@ import android.os.Looper
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
-class AppExecutorsUtil(
+class AppExecutorsUtils(
     private val diskIO: Executor,
     private val networkIO: Executor,
     private val mainThread: Executor
@@ -38,15 +38,12 @@ class AppExecutorsUtil(
     }
 
     companion object {
-        private var instance: AppExecutorsUtil? = null
+        @Volatile private var instance: AppExecutorsUtils? = null
 
         @JvmStatic
         @Synchronized
-        fun getInstance(): AppExecutorsUtil {
-            if (instance == null) {
-                instance = AppExecutorsUtil()
-            }
-            return instance!!
+        fun getInstance(): AppExecutorsUtils {
+            return instance ?: AppExecutorsUtils()
         }
     }
 
