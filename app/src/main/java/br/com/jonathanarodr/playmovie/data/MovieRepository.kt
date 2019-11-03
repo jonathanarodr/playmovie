@@ -43,7 +43,7 @@ class MovieRepository(
         return data
     }
 
-    fun searchTopRatedMovies(): LiveData<List<Movie>?> {
+    fun searchTopRatedMovies(): LiveData<List<Movie>> {
         val data = MutableLiveData<List<Movie>>()
 
         movieService.searchTopRatedMovies(BuildConfig.API_KEY)
@@ -65,7 +65,7 @@ class MovieRepository(
         return data
     }
 
-    fun searchVideos(movieId: Int): LiveData<List<MovieVideo>?> {
+    fun searchVideos(movieId: Int): LiveData<List<MovieVideo>> {
         val data = MutableLiveData<List<MovieVideo>>()
 
         movieService.searchVideos(movieId, BuildConfig.API_KEY)
