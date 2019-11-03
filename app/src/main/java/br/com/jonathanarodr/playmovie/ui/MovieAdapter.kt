@@ -15,7 +15,7 @@ import br.com.jonathanarodr.playmovie.util.GlideApp
 class MovieAdapter(private val clickHandler: MovieAdapterOnClickHandler) :
     Adapter<MovieAdapter.MovieViewHolder>() {
 
-    var movies: MutableList<Movie> = mutableListOf()
+    var movies: List<Movie> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()

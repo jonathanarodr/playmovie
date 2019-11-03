@@ -12,7 +12,7 @@ import br.com.jonathanarodr.playmovie.model.MovieReview
 
 class MovieReviewAdapter : Adapter<MovieReviewAdapter.MovieReviewViewHolder>() {
 
-    var reviews: MutableList<MovieReview> = mutableListOf()
+    var reviews: List<MovieReview> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
