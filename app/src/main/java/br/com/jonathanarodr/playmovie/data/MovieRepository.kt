@@ -31,7 +31,7 @@ class MovieRepository(
                     response: Response<ResultApi<Movie>>
                 ) {
                     if (response.isSuccessful) {
-                        data.value = response.body()!!.results
+                        data.value = response.body()?.results
                     }
                 }
 
@@ -53,7 +53,7 @@ class MovieRepository(
                     response: Response<ResultApi<Movie>>
                 ) {
                     if (response.isSuccessful) {
-                        data.value = response.body()!!.results
+                        data.value = response.body()?.results
                     }
                 }
 
@@ -75,7 +75,7 @@ class MovieRepository(
                     response: Response<ResultApi<MovieVideo>>
                 ) {
                     if (response.isSuccessful) {
-                        data.value = response.body()!!.results
+                        data.value = response.body()?.results
                     }
                 }
 
@@ -99,7 +99,7 @@ class MovieRepository(
                     response: Response<ResultApi<MovieReview>>
                 ) {
                     if (response.isSuccessful) {
-                        data.value = response.body()!!.results
+                        data.value = response.body()?.results
                     }
                 }
 
