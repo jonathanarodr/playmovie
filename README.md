@@ -16,3 +16,4 @@ Screenshots
 ![List of popular movies](screenshots/popular_movie.png "A list of popular movies")
 ![List of top movies](screenshots/top_movie.png "A list of top movies")
 ![List of favorite movies](screenshots/favorite_movie.png "A list of favorite movies")
+![Movie details](screenshots/detail_movie.png "Details for a specific movie")
