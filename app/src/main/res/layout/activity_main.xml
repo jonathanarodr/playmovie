@@ -12,10 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="56dp"
-        android:padding="8dp"
         android:clipToPadding="false"
-        tools:visibility="invisible"
-        tools:listitem="@layout/item_movie" />
+        android:padding="8dp"
+        tools:listitem="@layout/item_movie"
+        tools:visibility="invisible" />
 
     <LinearLayout
         android:id="@+id/ll_message_error"
@@ -66,6 +66,7 @@
         app:itemBackground="@color/colorPrimary"
         app:itemIconTint="@color/colorText"
         app:itemTextColor="@color/colorText"
+        app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
