@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/jonathanarodr/playmovie.svg?branch=master)](https://travis-ci.com/jonathanarodr/playmovie)
+
 # playmovie
 
 Para configurar a chave de consulta da [API](https://www.themoviedb.org/), acesse o arquivo `build.gradle` e informe sua chave no field **API_KEY**
