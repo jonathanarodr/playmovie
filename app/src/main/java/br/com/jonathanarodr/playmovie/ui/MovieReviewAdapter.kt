@@ -36,7 +36,5 @@ class MovieReviewAdapter : Adapter<MovieReviewAdapter.MovieReviewViewHolder>() {
         holder.content.text = content.trim()
     }
 
-    override fun getItemCount(): Int {
-        return reviews.size
-    }
+    override fun getItemCount(): Int = reviews.size
 }
