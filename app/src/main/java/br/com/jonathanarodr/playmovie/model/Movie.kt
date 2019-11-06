@@ -24,7 +24,7 @@ data class Movie(
     @SerializedName("vote_average")
     val average: Double,
     @SerializedName("release_date")
-    var releaseDate: Date?
+    var releaseDate: Date
 ) : Parcelable {
 
     companion object {
@@ -52,7 +52,7 @@ data class Movie(
         parcel.readString(),
         parcel.readString(),
         parcel.readDouble(),
-        parcel.readSerializable() as Date?
+        parcel.readSerializable() as Date
     )
 
     override fun describeContents(): Int {
