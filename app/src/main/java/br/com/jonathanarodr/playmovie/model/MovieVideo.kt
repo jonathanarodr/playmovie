@@ -12,5 +12,5 @@ data class MovieVideo(
         private const val YOUTUBE_URL = "https://www.youtube.com/watch?v="
     }
 
-    fun getUrlVideo() = YOUTUBE_URL + site
+    fun getUrlVideo() = YOUTUBE_URL + key
 }
