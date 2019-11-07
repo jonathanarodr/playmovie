@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,7 +21,7 @@ import br.com.jonathanarodr.playmovie.viewmodel.MovieViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), MovieAdapterOnClickHandler {
+class MainActivity : AppCompatActivity(), MovieAdapterOnClickHandler {
 
     @Inject
     private lateinit var movieViewModel: MovieViewModel
