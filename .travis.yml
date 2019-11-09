@@ -1,6 +1,8 @@
 language: android
 jdk: oraclejdk8
 dist: trusty
+sudo: false
+
 android:
   components:
     # android sdk
@@ -16,5 +18,17 @@ android:
 
     # system image
     - sys-img-x86-android-28
-#before_script:
-#script:
+
+licenses:
+  - android-sdk-preview-license-.+
+  - android-sdk-license-.+
+  - google-gdk-license-.+
+
+before_script:
+  # Create and start emulator
+  - echo no | android create avd --force -n test -t android-28 --abi x86_64
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+
+script: "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
