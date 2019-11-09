@@ -16,9 +16,6 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
 
-    # system image
-    - sys-img-x86-android-28
-
 licenses:
   - android-sdk-preview-license-.+
   - android-sdk-license-.+
@@ -26,7 +23,7 @@ licenses:
 
 before_script:
   # Create and start emulator
-  - echo no | android create avd --force -n test -t android-28 --abi x86-64
+  - echo no | android create avd --force -n test -k 'system-images;android-28;google_apis;x86' --abi x86
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
