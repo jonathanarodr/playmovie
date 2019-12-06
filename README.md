@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/jonathanarodr/playmovie.svg?branch=master)](https://travis-ci.com/jonathanarodr/playmovie)
 [![CircleCI](https://circleci.com/gh/jonathanarodr/playmovie/tree/master.svg?style=shield)](https://circleci.com/gh/jonathanarodr/playmovie/tree/master)
+[![codecov](https://codecov.io/gh/jonathanarodr/playmovie/branch/master/graph/badge.svg)](https://codecov.io/gh/jonathanarodr/playmovie)
 
 # playmovie
 
