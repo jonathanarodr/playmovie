@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.com/jonathanarodr/playmovie.svg?branch=master)](https://travis-ci.com/jonathanarodr/playmovie)
 [![CircleCI](https://circleci.com/gh/jonathanarodr/playmovie/tree/master.svg?style=shield)](https://circleci.com/gh/jonathanarodr/playmovie/tree/master)
 [![codecov](https://codecov.io/gh/jonathanarodr/playmovie/branch/master/graph/badge.svg)](https://codecov.io/gh/jonathanarodr/playmovie)
+[![codebeat](https://codebeat.co/badges/23b02036-2aaf-4325-a856-add0e46d6832)](https://codebeat.co/projects/github-com-jonathanarodr-playmovie-master)
 
 # playmovie
 
