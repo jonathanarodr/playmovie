@@ -4,7 +4,7 @@ buildscript {
         kotlin_version = '1.5.20'
         gradle_version = '4.2.2'
         coroutines_version = '1.4.1'
-        core_ktx = '1.6.0'
+        android_core_version = '1.6.0'
         lifecycle_version = '2.3.1'
         room_version = '2.3.0'
         navigation_version = '2.3.5'
@@ -21,7 +21,7 @@ buildscript {
         okhttp_version = '4.9.0'
         junit_version = '4.13.2'
         android_test_version = '1.4.0'
-        espresson_version = '3.4.0'
+        espresso_version = '3.4.0'
         mockk_version = '1.12.0'
     }
 

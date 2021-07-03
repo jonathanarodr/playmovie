@@ -16,7 +16,7 @@ android {
         applicationId "br.com.jonathanarodr.playmovie"
 
         versionCode 2
-        versionName "2.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
@@ -67,7 +67,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutines_version")
 
-    implementation("androidx.core:core-ktx:$core_ktx")
+    implementation("androidx.core:core-ktx:$android_core_version")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
@@ -109,7 +109,7 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:$android_test_version")
     androidTestImplementation("androidx.test:runner:$android_test_version")
     androidTestImplementation("androidx.test:rules:$android_test_version")
-    androidTestImplementation("androidx.test.espresso:espresso-core:$espresson_version") {
+    androidTestImplementation("androidx.test.espresso:espresso-core:$espresso_version") {
         exclude group: "com.android.support", module: "support-annotations"
     }
     androidTestImplementation("io.mockk:mockk-android:$mockk_version")
