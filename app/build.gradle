@@ -23,7 +23,7 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         buildConfigField("String" , "SERVER_URL", '"https://api.themoviedb.org/3/movie/"')
-        buildConfigField("String" , "API_KEY", '"7c75d35204e5b37a0dfac3c457af3244"')
+        buildConfigField("String" , "API_KEY", '""')
     }
     buildTypes {
         debug {
