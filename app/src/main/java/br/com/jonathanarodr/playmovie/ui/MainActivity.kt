@@ -19,11 +19,9 @@ import br.com.jonathanarodr.playmovie.util.NetworkUtils.hasNetworkConnection
 import br.com.jonathanarodr.playmovie.util.findViewByLazy
 import br.com.jonathanarodr.playmovie.viewmodel.MovieViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MovieAdapterOnClickHandler {
 
-    @Inject
     private lateinit var movieViewModel: MovieViewModel
     private val movieAdapter: MovieAdapter by lazy { MovieAdapter(this) }
     private val loadingIndicator: ProgressBar by findViewByLazy(R.id.pb_loading_indicator)
