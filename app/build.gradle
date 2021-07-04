@@ -38,6 +38,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        viewBinding true
+    }
+    sourceSets {
+        main {
+            java.srcDir("src/main/kotlin")
+        }
+        test {
+            java.srcDir("src/test/kotlin")
+            java.srcDir("src/sharedTest/kotlin")
+        }
+    }
     compileOptions {
         sourceCompatibility java_version
         targetCompatibility java_version
@@ -93,6 +105,8 @@ dependencies {
     kapt("com.github.bumptech.glide:compiler:$glide_version")
 
     implementation("com.google.code.gson:gson:$gson_version")
+
+    implementation "com.jakewharton.timber:timber:$timber_version"
 
     implementation("io.insert-koin:koin-android:$koin_version")
 
