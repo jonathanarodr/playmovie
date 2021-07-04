@@ -109,7 +109,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         if (intent.hasExtra(Intent.EXTRA_INTENT)) {
-            movie = intent.getParcelableExtra(Intent.EXTRA_INTENT)
+//            movie = intent.getParcelableExtra(Intent.EXTRA_INTENT)
             title.text = movie.title
             overview.text = movie.overview
             release.text = SimpleDateFormat(DATE_FORMAT, Locale.getDefault()).format(movie.releaseDate)
