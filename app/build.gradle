@@ -22,8 +22,8 @@ android {
         testInstrumentationRunnerArguments clearPackageData: 'true'
         vectorDrawables.useSupportLibrary = true
 
-        buildConfigField("String" , "SERVER_URL", '"https://api.themoviedb.org/3/movie/"')
-        buildConfigField("String" , "API_KEY", '""')
+        buildConfigField("String" , "SERVER_URL", '"https://api.themoviedb.org/4/movie/"')
+        buildConfigField("String" , "AUTHORIZATION_KEY", '"Bearer-Key"')
     }
     buildTypes {
         debug {

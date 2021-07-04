@@ -1,6 +1,7 @@
 package br.com.jonathanarodr.playmovie.network
 
 import br.com.jonathanarodr.playmovie.BuildConfig
+import br.com.jonathanarodr.playmovie.network.interceptor.AuthorizationInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,6 +22,7 @@ object NetworkClientService {
     private fun initClient() {
         okHttpClient = OkHttpClient.Builder().apply {
             addInterceptor(HttpLoggingInterceptor())
+            addInterceptor(AuthorizationInterceptor())
             connectTimeout(NETWORK_SERVICE_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(NETWORK_SERVICE_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(NETWORK_SERVICE_TIMEOUT, TimeUnit.SECONDS)
