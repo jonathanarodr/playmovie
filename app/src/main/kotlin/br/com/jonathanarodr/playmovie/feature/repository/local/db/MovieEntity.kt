@@ -1,4 +1,4 @@
-package br.com.jonathanarodr.playmovie.feature.repository.local.database
+package br.com.jonathanarodr.playmovie.feature.repository.local.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

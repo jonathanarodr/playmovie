@@ -1,6 +1,6 @@
 package br.com.jonathanarodr.playmovie.feature.domain.model
 
-import br.com.jonathanarodr.playmovie.feature.repository.local.database.MovieEntity
+import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieEntity
 import com.google.gson.annotations.SerializedName
 import java.util.*
 

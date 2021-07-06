@@ -2,7 +2,7 @@ package br.com.jonathanarodr.playmovie.feature.di
 
 import br.com.jonathanarodr.playmovie.feature.repository.MovieRepositoryImpl
 import br.com.jonathanarodr.playmovie.feature.repository.local.MovieLocalDataSource
-import br.com.jonathanarodr.playmovie.feature.repository.local.database.AppDataBase
+import br.com.jonathanarodr.playmovie.feature.repository.local.db.AppDataBase
 import br.com.jonathanarodr.playmovie.feature.repository.remote.MovieRemoteDataSource
 import br.com.jonathanarodr.playmovie.feature.repository.remote.api.MovieApi
 import br.com.jonathanarodr.playmovie.network.NetworkClientService

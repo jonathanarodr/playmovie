@@ -1,7 +1,7 @@
 package br.com.jonathanarodr.playmovie.feature.repository.local
 
-import br.com.jonathanarodr.playmovie.feature.repository.local.database.MovieDao
-import br.com.jonathanarodr.playmovie.feature.repository.local.database.MovieEntity
+import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieDao
+import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieEntity
 
 class MovieLocalDataSource(
     private val movieDao: MovieDao,
