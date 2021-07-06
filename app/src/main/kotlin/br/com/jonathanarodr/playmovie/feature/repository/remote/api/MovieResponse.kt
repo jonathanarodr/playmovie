@@ -1,4 +1,4 @@
-package br.com.jonathanarodr.playmovie.feature.repository.remote
+package br.com.jonathanarodr.playmovie.feature.repository.remote.api
 
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import com.google.gson.annotations.SerializedName

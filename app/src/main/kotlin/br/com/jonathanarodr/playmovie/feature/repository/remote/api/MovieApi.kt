@@ -1,8 +1,8 @@
-package br.com.jonathanarodr.playmovie.feature.repository.remote
+package br.com.jonathanarodr.playmovie.feature.repository.remote.api
 
 import retrofit2.http.GET
 
-interface MovieService {
+interface MovieApi {
 
     @GET("/discover/movie")
     suspend fun searchMovies(): Result<MovieResponse>
