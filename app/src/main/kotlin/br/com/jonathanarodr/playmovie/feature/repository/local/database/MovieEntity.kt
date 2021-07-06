@@ -22,6 +22,4 @@ data class MovieEntity(
     val average: Double,
     @ColumnInfo(name = "release")
     val releaseDate: Date,
-    @ColumnInfo(name = "isFavorite")
-    val isFavorite: Boolean,
 )
