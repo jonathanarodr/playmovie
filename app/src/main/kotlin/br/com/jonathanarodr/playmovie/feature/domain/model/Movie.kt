@@ -1,5 +1,6 @@
 package br.com.jonathanarodr.playmovie.feature.domain.model
 
+import br.com.jonathanarodr.playmovie.feature.repository.local.database.MovieEntity
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
@@ -18,4 +19,14 @@ data class Movie(
     val average: Double,
     @SerializedName("release_date", alternate = ["first_air_date"])
     val releaseDate: Date,
+)
+
+fun Movie.toMovieEntity() = MovieEntity(
+    id = this.id,
+    title = this.title,
+    overview = this.overview,
+    poster = this.poster,
+    backdrop = this.backdrop,
+    average = this.average,
+    releaseDate = this.releaseDate,
 )
