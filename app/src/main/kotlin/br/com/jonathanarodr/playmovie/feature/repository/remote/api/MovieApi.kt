@@ -4,9 +4,9 @@ import retrofit2.http.GET
 
 interface MovieApi {
 
-    @GET("/discover/movie")
+    @GET("/4/discover/movie")
     suspend fun searchMovies(): MovieResponse
 
-    @GET("/discover/tv")
+    @GET("/4/discover/tv")
     suspend fun searchTvSeries(): MovieResponse
 }
