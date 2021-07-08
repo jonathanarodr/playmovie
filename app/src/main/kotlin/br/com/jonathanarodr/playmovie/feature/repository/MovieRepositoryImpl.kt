@@ -11,19 +11,17 @@ class MovieRepositoryImpl(
     private val localDataSource: MovieLocalDataSource,
 ) : MovieRepository {
 
-    override suspend fun searchMovies(): Result<List<Movie>> {
+    override suspend fun searchMovies(): List<Movie> {
         return remoteDataSource.searchMovies()
     }
 
-    override suspend fun searchTvSeries(): Result<List<Movie>> {
+    override suspend fun searchTvSeries(): List<Movie> {
         return remoteDataSource.searchTvSeries()
     }
 
-    override suspend fun fetchFavoriteMovies(): Result<List<Movie>> {
+    override suspend fun fetchFavoriteMovies(): List<Movie> {
         return localDataSource.fetchFavoriteMovies().map {
             it.toMovie()
-        }.run {
-            Result.success(this)
         }
     }
 

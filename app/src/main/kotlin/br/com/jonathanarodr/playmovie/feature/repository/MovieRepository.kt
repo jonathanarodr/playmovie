@@ -4,11 +4,11 @@ import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 
 interface MovieRepository {
 
-    suspend fun searchMovies(): Result<List<Movie>>
+    suspend fun searchMovies(): List<Movie>
 
-    suspend fun searchTvSeries(): Result<List<Movie>>
+    suspend fun searchTvSeries(): List<Movie>
 
-    suspend fun fetchFavoriteMovies(): Result<List<Movie>>
+    suspend fun fetchFavoriteMovies(): List<Movie>
 
     suspend fun insertFavoriteMovie(movie: Movie)
 
