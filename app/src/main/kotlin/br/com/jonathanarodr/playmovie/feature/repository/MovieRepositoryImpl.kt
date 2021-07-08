@@ -19,8 +19,8 @@ class MovieRepositoryImpl(
         return remoteDataSource.searchTvSeries()
     }
 
-    override suspend fun fetchFavoriteMovies(): List<Movie> {
-        return localDataSource.fetchFavoriteMovies().map {
+    override suspend fun searchFavoriteMovies(): List<Movie> {
+        return localDataSource.searchFavoriteMovies().map {
             it.toMovie()
         }
     }

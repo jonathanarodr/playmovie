@@ -8,7 +8,7 @@ interface MovieRepository {
 
     suspend fun searchTvSeries(): List<Movie>
 
-    suspend fun fetchFavoriteMovies(): List<Movie>
+    suspend fun searchFavoriteMovies(): List<Movie>
 
     suspend fun insertFavoriteMovie(movie: Movie)
 

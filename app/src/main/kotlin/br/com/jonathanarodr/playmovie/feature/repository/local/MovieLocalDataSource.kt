@@ -7,7 +7,7 @@ class MovieLocalDataSource(
     private val movieDao: MovieDao,
 ) {
 
-    suspend fun fetchFavoriteMovies(): List<MovieEntity> {
+    suspend fun searchFavoriteMovies(): List<MovieEntity> {
         return movieDao.listFavoriteMovies()
     }
 
