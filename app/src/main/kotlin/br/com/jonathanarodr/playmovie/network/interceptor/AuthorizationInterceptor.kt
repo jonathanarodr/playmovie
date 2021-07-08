@@ -11,10 +11,9 @@ class AuthorizationInterceptor : Interceptor {
     }
 
     override fun intercept(chain: Interceptor.Chain): Response {
-
         val request = chain.request()
             .newBuilder()
-            .addHeader(AUTHORIZATION_KEY, "Bearer ${BuildConfig.AUTHORIZATION_KEY}")
+            .header(AUTHORIZATION_KEY, "Bearer ${BuildConfig.AUTHORIZATION_KEY}")
             .build()
 
         return chain.proceed(request)
