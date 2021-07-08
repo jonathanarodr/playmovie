@@ -20,8 +20,12 @@ object NetworkClientService {
     }
 
     private fun initClient() {
+        val loggerInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
         okHttpClient = OkHttpClient.Builder().apply {
-            addInterceptor(HttpLoggingInterceptor())
+            addInterceptor(loggerInterceptor)
             addInterceptor(AuthorizationInterceptor())
             connectTimeout(NETWORK_SERVICE_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(NETWORK_SERVICE_TIMEOUT, TimeUnit.SECONDS)
