@@ -5,25 +5,19 @@ import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.repository.MovieRepository
 import kotlinx.coroutines.Dispatchers
 
-class MovieUseCase(
+class DetailUseCase(
     private val movieRepository: MovieRepository,
 ) : UseCase() {
 
-    suspend fun searchMovies(): Result<List<Movie>> {
+    suspend fun insertFavoriteMovie(movie: Movie): Result<Unit> {
         return execute(Dispatchers.IO) {
-            movieRepository.searchMovies()
+            movieRepository.insertFavoriteMovie(movie)
         }
     }
 
-    suspend fun searchTvSeries(): Result<List<Movie>> {
+    suspend fun removeFavoriteMovie(movie: Movie): Result<Unit> {
         return execute(Dispatchers.IO) {
-            movieRepository.searchTvSeries()
-        }
-    }
-
-    suspend fun searchFavoriteMovies(): Result<List<Movie>> {
-        return execute(Dispatchers.IO) {
-            movieRepository.searchFavoriteMovies()
+            movieRepository.removeFavoriteMovie(movie)
         }
     }
 }

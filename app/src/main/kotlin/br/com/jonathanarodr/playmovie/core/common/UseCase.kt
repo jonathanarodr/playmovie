@@ -5,7 +5,7 @@ import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
-open class UseCase {
+abstract class UseCase {
 
     suspend fun <T> execute(
         context: CoroutineContext = EmptyCoroutineContext,
