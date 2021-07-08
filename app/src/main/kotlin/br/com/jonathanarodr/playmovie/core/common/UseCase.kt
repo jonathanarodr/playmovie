@@ -17,7 +17,7 @@ open class UseCase {
                 Result.success(task.invoke())
             }
         } catch (ex: Exception) {
-            Timber.e(ex, "Failed to execute the task $task")
+            Timber.e(ex, "Failed to execute the task")
             Result.failure(ex)
         }
     }
