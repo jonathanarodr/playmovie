@@ -119,9 +119,13 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor")
 
     testImplementation("junit:junit:$junit_version")
+    testImplementation("com.google.truth:truth:$truth_version")
+    testImplementation("com.google.truth.extensions:truth-java8-extension:$truth_version")
     testImplementation("io.mockk:mockk:$mockk_version")
 
     androidTestUtil("androidx.test:orchestrator:$android_test_version")
+    androidTestImplementation("com.google.truth:truth:$truth_version")
+    androidTestImplementation("com.google.truth.extensions:truth-java8-extension:$truth_version")
     androidTestImplementation("androidx.test:runner:$android_test_version")
     androidTestImplementation("androidx.test:rules:$android_test_version")
     androidTestImplementation("androidx.test.espresso:espresso-core:$espresso_version") {
