@@ -1,9 +1,9 @@
 package br.com.jonathanarodr.playmovie.network
 
 import br.com.jonathanarodr.playmovie.BuildConfig
-import br.com.jonathanarodr.playmovie.network.interceptor.AuthorizationInterceptor
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.java.KoinJavaComponent.getKoin
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -11,29 +11,30 @@ import java.util.concurrent.TimeUnit
 object NetworkClientService {
 
     private const val NETWORK_SERVICE_TIMEOUT = 60L
-    private lateinit var okHttpClient: OkHttpClient
     private lateinit var retrofit: Retrofit
 
     init {
-        initClient()
-        initService()
+        initMiddleware()
     }
 
-    private fun initClient() {
-        val loggerInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
+    private fun buildClient(): OkHttpClient {
+        val okHttpClient = OkHttpClient.Builder()
+        val interceptors = getKoin().getAll<Interceptor>()
+
+        interceptors.forEach {
+            okHttpClient.addInterceptor(it)
         }
 
-        okHttpClient = OkHttpClient.Builder().apply {
-            addInterceptor(loggerInterceptor)
-            addInterceptor(AuthorizationInterceptor())
+        return okHttpClient.apply {
             connectTimeout(NETWORK_SERVICE_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(NETWORK_SERVICE_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(NETWORK_SERVICE_TIMEOUT, TimeUnit.SECONDS)
         }.build()
     }
 
-    private fun initService() {
+    private fun initMiddleware() {
+        val okHttpClient = buildClient()
+
         retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
