@@ -4,7 +4,7 @@ import br.com.jonathanarodr.playmovie.network.builder.RetrofitBuilder
 import org.koin.java.KoinJavaComponent.getKoin
 import retrofit2.Retrofit
 
-object NetworkClientService {
+object NetworkClient {
 
     private lateinit var retrofit: Retrofit
 

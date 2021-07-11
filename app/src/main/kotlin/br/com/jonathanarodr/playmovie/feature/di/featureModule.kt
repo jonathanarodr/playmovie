@@ -10,7 +10,7 @@ import br.com.jonathanarodr.playmovie.feature.repository.remote.MovieRemoteDataS
 import br.com.jonathanarodr.playmovie.feature.repository.remote.api.MovieApi
 import br.com.jonathanarodr.playmovie.feature.ui.viewmodel.DetailViewModel
 import br.com.jonathanarodr.playmovie.feature.ui.viewmodel.MovieViewModel
-import br.com.jonathanarodr.playmovie.network.NetworkClientService
+import br.com.jonathanarodr.playmovie.network.NetworkClient
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -19,7 +19,7 @@ val featureModule = module {
 
     single { AppDataBase(androidApplication()) }
     single { get<AppDataBase>().movieDao() }
-    single { NetworkClientService.providerService(MovieApi::class.java) }
+    single { NetworkClient.providerService(MovieApi::class.java) }
     single { MovieLocalDataSource(get()) }
     single { MovieRemoteDataSource(get()) }
     single<MovieRepository> { MovieRepositoryImpl(get(), get()) }
