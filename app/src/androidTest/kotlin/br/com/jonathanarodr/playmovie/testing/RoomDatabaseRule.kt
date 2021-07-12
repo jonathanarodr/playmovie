@@ -1,4 +1,4 @@
-package br.com.jonathanarodr.playmovie.feature.repository.local.db
+package br.com.jonathanarodr.playmovie.testing
 
 import android.content.Context
 import androidx.room.Room

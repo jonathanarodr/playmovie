@@ -2,6 +2,7 @@ package br.com.jonathanarodr.playmovie.feature.repository.local.db
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
+import br.com.jonathanarodr.playmovie.testing.RoomDatabaseRule
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
