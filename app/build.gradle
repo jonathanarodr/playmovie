@@ -122,6 +122,7 @@ dependencies {
     testImplementation("com.google.truth:truth:$truth_version")
     testImplementation("com.google.truth.extensions:truth-java8-extension:$truth_version")
     testImplementation("io.mockk:mockk:$mockk_version")
+    testImplementation("com.squareup.okhttp3:mockwebserver")
 
     androidTestUtil("androidx.test:orchestrator:$android_test_version")
     androidTestImplementation("com.google.truth:truth:$truth_version")
