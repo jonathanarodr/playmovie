@@ -47,7 +47,6 @@ android {
         }
         test {
             java.srcDir("src/test/kotlin")
-            java.srcDir("src/sharedTest/kotlin")
             java.srcDir("src/androidTest/kotlin")
         }
     }
