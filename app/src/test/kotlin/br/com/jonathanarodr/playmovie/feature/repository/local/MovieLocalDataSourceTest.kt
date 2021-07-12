@@ -18,7 +18,7 @@ class MovieLocalDataSourceTest {
     @Test
     fun `given datasource when search favorite movies then return list of movies from local storage`() {
         runBlocking {
-            coEvery { dao.listFavoriteMovies() } returns localMovies
+            coEvery { dao.listMovies() } returns localMovies
 
             val result = dataSource.searchFavoriteMovies()
 

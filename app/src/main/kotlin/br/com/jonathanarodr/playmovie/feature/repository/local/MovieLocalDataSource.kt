@@ -8,7 +8,7 @@ class MovieLocalDataSource(
 ) {
 
     suspend fun searchFavoriteMovies(): List<MovieEntity> {
-        return movieDao.listFavoriteMovies()
+        return movieDao.listMovies()
     }
 
     suspend fun insertFavoriteMovie(movie: MovieEntity) {

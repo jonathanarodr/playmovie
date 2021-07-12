@@ -6,7 +6,7 @@ import androidx.room.*
 interface MovieDao {
 
     @Query("select * from movies order by average desc")
-    suspend fun listFavoriteMovies(): List<MovieEntity>
+    suspend fun listMovies(): List<MovieEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovie(movie: MovieEntity)
