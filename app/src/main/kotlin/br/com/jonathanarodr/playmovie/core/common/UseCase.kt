@@ -5,8 +5,9 @@ import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
-abstract class UseCase {
+open class UseCase {
 
+    @SuppressWarnings("TooGenericExceptionCaught")
     suspend fun <T> execute(
         context: CoroutineContext = EmptyCoroutineContext,
         task: suspend () -> T
