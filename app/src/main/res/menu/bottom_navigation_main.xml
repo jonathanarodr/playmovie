@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_popular_movie"
+        android:id="@+id/movieFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_movie_black_24dp"
-        android:title="@string/action_bar_popular_movie"
+        android:icon="@drawable/ic_movie"
+        android:title="@string/bottom_item_menu_movies"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_top_rate_movie"
+        android:id="@+id/seriesFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_stars_black_24dp"
-        android:title="@string/action_bar_top_rate_movie"
+        android:icon="@drawable/ic_series"
+        android:title="@string/bottom_item_menu_series"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_favorite_movie"
+        android:id="@+id/favoriteFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_favorite_black_24dp"
-        android:title="@string/action_bar_favorite_movie"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/bottom_item_menu_favorite"
         app:showAsAction="ifRoom" />
 
 </menu>

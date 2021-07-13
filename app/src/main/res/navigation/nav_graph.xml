@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/movieFragment">
+
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="br.com.jonathanarodr.playmovie.feature.ui.view.MovieFragment"
+        android:label="MovieFragment"
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/action_movieFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/seriesFragment"
+        android:name="br.com.jonathanarodr.playmovie.feature.ui.view.SeriesFragment"
+        android:label="SeriesFragment"
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/action_seriesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="br.com.jonathanarodr.playmovie.feature.ui.view.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="br.com.jonathanarodr.playmovie.feature.ui.view.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail" />
+
+</navigation>
