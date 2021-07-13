@@ -33,7 +33,6 @@ android {
             minifyEnabled false
             testCoverageEnabled true
         }
-
         release {
             minifyEnabled true
             shrinkResources true
@@ -148,11 +147,7 @@ dependencies {
 }
 
 detekt {
-    config = files("$project.rootDir/tools/linters/detekt-rules.yml")
-    input = files(
-            "src/main/kotlin",
-            "src/test/kotlin",
-            "src/sharedTest/kotlin",
-            "src/androidTest/kotlin",
-    )
+    config = files("${project.rootDir}/tools/linters/detekt-rules.yml")
+    failFast = false
+    parallel = true
 }
