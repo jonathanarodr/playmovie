@@ -11,10 +11,8 @@ import org.junit.Test
 @Ignore("Ignore tests because Result class return ClassCastException in kotlin v1.5.20 (issue KT-46477)")
 class UseCaseTest {
 
-    inner class UseCaseStub : UseCase()
-
     private val task = mockk<(suspend () -> Unit)>()
-    private val useCase = UseCaseStub()
+    private val useCase = UseCase()
 
     @Test
     fun `given execute task when invoke is called with success then return valid result`() {
