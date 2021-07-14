@@ -1,19 +1,19 @@
-package br.com.jonathanarodr.playmovie.ui
+package br.com.jonathanarodr.playmovie.feature.ui.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import br.com.jonathanarodr.playmovie.R
-import br.com.jonathanarodr.playmovie.R.id
-import br.com.jonathanarodr.playmovie.model.Movie
-import br.com.jonathanarodr.playmovie.util.GlideApp
+import br.com.jonathanarodr.playmovie.core.utils.ImageLoaderUtils
+import br.com.jonathanarodr.playmovie.databinding.ListItemMovieBinding
+import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 
-class MovieAdapter(private val clickHandler: MovieAdapterOnClickHandler) :
-    Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(
+    private val onClickHandler: MovieOnClickHandler,
+) : Adapter<MovieAdapter.MovieViewHolder>() {
 
     var movies: List<Movie> = emptyList()
         set(value) {
@@ -21,32 +21,33 @@ class MovieAdapter(private val clickHandler: MovieAdapterOnClickHandler) :
             notifyDataSetChanged()
         }
 
+    fun interface MovieOnClickHandler {
+        fun onMovieClickListener(movie: Movie)
+    }
+
     inner class MovieViewHolder(itemView: View) : ViewHolder(itemView), OnClickListener {
-        val poster: ImageView = itemView.findViewById(id.poster)
+
+        val binding = ListItemMovieBinding.bind(itemView)
 
         init {
             itemView.setOnClickListener(this)
         }
 
         override fun onClick(view: View) {
-            clickHandler.onClick(this@MovieAdapter.movies[adapterPosition])
+            onClickHandler.onMovieClickListener(movies[bindingAdapterPosition])
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view: View = LayoutInflater
-            .from(parent.context).inflate(R.layout.item_movie, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_item_movie, parent, false)
 
         return MovieViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         this.movies[position].let {
-            GlideApp.with(holder.itemView.context)
-                .load(it.getPosterDefault())
-                .centerCrop()
-                .placeholder(R.drawable.backgroud_grey)
-                .into(holder.poster)
+            ImageLoaderUtils.load(holder.binding.poster, it.poster)
         }
     }
 

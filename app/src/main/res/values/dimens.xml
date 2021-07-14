@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="spacing_xs">8dp</dimen>
+    <dimen name="spacing_sm">16dp</dimen>
+    <dimen name="spacing_md">24dp</dimen>
+
+    <dimen name="radius_sm">8dp</dimen>
+
+    <dimen name="card_movie_height">170dp</dimen>
+</resources>

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Play Movie</string>
-    <string name="bottom_item_menu_movies">Filmes</string>
-    <string name="bottom_item_menu_series">Séries</string>
-    <string name="bottom_item_menu_favorite">Favoritos</string>
-    <string name="message_error_api">Could not connect to Play Movie</string>
+
+    <string name="title_movies">Filmes</string>
+    <string name="title_series">Séries</string>
+    <string name="title_favorite">Favoritos</string>
+
+    <string name="generic_message_ops_try_again">Ops, algo deu errado tente novamente</string>
+
     <string name="label_try_again">Try again</string>
     <string name="label_review">Reviews</string>
 </resources>
