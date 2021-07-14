@@ -101,7 +101,6 @@ dependencies {
     implementation("androidx.appcompat:appcompat:${appcompat_version}")
     implementation("androidx.recyclerview:recyclerview:$recycler_version")
     implementation("androidx.constraintlayout:constraintlayout:$constraint_version")
-    implementation("androidx.cardview:cardview:$cardview_version")
     implementation("androidx.browser:browser:$browser_version")
     implementation("com.google.android.material:material:$material_version")
     implementation("com.github.bumptech.glide:glide:$glide_version") {
