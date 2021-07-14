@@ -7,5 +7,9 @@
 
     <dimen name="radius_sm">8dp</dimen>
 
-    <dimen name="card_movie_height">170dp</dimen>
+    <dimen name="elevation_sm">8dp</dimen>
+
+    <dimen name="card_movie_width">130dp</dimen>
+    <dimen name="card_movie_height">180dp</dimen>
+    <dimen name="card_movie_icon">16dp</dimen>
 </resources>

@@ -6,8 +6,7 @@
     <string name="title_series">Séries</string>
     <string name="title_favorite">Favoritos</string>
 
-    <string name="generic_message_ops_try_again">Ops, algo deu errado tente novamente</string>
+    <string name="movie_detail_overview">Overview</string>
 
-    <string name="label_try_again">Try again</string>
-    <string name="label_review">Reviews</string>
+    <string name="generic_message_ops_try_again">Ops, algo deu errado tente novamente</string>
 </resources>

@@ -4,11 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageView
+import br.com.jonathanarodr.playmovie.core.utils.ImageLoaderUtils
+import br.com.jonathanarodr.playmovie.core.utils.ImageLoaderUtils.IMAGE_SIZE_DEFAULT
+import br.com.jonathanarodr.playmovie.core.utils.ImageLoaderUtils.IMAGE_SIZE_HIGH
+import br.com.jonathanarodr.playmovie.core.utils.ImageSize
+import br.com.jonathanarodr.playmovie.core.utils.format
 import br.com.jonathanarodr.playmovie.databinding.ActivityDetailBinding
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.ui.viewmodel.DetailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class DetailActivity : AppCompatActivity() {
 
@@ -39,7 +44,21 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        Timber.e(movie.toString())
+        binding.apply {
+            detailToolbar.setNavigationOnClickListener { finish() }
+            moviePoster.loadImage(movie.poster, IMAGE_SIZE_DEFAULT)
+            movieBackdrop.loadImage(movie.backdrop, IMAGE_SIZE_HIGH)
+            movieTitle.text = movie.title
+            movieRelease.text = movie.releaseDate.format()
+            movieAverage.text = movie.average.toString()
+            movieOverviewDescription.text = movie.overview
+        }
+    }
+
+    private fun AppCompatImageView.loadImage(image: String?, size: ImageSize) {
+        if (!image.isNullOrEmpty()) {
+            ImageLoaderUtils.load(this, image, size)
+        }
     }
 
     private fun setupObservables() {
