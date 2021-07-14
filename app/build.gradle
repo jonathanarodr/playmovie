@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'io.gitlab.arturbosch.detekt'
 }
 
@@ -25,7 +26,6 @@ android {
 
         buildConfigField("String", "SERVER_URL", '"https://api.themoviedb.org"')
         buildConfigField("String", "AUTHORIZATION_KEY", '"[my-authorization-key"')
-        buildConfigField("String", "API_KEY", '"[my-api-key"')
     }
     buildTypes {
         debug {
