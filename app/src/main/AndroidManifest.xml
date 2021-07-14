@@ -23,7 +23,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.DetailActivity" />
+        <activity
+            android:name=".feature.ui.view.DetailActivity"
+            android:parentActivityName=".feature.ui.view.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".feature.ui.view.MainActivity" />
+        </activity>
 
     </application>
 
