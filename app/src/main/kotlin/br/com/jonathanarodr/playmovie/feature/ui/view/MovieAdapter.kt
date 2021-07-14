@@ -34,20 +34,25 @@ class MovieAdapter(
         }
 
         override fun onClick(view: View) {
-            onClickHandler.onMovieClickListener(movies[bindingAdapterPosition])
+            onClickHandler.onMovieClickListener(
+                movies[bindingAdapterPosition]
+            )
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view = LayoutInflater.from(parent.context)
+        return LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item_movie, parent, false)
-
-        return MovieViewHolder(view)
+            .run {
+                MovieViewHolder(this)
+            }
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        this.movies[position].let {
-            ImageLoaderUtils.load(holder.binding.poster, it.poster)
+        this.movies[position].apply {
+            if (!poster.isNullOrEmpty()) {
+                ImageLoaderUtils.load(holder.binding.poster, poster)
+            }
         }
     }
 

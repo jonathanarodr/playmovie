@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import br.com.jonathanarodr.playmovie.R
 import br.com.jonathanarodr.playmovie.core.common.UiState
 import br.com.jonathanarodr.playmovie.databinding.FragmentMovieBinding
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
-import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType.MOVIES
 import br.com.jonathanarodr.playmovie.feature.ui.view.MovieAdapter.MovieOnClickHandler
 import br.com.jonathanarodr.playmovie.feature.ui.viewmodel.MovieViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -22,8 +22,8 @@ class MovieFragment : Fragment(), MovieOnClickHandler, SwipeRefreshLayout.OnRefr
     private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MovieViewModel by viewModel()
+    private val args: MovieFragmentArgs by navArgs()
     private val movieAdapter: MovieAdapter by lazy { MovieAdapter(this) }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,11 +47,14 @@ class MovieFragment : Fragment(), MovieOnClickHandler, SwipeRefreshLayout.OnRefr
     }
 
     override fun onMovieClickListener(movie: Movie) {
-        TODO("Not yet implemented")
+        context?.let {
+            val intent = DetailActivity(requireContext(), movie)
+            startActivity(intent)
+        }
     }
 
     override fun onRefresh() {
-        viewModel.fetchMovies(MOVIES)
+        viewModel.fetchMovies(args.movieType)
     }
 
     private fun stopRefresh() {
@@ -61,9 +64,8 @@ class MovieFragment : Fragment(), MovieOnClickHandler, SwipeRefreshLayout.OnRefr
     private fun setupViews() {
         binding.apply {
             moviesRefresh.setOnRefreshListener(this@MovieFragment)
-            moviesToolbar.setTitle(R.string.title_movies)
+            moviesToolbar.setTitle(args.movieTitle)
             moviesList.apply {
-                setHasFixedSize(true)
                 adapter = movieAdapter
             }
         }

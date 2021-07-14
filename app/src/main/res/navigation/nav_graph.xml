@@ -10,35 +10,44 @@
         android:name="br.com.jonathanarodr.playmovie.feature.ui.view.MovieFragment"
         android:label="MovieFragment"
         tools:layout="@layout/fragment_movie">
-        <action
-            android:id="@+id/action_movieFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+        <argument
+            android:name="movieType"
+            android:defaultValue="MOVIES"
+            app:argType="br.com.jonathanarodr.playmovie.feature.domain.type.MovieType" />
+        <argument
+            android:name="movieTitle"
+            android:defaultValue="@string/title_movies"
+            app:argType="reference" />
     </fragment>
 
     <fragment
         android:id="@+id/seriesFragment"
-        android:name="br.com.jonathanarodr.playmovie.feature.ui.view.SeriesFragment"
+        android:name="br.com.jonathanarodr.playmovie.feature.ui.view.MovieFragment"
         android:label="SeriesFragment"
         tools:layout="@layout/fragment_movie">
-        <action
-            android:id="@+id/action_seriesFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+        <argument
+            android:name="movieType"
+            android:defaultValue="SERIES"
+            app:argType="br.com.jonathanarodr.playmovie.feature.domain.type.MovieType" />
+        <argument
+            android:name="movieTitle"
+            android:defaultValue="@string/title_series"
+            app:argType="reference" />
     </fragment>
 
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="br.com.jonathanarodr.playmovie.feature.ui.view.FavoriteFragment"
+        android:name="br.com.jonathanarodr.playmovie.feature.ui.view.MovieFragment"
         android:label="FavoriteFragment"
         tools:layout="@layout/fragment_movie">
-        <action
-            android:id="@+id/action_favoriteFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+        <argument
+            android:name="movieType"
+            android:defaultValue="FAVORITES"
+            app:argType="br.com.jonathanarodr.playmovie.feature.domain.type.MovieType" />
+        <argument
+            android:name="movieTitle"
+            android:defaultValue="@string/title_favorite"
+            app:argType="reference" />
     </fragment>
-
-    <fragment
-        android:id="@+id/detailFragment"
-        android:name="br.com.jonathanarodr.playmovie.feature.ui.view.DetailFragment"
-        android:label="DetailFragment"
-        tools:layout="@layout/fragment_detail" />
 
 </navigation>
