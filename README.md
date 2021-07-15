@@ -1,6 +1,6 @@
 # Playmovie
 
-![Workflow Status](https://github.com/jonathanarodr/playmovie/actions/workflows/android.yml/badge.svg)
+[![Workflow Status](https://github.com/jonathanarodr/playmovie/actions/workflows/android.yml/badge.svg)](https://github.com/jonathanarodr/playmovie/actions/workflows/android.yml)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 [![codecov](https://codecov.io/gh/jonathanarodr/playmovie/branch/master/graph/badge.svg)](https://codecov.io/gh/jonathanarodr/playmovie)
 [![codebeat](https://codebeat.co/badges/23b02036-2aaf-4325-a856-add0e46d6832)](https://codebeat.co/projects/github-com-jonathanarodr-playmovie-master)
