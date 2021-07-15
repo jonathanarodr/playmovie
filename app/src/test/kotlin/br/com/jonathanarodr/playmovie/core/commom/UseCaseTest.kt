@@ -5,10 +5,8 @@ import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
-import org.junit.Ignore
 import org.junit.Test
 
-@Ignore("Ignore tests because Result class return ClassCastException in kotlin v1.5.20 (issue KT-46477)")
 class UseCaseTest {
 
     private val task = mockk<(suspend () -> Unit)>()
