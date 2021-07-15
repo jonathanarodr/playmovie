@@ -9,6 +9,12 @@ class DetailUseCase(
     private val movieRepository: MovieRepository,
 ) : UseCase() {
 
+    suspend fun getFavoriteMovie(movieId: Long): Result<Movie> {
+        return execute(Dispatchers.IO) {
+            movieRepository.getFavoriteMovie(movieId)
+        }
+    }
+
     suspend fun insertFavoriteMovie(movie: Movie): Result<Unit> {
         return execute(Dispatchers.IO) {
             movieRepository.insertFavoriteMovie(movie)

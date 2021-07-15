@@ -10,6 +10,8 @@ interface MovieRepository {
 
     suspend fun searchFavoriteMovies(): List<Movie>
 
+    suspend fun getFavoriteMovie(movieId: Long) : Movie
+
     suspend fun insertFavoriteMovie(movie: Movie)
 
     suspend fun removeFavoriteMovie(movie: Movie)

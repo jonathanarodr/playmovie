@@ -11,6 +11,10 @@ class MovieLocalDataSource(
         return movieDao.listMovies()
     }
 
+    suspend fun getFavoriteMovie(movieId: Long): MovieEntity {
+        return movieDao.selectMovie(movieId)
+    }
+
     suspend fun insertFavoriteMovie(movie: MovieEntity) {
         movieDao.insertMovie(movie)
     }

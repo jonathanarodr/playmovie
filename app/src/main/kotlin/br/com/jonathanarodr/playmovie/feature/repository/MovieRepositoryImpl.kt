@@ -25,6 +25,10 @@ class MovieRepositoryImpl(
         }
     }
 
+    override suspend fun getFavoriteMovie(movieId: Long): Movie {
+        return localDataSource.getFavoriteMovie(movieId).toMovie()
+    }
+
     override suspend fun insertFavoriteMovie(movie: Movie) {
         localDataSource.insertFavoriteMovie(movie.toMovieEntity())
     }
