@@ -1,3 +1,5 @@
+# Playmovie
+
 ![Workflow Status](https://github.com/jonathanarodr/playmovie/actions/workflows/android.yml/badge.svg)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 [![codecov](https://codecov.io/gh/jonathanarodr/playmovie/branch/master/graph/badge.svg)](https://codecov.io/gh/jonathanarodr/playmovie)
@@ -5,7 +7,7 @@
 [![maintainability](https://api.codeclimate.com/v1/badges/fb72b670ebacdae2311c/maintainability)](https://codeclimate.com/github/jonathanarodr/playmovie/maintainability)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/817dc26995a949888e82adacd5d218bd)](https://www.codacy.com/manual/jonathanarodr/playmovie?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jonathanarodr/playmovie&amp;utm_campaign=Badge_Grade)
 
-# Playmovie
+## About
 
 Este projeto foi desenvolvido com intuito de aplicar meus conhecimentos em relação ao desenvolvimento Android e padrões de projeto.
 
