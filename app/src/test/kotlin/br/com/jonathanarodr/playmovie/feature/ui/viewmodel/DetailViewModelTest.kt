@@ -26,7 +26,7 @@ class DetailViewModelTest {
 
         viewModel.insertFavoriteMovie(movie)
 
-        val result = viewModel.resultAction.captureState()
+        val result = viewModel.insertedMovie.captureState()
 
         assertThat(result).isInstanceOf(UiState.Error::class.java)
     }
@@ -37,7 +37,7 @@ class DetailViewModelTest {
 
         viewModel.insertFavoriteMovie(movie)
 
-        val result = viewModel.resultAction.captureState()
+        val result = viewModel.insertedMovie.captureState()
 
         assertThat(result).isInstanceOf(UiState.Success::class.java)
     }
@@ -48,7 +48,7 @@ class DetailViewModelTest {
 
         viewModel.removeFavoriteMovie(movie)
 
-        val result = viewModel.resultAction.captureState()
+        val result = viewModel.removedMovie.captureState()
 
         assertThat(result).isInstanceOf(UiState.Error::class.java)
     }
@@ -59,7 +59,7 @@ class DetailViewModelTest {
 
         viewModel.removeFavoriteMovie(movie)
 
-        val result = viewModel.resultAction.captureState()
+        val result = viewModel.removedMovie.captureState()
 
         assertThat(result).isInstanceOf(UiState.Success::class.java)
     }
