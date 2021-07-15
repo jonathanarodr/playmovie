@@ -39,19 +39,6 @@ android {
     buildFeatures {
         viewBinding true
     }
-    sourceSets {
-        main {
-            java.srcDir("src/main/kotlin")
-        }
-        test {
-            java.srcDir("src/test/kotlin")
-            java.srcDir("src/sharedTest/kotlin")
-        }
-        androidTest {
-            java.srcDir("src/androidTest/kotlin")
-            java.srcDir("src/sharedTest/kotlin")
-        }
-    }
     compileOptions {
         sourceCompatibility java_version
         targetCompatibility java_version

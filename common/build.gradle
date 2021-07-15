@@ -4,19 +4,6 @@ plugins {
     id 'kotlin-kapt'
 }
 
-android {
-    compileSdkVersion sdk_compile_version
-
-    sourceSets {
-        main {
-            java.srcDir("src/main/kotlin")
-        }
-        test {
-            java.srcDir("src/test/kotlin")
-        }
-    }
-}
-
 dependencies {
     implementation("io.insert-koin:koin-android:$koin_version")
     implementation "com.jakewharton.timber:timber:$timber_version"

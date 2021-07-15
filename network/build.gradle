@@ -4,16 +4,9 @@ plugins {
 }
 
 android {
-    compileSdkVersion sdk_compile_version
-
     defaultConfig {
         buildConfigField("String", "SERVER_URL", '"https://api.themoviedb.org"')
         buildConfigField("String", "AUTHORIZATION_KEY", '"[my-authorization-key"')
-    }
-    sourceSets {
-        main {
-            java.srcDir("src/main/kotlin")
-        }
     }
 }
 

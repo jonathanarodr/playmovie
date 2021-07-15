@@ -49,6 +49,34 @@ allprojects {
     }
 }
 
+subprojects {
+    afterEvaluate {
+        if (!project.hasProperty("android")) return
+
+        android {
+            compileSdkVersion sdk_compile_version
+
+            defaultConfig {
+                minSdkVersion 21
+                targetSdkVersion 30
+            }
+            sourceSets {
+                main {
+                    java.srcDir("src/main/kotlin")
+                }
+                test {
+                    java.srcDir("src/test/kotlin")
+                    java.srcDir("src/sharedTest/kotlin")
+                }
+                androidTest {
+                    java.srcDir("src/androidTest/kotlin")
+                    java.srcDir("src/sharedTest/kotlin")
+                }
+            }
+        }
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
