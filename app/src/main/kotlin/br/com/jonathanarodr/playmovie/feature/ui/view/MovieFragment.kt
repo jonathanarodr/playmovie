@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import br.com.jonathanarodr.playmovie.R
-import br.com.jonathanarodr.playmovie.core.common.UiState
+import br.com.jonathanarodr.playmovie.common.states.UiState
 import br.com.jonathanarodr.playmovie.databinding.FragmentMovieBinding
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.ui.view.MovieAdapter.MovieOnClickHandler

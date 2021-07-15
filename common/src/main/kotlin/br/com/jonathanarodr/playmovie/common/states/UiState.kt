@@ -1,4 +1,4 @@
-package br.com.jonathanarodr.playmovie.core.common
+package br.com.jonathanarodr.playmovie.common.states
 
 sealed class UiState<out R> {
 

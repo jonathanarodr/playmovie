@@ -1,4 +1,4 @@
-package br.com.jonathanarodr.playmovie.core.utils
+package br.com.jonathanarodr.playmovie.common.utils
 
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities.TRANSPORT_CELLULAR

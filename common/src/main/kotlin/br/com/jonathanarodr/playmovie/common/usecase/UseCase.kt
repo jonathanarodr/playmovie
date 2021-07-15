@@ -1,4 +1,4 @@
-package br.com.jonathanarodr.playmovie.core.common
+package br.com.jonathanarodr.playmovie.common.usecase
 
 open class UseCase {
 

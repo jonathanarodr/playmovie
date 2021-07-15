@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.jonathanarodr.playmovie.core.common.UiState
+import br.com.jonathanarodr.playmovie.common.states.UiState
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.domain.usecase.DetailUseCase
 import kotlinx.coroutines.launch

@@ -1,6 +1,6 @@
 package br.com.jonathanarodr.playmovie.feature.domain.usecase
 
-import br.com.jonathanarodr.playmovie.core.common.UseCase
+import br.com.jonathanarodr.playmovie.common.usecase.UseCase
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.repository.MovieRepository
 

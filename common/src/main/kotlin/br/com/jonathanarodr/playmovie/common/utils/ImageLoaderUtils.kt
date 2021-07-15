@@ -1,7 +1,6 @@
-package br.com.jonathanarodr.playmovie.core.utils
+package br.com.jonathanarodr.playmovie.common.utils
 
 import android.widget.ImageView
-import br.com.jonathanarodr.playmovie.R
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule
 
@@ -21,7 +20,6 @@ object ImageLoaderUtils {
         GlideApp.with(view.context)
             .load(image.toPath(size))
             .centerCrop()
-            .placeholder(R.drawable.backgroud_grey)
             .into(view)
     }
 

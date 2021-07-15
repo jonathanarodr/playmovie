@@ -2,7 +2,7 @@ package br.com.jonathanarodr.playmovie.core
 
 import android.app.Application
 import br.com.jonathanarodr.playmovie.BuildConfig
-import br.com.jonathanarodr.playmovie.core.di.coreModule
+import br.com.jonathanarodr.playmovie.common.di.commonModule
 import br.com.jonathanarodr.playmovie.feature.di.featureModule
 import br.com.jonathanarodr.playmovie.network.di.networkModule
 import org.koin.android.ext.koin.androidContext
@@ -22,8 +22,8 @@ class MainApplication : Application() {
         startKoin {
             androidContext(this@MainApplication)
             modules(
-                coreModule,
                 networkModule,
+                commonModule,
                 featureModule,
             )
         }
