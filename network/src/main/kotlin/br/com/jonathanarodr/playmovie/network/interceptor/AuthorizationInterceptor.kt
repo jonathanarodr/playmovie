@@ -1,6 +1,6 @@
 package br.com.jonathanarodr.playmovie.network.interceptor
 
-import br.com.jonathanarodr.playmovie.BuildConfig
+import br.com.jonathanarodr.playmovie.network.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 

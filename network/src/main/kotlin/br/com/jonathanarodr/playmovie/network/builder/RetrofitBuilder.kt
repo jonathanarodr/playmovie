@@ -1,6 +1,6 @@
 package br.com.jonathanarodr.playmovie.network.builder
 
-import br.com.jonathanarodr.playmovie.BuildConfig
+import br.com.jonathanarodr.playmovie.network.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

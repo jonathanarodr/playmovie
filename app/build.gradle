@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion sdk_compile_version
     buildToolsVersion "30.0.3"
 
     defaultConfig {
@@ -18,14 +18,11 @@ android {
         applicationId "br.com.jonathanarodr.playmovie"
 
         versionCode 2
-        versionName "1.0.0"
+        versionName "2.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
         vectorDrawables.useSupportLibrary = true
-
-        buildConfigField("String", "SERVER_URL", '"https://api.themoviedb.org"')
-        buildConfigField("String", "AUTHORIZATION_KEY", '"[my-authorization-key"')
     }
     buildTypes {
         debug {
@@ -79,6 +76,8 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
+    implementation project(":network")
+
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
@@ -113,13 +112,6 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$timber_version"
 
     implementation("io.insert-koin:koin-android:$koin_version")
-
-    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
-
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:$okhttp_version"))
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
 
     testImplementation("junit:junit:$junit_version")
     testImplementation("androidx.test.ext:junit:$junit_ext_version")

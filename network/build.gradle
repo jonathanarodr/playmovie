@@ -1,0 +1,27 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion sdk_compile_version
+
+    defaultConfig {
+        buildConfigField("String", "SERVER_URL", '"https://api.themoviedb.org"')
+        buildConfigField("String", "AUTHORIZATION_KEY", '"[my-authorization-key"')
+    }
+    sourceSets {
+        main {
+            java.srcDir("src/main/kotlin")
+        }
+    }
+}
+
+dependencies {
+    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:$okhttp_version"))
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation("io.insert-koin:koin-android:$koin_version")
+}
