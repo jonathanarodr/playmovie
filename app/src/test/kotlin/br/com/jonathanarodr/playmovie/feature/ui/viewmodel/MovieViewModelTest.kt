@@ -1,7 +1,7 @@
 package br.com.jonathanarodr.playmovie.feature.ui.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import br.com.jonathanarodr.playmovie.core.common.UiState
+import br.com.jonathanarodr.playmovie.common.states.UiState
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
 import br.com.jonathanarodr.playmovie.feature.domain.usecase.MovieUseCase

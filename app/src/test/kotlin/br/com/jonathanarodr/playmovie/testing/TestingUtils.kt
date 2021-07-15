@@ -2,7 +2,7 @@ package br.com.jonathanarodr.playmovie.testing
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import br.com.jonathanarodr.playmovie.core.common.UiState
+import br.com.jonathanarodr.playmovie.common.states.UiState
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk

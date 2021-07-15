@@ -1,6 +1,5 @@
-package br.com.jonathanarodr.playmovie.core.commom
+package br.com.jonathanarodr.playmovie.common.usecase
 
-import br.com.jonathanarodr.playmovie.core.common.UseCase
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
