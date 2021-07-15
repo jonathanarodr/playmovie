@@ -5,19 +5,35 @@
 [![maintainability](https://api.codeclimate.com/v1/badges/fb72b670ebacdae2311c/maintainability)](https://codeclimate.com/github/jonathanarodr/playmovie/maintainability)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/817dc26995a949888e82adacd5d218bd)](https://www.codacy.com/manual/jonathanarodr/playmovie?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jonathanarodr/playmovie&amp;utm_campaign=Badge_Grade)
 
-# playmovie
+# Playmovie
 
-Para configurar a chave de consulta da [API](https://www.themoviedb.org/), acesse o arquivo `build.gradle` e informe sua chave no field **API_KEY**
+Este projeto foi desenvolvido com intuito de aplicar meus conhecimentos em relação ao desenvolvimento Android e padrões de projeto.
 
-```java
-...
-//exemplo de configuração da API KEY:
-buildConfigField("String" , "API_KEY", '"1234567890"')
-...
+## Overview
+
+Playmovie utiliza como fonte de dados a API [api.themoviedb.org](https://api.themoviedb.org) para exibição de filmes e séries mais populares na atualidade.
+
+## Getting Started
+
+Acesse a sessão de API disponível no [thememoviedb](https://www.themoviedb.org/settings/api) e copie o token de leitura da API **(v4 auth)**.
+
+Após captura do token, acesse o arquivo `build.gradle` e configure a propriedade `AUTHORIZATION_KEY` informando sua chave de autorização:
+  
+```groovy
+buildConfigField("String", "AUTHORIZATION_KEY", '"abc1.def2.ghi3"')
 ```
+
+> Para utilizar a API do **thememoviedb**, você precisa obter a chave de acesso free para desenvolvedores. Veja mais informações na [documentação themoviedb](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## Screenshots
 
-![List of popular movies](screenshots/popular_movie.png "A list of popular movies")
-![List of favorite movies](screenshots/favorite_movie.png "A list of favorite movies")
-![Movie details](screenshots/detail_movie.png "Details for a specific movie")
+![List of movies](screenshots/screen_movies.png "A list of popular movies")
+![List of series](screenshots/screen_series.png "A list of popular tv series")
+![Movie details](screenshots/screen_detail.png "Details of the specific movie")
+
+## Libraries
+
+## Credits
+
+* [Thememoviedb](https://www.themoviedb.org/): fonte de dados sobre os filmes
+* [Google Fonts](https://fonts.google.com/icons): iconografia do app
