@@ -101,6 +101,7 @@ class MovieFragment : Fragment(), MovieOnClickHandler, SwipeRefreshLayout.OnRefr
 
     private fun onEmptyState() {
         stopRefresh()
+        movieAdapter.movies = emptyList()
     }
 
     private fun onLoading() {
