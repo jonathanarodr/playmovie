@@ -30,7 +30,7 @@ buildConfigField("String", "AUTHORIZATION_KEY", '"abc1.def2.ghi3"')
 ## Screenshots
 
 ![List of movies](screenshots/screen_movies.png "A list of popular movies")
-![List of series](screenshots/screen_series.png "A list of popular tv series")
+![Movie details](screenshots/screen_detail.png "Details about the movie")
 
 ## Libraries
 
