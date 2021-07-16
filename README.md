@@ -25,7 +25,7 @@ Após captura do token, acesse o arquivo `build.gradle` e configure a propriedad
 buildConfigField("String", "AUTHORIZATION_KEY", '"abc1.def2.ghi3"')
 ```
 
-> Para utilizar a API do **thememoviedb**, você precisa obter a chave de acesso free para desenvolvedores. Veja mais informações na [documentação themoviedb](https://developers.themoviedb.org/3/getting-started/introduction)
+> Para utilizar a API do thememoviedb, é necessário obter a chave de acesso *free* para desenvolvedores. Veja mais informações na [documentação themoviedb](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## Screenshots
 
@@ -33,6 +33,8 @@ buildConfigField("String", "AUTHORIZATION_KEY", '"abc1.def2.ghi3"')
 ![List of series](screenshots/screen_series.png "A list of popular tv series")
 
 ## Libraries
+
+// TODO
 
 ## Credits
 
