@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- shape -->
     <style name="ShapeAppearance.AppTheme.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
@@ -23,6 +23,8 @@
 
     <style name="TextAppearance.AppTheme.Body" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textColor">@color/greyscale_100</item>
+        <item name="android:lineSpacingExtra">@dimen/spacing_xs</item>
+        <item name="android:justificationMode" tools:targetApi="o">inter_word</item>
     </style>
 
     <!-- card -->

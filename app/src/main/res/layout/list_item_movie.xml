@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/card_movie_height"
-    android:layout_margin="@dimen/spacing_xs"
+    android:layout_margin="@dimen/spacing_sm"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground">
