@@ -38,9 +38,6 @@
             android:layout_height="@dimen/card_movie_height"
             android:layout_marginStart="@dimen/spacing_md"
             android:layout_marginTop="@dimen/spacing_md"
-            app:cardCornerRadius="@dimen/radius_sm"
-            app:cardElevation="@dimen/elevation_sm"
-            app:cardUseCompatPadding="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_toolbar">
 
@@ -55,13 +52,12 @@
 
         <TextView
             android:id="@+id/movie_title"
-            style="@style/TextAppearance.MaterialComponents.Headline5"
+            style="@style/TextAppearance.AppTheme.Title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_md"
             android:layout_marginTop="@dimen/spacing_md"
             android:layout_marginEnd="@dimen/spacing_md"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/movie_card"
             app:layout_constraintTop_toTopOf="@+id/movie_card"
@@ -72,13 +68,14 @@
             android:layout_width="@dimen/card_movie_icon"
             android:layout_height="@dimen/card_movie_icon"
             android:layout_marginTop="@dimen/spacing_md"
+            android:tint="@color/green"
             app:layout_constraintStart_toStartOf="@+id/movie_title"
             app:layout_constraintTop_toBottomOf="@+id/movie_title"
             app:srcCompat="@drawable/ic_event" />
 
         <TextView
             android:id="@+id/movie_release"
-            style="@style/TextAppearance.MaterialComponents.Caption"
+            style="@style/TextAppearance.AppTheme.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_xs"
@@ -93,13 +90,14 @@
             android:layout_width="@dimen/card_movie_icon"
             android:layout_height="@dimen/card_movie_icon"
             android:layout_marginTop="@dimen/spacing_xs"
+            android:tint="@color/yellow"
             app:layout_constraintStart_toStartOf="@+id/movie_release_icon"
             app:layout_constraintTop_toBottomOf="@+id/movie_release"
             app:srcCompat="@drawable/ic_star" />
 
         <TextView
             android:id="@+id/movie_average"
-            style="@style/TextAppearance.MaterialComponents.Caption"
+            style="@style/TextAppearance.AppTheme.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_xs"
@@ -111,7 +109,7 @@
 
         <TextView
             android:id="@+id/movie_overview_title"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
+            style="@style/TextAppearance.AppTheme.Subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_md"
@@ -125,7 +123,7 @@
 
         <TextView
             android:id="@+id/movie_overview_description"
-            style="@style/TextAppearance.MaterialComponents.Body2"
+            style="@style/TextAppearance.AppTheme.Body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_sm"

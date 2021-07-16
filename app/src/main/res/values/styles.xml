@@ -1,7 +1,35 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-
+    <!-- shape -->
+    <style name="ShapeAppearance.AppTheme.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">@dimen/radius_sm</item>
     </style>
 
+    <!-- text appearance -->
+    <style name="TextAppearance.AppTheme.Title" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.Subtitle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/greyscale_100</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/greyscale_100</item>
+    </style>
+
+    <!-- card -->
+    <style name="Widget.AppTheme.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
+        <item name="cardElevation">@dimen/elevation_sm</item>
+        <item name="cardCornerRadius">@dimen/radius_sm</item>
+        <item name="cardUseCompatPadding">false</item>
+    </style>
 </resources>

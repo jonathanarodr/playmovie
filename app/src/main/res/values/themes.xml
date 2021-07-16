@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <!-- colors -->
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/red</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="colorSurface">@color/greyscale_300</item>
+        <item name="colorOnSurface">@color/greyscale_100</item>
+
+        <item name="colorPrimarySurface">@color/greyscale_300</item>
+        <item name="colorOnPrimarySurface">@color/greyscale_100</item>
+
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/greyscale_100</item>
+        <item name="android:textColorTertiary">@color/greyscale_100</item>
+
+        <item name="android:windowBackground">@color/greyscale_400</item>
+        <item name="android:colorBackground">@color/greyscale_400</item>
+        <item name="colorOnBackground">@color/greyscale_100</item>
+
+        <!-- navigation -->
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/black</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">?android:colorBackground</item>
+
+        <!-- components  -->
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.AppTheme.MediumComponent</item>
+        <item name="materialCardViewStyle">@style/Widget.AppTheme.CardView</item>
+    </style>
+</resources>
