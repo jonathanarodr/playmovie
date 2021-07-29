@@ -16,6 +16,19 @@ inline fun <T> LiveData<UiState<T>>.observeOnSuccess(
     return this
 }
 
+inline fun <T> LiveData<UiState<T>>.observeOnSuccess(
+    owner: LifecycleOwner,
+    crossinline handler: () -> Unit,
+): LiveData<UiState<T>> {
+    observe(owner) {
+        if (it is UiState.Success) {
+            handler()
+        }
+    }
+
+    return this
+}
+
 inline fun <T> LiveData<UiState<T>>.observeOnError(
     owner: LifecycleOwner,
     crossinline handler: (Throwable) -> Unit,

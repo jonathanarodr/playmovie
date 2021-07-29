@@ -64,9 +64,9 @@ class DetailActivity : AppCompatActivity() {
     private fun setupObservables() {
         viewModel.isFavorite.observe(this) { result ->
             if (result) {
-                onInsertSuccess(Unit)
+                onInsertSuccess()
             } else {
-                onRemoveSuccess(Unit)
+                onRemoveSuccess()
             }
         }
 
@@ -79,13 +79,13 @@ class DetailActivity : AppCompatActivity() {
             .observeOnError(this, ::onError)
     }
 
-    private fun onInsertSuccess(data: Unit) {
+    private fun onInsertSuccess() {
         binding.saveFavoriteMovie.updateView(R.drawable.ic_favorite_on) {
             viewModel.removeFavoriteMovie(movie)
         }
     }
 
-    private fun onRemoveSuccess(data: Unit) {
+    private fun onRemoveSuccess() {
         binding.saveFavoriteMovie.updateView(R.drawable.ic_favorite_off) {
             viewModel.insertFavoriteMovie(movie)
         }
