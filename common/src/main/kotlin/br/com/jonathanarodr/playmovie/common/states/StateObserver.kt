@@ -3,9 +3,9 @@ package br.com.jonathanarodr.playmovie.common.states
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 
-fun <T> LiveData<UiState<T>>.observeOnSuccess(
+inline fun <T> LiveData<UiState<T>>.observeOnSuccess(
     owner: LifecycleOwner,
-    handler: (T) -> Unit,
+    crossinline handler: (T) -> Unit,
 ): LiveData<UiState<T>> {
     observe(owner) {
         if (it is UiState.Success) {
@@ -16,9 +16,9 @@ fun <T> LiveData<UiState<T>>.observeOnSuccess(
     return this
 }
 
-fun <T> LiveData<UiState<T>>.observeOnError(
+inline fun <T> LiveData<UiState<T>>.observeOnError(
     owner: LifecycleOwner,
-    handler: (Throwable) -> Unit,
+    crossinline handler: (Throwable) -> Unit,
 ): LiveData<UiState<T>> {
     observe(owner) {
         if (it is UiState.Error) {
@@ -29,9 +29,9 @@ fun <T> LiveData<UiState<T>>.observeOnError(
     return this
 }
 
-fun <T> LiveData<UiState<T>>.observeOnEmpty(
+inline fun <T> LiveData<UiState<T>>.observeOnEmpty(
     owner: LifecycleOwner,
-    handler: () -> Unit,
+    crossinline handler: () -> Unit,
 ): LiveData<UiState<T>> {
     observe(owner) {
         if (it is UiState.EmptyState) {
@@ -42,9 +42,9 @@ fun <T> LiveData<UiState<T>>.observeOnEmpty(
     return this
 }
 
-fun <T> LiveData<UiState<T>>.observeOnLoading(
+inline fun <T> LiveData<UiState<T>>.observeOnLoading(
     owner: LifecycleOwner,
-    handler: () -> Unit,
+    crossinline handler: () -> Unit,
 ): LiveData<UiState<T>> {
     observe(owner) {
         if (it is UiState.Loading) {
