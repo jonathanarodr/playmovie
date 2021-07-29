@@ -8,7 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageView
 import br.com.jonathanarodr.playmovie.R
-import br.com.jonathanarodr.playmovie.common.states.UiState
+import br.com.jonathanarodr.playmovie.common.states.observeOnError
+import br.com.jonathanarodr.playmovie.common.states.observeOnSuccess
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_SIZE_DEFAULT
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_SIZE_HIGH
@@ -63,36 +64,28 @@ class DetailActivity : AppCompatActivity() {
     private fun setupObservables() {
         viewModel.isFavorite.observe(this) { result ->
             if (result) {
-                onInsertSuccess()
+                onInsertSuccess(Unit)
             } else {
-                onRemoveSuccess()
+                onRemoveSuccess(Unit)
             }
         }
 
-        viewModel.insertedMovie.observe(this) {
-            when (it) {
-                is UiState.Success -> onInsertSuccess()
-                is UiState.Error -> onError(it.cause)
-                else -> Timber.w("UiState $it not mapped")
-            }
-        }
+        viewModel.insertedMovie
+            .observeOnSuccess(this, ::onInsertSuccess)
+            .observeOnError(this, ::onError)
 
-        viewModel.removedMovie.observe(this) {
-            when (it) {
-                is UiState.Success -> onRemoveSuccess()
-                is UiState.Error -> onError(it.cause)
-                else -> Timber.w("UiState $it not mapped")
-            }
-        }
+        viewModel.removedMovie
+            .observeOnSuccess(this, ::onRemoveSuccess)
+            .observeOnError(this, ::onError)
     }
 
-    private fun onInsertSuccess() {
+    private fun onInsertSuccess(data: Unit) {
         binding.saveFavoriteMovie.updateView(R.drawable.ic_favorite_on) {
             viewModel.removeFavoriteMovie(movie)
         }
     }
 
-    private fun onRemoveSuccess() {
+    private fun onRemoveSuccess(data: Unit) {
         binding.saveFavoriteMovie.updateView(R.drawable.ic_favorite_off) {
             viewModel.insertFavoriteMovie(movie)
         }
