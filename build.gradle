@@ -1,9 +1,11 @@
 buildscript {
     ext {
-        sdk_compile_version = 30
+        compile_sdk_version = 31
+        min_sdk_version = 21
+
         java_version = JavaVersion.VERSION_11
-        kotlin_version = '1.5.21'
-        gradle_version = '7.0.0'
+        kotlin_version = '1.5.30'
+        gradle_version = '7.0.1'
         coroutines_version = '1.5.0'
         android_core_version = '1.6.0'
         lifecycle_version = '2.3.1'
@@ -54,11 +56,11 @@ subprojects {
         if (!project.hasProperty("android")) return
 
         android {
-            compileSdkVersion sdk_compile_version
+            compileSdkVersion compile_sdk_version
 
             defaultConfig {
-                minSdkVersion 21
-                targetSdkVersion 30
+                minSdkVersion min_sdk_version
+                targetSdkVersion compile_sdk_version
             }
             sourceSets {
                 main {
