@@ -39,6 +39,9 @@ android {
     buildFeatures {
         viewBinding true
     }
+    dataBinding {
+        enabled true
+    }
     compileOptions {
         sourceCompatibility java_version
         targetCompatibility java_version
@@ -123,6 +126,6 @@ dependencies {
 
 detekt {
     config = files("${project.rootDir}/tools/linters/detekt-rules.yml")
-    failFast = false
+    allRules = false
     parallel = true
 }
