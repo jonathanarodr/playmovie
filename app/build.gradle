@@ -93,7 +93,7 @@ dependencies {
 
     implementation("com.google.code.gson:gson:$gson_version")
 
-    implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation("com.jakewharton.timber:timber:$timber_version")
 
     implementation("io.insert-koin:koin-android:$koin_version")
 
