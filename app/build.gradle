@@ -1,10 +1,10 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'kotlin-parcelize'
-    id 'androidx.navigation.safeargs.kotlin'
-    id 'io.gitlab.arturbosch.detekt'
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-kapt"
+    id "kotlin-parcelize"
+    id "androidx.navigation.safeargs.kotlin"
+    id "io.gitlab.arturbosch.detekt"
 }
 
 android {
@@ -21,7 +21,7 @@ android {
         versionName "2.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunnerArguments clearPackageData: 'true'
+        testInstrumentationRunnerArguments clearPackageData: "true"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -33,7 +33,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
     buildFeatures {
@@ -47,7 +47,7 @@ android {
         jvmTarget = java_version
     }
     testOptions {
-        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        execution "ANDROIDX_TEST_ORCHESTRATOR"
         animationsDisabled true
         unitTests {
             returnDefaultValues true
@@ -61,7 +61,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ["*.jar"], dir: "libs")
 
     implementation project(":network")
     implementation project(":common")
