@@ -14,10 +14,10 @@ android {
 }
 
 dependencies {
-    api(LibraryDependency.Retrofit.CORE)
-    implementation(LibraryDependency.Retrofit.CONVERTER)
-    implementation(platform(LibraryDependency.Okhttp.BOM))
-    implementation(LibraryDependency.Okhttp.CORE)
-    implementation(LibraryDependency.Okhttp.LOGGING)
-    implementation(LibraryDependency.Koin.CORE)
+    api(LibraryDependency.RETROFIT_CORE)
+    implementation(LibraryDependency.RETROFIT_CONVERTER)
+    implementation(platform(LibraryDependency.OKHTTP_BOM))
+    implementation(LibraryDependency.OKHTTP_CORE)
+    implementation(LibraryDependency.OKHTTP_LOGGING)
+    implementation(LibraryDependency.KOIN)
 }
