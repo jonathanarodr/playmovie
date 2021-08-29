@@ -1,0 +1,4 @@
+package dependency
+
+class TestDependency {
+}
