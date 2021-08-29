@@ -1,5 +1,5 @@
 include(
     ":app",
-    ":network",
     ":common",
+    ":network",
 )
