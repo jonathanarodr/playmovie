@@ -38,11 +38,10 @@ android {
         getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
-//            proguardFiles(
-//                getDefaultProguardFile("proguard-android.txt"),
-//                getDefaultProguardFile("proguard-android-optimize.txt"),
-//                getDefaultProguardFile("proguard-rules.pro"),
-//            )
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
         }
     }
     buildFeatures {
