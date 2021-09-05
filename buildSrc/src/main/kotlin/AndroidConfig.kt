@@ -1,5 +1,3 @@
-package config
-
 object AndroidConfig {
 
     const val APPLICATION_ID = "br.com.jonathanarodr.playmovie"

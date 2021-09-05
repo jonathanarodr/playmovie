@@ -1,5 +1,3 @@
-package dependency
-
 object TestDependency {
 
     const val JUNIT = "junit:junit:${Version.Test.JUNIT}"

@@ -1,5 +1,3 @@
-package config
-
 object Modules {
 
     const val COMMON = ":common"

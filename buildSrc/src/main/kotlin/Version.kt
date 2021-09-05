@@ -1,5 +1,3 @@
-package dependency
-
 class Version {
 
     object Gradle {

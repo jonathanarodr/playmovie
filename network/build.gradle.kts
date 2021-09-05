@@ -1,6 +1,3 @@
-import config.ServerConfig
-import dependency.LibraryDependency
-
 plugins {
     id("com.android.library")
     id("kotlin-android")

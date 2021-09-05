@@ -1,10 +1,9 @@
-package dependency
-
 object LibraryDependency {
 
-    const val GRADLE_CORE = "com.android.tools.build:gradle:${Version.Gradle.CORE}"
+    const val GRADLE_TOOLS = "com.android.tools.build:gradle:${Version.Gradle.CORE}"
 
-    const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Version.Kotlin.CORE}"
+    const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Version.Kotlin.CORE}"
+    const val KOTLIN_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.Kotlin.CORE}"
 
     const val COROUTINES_CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.Kotlin.COROUTINES}"
     const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.Kotlin.COROUTINES}"
@@ -26,6 +25,7 @@ object LibraryDependency {
 
     const val NAVIGATION_FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${Version.Jetpack.NAVIGATION}"
     const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${Version.Jetpack.NAVIGATION}"
+    const val NAVIGATION_SAFE_ARGS = "androidx.navigation:navigation-safe-args-gradle-plugin:${Version.Jetpack.NAVIGATION}"
 
     const val RETROFIT_CORE = "com.squareup.retrofit2:retrofit:${Version.Square.RETROFIT}"
     const val RETROFIT_CONVERTER = "com.squareup.retrofit2:converter-gson:${Version.Square.RETROFIT}"

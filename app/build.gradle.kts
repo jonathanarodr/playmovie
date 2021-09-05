@@ -1,8 +1,3 @@
-import config.AndroidConfig
-import config.Modules
-import dependency.LibraryDependency
-import dependency.TestDependency
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -71,13 +66,13 @@ android {
 dependencies {
     implementation(fileTree(
         "dir" to "libs",
-        "include" to listOf("*.jar"),
+        "include" to listOf("*.jar", "*.aar"),
     ))
 
     implementation(project(Modules.NETWORK))
     implementation(project(Modules.COMMON))
 
-    implementation(LibraryDependency.KOTLIN)
+    implementation(LibraryDependency.KOTLIN_STDLIB)
 
     implementation(LibraryDependency.COROUTINES_CORE)
     implementation(LibraryDependency.COROUTINES_ANDROID)
