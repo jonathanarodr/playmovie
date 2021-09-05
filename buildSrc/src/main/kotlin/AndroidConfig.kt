@@ -9,5 +9,5 @@ object AndroidConfig {
     const val BUILD_TOOLS = "31.0.0"
 
     const val VERSION_CODE = 2
-    const val VERSION_NAME = "2.0.0"
+    const val VERSION_NAME = "2.1.0"
 }
