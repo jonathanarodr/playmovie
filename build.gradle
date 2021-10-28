@@ -2,12 +2,16 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
     }
     dependencies {
         classpath(LibraryDependency.GRADLE_TOOLS)
         classpath(LibraryDependency.KOTLIN_PLUGIN)
         classpath(LibraryDependency.NAVIGATION_SAFE_ARGS)
         classpath(LintDependency.DETEKT)
+        classpath(LintDependency.KTLINT)
     }
 }
 

@@ -34,7 +34,7 @@ class Version {
 
     object Lint {
         const val DETEKT = "1.18.0-RC1"
-        const val KTLINT = "0.42.1"
+        const val KTLINT = "10.2.0"
     }
 
     object Test {
