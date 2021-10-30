@@ -4,13 +4,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import br.com.jonathanarodr.playmovie.testing.RoomDatabaseRule
 import com.google.common.truth.Truth.assertThat
+import java.time.Instant
+import java.util.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.time.Instant
-import java.util.*
 
 @RunWith(AndroidJUnit4::class)
 @SmallTest

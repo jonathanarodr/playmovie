@@ -11,7 +11,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Instant
-import java.util.*
+import java.util.Date
 
 class MovieRepositoryImplTest {
 

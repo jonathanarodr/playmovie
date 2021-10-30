@@ -38,9 +38,9 @@ class NetworkUtils(
             connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
 
         return capabilities?.run {
-            hasTransport(TRANSPORT_CELLULAR)
-                    || hasTransport(TRANSPORT_WIFI)
-                    || hasTransport(TRANSPORT_VPN)
+            hasTransport(TRANSPORT_CELLULAR) ||
+                hasTransport(TRANSPORT_WIFI) ||
+                hasTransport(TRANSPORT_VPN)
         } ?: false
     }
 }

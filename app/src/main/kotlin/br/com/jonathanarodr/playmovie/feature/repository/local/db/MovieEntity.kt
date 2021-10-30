@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
-import java.util.*
+import java.util.Date
 
 @Entity(tableName = "movies")
 data class MovieEntity(
