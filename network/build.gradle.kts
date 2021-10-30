@@ -5,7 +5,7 @@ plugins {
 
 android {
     defaultConfig {
-        buildConfigField("String", "SERVER_URL",  "\"${ServerConfig.URL}\"")
+        buildConfigField("String", "SERVER_URL", "\"${ServerConfig.URL}\"")
         buildConfigField("String", "AUTHORIZATION_KEY", "\"${ServerConfig.AUTHORIZATION}\"")
     }
 }
