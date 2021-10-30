@@ -4,7 +4,6 @@ plugins {
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
-    id("io.gitlab.arturbosch.detekt")
 }
 
 android {
@@ -64,10 +63,12 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(
-        "dir" to "libs",
-        "include" to listOf("*.jar", "*.aar"),
-    ))
+    implementation(
+        fileTree(
+            "dir" to "libs",
+            "include" to listOf("*.jar", "*.aar"),
+        )
+    )
 
     implementation(project(Modules.NETWORK))
     implementation(project(Modules.COMMON))
@@ -122,10 +123,4 @@ dependencies {
     androidTestImplementation(TestDependency.ESPRESSO) {
         exclude(group = "com.android.support", module = "support-annotations")
     }
-}
-
-detekt {
-    config = files("${project.rootDir}/tools/linters/detekt-rules.yml")
-    allRules = false
-    parallel = true
 }

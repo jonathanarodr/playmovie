@@ -4,7 +4,7 @@ import android.os.Parcelable
 import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieEntity
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import java.util.*
+import java.util.Date
 
 @Parcelize
 data class Movie(

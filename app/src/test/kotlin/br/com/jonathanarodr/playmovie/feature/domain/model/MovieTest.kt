@@ -4,7 +4,7 @@ import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieEntity
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Instant
-import java.util.*
+import java.util.Date
 
 class MovieTest {
 
