@@ -1,7 +1,7 @@
 class Version {
 
     object Gradle {
-        const val CORE = "7.0.2"
+        const val CORE = "7.0.3"
     }
 
     object Kotlin {
