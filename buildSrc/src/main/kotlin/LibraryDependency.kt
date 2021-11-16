@@ -2,7 +2,6 @@ object LibraryDependency {
 
     const val GRADLE_TOOLS = "com.android.tools.build:gradle:${Version.Gradle.CORE}"
 
-    const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Version.Kotlin.CORE}"
     const val KOTLIN_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.Kotlin.CORE}"
 
     const val COROUTINES_CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.Kotlin.COROUTINES}"

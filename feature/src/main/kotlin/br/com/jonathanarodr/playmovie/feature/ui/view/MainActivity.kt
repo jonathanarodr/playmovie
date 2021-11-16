@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import br.com.jonathanarodr.playmovie.R
-import br.com.jonathanarodr.playmovie.databinding.ActivityMainBinding
+import br.com.jonathanarodr.playmovie.feature.R
+import br.com.jonathanarodr.playmovie.feature.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

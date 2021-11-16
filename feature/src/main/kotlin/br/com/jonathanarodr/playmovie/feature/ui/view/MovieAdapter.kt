@@ -6,9 +6,9 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import br.com.jonathanarodr.playmovie.R
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils
-import br.com.jonathanarodr.playmovie.databinding.ListItemMovieBinding
+import br.com.jonathanarodr.playmovie.feature.R
+import br.com.jonathanarodr.playmovie.feature.databinding.ListItemMovieBinding
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 
 class MovieAdapter(

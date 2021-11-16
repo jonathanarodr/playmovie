@@ -7,7 +7,6 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageView
-import br.com.jonathanarodr.playmovie.R
 import br.com.jonathanarodr.playmovie.common.states.observeOnError
 import br.com.jonathanarodr.playmovie.common.states.observeOnSuccess
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils
@@ -15,7 +14,8 @@ import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_SIZE_D
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_SIZE_HIGH
 import br.com.jonathanarodr.playmovie.common.utils.ImageSize
 import br.com.jonathanarodr.playmovie.common.utils.format
-import br.com.jonathanarodr.playmovie.databinding.ActivityDetailBinding
+import br.com.jonathanarodr.playmovie.feature.R
+import br.com.jonathanarodr.playmovie.feature.databinding.ActivityDetailBinding
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.ui.viewmodel.DetailViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
