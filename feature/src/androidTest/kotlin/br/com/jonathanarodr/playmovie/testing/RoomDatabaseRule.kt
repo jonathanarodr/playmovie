@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.test.core.app.ApplicationProvider
-import org.junit.rules.ExternalResource
 import java.io.IOException
+import org.junit.rules.ExternalResource
 
 class RoomDatabaseRule<T : RoomDatabase>(
     private val clazz: Class<T>,

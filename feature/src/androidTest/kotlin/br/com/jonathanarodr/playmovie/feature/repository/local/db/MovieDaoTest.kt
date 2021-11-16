@@ -5,7 +5,7 @@ import androidx.test.filters.SmallTest
 import br.com.jonathanarodr.playmovie.testing.RoomDatabaseRule
 import com.google.common.truth.Truth.assertThat
 import java.time.Instant
-import java.util.*
+import java.util.Date
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
