@@ -59,6 +59,9 @@ subprojects {
                     java.srcDir("src/sharedTest/kotlin")
                 }
             }
+            buildFeatures {
+                viewBinding = true
+            }
         }
     }
 }

@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import br.com.jonathanarodr.playmovie.R
 import br.com.jonathanarodr.playmovie.common.states.observeOnEmpty
 import br.com.jonathanarodr.playmovie.common.states.observeOnError
 import br.com.jonathanarodr.playmovie.common.states.observeOnLoading
 import br.com.jonathanarodr.playmovie.common.states.observeOnSuccess
-import br.com.jonathanarodr.playmovie.databinding.FragmentMovieBinding
+import br.com.jonathanarodr.playmovie.feature.R
+import br.com.jonathanarodr.playmovie.feature.databinding.FragmentMovieBinding
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.ui.view.MovieAdapter.MovieOnClickHandler
 import br.com.jonathanarodr.playmovie.feature.ui.viewmodel.MovieViewModel
