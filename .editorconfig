@@ -1,0 +1,4 @@
+# Custom Rules
+
+[*.kt]
+disabled_rules=import-ordering
