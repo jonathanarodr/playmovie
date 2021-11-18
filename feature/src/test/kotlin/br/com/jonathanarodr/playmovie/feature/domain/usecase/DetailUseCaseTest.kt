@@ -1,5 +1,6 @@
 package br.com.jonathanarodr.playmovie.feature.domain.usecase
 
+import androidx.test.filters.SmallTest
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.repository.MovieRepository
 import io.mockk.coVerify
@@ -7,6 +8,7 @@ import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
+@SmallTest
 class DetailUseCaseTest {
 
     private val movie = mockk<Movie>()

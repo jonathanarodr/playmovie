@@ -45,6 +45,10 @@ subprojects {
             defaultConfig {
                 minSdkVersion AndroidConfig.SDK_MINIMUM
                 targetSdkVersion AndroidConfig.SDK_TARGET
+
+                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                testInstrumentationRunnerArguments["clearPackageData"] = "true"
+                vectorDrawables.useSupportLibrary = true
             }
             sourceSets {
                 main {

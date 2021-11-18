@@ -1,16 +1,18 @@
-package br.com.jonathanarodr.playmovie.feature.domain.model
+package br.com.jonathanarodr.playmovie.feature.repository.local.db
 
-import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieEntity
+import androidx.test.filters.SmallTest
+import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Instant
 import java.util.Date
 
-class MovieTest {
+@SmallTest
+class MovieEntityTest {
 
     private val date = Date.from(Instant.now())
 
-    private val movie = Movie(
+    private val entity = MovieEntity(
         id = 0L,
         title = "title",
         overview = "overview",
@@ -20,7 +22,7 @@ class MovieTest {
         releaseDate = date,
     )
 
-    private val expected = MovieEntity(
+    private val expected = Movie(
         id = 0L,
         title = "title",
         overview = "overview",
@@ -31,8 +33,8 @@ class MovieTest {
     )
 
     @Test
-    fun `given model when convert to entity then return valid movie entity`() {
-        val result = movie.toMovieEntity()
+    fun `given entity when convert to model then return valid movie model`() {
+        val result = entity.toMovie()
 
         assertEquals(expected, result)
     }

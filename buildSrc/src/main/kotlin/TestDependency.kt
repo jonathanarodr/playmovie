@@ -13,6 +13,7 @@ object TestDependency {
     const val RULES = "androidx.test:rules:${Version.Test.RULES}"
 
     const val MOCKK = "io.mockk:mockk:${Version.Test.MOCKK}"
+    const val MOCKK_ANDROID = "io.mockk:mockk-android:${Version.Test.MOCKK}"
     const val OKHTTP_MOCK = "com.squareup.okhttp3:mockwebserver"
     const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.Kotlin.COROUTINES}"
 

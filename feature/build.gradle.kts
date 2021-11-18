@@ -43,6 +43,8 @@ dependencies {
     testImplementation(TestDependency.MOCKK)
     testImplementation(TestDependency.COROUTINES)
     testImplementation(TestDependency.ARCH)
+    testImplementation(TestDependency.RUNNER)
+    testImplementation(TestDependency.RULES)
     testImplementation(TestDependency.ROOM)
     testImplementation(TestDependency.OKHTTP_MOCK)
     testImplementation(TestDependency.ROBOLECTRIC_CORE)
@@ -53,7 +55,7 @@ dependencies {
     androidTestImplementation(TestDependency.JUNIT_EXT)
     androidTestImplementation(TestDependency.TRUTH_CORE)
     androidTestImplementation(TestDependency.TRUTH_EXTENSION)
-    androidTestImplementation(TestDependency.MOCKK)
+    androidTestImplementation(TestDependency.MOCKK_ANDROID)
     androidTestImplementation(TestDependency.ROBOLECTRIC_ANNOTATIONS)
     androidTestImplementation(TestDependency.ESPRESSO) {
         exclude(group = "com.android.support", module = "support-annotations")

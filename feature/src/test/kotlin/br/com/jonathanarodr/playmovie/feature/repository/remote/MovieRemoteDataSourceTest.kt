@@ -1,5 +1,6 @@
 package br.com.jonathanarodr.playmovie.feature.repository.remote
 
+import androidx.test.filters.SmallTest
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.repository.remote.api.MovieApi
 import br.com.jonathanarodr.playmovie.feature.repository.remote.api.MovieResponse
@@ -12,6 +13,7 @@ import org.junit.Test
 import java.time.Instant
 import java.util.Date
 
+@SmallTest
 class MovieRemoteDataSourceTest {
 
     private val api = mockk<MovieApi>()

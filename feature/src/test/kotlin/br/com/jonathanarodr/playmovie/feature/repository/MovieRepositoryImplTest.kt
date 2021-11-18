@@ -1,5 +1,6 @@
 package br.com.jonathanarodr.playmovie.feature.repository
 
+import androidx.test.filters.SmallTest
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.repository.local.MovieLocalDataSource
 import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieEntity
@@ -13,6 +14,7 @@ import org.junit.Test
 import java.time.Instant
 import java.util.Date
 
+@SmallTest
 class MovieRepositoryImplTest {
 
     private val remoteDataSource = mockk<MovieRemoteDataSource>()

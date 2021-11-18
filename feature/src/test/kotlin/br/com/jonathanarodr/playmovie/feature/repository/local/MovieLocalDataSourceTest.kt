@@ -1,5 +1,6 @@
 package br.com.jonathanarodr.playmovie.feature.repository.local
 
+import androidx.test.filters.SmallTest
 import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieDao
 import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieEntity
 import io.mockk.coEvery
@@ -9,6 +10,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
+@SmallTest
 class MovieLocalDataSourceTest {
 
     private val localMovies = mockk<List<MovieEntity>>()
