@@ -33,6 +33,8 @@ object LibraryDependency {
     const val OKHTTP_CORE = "com.squareup.okhttp3:okhttp"
     const val OKHTTP_LOGGING = "com.squareup.okhttp3:logging-interceptor"
 
+    const val LEAKCANARY = "com.squareup.leakcanary:leakcanary-android:${Version.Square.LEAKCANARY}"
+
     const val MATERIAL = "com.google.android.material:material:${Version.Tools.MATERIAL}"
     const val GSON = "com.google.code.gson:gson:${Version.Tools.GSON}"
     const val TIMBER = "com.jakewharton.timber:timber:${Version.Tools.TIMBER}"

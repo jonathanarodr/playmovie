@@ -22,6 +22,7 @@ class Version {
     object Square {
         const val RETROFIT = "2.9.0"
         const val OKHTTP = "4.9.0"
+        const val LEAKCANARY = "2.7"
     }
 
     object Tools {

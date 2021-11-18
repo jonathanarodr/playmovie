@@ -76,4 +76,6 @@ dependencies {
 
     implementation(LibraryDependency.KOIN)
     implementation(LibraryDependency.TIMBER)
+
+    debugImplementation(LibraryDependency.LEAKCANARY)
 }
