@@ -39,7 +39,7 @@ dependencies {
     testImplementation(TestDependency.JUNIT)
     testImplementation(TestDependency.JUNIT_EXT)
     testImplementation(TestDependency.TRUTH_CORE)
-    testImplementation(TestDependency.TRUTH_EXTENSION)
+    testImplementation(TestDependency.TRUTH_EXT)
     testImplementation(TestDependency.MOCKK)
     testImplementation(TestDependency.COROUTINES)
     testImplementation(TestDependency.ARCH)
@@ -54,7 +54,7 @@ dependencies {
     androidTestImplementation(TestDependency.RULES)
     androidTestImplementation(TestDependency.JUNIT_EXT)
     androidTestImplementation(TestDependency.TRUTH_CORE)
-    androidTestImplementation(TestDependency.TRUTH_EXTENSION)
+    androidTestImplementation(TestDependency.TRUTH_EXT)
     androidTestImplementation(TestDependency.MOCKK_ANDROID)
     androidTestImplementation(TestDependency.ROBOLECTRIC_ANNOTATIONS)
     androidTestImplementation(TestDependency.ESPRESSO) {

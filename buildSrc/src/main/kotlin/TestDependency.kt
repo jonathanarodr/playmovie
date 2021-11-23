@@ -4,7 +4,7 @@ object TestDependency {
     const val JUNIT_EXT = "androidx.test.ext:junit:${Version.Test.JUNIT_EXT}"
 
     const val TRUTH_CORE = "com.google.truth:truth:${Version.Test.TRUTH}"
-    const val TRUTH_EXTENSION = "com.google.truth.extensions:truth-java8-extension:${Version.Test.TRUTH}"
+    const val TRUTH_EXT = "androidx.test.ext:truth:${Version.Test.TRUTH_EXT}"
 
     const val ARCH = "android.arch.core:core-testing:${Version.Jetpack.CORE}"
     const val ROOM = "androidx.room:room-testing:${Version.Jetpack.ROOM}"

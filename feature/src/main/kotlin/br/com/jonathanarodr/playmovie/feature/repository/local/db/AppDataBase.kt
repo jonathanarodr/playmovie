@@ -2,6 +2,7 @@ package br.com.jonathanarodr.playmovie.feature.repository.local.db
 
 import android.app.Application
 import androidx.room.Database
+import androidx.room.RewriteQueriesToDropUnusedColumns
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
@@ -14,6 +15,7 @@ import androidx.room.TypeConverters
 @TypeConverters(
     DateConverter::class,
 )
+@RewriteQueriesToDropUnusedColumns
 abstract class AppDataBase : RoomDatabase() {
 
     companion object {
