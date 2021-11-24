@@ -39,6 +39,7 @@ class Version {
     }
 
     object Test {
+        const val KOVER = "0.4.2"
         const val JUNIT = "4.13.2"
         const val JUNIT_EXT = "1.1.3"
         const val TRUTH = "1.1.3"

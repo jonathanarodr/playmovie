@@ -1,5 +1,7 @@
 object TestDependency {
 
+    const val KOVER = "org.jetbrains.kotlinx:kover:${Version.Test.KOVER}"
+
     const val JUNIT = "junit:junit:${Version.Test.JUNIT}"
     const val JUNIT_EXT = "androidx.test.ext:junit:${Version.Test.JUNIT_EXT}"
 

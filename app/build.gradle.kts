@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
+    id("org.jetbrains.kotlinx.kover") version "0.4.2"
 }
 
 android {
@@ -54,6 +55,12 @@ android {
         unitTests.apply {
             isReturnDefaultValues = true
             isIncludeAndroidResources = true
+
+            all {
+                if (name == "testDebugUnitTest") {
+                    kover.isEnabled = true
+                }
+            }
         }
     }
     dependenciesInfo {
