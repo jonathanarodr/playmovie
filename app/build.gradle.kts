@@ -55,6 +55,12 @@ android {
         unitTests.apply {
             isReturnDefaultValues = true
             isIncludeAndroidResources = true
+
+            all {
+                if (name == "testDebugUnitTest") {
+                    kover.isEnabled = true
+                }
+            }
         }
     }
     dependenciesInfo {
