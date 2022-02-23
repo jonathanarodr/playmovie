@@ -14,6 +14,7 @@ class Version {
         const val APPCOMPAT = "1.4.0"
         const val RECYCLER = "1.2.1"
         const val CONSTRAINT = "2.1.2"
+        const val SWIPE_REFRESH = "1.1.0"
         const val LIFECYCLE = "2.4.0"
         const val ROOM = "2.4.0-beta02"
         const val NAVIGATION = "2.3.5"

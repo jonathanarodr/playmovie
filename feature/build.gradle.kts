@@ -19,6 +19,7 @@ dependencies {
     implementation(LibraryDependency.ANDROIDX_APPCOMPAT)
     implementation(LibraryDependency.ANDROIDX_RECYCLER)
     implementation(LibraryDependency.ANDROIDX_CONSTRAINT)
+    implementation(LibraryDependency.ANDROIDX_SWIPE_REFRESH)
 
     implementation(LibraryDependency.LIFECYCLE_VIEWMODEL)
     implementation(LibraryDependency.LIFECYCLE_LIVEDATA)

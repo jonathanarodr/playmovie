@@ -12,6 +12,7 @@ object LibraryDependency {
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Version.Jetpack.APPCOMPAT}"
     const val ANDROIDX_RECYCLER = "androidx.recyclerview:recyclerview:${Version.Jetpack.RECYCLER}"
     const val ANDROIDX_CONSTRAINT = "androidx.constraintlayout:constraintlayout:${Version.Jetpack.CONSTRAINT}"
+    const val ANDROIDX_SWIPE_REFRESH = "androidx.swiperefreshlayout:swiperefreshlayout:${Version.Jetpack.SWIPE_REFRESH}"
 
     const val LIFECYCLE_VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.Jetpack.LIFECYCLE}"
     const val LIFECYCLE_LIVEDATA = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.Jetpack.LIFECYCLE}"
