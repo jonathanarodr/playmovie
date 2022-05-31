@@ -8,11 +8,11 @@ import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
 import br.com.jonathanarodr.playmovie.feature.domain.usecase.MovieUseCase
 import br.com.jonathanarodr.playmovie.testing.CoroutinesTestRule
 import br.com.jonathanarodr.playmovie.testing.captureState
-import br.com.jonathanarodr.playmovie.testing.runBlockingTest
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 
@@ -34,7 +34,7 @@ class MovieViewModelTest {
 
     @Test
     fun `given view model when fetch movies with error then post ui state error`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.searchMovies() } returns resultError
 
             viewModel.fetchMovies(MovieType.MOVIES)
@@ -47,7 +47,7 @@ class MovieViewModelTest {
 
     @Test
     fun `given view model when fetch movies with success then post ui state success`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.searchMovies() } returns resultSuccess
 
             viewModel.fetchMovies(MovieType.MOVIES)
@@ -60,7 +60,7 @@ class MovieViewModelTest {
 
     @Test
     fun `given view model when fetch empty movies with success then post ui state empty`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.searchMovies() } returns resultEmpty
 
             viewModel.fetchMovies(MovieType.MOVIES)
@@ -73,7 +73,7 @@ class MovieViewModelTest {
 
     @Test
     fun `given view model when fetch tv series with error then post ui state error`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.searchTvSeries() } returns resultError
 
             viewModel.fetchMovies(MovieType.SERIES)
@@ -86,7 +86,7 @@ class MovieViewModelTest {
 
     @Test
     fun `given view model when fetch tv series with success then post ui state success`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.searchTvSeries() } returns resultSuccess
 
             viewModel.fetchMovies(MovieType.SERIES)
@@ -99,7 +99,7 @@ class MovieViewModelTest {
 
     @Test
     fun `given view model when fetch empty tv series with success then post ui state empty`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.searchTvSeries() } returns resultEmpty
 
             viewModel.fetchMovies(MovieType.SERIES)
@@ -112,7 +112,7 @@ class MovieViewModelTest {
 
     @Test
     fun `given view model when fetch favorite movies with error then post ui state error`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.searchFavoriteMovies() } returns resultError
 
             viewModel.fetchMovies(MovieType.FAVORITES)
@@ -125,7 +125,7 @@ class MovieViewModelTest {
 
     @Test
     fun `given view model when fetch favorite movies with success then post ui state success`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.searchFavoriteMovies() } returns resultSuccess
 
             viewModel.fetchMovies(MovieType.FAVORITES)
@@ -138,7 +138,7 @@ class MovieViewModelTest {
 
     @Test
     fun `given view model when fetch empty favorite movies with success then post ui state empty`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.searchFavoriteMovies() } returns resultEmpty
 
             viewModel.fetchMovies(MovieType.FAVORITES)

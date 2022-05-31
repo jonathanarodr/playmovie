@@ -7,16 +7,16 @@ import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.domain.usecase.DetailUseCase
 import br.com.jonathanarodr.playmovie.testing.CoroutinesTestRule
 import br.com.jonathanarodr.playmovie.testing.captureState
-import br.com.jonathanarodr.playmovie.testing.runBlockingTest
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 @MediumTest
+@ExperimentalCoroutinesApi
 class DetailViewModelTest {
 
     @get:Rule
@@ -31,7 +31,7 @@ class DetailViewModelTest {
 
     @Test
     fun `given view model when insert favorite movie with error then post ui state error`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.insertFavoriteMovie(movie) } returns Result.failure(mockk())
 
             viewModel.insertFavoriteMovie(movie)
@@ -44,7 +44,7 @@ class DetailViewModelTest {
 
     @Test
     fun `given view model when insert favorite movie with success then post ui state success`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.insertFavoriteMovie(movie) } returns Result.success(mockk())
 
             viewModel.insertFavoriteMovie(movie)
@@ -57,7 +57,7 @@ class DetailViewModelTest {
 
     @Test
     fun `given view model when remove favorite movie with error then post ui state error`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.removeFavoriteMovie(movie) } returns Result.failure(mockk())
 
             viewModel.removeFavoriteMovie(movie)
@@ -70,7 +70,7 @@ class DetailViewModelTest {
 
     @Test
     fun `given view model when remove favorite movie with success then post ui state success`() {
-        coroutinesTestRule.runBlockingTest {
+        runTest {
             coEvery { useCase.removeFavoriteMovie(movie) } returns Result.success(mockk())
 
             viewModel.removeFavoriteMovie(movie)

@@ -2,10 +2,12 @@ package br.com.jonathanarodr.playmovie.common.usecase
 
 import io.mockk.coEvery
 import io.mockk.mockk
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
+@ExperimentalCoroutinesApi
 class UseCaseTest {
 
     private val task = mockk<(suspend () -> Unit)>()
@@ -13,7 +15,7 @@ class UseCaseTest {
 
     @Test
     fun `given execute task when invoke is called with success then return valid result`() {
-        runBlocking {
+        runTest {
             coEvery { task.invoke() } returns Unit
 
             val result = useCase.execute {
@@ -26,7 +28,7 @@ class UseCaseTest {
 
     @Test
     fun `given execute task when invoke is called with failure then return valid result`() {
-        runBlocking {
+        runTest {
             coEvery { task.invoke() } throws Exception("Task failure")
 
             val result = useCase.execute {

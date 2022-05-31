@@ -7,13 +7,15 @@ import br.com.jonathanarodr.playmovie.feature.repository.remote.api.MovieRespons
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Instant
 import java.util.Date
 
 @SmallTest
+@ExperimentalCoroutinesApi
 class MovieRemoteDataSourceTest {
 
     private val api = mockk<MovieApi>()
@@ -35,7 +37,7 @@ class MovieRemoteDataSourceTest {
 
     @Test
     fun `given datasource when search movies then call api with results`() {
-        runBlocking {
+        runTest {
             coEvery { api.searchMovies() } returns response
 
             val result = dataSource.searchMovies()
@@ -46,7 +48,7 @@ class MovieRemoteDataSourceTest {
 
     @Test
     fun `given datasource when search tv series then call api with results`() {
-        runBlocking {
+        runTest {
             coEvery { api.searchTvSeries() } returns response
 
             val result = dataSource.searchTvSeries()

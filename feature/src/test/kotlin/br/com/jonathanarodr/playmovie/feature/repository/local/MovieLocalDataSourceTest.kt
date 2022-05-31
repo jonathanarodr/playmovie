@@ -6,11 +6,13 @@ import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieEntity
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 @SmallTest
+@ExperimentalCoroutinesApi
 class MovieLocalDataSourceTest {
 
     private val localMovies = mockk<List<MovieEntity>>()
@@ -19,7 +21,7 @@ class MovieLocalDataSourceTest {
 
     @Test
     fun `given datasource when search favorite movies then return list of movies from local storage`() {
-        runBlocking {
+        runTest {
             coEvery { dao.listMovies() } returns localMovies
 
             val result = dataSource.searchFavoriteMovies()
@@ -30,7 +32,7 @@ class MovieLocalDataSourceTest {
 
     @Test
     fun `given datasource when insert favorite movie then insert movie from local storage`() {
-        runBlocking {
+        runTest {
             val movie = mockk<MovieEntity>()
 
             dataSource.insertFavoriteMovie(movie)
@@ -45,7 +47,7 @@ class MovieLocalDataSourceTest {
 
     @Test
     fun `given datasource when remove favorite movie then delete movie from local storage`() {
-        runBlocking {
+        runTest {
             val movie = mockk<MovieEntity>()
 
             dataSource.removeFavoriteMovie(movie)

@@ -5,11 +5,13 @@ import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.repository.MovieRepository
 import io.mockk.coEvery
 import io.mockk.mockk
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 @SmallTest
+@ExperimentalCoroutinesApi
 class MovieUseCaseTest {
 
     private val movies = mockk<List<Movie>>()
@@ -19,7 +21,7 @@ class MovieUseCaseTest {
 
     @Test
     fun `given use case when search movies then return list of movies`() {
-        runBlocking {
+        runTest {
             coEvery { repository.searchMovies() } returns movies
 
             val result = useCase.searchMovies()
@@ -30,7 +32,7 @@ class MovieUseCaseTest {
 
     @Test
     fun `given use case when search tv series then return list of movies`() {
-        runBlocking {
+        runTest {
             coEvery { repository.searchTvSeries() } returns movies
 
             val result = useCase.searchTvSeries()
@@ -41,7 +43,7 @@ class MovieUseCaseTest {
 
     @Test
     fun `given use case when search favorite movies then return list of movies`() {
-        runBlocking {
+        runTest {
             coEvery { repository.searchFavoriteMovies() } returns movies
 
             val result = useCase.searchFavoriteMovies()

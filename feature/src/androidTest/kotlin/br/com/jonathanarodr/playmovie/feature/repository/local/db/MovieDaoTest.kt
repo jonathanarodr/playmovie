@@ -5,7 +5,8 @@ import androidx.test.filters.FlakyTest
 import androidx.test.filters.MediumTest
 import br.com.jonathanarodr.playmovie.testing.RoomDatabaseRule
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -16,6 +17,7 @@ import java.util.Date
 @RunWith(AndroidJUnit4::class)
 @MediumTest
 @FlakyTest
+@ExperimentalCoroutinesApi
 class MovieDaoTest {
 
     @get:Rule
@@ -41,7 +43,7 @@ class MovieDaoTest {
     @Test
     @Throws(Exception::class)
     fun givenDao_whenListMovies_thenVerifyStorage() {
-        runBlocking {
+        runTest {
             val result = dao.listMovies()
 
             assertThat(result).isEmpty()
@@ -51,7 +53,7 @@ class MovieDaoTest {
     @Test
     @Throws(Exception::class)
     fun givenDao_whenInsertMovie_thenVerifyStorage() {
-        runBlocking {
+        runTest {
             dao.insertMovie(entity)
 
             val result = dao.listMovies()
@@ -63,7 +65,7 @@ class MovieDaoTest {
     @Test
     @Throws(Exception::class)
     fun givenDao_whenDeleteMovie_thenVerifyStorage() {
-        runBlocking {
+        runTest {
             dao.insertMovie(entity)
             dao.deleteMovie(entity)
 

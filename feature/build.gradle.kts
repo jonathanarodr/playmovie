@@ -57,6 +57,7 @@ dependencies {
     androidTestImplementation(TestDependency.JUNIT_EXT)
     androidTestImplementation(TestDependency.TRUTH_CORE)
     androidTestImplementation(TestDependency.TRUTH_EXT)
+    androidTestImplementation(TestDependency.COROUTINES)
     androidTestImplementation(TestDependency.MOCKK_ANDROID)
     androidTestImplementation(TestDependency.ROBOLECTRIC_ANNOTATIONS)
     androidTestImplementation(TestDependency.ESPRESSO) {

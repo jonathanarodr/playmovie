@@ -8,13 +8,15 @@ import br.com.jonathanarodr.playmovie.feature.repository.remote.MovieRemoteDataS
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Instant
 import java.util.Date
 
 @SmallTest
+@ExperimentalCoroutinesApi
 class MovieRepositoryImplTest {
 
     private val remoteDataSource = mockk<MovieRemoteDataSource>()
@@ -49,7 +51,7 @@ class MovieRepositoryImplTest {
 
     @Test
     fun `given repository when search movies then return remote list of movies`() {
-        runBlocking {
+        runTest {
             coEvery { remoteDataSource.searchMovies() } returns movies
 
             val result = repository.searchMovies()
@@ -60,7 +62,7 @@ class MovieRepositoryImplTest {
 
     @Test
     fun `given repository when search tv series then return remote list of movies`() {
-        runBlocking {
+        runTest {
             coEvery { remoteDataSource.searchTvSeries() } returns movies
 
             val result = repository.searchTvSeries()
@@ -71,7 +73,7 @@ class MovieRepositoryImplTest {
 
     @Test
     fun `given repository when search favorite movies then return local list of movies`() {
-        runBlocking {
+        runTest {
             coEvery { localDataSource.searchFavoriteMovies() } returns localMovies
 
             val result = repository.searchFavoriteMovies()
@@ -82,7 +84,7 @@ class MovieRepositoryImplTest {
 
     @Test
     fun `given repository when insert favorite movie then call local datasource`() {
-        runBlocking {
+        runTest {
             repository.insertFavoriteMovie(movies.first())
 
             coVerify {
@@ -95,7 +97,7 @@ class MovieRepositoryImplTest {
 
     @Test
     fun `given repository when remove favorite movie then call local datasource`() {
-        runBlocking {
+        runTest {
             repository.removeFavoriteMovie(movies.first())
 
             coVerify {

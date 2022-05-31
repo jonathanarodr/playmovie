@@ -5,10 +5,12 @@ import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.repository.MovieRepository
 import io.mockk.coVerify
 import io.mockk.mockk
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
 @SmallTest
+@ExperimentalCoroutinesApi
 class DetailUseCaseTest {
 
     private val movie = mockk<Movie>()
@@ -17,7 +19,7 @@ class DetailUseCaseTest {
 
     @Test
     fun `given use case when insert favorite movie then call repository`() {
-        runBlocking {
+        runTest {
             useCase.insertFavoriteMovie(movie)
 
             coVerify {
@@ -30,7 +32,7 @@ class DetailUseCaseTest {
 
     @Test
     fun `given use case when remove favorite movie then call repository`() {
-        runBlocking {
+        runTest {
             useCase.removeFavoriteMovie(movie)
 
             coVerify {
