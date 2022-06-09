@@ -1,17 +1,13 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-kapt")
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
 }
 
 dependencies {
     implementation(LibraryDependency.KOIN)
     implementation(LibraryDependency.TIMBER)
-    implementation(LibraryDependency.GLIDE_CORE) {
-        exclude(group = "com.android.support")
-    }
-    kapt(LibraryDependency.GLIDE_COMPILER)
+    implementation(LibraryDependency.COIL)
 
     testImplementation(TestDependency.JUNIT)
     testImplementation(TestDependency.MOCKK)

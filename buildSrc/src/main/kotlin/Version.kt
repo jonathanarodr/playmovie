@@ -31,7 +31,7 @@ class Version {
         const val GSON = "2.8.9"
         const val TIMBER = "4.7.1"
         const val KOIN = "3.1.2"
-        const val GLIDE = "4.12.0"
+        const val COIL = "2.1.0"
     }
 
     object Lint {

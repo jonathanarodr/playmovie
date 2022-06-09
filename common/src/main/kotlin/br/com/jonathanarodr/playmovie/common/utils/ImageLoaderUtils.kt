@@ -1,11 +1,7 @@
 package br.com.jonathanarodr.playmovie.common.utils
 
 import android.widget.ImageView
-import com.bumptech.glide.annotation.GlideModule
-import com.bumptech.glide.module.AppGlideModule
-
-@GlideModule
-class GlideUtils : AppGlideModule()
+import coil.load
 
 typealias ImageSize = String
 
@@ -16,11 +12,10 @@ object ImageLoaderUtils {
     const val IMAGE_SIZE_DEFAULT: ImageSize = "/w185"
     const val IMAGE_SIZE_HIGH: ImageSize = "/w780"
 
-    fun load(view: ImageView, image: String, size: ImageSize = IMAGE_SIZE_DEFAULT) {
-        GlideApp.with(view.context)
-            .load(image.toPath(size))
-            .centerCrop()
-            .into(view)
+    fun load(view: ImageView, url: String, size: ImageSize = IMAGE_SIZE_DEFAULT) {
+        view.load(url.toPath(size)) {
+            crossfade(true)
+        }
     }
 
     private fun String.toPath(size: ImageSize): String {

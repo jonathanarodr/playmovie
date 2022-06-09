@@ -41,6 +41,5 @@ object LibraryDependency {
     const val TIMBER = "com.jakewharton.timber:timber:${Version.Tools.TIMBER}"
     const val KOIN = "io.insert-koin:koin-android:${Version.Tools.KOIN}"
 
-    const val GLIDE_CORE = "com.github.bumptech.glide:glide:${Version.Tools.GLIDE}"
-    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Version.Tools.GLIDE}"
+    const val COIL = "io.coil-kt:coil:${Version.Tools.COIL}"
 }
