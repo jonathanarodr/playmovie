@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp") version "1.6.21-1.0.5"
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
@@ -28,7 +28,7 @@ dependencies {
 
     implementation(LibraryDependency.ROOM_CORE)
     implementation(LibraryDependency.ROOM_RUNTIME)
-    kapt(LibraryDependency.ROOM_COMPILER)
+    ksp(LibraryDependency.ROOM_COMPILER)
 
     implementation(LibraryDependency.NAVIGATION_FRAGMENT)
     implementation(LibraryDependency.NAVIGATION_UI)

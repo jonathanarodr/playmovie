@@ -5,7 +5,7 @@ class Version {
     }
 
     object Kotlin {
-        const val CORE = "1.6.10"
+        const val CORE = "1.6.21"
         const val COROUTINES = "1.6.0"
     }
 
@@ -16,7 +16,7 @@ class Version {
         const val CONSTRAINT = "2.1.2"
         const val SWIPE_REFRESH = "1.1.0"
         const val LIFECYCLE = "2.4.0"
-        const val ROOM = "2.4.0-beta02"
+        const val ROOM = "2.4.2"
         const val NAVIGATION = "2.3.5"
     }
 
