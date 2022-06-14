@@ -8,7 +8,7 @@ open class StorageExecutor(
     dispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) : CoroutinesExecutor(dispatcher) {
 
-    override suspend fun <T> execute(task: suspend () -> T): Result<T> {
+    public override suspend fun <T> execute(task: suspend () -> T): Result<T> {
         return super.execute(task).fold(
             onSuccess = ::onSuccess,
             onFailure = ::onFailure
