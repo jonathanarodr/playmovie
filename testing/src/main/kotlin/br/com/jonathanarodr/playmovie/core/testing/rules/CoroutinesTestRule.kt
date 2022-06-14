@@ -1,4 +1,4 @@
-package br.com.jonathanarodr.playmovie.testing
+package br.com.jonathanarodr.playmovie.core.testing.rules
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -12,7 +12,7 @@ import org.junit.runner.Description
 
 @ExperimentalCoroutinesApi
 class CoroutinesTestRule(
-    private val dispatcher: TestDispatcher = UnconfinedTestDispatcher()
+    val dispatcher: TestDispatcher = UnconfinedTestDispatcher()
 ) : TestWatcher() {
 
     val scope by lazy {

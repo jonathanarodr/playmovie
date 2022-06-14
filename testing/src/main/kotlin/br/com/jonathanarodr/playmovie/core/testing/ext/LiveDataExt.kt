@@ -1,17 +1,16 @@
-package br.com.jonathanarodr.playmovie.testing
+package br.com.jonathanarodr.playmovie.core.testing.ext
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import br.com.jonathanarodr.playmovie.common.states.UiState
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
 import io.mockk.runs
 import io.mockk.slot
 
-inline fun <reified T : Any> LiveData<UiState<T>>.captureState(): UiState<T> {
-    val observer = mockk<Observer<UiState<T>>>()
-    val state = slot<UiState<T>>()
+inline fun <reified T : Any> LiveData<T>.capture(): T {
+    val observer = mockk<Observer<T>>()
+    val state = slot<T>()
 
     every {
         observer.onChanged(
