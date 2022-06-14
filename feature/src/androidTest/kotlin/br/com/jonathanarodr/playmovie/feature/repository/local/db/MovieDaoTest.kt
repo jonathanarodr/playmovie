@@ -3,7 +3,7 @@ package br.com.jonathanarodr.playmovie.feature.repository.local.db
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.FlakyTest
 import androidx.test.filters.MediumTest
-import br.com.jonathanarodr.playmovie.testing.RoomDatabaseRule
+import br.com.jonathanarodr.playmovie.core.testing.rules.RoomDatabaseRule
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest

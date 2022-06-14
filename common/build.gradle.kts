@@ -9,7 +9,5 @@ dependencies {
     implementation(LibraryDependency.TIMBER)
     implementation(LibraryDependency.COIL)
 
-    testImplementation(TestDependency.JUNIT)
-    testImplementation(TestDependency.MOCKK)
-    testImplementation(TestDependency.COROUTINES)
+    testImplementation(project(Modules.TESTING))
 }

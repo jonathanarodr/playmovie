@@ -18,6 +18,7 @@ class MovieLocalDataSourceTest {
     private val localMovies = mockk<List<MovieEntity>>()
     private val dao = mockk<MovieDao>(relaxed = true)
     private val dataSource = MovieLocalDataSource(dao)
+    private val expected = Result.success(localMovies)
 
     @Test
     fun `given datasource when search favorite movies then return list of movies from local storage`() {
@@ -26,7 +27,7 @@ class MovieLocalDataSourceTest {
 
             val result = dataSource.searchFavoriteMovies()
 
-            assertEquals(localMovies, result)
+            assertEquals(expected, result)
         }
     }
 

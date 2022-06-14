@@ -14,7 +14,7 @@ import org.junit.Test
 class DetailUseCaseTest {
 
     private val movie = mockk<Movie>()
-    private val repository = mockk<MovieRepository>()
+    private val repository = mockk<MovieRepository>(relaxed = true)
     private val useCase = DetailUseCase(repository)
 
     @Test

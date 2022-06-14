@@ -34,6 +34,7 @@ class MovieRemoteDataSourceTest {
     private val response = mockk<MovieResponse> {
         every { results } returns movies
     }
+    private val expected = Result.success(movies)
 
     @Test
     fun `given datasource when search movies then call api with results`() {
@@ -42,7 +43,7 @@ class MovieRemoteDataSourceTest {
 
             val result = dataSource.searchMovies()
 
-            assertEquals(movies, result)
+            assertEquals(expected, result)
         }
     }
 
@@ -53,7 +54,7 @@ class MovieRemoteDataSourceTest {
 
             val result = dataSource.searchTvSeries()
 
-            assertEquals(movies, result)
+            assertEquals(expected, result)
         }
     }
 }

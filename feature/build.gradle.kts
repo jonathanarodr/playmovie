@@ -38,29 +38,6 @@ dependencies {
     implementation(LibraryDependency.TIMBER)
     implementation(LibraryDependency.KOIN)
 
-    testImplementation(TestDependency.JUNIT)
-    testImplementation(TestDependency.JUNIT_EXT)
-    testImplementation(TestDependency.TRUTH_CORE)
-    testImplementation(TestDependency.TRUTH_EXT)
-    testImplementation(TestDependency.MOCKK)
-    testImplementation(TestDependency.COROUTINES)
-    testImplementation(TestDependency.ARCH)
-    testImplementation(TestDependency.RUNNER)
-    testImplementation(TestDependency.RULES)
-    testImplementation(TestDependency.ROOM)
-    testImplementation(TestDependency.OKHTTP_MOCK)
-    testImplementation(TestDependency.ROBOLECTRIC_CORE)
-
-    androidTestUtil(TestDependency.ORCHESTRATOR)
-    androidTestImplementation(TestDependency.RUNNER)
-    androidTestImplementation(TestDependency.RULES)
-    androidTestImplementation(TestDependency.JUNIT_EXT)
-    androidTestImplementation(TestDependency.TRUTH_CORE)
-    androidTestImplementation(TestDependency.TRUTH_EXT)
-    androidTestImplementation(TestDependency.COROUTINES)
-    androidTestImplementation(TestDependency.MOCKK_ANDROID)
-    androidTestImplementation(TestDependency.ROBOLECTRIC_ANNOTATIONS)
-    androidTestImplementation(TestDependency.ESPRESSO) {
-        exclude(group = "com.android.support", module = "support-annotations")
-    }
+    testImplementation(project(Modules.TESTING))
+    androidTestImplementation(project(Modules.TESTING))
 }

@@ -25,7 +25,7 @@ class MovieRepositoryImplTest {
 
     private val date = Date.from(Instant.now())
 
-    private val movies = listOf(
+    private val remoteMovies = listOf(
         Movie(
             id = 0L,
             title = "title",
@@ -49,43 +49,46 @@ class MovieRepositoryImplTest {
         )
     )
 
+    private val remoteResult = Result.success(remoteMovies)
+    private val localResult = Result.success(localMovies)
+
     @Test
     fun `given repository when search movies then return remote list of movies`() {
         runTest {
-            coEvery { remoteDataSource.searchMovies() } returns movies
+            coEvery { remoteDataSource.searchMovies() } returns remoteResult
 
             val result = repository.searchMovies()
 
-            assertEquals(movies, result)
+            assertEquals(remoteResult, result)
         }
     }
 
     @Test
     fun `given repository when search tv series then return remote list of movies`() {
         runTest {
-            coEvery { remoteDataSource.searchTvSeries() } returns movies
+            coEvery { remoteDataSource.searchTvSeries() } returns remoteResult
 
             val result = repository.searchTvSeries()
 
-            assertEquals(movies, result)
+            assertEquals(remoteResult, result)
         }
     }
 
     @Test
     fun `given repository when search favorite movies then return local list of movies`() {
         runTest {
-            coEvery { localDataSource.searchFavoriteMovies() } returns localMovies
+            coEvery { localDataSource.searchFavoriteMovies() } returns localResult
 
             val result = repository.searchFavoriteMovies()
 
-            assertEquals(movies, result)
+            assertEquals(remoteResult, result)
         }
     }
 
     @Test
     fun `given repository when insert favorite movie then call local datasource`() {
         runTest {
-            repository.insertFavoriteMovie(movies.first())
+            repository.insertFavoriteMovie(remoteMovies.first())
 
             coVerify {
                 localDataSource.insertFavoriteMovie(
@@ -98,7 +101,7 @@ class MovieRepositoryImplTest {
     @Test
     fun `given repository when remove favorite movie then call local datasource`() {
         runTest {
-            repository.removeFavoriteMovie(movies.first())
+            repository.removeFavoriteMovie(remoteMovies.first())
 
             coVerify {
                 localDataSource.removeFavoriteMovie(

@@ -22,7 +22,7 @@ class MovieUseCaseTest {
     @Test
     fun `given use case when search movies then return list of movies`() {
         runTest {
-            coEvery { repository.searchMovies() } returns movies
+            coEvery { repository.searchMovies() } returns expected
 
             val result = useCase.searchMovies()
 
@@ -33,7 +33,7 @@ class MovieUseCaseTest {
     @Test
     fun `given use case when search tv series then return list of movies`() {
         runTest {
-            coEvery { repository.searchTvSeries() } returns movies
+            coEvery { repository.searchTvSeries() } returns expected
 
             val result = useCase.searchTvSeries()
 
@@ -44,7 +44,7 @@ class MovieUseCaseTest {
     @Test
     fun `given use case when search favorite movies then return list of movies`() {
         runTest {
-            coEvery { repository.searchFavoriteMovies() } returns movies
+            coEvery { repository.searchFavoriteMovies() } returns expected
 
             val result = useCase.searchFavoriteMovies()
 
