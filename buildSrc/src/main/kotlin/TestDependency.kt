@@ -16,7 +16,6 @@ object TestDependency {
 
     const val MOCKK = "io.mockk:mockk:${Version.Test.MOCKK}"
     const val MOCKK_ANDROID = "io.mockk:mockk-android:${Version.Test.MOCKK}"
-    const val OKHTTP_MOCK = "com.squareup.okhttp3:mockwebserver"
     const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.Kotlin.COROUTINES}"
 
     const val ROBOLECTRIC_CORE = "org.robolectric:robolectric:${Version.Test.ROBOLECTRIC}"
