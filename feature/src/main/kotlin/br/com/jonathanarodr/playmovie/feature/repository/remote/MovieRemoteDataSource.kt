@@ -1,22 +1,21 @@
 package br.com.jonathanarodr.playmovie.feature.repository.remote
 
+import br.com.jonathanarodr.playmovie.common.executors.ApiExecutor
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.repository.remote.api.MovieApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 class MovieRemoteDataSource(
     private val movieApi: MovieApi,
-) {
+) : ApiExecutor() {
 
-    suspend fun searchMovies(): List<Movie> {
-        return withContext(Dispatchers.IO) {
+    suspend fun searchMovies(): Result<List<Movie>> {
+        return execute {
             movieApi.searchMovies().results
         }
     }
 
-    suspend fun searchTvSeries(): List<Movie> {
-        return withContext(Dispatchers.IO) {
+    suspend fun searchTvSeries(): Result<List<Movie>> {
+        return execute {
             movieApi.searchTvSeries().results
         }
     }
