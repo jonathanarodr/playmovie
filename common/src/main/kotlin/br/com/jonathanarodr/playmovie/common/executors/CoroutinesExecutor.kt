@@ -3,7 +3,7 @@ package br.com.jonathanarodr.playmovie.common.executors
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
-abstract class CoroutinesExecutor(
+open class CoroutinesExecutor(
     private val dispatcher: CoroutineDispatcher
 ) {
 

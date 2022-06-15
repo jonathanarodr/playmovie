@@ -6,13 +6,13 @@ import java.net.UnknownHostException
 
 open class PlayMovieException(
     message: String? = null,
-    cause: Throwable? = null
+    cause: Throwable? = null,
 ) : Exception(message, cause)
 
 class ResultException(
     errorType: ResultError = ResultError.UNKNOWN,
     message: String,
-    cause: Throwable
+    cause: Throwable,
 ) : PlayMovieException(message, cause) {
 
     var errorType: ResultError = errorType
@@ -28,6 +28,6 @@ class ResultException(
 
 fun Throwable.isConnectionError(): Boolean {
     return this is ConnectException ||
-            this is ConnectionShutdownException ||
-            this is UnknownHostException
+        this is ConnectionShutdownException ||
+        this is UnknownHostException
 }
