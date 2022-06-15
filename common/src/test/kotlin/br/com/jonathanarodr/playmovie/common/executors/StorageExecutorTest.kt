@@ -16,7 +16,7 @@ class StorageExecutorTest {
     var coroutinesTestRule = CoroutinesTestRule()
 
     private val task = mockk<(suspend () -> Unit)>()
-    private val executor = StorageExecutor(coroutinesTestRule.dispatcher)
+    private val executor = StorageExecutor()
 
     @Test
     fun `given execute task when invoke is called with success then return valid result`() {

@@ -1,12 +1,9 @@
 package br.com.jonathanarodr.playmovie.common.executors
 
 import br.com.jonathanarodr.playmovie.common.exception.ResultException
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
-open class StorageExecutor(
-    dispatcher: CoroutineDispatcher = Dispatchers.IO,
-) : CoroutinesExecutor(dispatcher) {
+open class StorageExecutor : CoroutinesExecutor(Dispatchers.IO) {
 
     public override suspend fun <T> execute(task: suspend () -> T): Result<T> {
         return super.execute(task).fold(

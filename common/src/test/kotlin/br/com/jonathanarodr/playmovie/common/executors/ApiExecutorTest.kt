@@ -16,7 +16,7 @@ class ApiExecutorTest {
     var coroutinesTestRule = CoroutinesTestRule()
 
     private val task = mockk<(suspend () -> Unit)>()
-    private val executor = ApiExecutor(coroutinesTestRule.dispatcher)
+    private val executor = ApiExecutor()
 
     @Test
     fun `given execute task when invoke is called with success then return valid result`() {
