@@ -5,7 +5,7 @@ class Version {
     }
 
     object Kotlin {
-        const val CORE = "1.6.21"
+        const val CORE = "1.7.0"
         const val COROUTINES = "1.6.0"
     }
 
