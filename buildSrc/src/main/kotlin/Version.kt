@@ -12,12 +12,14 @@ class Version {
     object Jetpack {
         const val CORE = "1.7.0"
         const val APPCOMPAT = "1.4.0"
+        const val ACTIVITY_COMPOSE = "1.4.0"
         const val RECYCLER = "1.2.1"
         const val CONSTRAINT = "2.1.2"
         const val SWIPE_REFRESH = "1.1.0"
         const val LIFECYCLE = "2.4.0"
         const val ROOM = "2.4.2"
         const val NAVIGATION = "2.3.5"
+        const val COMPOSE = "1.1.1"
     }
 
     object Square {

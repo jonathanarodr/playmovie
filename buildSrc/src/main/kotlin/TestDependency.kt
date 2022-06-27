@@ -13,6 +13,9 @@ object TestDependency {
     const val ORCHESTRATOR = "androidx.test:orchestrator:${Version.Test.ORCHESTRATOR}"
     const val RUNNER = "androidx.test:runner:${Version.Test.RUNNER}"
     const val RULES = "androidx.test:rules:${Version.Test.RULES}"
+    const val COMPOSE_JUNIT = "androidx.compose.ui:ui-test-junit4:${Version.Jetpack.COMPOSE}"
+    const val COMPOSE_PREVIEW = "androidx.compose.ui:ui-tooling:${Version.Jetpack.COMPOSE}"
+    const val COMPOSE_MANIFEST = "androidx.compose.ui:ui-test-manifest:${Version.Jetpack.COMPOSE}"
 
     const val MOCKK = "io.mockk:mockk:${Version.Test.MOCKK}"
     const val MOCKK_ANDROID = "io.mockk:mockk-android:${Version.Test.MOCKK}"

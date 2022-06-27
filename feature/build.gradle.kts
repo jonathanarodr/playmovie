@@ -7,6 +7,15 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
 }
 
+android {
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Version.Jetpack.COMPOSE
+    }
+}
+
 dependencies {
     implementation(project(Modules.COMMON))
     implementation(project(Modules.NETWORK))
@@ -25,6 +34,13 @@ dependencies {
     implementation(LibraryDependency.LIFECYCLE_LIVEDATA)
     implementation(LibraryDependency.LIFECYCLE_RUNTIME)
     implementation(LibraryDependency.LIFECYCLE_COMMON)
+
+    implementation(LibraryDependency.COMPOSE_RUNTIME)
+    implementation(LibraryDependency.COMPOSE_UI)
+    implementation(LibraryDependency.COMPOSE_PREVIEW)
+    implementation(LibraryDependency.COMPOSE_FOUNDATION)
+    implementation(LibraryDependency.COMPOSE_MATERIAL)
+    implementation(LibraryDependency.COMPOSE_LIVEDATA)
 
     implementation(LibraryDependency.ROOM_CORE)
     implementation(LibraryDependency.ROOM_RUNTIME)
