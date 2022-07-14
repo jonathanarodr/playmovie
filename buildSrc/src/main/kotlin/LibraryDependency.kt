@@ -20,12 +20,12 @@ object LibraryDependency {
     const val LIFECYCLE_RUNTIME = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.Jetpack.LIFECYCLE}"
     const val LIFECYCLE_COMMON = "androidx.lifecycle:lifecycle-common-java8:${Version.Jetpack.LIFECYCLE}"
 
-    const val COMPOSE_RUNTIME = "androidx.compose.runtime:runtime:${Version.Jetpack.COMPOSE}"
-    const val COMPOSE_UI = "androidx.compose.ui:ui:${Version.Jetpack.COMPOSE}"
-    const val COMPOSE_PREVIEW = "androidx.compose.ui:ui-tooling-preview:${Version.Jetpack.COMPOSE}"
-    const val COMPOSE_FOUNDATION = "androidx.compose.foundation:foundation:${Version.Jetpack.COMPOSE}"
-    const val COMPOSE_MATERIAL = "androidx.compose.material:material:${Version.Jetpack.COMPOSE}"
-    const val COMPOSE_LIVEDATA = "androidx.compose.runtime:runtime-livedata:${Version.Jetpack.COMPOSE}"
+    const val COMPOSE_RUNTIME = "androidx.compose.runtime:runtime:${Version.Compose.CORE}"
+    const val COMPOSE_UI = "androidx.compose.ui:ui:${Version.Compose.CORE}"
+    const val COMPOSE_PREVIEW = "androidx.compose.ui:ui-tooling-preview:${Version.Compose.CORE}"
+    const val COMPOSE_FOUNDATION = "androidx.compose.foundation:foundation:${Version.Compose.CORE}"
+    const val COMPOSE_MATERIAL = "androidx.compose.material:material:${Version.Compose.CORE}"
+    const val COMPOSE_LIVEDATA = "androidx.compose.runtime:runtime-livedata:${Version.Compose.CORE}"
 
     const val ROOM_CORE = "androidx.room:room-ktx:${Version.Jetpack.ROOM}"
     const val ROOM_RUNTIME = "androidx.room:room-runtime:${Version.Jetpack.ROOM}"

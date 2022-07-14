@@ -19,7 +19,11 @@ class Version {
         const val LIFECYCLE = "2.4.0"
         const val ROOM = "2.4.2"
         const val NAVIGATION = "2.3.5"
-        const val COMPOSE = "1.1.1"
+    }
+
+    object Compose {
+        const val CORE = "1.1.1"
+        const val COMPILER = "1.2.0"
     }
 
     object Square {

@@ -12,7 +12,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Version.Jetpack.COMPOSE
+        kotlinCompilerExtensionVersion = Version.Compose.COMPILER
     }
 }
 
