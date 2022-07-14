@@ -19,6 +19,7 @@ dependencies {
     implementation(LibraryDependency.COIL)
 
     implementation(LibraryDependency.COMPOSE_UI)
+    implementation(LibraryDependency.COMPOSE_MATERIAL)
 
     testImplementation(project(Modules.TESTING))
 }
