@@ -23,6 +23,7 @@ object LibraryDependency {
     const val COMPOSE_RUNTIME = "androidx.compose.runtime:runtime:${Version.Compose.CORE}"
     const val COMPOSE_UI = "androidx.compose.ui:ui:${Version.Compose.CORE}"
     const val COMPOSE_PREVIEW = "androidx.compose.ui:ui-tooling-preview:${Version.Compose.CORE}"
+    const val COMPOSE_TOOLING = "androidx.compose.ui:ui-tooling:${Version.Compose.CORE}"
     const val COMPOSE_FOUNDATION = "androidx.compose.foundation:foundation:${Version.Compose.CORE}"
     const val COMPOSE_MATERIAL = "androidx.compose.material:material:${Version.Compose.CORE}"
     const val COMPOSE_LIVEDATA = "androidx.compose.runtime:runtime-livedata:${Version.Compose.CORE}"
@@ -49,5 +50,6 @@ object LibraryDependency {
     const val TIMBER = "com.jakewharton.timber:timber:${Version.Tools.TIMBER}"
     const val KOIN = "io.insert-koin:koin-android:${Version.Tools.KOIN}"
 
-    const val COIL = "io.coil-kt:coil:${Version.Tools.COIL}"
+    const val COIL_CORE = "io.coil-kt:coil:${Version.Tools.COIL}"
+    const val COIL_COMPOSE = "io.coil-kt:coil-compose:${Version.Tools.COIL}"
 }

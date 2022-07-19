@@ -35,13 +35,6 @@ dependencies {
     implementation(LibraryDependency.LIFECYCLE_RUNTIME)
     implementation(LibraryDependency.LIFECYCLE_COMMON)
 
-    implementation(LibraryDependency.COMPOSE_RUNTIME)
-    implementation(LibraryDependency.COMPOSE_UI)
-    implementation(LibraryDependency.COMPOSE_PREVIEW)
-    implementation(LibraryDependency.COMPOSE_FOUNDATION)
-    implementation(LibraryDependency.COMPOSE_MATERIAL)
-    implementation(LibraryDependency.COMPOSE_LIVEDATA)
-
     implementation(LibraryDependency.ROOM_CORE)
     implementation(LibraryDependency.ROOM_RUNTIME)
     ksp(LibraryDependency.ROOM_COMPILER)
@@ -51,8 +44,6 @@ dependencies {
 
     implementation(LibraryDependency.MATERIAL)
     implementation(LibraryDependency.GSON)
-    implementation(LibraryDependency.TIMBER)
-    implementation(LibraryDependency.KOIN)
 
     testImplementation(project(Modules.TESTING))
     androidTestImplementation(project(Modules.TESTING))
