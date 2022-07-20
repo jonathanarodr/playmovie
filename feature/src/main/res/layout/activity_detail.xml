@@ -65,8 +65,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/movie_release_icon"
-            android:layout_width="@dimen/card_movie_icon"
-            android:layout_height="@dimen/card_movie_icon"
+            android:layout_width="@dimen/card_movie_icon_size"
+            android:layout_height="@dimen/card_movie_icon_size"
             android:layout_marginTop="@dimen/spacing_lg"
             android:tint="@color/green"
             app:layout_constraintStart_toStartOf="@+id/movie_title"
@@ -87,8 +87,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/movie_average_icon"
-            android:layout_width="@dimen/card_movie_icon"
-            android:layout_height="@dimen/card_movie_icon"
+            android:layout_width="@dimen/card_movie_icon_size"
+            android:layout_height="@dimen/card_movie_icon_size"
             android:layout_marginTop="@dimen/spacing_sm"
             android:tint="@color/yellow"
             app:layout_constraintStart_toStartOf="@+id/movie_release_icon"
