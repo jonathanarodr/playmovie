@@ -7,8 +7,8 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
 
-    <color name="greyscale_400">#1a1a1a</color>
-    <color name="greyscale_300">#717171</color>
-    <color name="greyscale_200">#a6a6a6</color>
-    <color name="greyscale_100">#dcdcdc</color>
+    <color name="grayscale_400">#1a1a1a</color>
+    <color name="grayscale_300">#717171</color>
+    <color name="grayscale_200">#a6a6a6</color>
+    <color name="grayscale_100">#dcdcdc</color>
 </resources>
