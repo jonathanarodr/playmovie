@@ -15,6 +15,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -49,12 +52,14 @@ fun MovieCardLayout(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(dimensionResource(id = R.dimen.card_movie_height))
-                .padding(vertical = Spacing.xs),
+                .clip(MaterialTheme.shapes.large),
             model = imageRequest.build(),
+            contentScale = ContentScale.Crop,
             contentDescription = null,
         )
         Text(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth()
+                .padding(top = Spacing.xs),
             text = uiModel.title,
             style = MaterialTheme.typography.subtitle2.copy(
                 color = Color.grayscale100,
@@ -75,10 +80,12 @@ fun MovieCardLayout(
                     )
                 )
                 Image(
-                    modifier = Modifier.padding(end = Spacing.xs)
-                        .size(8.dp)
+                    modifier = Modifier
+                        .padding(start = Spacing.xxs, end = Spacing.sm)
+                        .size(10.dp)
                         .wrapContentSize(),
                     painter = painterResource(id = R.drawable.ic_star),
+                    colorFilter = ColorFilter.tint(color = Color.grayscale200),
                     contentDescription = null
                 )
             }
@@ -104,7 +111,7 @@ fun MovieCardLayoutPreview() {
             uiModel = MovieUiModel(
                 id = 0L,
                 title = "Thor: Love and Thunder",
-                posterUrl = "https://api.themoviedb.org/6OEBp0Gqv6DsOgi8diPUslT2kbA.jpg",
+                posterUrl = "https://image.tmdb.org/t/p/w185/6OEBp0Gqv6DsOgi8diPUslT2kbA.jpg",
                 releaseDate = Date(),
                 voteAverage = 5.0,
             )
