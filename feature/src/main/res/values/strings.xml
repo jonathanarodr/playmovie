@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_movies">Filmes</string>
-    <string name="title_series">Séries</string>
-    <string name="title_favorite">Favoritos</string>
+    <string name="screen_title_movies">Filmes</string>
+    <string name="screen_title_series">Séries</string>
+    <string name="screen_title_favorite">Favoritos</string>
+
+    <string name="section_movie_upcoming">Estréias</string>
+    <string name="section_movie_now_playing">Em cartaz</string>
+    <string name="section_movie_popular">Populares</string>
 
     <string name="movie_detail_overview">Overview</string>
 

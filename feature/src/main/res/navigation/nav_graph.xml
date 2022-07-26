@@ -16,7 +16,7 @@
             app:argType="br.com.jonathanarodr.playmovie.feature.domain.type.MovieType" />
         <argument
             android:name="movieTitle"
-            android:defaultValue="@string/title_movies"
+            android:defaultValue="@string/screen_title_movies"
             app:argType="reference" />
     </fragment>
 
@@ -31,7 +31,7 @@
             app:argType="br.com.jonathanarodr.playmovie.feature.domain.type.MovieType" />
         <argument
             android:name="movieTitle"
-            android:defaultValue="@string/title_series"
+            android:defaultValue="@string/screen_title_series"
             app:argType="reference" />
     </fragment>
 
@@ -46,7 +46,7 @@
             app:argType="br.com.jonathanarodr.playmovie.feature.domain.type.MovieType" />
         <argument
             android:name="movieTitle"
-            android:defaultValue="@string/title_favorite"
+            android:defaultValue="@string/screen_title_favorite"
             app:argType="reference" />
     </fragment>
 
