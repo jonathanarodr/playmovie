@@ -27,6 +27,10 @@ class Version {
         const val MATERIAL3 = "1.0.0-alpha14"
     }
 
+    object Accompanist {
+        const val SWIPE_REFRESH = "0.24.9-SNAPSHOT"
+    }
+
     object Square {
         const val RETROFIT = "2.9.0"
         const val OKHTTP = "4.9.2"

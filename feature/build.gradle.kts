@@ -30,6 +30,8 @@ dependencies {
     implementation(LibraryDependency.ANDROIDX_CONSTRAINT)
     implementation(LibraryDependency.ANDROIDX_SWIPE_REFRESH)
 
+    implementation(LibraryDependency.ACCOMPANIST_SWIPE_REFRESH)
+
     implementation(LibraryDependency.LIFECYCLE_VIEWMODEL)
     implementation(LibraryDependency.LIFECYCLE_LIVEDATA)
     implementation(LibraryDependency.LIFECYCLE_RUNTIME)
