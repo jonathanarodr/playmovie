@@ -25,7 +25,7 @@ object LibraryDependency {
     const val COMPOSE_PREVIEW = "androidx.compose.ui:ui-tooling-preview:${Version.Compose.CORE}"
     const val COMPOSE_TOOLING = "androidx.compose.ui:ui-tooling:${Version.Compose.CORE}"
     const val COMPOSE_FOUNDATION = "androidx.compose.foundation:foundation:${Version.Compose.CORE}"
-    const val COMPOSE_MATERIAL = "androidx.compose.material:material:${Version.Compose.CORE}"
+    const val COMPOSE_MATERIAL3 = "androidx.compose.material3:material3:${Version.Compose.MATERIAL3}"
     const val COMPOSE_LIVEDATA = "androidx.compose.runtime:runtime-livedata:${Version.Compose.CORE}"
 
     const val ROOM_CORE = "androidx.room:room-ktx:${Version.Jetpack.ROOM}"

@@ -21,7 +21,7 @@ dependencies {
     api(LibraryDependency.COMPOSE_PREVIEW)
     debugApi(LibraryDependency.COMPOSE_TOOLING)
     api(LibraryDependency.COMPOSE_FOUNDATION)
-    api(LibraryDependency.COMPOSE_MATERIAL)
+    api(LibraryDependency.COMPOSE_MATERIAL3)
     api(LibraryDependency.COMPOSE_LIVEDATA)
     api(LibraryDependency.COIL_CORE)
     api(LibraryDependency.COIL_COMPOSE)

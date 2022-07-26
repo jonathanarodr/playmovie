@@ -1,76 +1,97 @@
 package br.com.jonathanarodr.playmovie.common.uikit.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Shapes
-import androidx.compose.material.Typography
-import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Shapes
+import androidx.compose.material3.Typography
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 import br.com.jonathanarodr.playmovie.common.uikit.token.Color
 import br.com.jonathanarodr.playmovie.common.uikit.token.FontSize
 import br.com.jonathanarodr.playmovie.common.uikit.token.ShapeSize
 
-private val ColorPalette = lightColors(
+private val ColorScheme = lightColorScheme(
     primary = Color.highlightRed,
     onPrimary = Color.neutralWhite,
-    background = Color.grayscale400,
-    onBackground = Color.grayscale100,
-    surface = Color.grayscale100,
-    onSurface = Color.grayscale400,
+    background = Color.neutralBack,
+    onBackground = Color.neutralWhite,
+    surface = Color.grayscale400,
+    onSurface = Color.grayscale100,
+    error = Color.highlightRed,
+    onError = Color.neutralWhite,
 )
 
-val Shapes = Shapes(
+val ShapeScheme = Shapes(
     small = RoundedCornerShape(ShapeSize.sm),
     medium = RoundedCornerShape(ShapeSize.md),
     large = RoundedCornerShape(ShapeSize.lg)
 )
 
-val Typography = Typography(
-    h1 = TextStyle(
+val TypographyScheme = Typography(
+    displayLarge = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.ExtraBold,
         fontSize = FontSize.xxl,
     ),
-    h2 = TextStyle(
+    displayMedium = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = FontSize.xxl,
+    ),
+    displaySmall = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = FontSize.xxl,
+    ),
+    headlineLarge = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.ExtraBold,
         fontSize = FontSize.xl,
     ),
-    h3 = TextStyle(
+    headlineMedium = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.ExtraBold,
         fontSize = FontSize.lg,
     ),
-    h4 = TextStyle(
+    headlineSmall = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.ExtraBold,
         fontSize = FontSize.md,
     ),
-    subtitle1 = TextStyle(
+    titleLarge = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Bold,
         fontSize = FontSize.sm,
     ),
-    subtitle2 = TextStyle(
+    titleMedium = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Bold,
         fontSize = FontSize.xs,
     ),
-    body1 = TextStyle(
+    titleSmall = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Bold,
+        fontSize = FontSize.xxs,
+    ),
+    bodyLarge = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
         fontSize = FontSize.sm,
     ),
-    body2 = TextStyle(
+    bodyMedium = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
         fontSize = FontSize.xs,
     ),
-    caption = TextStyle(
+    bodySmall = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = FontSize.xxs,
+    ),
+    labelLarge = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
         fontSize = FontSize.xxs,
@@ -82,9 +103,9 @@ fun AppTheme(
     content: @Composable () -> Unit
 ) {
     MaterialTheme(
-        colors = ColorPalette,
-        shapes = Shapes,
-        typography = Typography,
+        colorScheme = ColorScheme,
+        shapes = ShapeScheme,
+        typography = TypographyScheme,
         content = content
     )
 }
