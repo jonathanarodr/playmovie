@@ -28,7 +28,7 @@ object LibraryDependency {
     const val COMPOSE_MATERIAL3 = "androidx.compose.material3:material3:${Version.Compose.MATERIAL3}"
     const val COMPOSE_LIVEDATA = "androidx.compose.runtime:runtime-livedata:${Version.Compose.CORE}"
 
-    const val ACCOMPANIST_SWIPE_REFRESH = "com.google.accompanist:accompanist-swiperefresh:${Version.Accompanist.SWIPE_REFRESH}"
+    const val ACCOMPANIST_SWIPE_REFRESH = "com.google.accompanist:accompanist-swiperefresh:${Version.Compose.ACCOMPANIST}"
 
     const val ROOM_CORE = "androidx.room:room-ktx:${Version.Jetpack.ROOM}"
     const val ROOM_RUNTIME = "androidx.room:room-runtime:${Version.Jetpack.ROOM}"

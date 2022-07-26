@@ -25,10 +25,7 @@ class Version {
         const val CORE = "1.1.1"
         const val COMPILER = "1.2.0"
         const val MATERIAL3 = "1.0.0-alpha14"
-    }
-
-    object Accompanist {
-        const val SWIPE_REFRESH = "0.24.9-SNAPSHOT"
+        const val ACCOMPANIST = "0.24.13-rc"
     }
 
     object Square {
