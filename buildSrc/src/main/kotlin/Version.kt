@@ -22,7 +22,7 @@ class Version {
     }
 
     object Compose {
-        const val CORE = "1.1.1"
+        const val CORE = "1.2.0"
         const val COMPILER = "1.2.0"
         const val MATERIAL3 = "1.0.0-alpha14"
         const val ACCOMPANIST = "0.24.13-rc"

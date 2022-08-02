@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -61,7 +61,7 @@ fun MovieCardLayout(
             modifier = Modifier.fillMaxWidth()
                 .padding(top = Spacing.xs),
             text = uiModel.title,
-            style = MaterialTheme.typography.subtitle2.copy(
+            style = MaterialTheme.typography.titleMedium.copy(
                 color = Color.grayscale100,
             ),
             maxLines = 2,
@@ -75,7 +75,7 @@ fun MovieCardLayout(
                 Text(
                     modifier = Modifier,
                     text = uiModel.voteAverage.toString(),
-                    style = MaterialTheme.typography.caption.copy(
+                    style = MaterialTheme.typography.labelLarge.copy(
                         color = Color.grayscale200,
                     )
                 )
@@ -92,7 +92,7 @@ fun MovieCardLayout(
             Text(
                 modifier = Modifier,
                 text = uiModel.releaseDate.format(DATE_PATTERN_DD_MM_YYYY),
-                style = MaterialTheme.typography.caption.copy(
+                style = MaterialTheme.typography.labelLarge.copy(
                     color = Color.grayscale200,
                 )
             )
