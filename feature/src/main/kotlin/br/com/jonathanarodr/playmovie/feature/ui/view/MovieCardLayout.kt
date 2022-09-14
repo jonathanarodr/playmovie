@@ -1,15 +1,17 @@
 package br.com.jonathanarodr.playmovie.feature.ui.view
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,6 +30,8 @@ import br.com.jonathanarodr.playmovie.common.annotation.DATE_PATTERN_DD_MM_YYYY
 import br.com.jonathanarodr.playmovie.common.uikit.theme.AppTheme
 import br.com.jonathanarodr.playmovie.common.uikit.token.Color
 import br.com.jonathanarodr.playmovie.common.uikit.token.Spacing
+import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_LOADER_PATH
+import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_SIZE_HIGH
 import br.com.jonathanarodr.playmovie.common.utils.format
 import br.com.jonathanarodr.playmovie.feature.R
 import br.com.jonathanarodr.playmovie.feature.ui.model.MovieUiModel
@@ -35,16 +39,22 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import java.util.*
 
+@ExperimentalMaterial3Api
 @Composable
 fun MovieCardLayout(
     modifier: Modifier = Modifier,
     uiModel: MovieUiModel,
 ) {
-    Column(
+    Card(
         modifier = modifier,
+        shape = MaterialTheme.shapes.large,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background
+        ),
     ) {
+        // fixme create composable to centralize image loader with dynamic size
         val imageRequest = ImageRequest.Builder(LocalContext.current)
-            .data(uiModel.posterUrl)
+            .data(IMAGE_LOADER_PATH + IMAGE_SIZE_HIGH + uiModel.posterUrl)
             .crossfade(true)
             .fallback(drawableResId = R.drawable.shape_card_movie)
 
@@ -58,7 +68,8 @@ fun MovieCardLayout(
             contentDescription = null,
         )
         Text(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(top = Spacing.xs),
             text = uiModel.title,
             style = MaterialTheme.typography.titleMedium.copy(
@@ -68,7 +79,9 @@ fun MovieCardLayout(
             overflow = TextOverflow.Ellipsis,
         )
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = Spacing.xxs),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             uiModel.voteAverage?.let {
@@ -101,13 +114,14 @@ fun MovieCardLayout(
 }
 
 @Preview(showBackground = true)
+@ExperimentalMaterial3Api
 @Composable
 fun MovieCardLayoutPreview() {
     AppTheme {
         MovieCardLayout(
             modifier = Modifier
                 .width(dimensionResource(id = R.dimen.card_movie_width))
-                .background(color = Color.neutralBack),
+                .heightIn(dimensionResource(id = R.dimen.card_movie_height)),
             uiModel = MovieUiModel(
                 id = 0L,
                 title = "Thor: Love and Thunder",

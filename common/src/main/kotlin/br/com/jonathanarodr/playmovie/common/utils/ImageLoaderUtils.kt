@@ -7,8 +7,7 @@ typealias ImageSize = String
 
 object ImageLoaderUtils {
 
-    private const val IMAGE_LOADER_PATH = "http://image.tmdb.org/t/p"
-
+    const val IMAGE_LOADER_PATH = "http://image.tmdb.org/t/p"
     const val IMAGE_SIZE_DEFAULT: ImageSize = "/w185"
     const val IMAGE_SIZE_HIGH: ImageSize = "/w780"
 

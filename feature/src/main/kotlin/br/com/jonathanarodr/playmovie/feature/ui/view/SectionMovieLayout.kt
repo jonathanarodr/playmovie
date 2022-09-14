@@ -28,9 +28,9 @@ fun SectionMovieLayout(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
-                .padding(vertical = Spacing.lg),
+                .padding(top = Spacing.md),
             text = stringResource(id = title),
-            style = MaterialTheme.typography.headlineSmall.copy(
+            style = MaterialTheme.typography.headlineLarge.copy(
                 color = Color.neutralWhite,
             )
         )
