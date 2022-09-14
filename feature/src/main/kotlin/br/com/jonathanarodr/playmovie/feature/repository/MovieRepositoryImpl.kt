@@ -1,9 +1,9 @@
 package br.com.jonathanarodr.playmovie.feature.repository
 
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
-import br.com.jonathanarodr.playmovie.feature.domain.model.toMovieEntity
+import br.com.jonathanarodr.playmovie.feature.mapper.toMovie
+import br.com.jonathanarodr.playmovie.feature.mapper.toMovieEntity
 import br.com.jonathanarodr.playmovie.feature.repository.local.MovieLocalDataSource
-import br.com.jonathanarodr.playmovie.feature.repository.local.db.toMovie
 import br.com.jonathanarodr.playmovie.feature.repository.remote.MovieRemoteDataSource
 
 class MovieRepositoryImpl(

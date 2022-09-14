@@ -7,6 +7,15 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
 }
 
+android {
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Version.Compose.COMPILER
+    }
+}
+
 dependencies {
     implementation(project(Modules.COMMON))
     implementation(project(Modules.NETWORK))
@@ -20,6 +29,8 @@ dependencies {
     implementation(LibraryDependency.ANDROIDX_RECYCLER)
     implementation(LibraryDependency.ANDROIDX_CONSTRAINT)
     implementation(LibraryDependency.ANDROIDX_SWIPE_REFRESH)
+
+    implementation(LibraryDependency.ACCOMPANIST_SWIPE_REFRESH)
 
     implementation(LibraryDependency.LIFECYCLE_VIEWMODEL)
     implementation(LibraryDependency.LIFECYCLE_LIVEDATA)
@@ -35,8 +46,6 @@ dependencies {
 
     implementation(LibraryDependency.MATERIAL)
     implementation(LibraryDependency.GSON)
-    implementation(LibraryDependency.TIMBER)
-    implementation(LibraryDependency.KOIN)
 
     testImplementation(project(Modules.TESTING))
     androidTestImplementation(project(Modules.TESTING))

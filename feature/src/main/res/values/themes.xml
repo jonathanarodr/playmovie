@@ -10,20 +10,20 @@
         <item name="colorSecondary">@color/red</item>
         <item name="colorOnSecondary">@color/white</item>
 
-        <item name="colorSurface">@color/greyscale_300</item>
-        <item name="colorOnSurface">@color/greyscale_100</item>
+        <item name="colorSurface">@color/grayscale_300</item>
+        <item name="colorOnSurface">@color/grayscale_100</item>
 
-        <item name="colorPrimarySurface">@color/greyscale_300</item>
-        <item name="colorOnPrimarySurface">@color/greyscale_100</item>
+        <item name="colorPrimarySurface">@color/grayscale_300</item>
+        <item name="colorOnPrimarySurface">@color/grayscale_100</item>
 
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColorSecondary">@color/greyscale_100</item>
-        <item name="android:textColorTertiary">@color/greyscale_100</item>
+        <item name="android:textColorSecondary">@color/grayscale_100</item>
+        <item name="android:textColorTertiary">@color/grayscale_100</item>
 
-        <item name="android:windowBackground">@color/greyscale_400</item>
-        <item name="android:colorBackground">@color/greyscale_400</item>
-        <item name="colorOnBackground">@color/greyscale_100</item>
+        <item name="android:windowBackground">@color/grayscale_400</item>
+        <item name="android:colorBackground">@color/grayscale_400</item>
+        <item name="colorOnBackground">@color/grayscale_100</item>
 
         <!-- navigation -->
         <item name="android:statusBarColor" tools:ignore="NewApi">@color/black</item>

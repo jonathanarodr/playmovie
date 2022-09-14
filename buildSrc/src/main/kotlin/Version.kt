@@ -1,7 +1,7 @@
 class Version {
 
     object Gradle {
-        const val CORE = "7.2.1"
+        const val CORE = "7.2.2"
     }
 
     object Kotlin {
@@ -12,12 +12,20 @@ class Version {
     object Jetpack {
         const val CORE = "1.7.0"
         const val APPCOMPAT = "1.4.0"
+        const val ACTIVITY_COMPOSE = "1.4.0"
         const val RECYCLER = "1.2.1"
         const val CONSTRAINT = "2.1.2"
         const val SWIPE_REFRESH = "1.1.0"
         const val LIFECYCLE = "2.4.0"
         const val ROOM = "2.4.2"
         const val NAVIGATION = "2.3.5"
+    }
+
+    object Compose {
+        const val CORE = "1.2.0"
+        const val COMPILER = "1.2.0"
+        const val MATERIAL3 = "1.0.0-alpha14"
+        const val ACCOMPANIST = "0.24.13-rc"
     }
 
     object Square {

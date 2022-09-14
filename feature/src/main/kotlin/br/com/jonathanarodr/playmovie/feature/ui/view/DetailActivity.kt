@@ -7,6 +7,7 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageView
+import br.com.jonathanarodr.playmovie.common.annotation.DATE_PATTERN_YYYY
 import br.com.jonathanarodr.playmovie.common.states.observeOnError
 import br.com.jonathanarodr.playmovie.common.states.observeOnSuccess
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils
@@ -53,7 +54,7 @@ class DetailActivity : AppCompatActivity() {
             moviePoster.loadImage(movie.poster, IMAGE_SIZE_DEFAULT)
             movieBackdrop.loadImage(movie.backdrop, IMAGE_SIZE_HIGH)
             movieTitle.text = movie.title
-            movieRelease.text = movie.releaseDate.format()
+            movieRelease.text = movie.releaseDate.format(DATE_PATTERN_YYYY)
             movieAverage.text = movie.average.toString()
             movieOverviewDescription.text = movie.overview
         }

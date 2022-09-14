@@ -6,21 +6,21 @@
         android:id="@+id/movieFragment"
         android:enabled="true"
         android:icon="@drawable/ic_movie"
-        android:title="@string/title_movies"
+        android:title="@string/screen_title_movies"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/seriesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_series"
-        android:title="@string/title_series"
+        android:title="@string/screen_title_series"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/favoriteFragment"
         android:enabled="true"
         android:icon="@drawable/ic_favorite"
-        android:title="@string/title_favorite"
+        android:title="@string/screen_title_favorite"
         app:showAsAction="ifRoom" />
 
 </menu>
