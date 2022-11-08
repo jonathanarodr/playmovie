@@ -1,7 +1,7 @@
 class Version {
 
     object Gradle {
-        const val CORE = "7.2.1"
+        const val CORE = "7.3.1"
     }
 
     object Kotlin {
@@ -17,7 +17,7 @@ class Version {
         const val SWIPE_REFRESH = "1.1.0"
         const val LIFECYCLE = "2.4.0"
         const val ROOM = "2.4.2"
-        const val NAVIGATION = "2.3.5"
+        const val NAVIGATION = "2.5.3"
     }
 
     object Square {

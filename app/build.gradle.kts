@@ -8,6 +8,7 @@ plugins {
 }
 
 android {
+    namespace = AndroidConfig.APPLICATION_ID
     compileSdk = AndroidConfig.SDK_COMPILER
     buildToolsVersion = AndroidConfig.BUILD_TOOLS
 
@@ -28,7 +29,7 @@ android {
         getByName("debug") {
             isDebuggable = true
             isMinifyEnabled = false
-            isTestCoverageEnabled = true
+            enableUnitTestCoverage = true
         }
         getByName("release") {
             isMinifyEnabled = true

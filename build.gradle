@@ -35,6 +35,10 @@ allprojects {
     }
 }
 
+/**
+ * FIXME create a plugin and configure in all modules
+ * https://github.com/jonathanarodr/playmovie/issues/28
+ */
 subprojects {
     afterEvaluate {
         if (!project.hasProperty("android")) return
