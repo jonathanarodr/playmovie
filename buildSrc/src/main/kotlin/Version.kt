@@ -5,19 +5,26 @@ class Version {
     }
 
     object Kotlin {
-        const val CORE = "1.7.0"
+        const val CORE = "1.7.20"
         const val COROUTINES = "1.6.0"
     }
 
     object Jetpack {
         const val CORE = "1.7.0"
         const val APPCOMPAT = "1.4.0"
+        const val ACTIVITY_COMPOSE = "1.5.1"
         const val RECYCLER = "1.2.1"
         const val CONSTRAINT = "2.1.2"
         const val SWIPE_REFRESH = "1.1.0"
-        const val LIFECYCLE = "2.4.0"
+        const val LIFECYCLE = "2.5.1"
         const val ROOM = "2.4.2"
         const val NAVIGATION = "2.5.3"
+    }
+
+    object Compose {
+        const val CORE = "2022.10.00"
+        const val COMPILER = "1.3.2"
+        const val ACCOMPANIST = "0.27.0"
     }
 
     object Square {
