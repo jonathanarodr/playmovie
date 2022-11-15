@@ -13,6 +13,12 @@ plugins {
 
 android {
     namespace = "br.com.jonathanarodr.playmovie.feature"
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Version.Compose.COMPILER
+    }
 }
 
 dependencies {

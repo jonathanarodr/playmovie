@@ -1,3 +1,4 @@
+@Suppress("MaxLineLength")
 object LibraryDependency {
 
     const val GRADLE_TOOLS = "com.android.tools.build:gradle:${Version.Gradle.CORE}"
@@ -52,5 +53,6 @@ object LibraryDependency {
     const val TIMBER = "com.jakewharton.timber:timber:${Version.Tools.TIMBER}"
     const val KOIN = "io.insert-koin:koin-android:${Version.Tools.KOIN}"
 
-    const val COIL = "io.coil-kt:coil:${Version.Tools.COIL}"
+    const val COIL_CORE = "io.coil-kt:coil:${Version.Tools.COIL}"
+    const val COIL_COMPOSE = "io.coil-kt:coil-compose:${Version.Tools.COIL}"
 }
