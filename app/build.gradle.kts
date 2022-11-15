@@ -49,6 +49,16 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    packagingOptions {
+        resources.excludes += setOf(
+            "META-INF/LICENSE*",
+            "META-INF/NOTICE",
+            "META-INF/*.kotlin_module",
+            "META-INF/AL2.0",
+            "META-INF/LGPL2.1",
+            "DebugProbesKt.bin",
+        )
+    }
     testOptions {
         execution = "ANDROIDX_TEST_ORCHESTRATOR"
         animationsDisabled = true

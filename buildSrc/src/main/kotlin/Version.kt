@@ -17,7 +17,7 @@ class Version {
         const val CONSTRAINT = "2.1.2"
         const val SWIPE_REFRESH = "1.1.0"
         const val LIFECYCLE = "2.5.1"
-        const val ROOM = "2.4.2"
+        const val ROOM = "2.4.3"
         const val NAVIGATION = "2.5.3"
     }
 
@@ -52,7 +52,7 @@ class Version {
         const val JUNIT_EXT = "1.1.3"
         const val TRUTH = "1.1.3"
         const val TRUTH_EXT = "1.4.0"
-        const val MOCKK = "1.12.1"
+        const val MOCKK = "1.13.2"
         const val ARCH = "1.6.0"
         const val ORCHESTRATOR = "1.4.0"
         const val RUNNER = "1.4.0"

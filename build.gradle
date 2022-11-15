@@ -70,6 +70,14 @@ subprojects {
             buildFeatures {
                 viewBinding = true
             }
+            packagingOptions {
+                exclude "META-INF/LICENSE*"
+                exclude "META-INF/NOTICE"
+                exclude "META-INF/*.kotlin_module"
+                exclude "META-INF/AL2.0"
+                exclude "META-INF/LGPL2.1"
+                exclude "DebugProbesKt.bin"
+            }
         }
     }
 }
