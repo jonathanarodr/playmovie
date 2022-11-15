@@ -1,3 +1,4 @@
+@Suppress("MaxLineLength")
 object LibraryDependency {
 
     const val GRADLE_TOOLS = "com.android.tools.build:gradle:${Version.Gradle.CORE}"
@@ -10,14 +11,25 @@ object LibraryDependency {
 
     const val ANDROIDX_CORE = "androidx.core:core-ktx:${Version.Jetpack.CORE}"
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Version.Jetpack.APPCOMPAT}"
+    const val ANDROIDX_ACTIVITY_COMPOSE = "androidx.activity:activity-compose:${Version.Jetpack.ACTIVITY_COMPOSE}"
     const val ANDROIDX_RECYCLER = "androidx.recyclerview:recyclerview:${Version.Jetpack.RECYCLER}"
     const val ANDROIDX_CONSTRAINT = "androidx.constraintlayout:constraintlayout:${Version.Jetpack.CONSTRAINT}"
     const val ANDROIDX_SWIPE_REFRESH = "androidx.swiperefreshlayout:swiperefreshlayout:${Version.Jetpack.SWIPE_REFRESH}"
 
     const val LIFECYCLE_VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.Jetpack.LIFECYCLE}"
+    const val LIFECYCLE_COMPOSE = "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.Jetpack.LIFECYCLE}"
     const val LIFECYCLE_LIVEDATA = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.Jetpack.LIFECYCLE}"
     const val LIFECYCLE_RUNTIME = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.Jetpack.LIFECYCLE}"
     const val LIFECYCLE_COMMON = "androidx.lifecycle:lifecycle-common-java8:${Version.Jetpack.LIFECYCLE}"
+
+    const val COMPOSE_BOM = "androidx.compose:compose-bom:${Version.Compose.CORE}"
+    const val COMPOSE_RUNTIME = "androidx.compose.runtime:runtime"
+    const val COMPOSE_LIVEDATA = "androidx.compose.runtime:runtime-livedata"
+    const val COMPOSE_UI = "androidx.compose.ui:ui"
+    const val COMPOSE_PREVIEW = "androidx.compose.ui:ui-tooling-preview"
+    const val COMPOSE_TOOLING = "androidx.compose.ui:ui-tooling"
+    const val COMPOSE_FOUNDATION = "androidx.compose.foundation:foundation"
+    const val COMPOSE_MATERIAL3 = "androidx.compose.material3:material3"
 
     const val ROOM_CORE = "androidx.room:room-ktx:${Version.Jetpack.ROOM}"
     const val ROOM_RUNTIME = "androidx.room:room-runtime:${Version.Jetpack.ROOM}"
@@ -41,5 +53,6 @@ object LibraryDependency {
     const val TIMBER = "com.jakewharton.timber:timber:${Version.Tools.TIMBER}"
     const val KOIN = "io.insert-koin:koin-android:${Version.Tools.KOIN}"
 
-    const val COIL = "io.coil-kt:coil:${Version.Tools.COIL}"
+    const val COIL_CORE = "io.coil-kt:coil:${Version.Tools.COIL}"
+    const val COIL_COMPOSE = "io.coil-kt:coil-compose:${Version.Tools.COIL}"
 }

@@ -3,6 +3,10 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+android {
+    namespace = "br.com.jonathanarodr.playmovie.core.testing"
+}
+
 dependencies {
     implementation(LibraryDependency.LIFECYCLE_LIVEDATA)
 

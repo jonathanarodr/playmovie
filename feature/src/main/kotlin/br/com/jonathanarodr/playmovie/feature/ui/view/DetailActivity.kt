@@ -14,6 +14,7 @@ import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_SIZE_D
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_SIZE_HIGH
 import br.com.jonathanarodr.playmovie.common.utils.ImageSize
 import br.com.jonathanarodr.playmovie.common.utils.format
+import br.com.jonathanarodr.playmovie.common.utils.getParcelableExtraCompat
 import br.com.jonathanarodr.playmovie.feature.R
 import br.com.jonathanarodr.playmovie.feature.databinding.ActivityDetailBinding
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
@@ -102,7 +103,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getExtra(): Movie {
-        return requireNotNull(intent.extras?.getParcelable(ARG_MOVIE))
+        return requireNotNull(intent.getParcelableExtraCompat(ARG_MOVIE))
     }
 
     private fun AppCompatImageView.loadImage(image: String?, size: ImageSize) {
