@@ -2,17 +2,29 @@ package br.com.jonathanarodr.playmovie.feature.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.jonathanarodr.playmovie.common.base.ViewModelState
 import br.com.jonathanarodr.playmovie.common.states.UiState
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
 import br.com.jonathanarodr.playmovie.feature.domain.usecase.MovieUseCase
+import br.com.jonathanarodr.playmovie.feature.ui.states.MovieUiEvent
+import br.com.jonathanarodr.playmovie.feature.ui.states.MovieUiState
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class MovieViewModel(
+    override val uiState: StateFlow<MovieUiState>,
     private val movieUseCase: MovieUseCase,
-) : ViewModel() {
+) : ViewModelState<MovieUiState, MovieUiEvent>() {
+
+    override fun dispatchUiEvent(uiEvent: MovieUiEvent) {
+        when (uiEvent) {
+            is MovieUiEvent.Init -> {}
+            is MovieUiEvent.PullToRefresh -> {}
+            is MovieUiEvent.OpenMovieDetail -> {}
+        }
+    }
 
     private val _fetchMovies = MutableLiveData<UiState<List<Movie>>>()
     val fetchMovies: LiveData<UiState<List<Movie>>> = _fetchMovies
