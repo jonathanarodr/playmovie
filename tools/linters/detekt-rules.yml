@@ -348,6 +348,8 @@ formatting:
     autoCorrect: true
   NoWildcardImports:
     active: true
+    severity: error
+    packagesToUseImportOnDemandProperty: 'kotlinx.android.synthetic.**'
   PackageName:
     active: true
     autoCorrect: true
@@ -779,7 +781,7 @@ style:
     active: true
   WildcardImport:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/sharedTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+    excludes: ['**/test/**', '**/androidTest/**', '**/sharedTest/**']
     excludeImports:
-#      - 'java.util.*'
-#      - 'kotlinx.android.synthetic.*'
+      - 'java.util.*'
+      - 'kotlin.test.*'
