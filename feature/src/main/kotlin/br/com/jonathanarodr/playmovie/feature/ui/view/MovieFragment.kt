@@ -23,7 +23,7 @@ import timber.log.Timber
 class MovieFragment : Fragment(), MovieOnClickHandler, SwipeRefreshLayout.OnRefreshListener {
 
     private var _binding: FragmentMovieBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = requireNotNull(_binding)
     private val viewModel: MovieViewModel by viewModel()
     private val args: MovieFragmentArgs by navArgs()
     private val movieAdapter: MovieAdapter by lazy { MovieAdapter(this) }
@@ -68,9 +68,7 @@ class MovieFragment : Fragment(), MovieOnClickHandler, SwipeRefreshLayout.OnRefr
         binding.apply {
             moviesRefresh.setOnRefreshListener(this@MovieFragment)
             moviesToolbar.setTitle(args.movieTitle)
-            moviesList.apply {
-                adapter = movieAdapter
-            }
+            moviesList.adapter = movieAdapter
         }
     }
 

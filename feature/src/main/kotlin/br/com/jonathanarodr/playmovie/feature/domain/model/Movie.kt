@@ -28,8 +28,8 @@ fun Movie.toMovieEntity() = MovieEntity(
     id = this.id,
     title = this.title,
     overview = this.overview,
-    poster = this.poster ?: "",
-    backdrop = this.backdrop ?: "",
+    poster = this.poster.orEmpty(),
+    backdrop = this.backdrop.orEmpty(),
     average = this.average,
     releaseDate = this.releaseDate,
 )
