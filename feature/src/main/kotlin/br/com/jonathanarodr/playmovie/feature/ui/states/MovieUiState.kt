@@ -1,5 +1,6 @@
 package br.com.jonathanarodr.playmovie.feature.ui.states
 
+import br.com.jonathanarodr.playmovie.common.exception.ResultException
 import br.com.jonathanarodr.playmovie.feature.ui.model.MovieUiModel
 
 sealed interface MovieUiState {
@@ -10,5 +11,5 @@ sealed interface MovieUiState {
 
     object Loading : MovieUiState
 
-    data class Error(val cause: Throwable) : MovieUiState
+    data class Error(val error: ResultException) : MovieUiState
 }

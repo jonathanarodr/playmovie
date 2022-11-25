@@ -1,5 +1,6 @@
 package br.com.jonathanarodr.playmovie.common.exception
 
+import coil.network.HttpException
 import okhttp3.internal.http2.ConnectionShutdownException
 import java.net.ConnectException
 import java.net.UnknownHostException
@@ -10,12 +11,12 @@ open class PlayMovieException(
 ) : Exception(message, cause)
 
 class ResultException(
-    errorType: ResultError = ResultError.UNKNOWN,
-    message: String,
+    val errorType: ResultError = ResultError.UNKNOWN,
+    message: String,//fixme
     cause: Throwable,
 ) : PlayMovieException(message, cause) {
 
-    var errorType: ResultError = errorType
+    var error: ResultError = errorType
         private set
 
     enum class ResultError {
@@ -30,4 +31,8 @@ fun Throwable.isConnectionError(): Boolean {
     return this is ConnectException ||
         this is ConnectionShutdownException ||
         this is UnknownHostException
+}
+
+fun Throwable.isRequestHttpError(): Boolean {
+    return this is HttpException
 }

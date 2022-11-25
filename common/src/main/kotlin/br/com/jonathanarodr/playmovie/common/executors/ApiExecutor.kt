@@ -2,6 +2,7 @@ package br.com.jonathanarodr.playmovie.common.executors
 
 import br.com.jonathanarodr.playmovie.common.exception.ResultException
 import br.com.jonathanarodr.playmovie.common.exception.isConnectionError
+import br.com.jonathanarodr.playmovie.common.exception.isRequestHttpError
 import kotlinx.coroutines.Dispatchers
 
 open class ApiExecutor : CoroutinesExecutor(Dispatchers.IO) {
@@ -26,11 +27,19 @@ open class ApiExecutor : CoroutinesExecutor(Dispatchers.IO) {
                     cause = exception,
                 )
             )
-        } else {
+        } else if (exception.isRequestHttpError()) {
             Result.failure(
                 ResultException(
                     errorType = ResultException.ResultError.REQUEST_NETWORK,
                     message = "Unable to execute api call",
+                    cause = exception,
+                )
+            )
+        } else {
+            Result.failure(
+                ResultException(
+                    errorType = ResultException.ResultError.UNKNOWN,
+                    message = "Unknown error when executing api call",
                     cause = exception,
                 )
             )
