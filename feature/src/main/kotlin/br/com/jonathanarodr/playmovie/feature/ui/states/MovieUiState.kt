@@ -11,5 +11,5 @@ sealed interface MovieUiState {
 
     object Loading : MovieUiState
 
-    data class Error(val error: ResultException) : MovieUiState
+    data class Error(val exception: ResultException) : MovieUiState
 }

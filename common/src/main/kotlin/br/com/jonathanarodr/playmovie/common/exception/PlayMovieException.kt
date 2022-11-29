@@ -12,12 +12,9 @@ open class PlayMovieException(
 
 class ResultException(
     val errorType: ResultError = ResultError.UNKNOWN,
-    message: String,//fixme
+    message: String,
     cause: Throwable,
 ) : PlayMovieException(message, cause) {
-
-    var error: ResultError = errorType
-        private set
 
     enum class ResultError {
         UNKNOWN,

@@ -19,30 +19,34 @@ open class ApiExecutor : CoroutinesExecutor(Dispatchers.IO) {
     }
 
     private fun <T> onFailure(exception: Throwable): Result<T> {
-        return if (exception.isConnectionError()) {
-            Result.failure(
-                ResultException(
-                    errorType = ResultException.ResultError.UNAVAILABLE_NETWORK,
-                    message = "Unavailable connection to execute request",
-                    cause = exception,
+        return when {
+            exception.isConnectionError() -> {
+                Result.failure(
+                    ResultException(
+                        errorType = ResultException.ResultError.UNAVAILABLE_NETWORK,
+                        message = "Unavailable connection to execute request",
+                        cause = exception,
+                    )
                 )
-            )
-        } else if (exception.isRequestHttpError()) {
-            Result.failure(
-                ResultException(
-                    errorType = ResultException.ResultError.REQUEST_NETWORK,
-                    message = "Unable to execute api call",
-                    cause = exception,
+            }
+            exception.isRequestHttpError() -> {
+                Result.failure(
+                    ResultException(
+                        errorType = ResultException.ResultError.REQUEST_NETWORK,
+                        message = "Unable to execute api call",
+                        cause = exception,
+                    )
                 )
-            )
-        } else {
-            Result.failure(
-                ResultException(
-                    errorType = ResultException.ResultError.UNKNOWN,
-                    message = "Unknown error when executing api call",
-                    cause = exception,
+            }
+            else -> {
+                Result.failure(
+                    ResultException(
+                        errorType = ResultException.ResultError.UNKNOWN,
+                        message = "Unknown error when executing api call",
+                        cause = exception,
+                    )
                 )
-            )
+            }
         }
     }
 }
