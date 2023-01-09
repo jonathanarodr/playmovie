@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "Running detekt check..."
+
+git_root=$(git rev-parse --show-toplevel 2> /dev/null)
+
+cd "$git_root" || exit
+
+./gradlew detekt "$@"
+
+exit_code=$?
+
+if [[ $exit_code -ne 0 ]]; then
+    echo "Detekt failed, please fix the above issues before commiting"
+fi
+
+exit $exit_code

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DetektPluginSettings">
+    <option name="configurationFilePaths">
+      <set>
+        <option value="$PROJECT_DIR$/tools/linters/detekt-rules.yml" />
+      </set>
+    </option>
+    <option name="enableDetekt" value="true" />
+    <option name="treatAsErrors" value="true" />
+    <option name="buildUponDefaultConfig" value="true" />
+  </component>
+</project>
