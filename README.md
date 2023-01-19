@@ -29,8 +29,8 @@ const val AUTHORIZATION = "abc1.def2.ghi3"
 
 ## Screenshots
 
-![List of movies](screenshots/screen_movies.png "A list of popular movies")
-![Movie details](screenshots/screen_detail.png "Details about the movie")
+![List of movies](.screenshots/screen_movies.png "A list of popular movies")
+![Movie details](.screenshots/screen_detail.png "Details about the movie")
 
 ## Libraries
 
