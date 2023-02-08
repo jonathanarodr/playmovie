@@ -7,7 +7,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath(LibraryDependency.GRADLE_TOOLS)
+        classpath(LibraryDependency.GRADLE_PLUGIN)
         classpath(LibraryDependency.KOTLIN_PLUGIN)
         classpath(LibraryDependency.NAVIGATION_SAFE_ARGS)
         classpath(LintDependency.DETEKT_PLUGIN)

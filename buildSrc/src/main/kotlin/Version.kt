@@ -1,10 +1,12 @@
 class Version {
 
     object Gradle {
-        const val CORE = "7.4.1"
+        //also change in gradle-build
+        const val ANDROID_PLUGIN = "7.4.1"
     }
 
     object Kotlin {
+        //also change in gradle-build
         const val CORE = "1.7.20"
         const val COROUTINES = "1.6.0"
     }

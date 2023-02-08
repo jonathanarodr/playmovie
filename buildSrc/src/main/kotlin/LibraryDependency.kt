@@ -1,7 +1,7 @@
 @Suppress("MaxLineLength")
 object LibraryDependency {
 
-    const val GRADLE_TOOLS = "com.android.tools.build:gradle:${Version.Gradle.CORE}"
+    const val GRADLE_PLUGIN = "com.android.tools.build:gradle:${Version.Gradle.ANDROID_PLUGIN}"
 
     const val KOTLIN_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.Kotlin.CORE}"
 
