@@ -2,8 +2,27 @@ package br.com.jonathanarodr.playmovie.gradlebuild.convention
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
-internal fun Project.configureTestConvention(
+internal fun Project.configureUnitTestConvention(
+    extension: CommonExtension<*, *, *, *>,
+) {
+    extension.apply {
+        testOptions {
+            unitTests.apply {
+                isReturnDefaultValues = true
+                isIncludeAndroidResources = true
+                all { test ->
+                    test.testLogging {
+                        exceptionFormat = TestExceptionFormat.FULL
+                    }
+                }
+            }
+        }
+    }
+}
+
+internal fun Project.configureAndroidTestConvention(
     extension: CommonExtension<*, *, *, *>,
 ) {
     extension.apply {
@@ -17,6 +36,11 @@ internal fun Project.configureTestConvention(
             unitTests.apply {
                 isReturnDefaultValues = true
                 isIncludeAndroidResources = true
+                all { test ->
+                    test.testLogging {
+                        exceptionFormat = TestExceptionFormat.FULL
+                    }
+                }
             }
         }
     }
