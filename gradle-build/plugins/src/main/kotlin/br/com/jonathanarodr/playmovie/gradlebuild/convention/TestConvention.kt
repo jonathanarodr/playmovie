@@ -1,10 +1,12 @@
 package br.com.jonathanarodr.playmovie.gradlebuild.convention
 
-import br.com.jonathanarodr.playmovie.gradlebuild.android
+import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
 
-internal fun Project.configureTestConvention() {
-    android {
+internal fun Project.configureTestConvention(
+    extension: CommonExtension<*, *, *, *>,
+) {
+    extension.apply {
         defaultConfig {
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
             testInstrumentationRunnerArguments["clearPackageData"] = "true"
