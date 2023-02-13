@@ -25,7 +25,6 @@ internal fun Project.configureDeviceManagerConvention(
     commonExtension: CommonExtension<*, *, *, *>,
 ) {
     val deviceConfigs = listOf(
-        DeviceConfig("Pixel 4", AndroidConfig.SDK_MINIMUM, "aosp-atd"),
         DeviceConfig("Pixel 6", AndroidConfig.SDK_TARGET, "aosp-atd"),
     )
 
