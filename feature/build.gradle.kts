@@ -5,10 +5,9 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("com.google.devtools.ksp") version "1.7.20-1.0.7"
+    id("com.google.devtools.ksp")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
-    id("org.jetbrains.kotlinx.kover") version "0.5.0"
 }
 
 android {

@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("org.jetbrains.kotlinx.kover") version "0.5.0"
 }
 
 android {
