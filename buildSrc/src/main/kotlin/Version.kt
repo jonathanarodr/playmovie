@@ -8,6 +8,7 @@ class Version {
     object Kotlin {
         //also change in gradle-build
         const val CORE = "1.7.20"
+        const val KSP = "1.7.20-1.0.7"
         const val COROUTINES = "1.6.0"
     }
 
