@@ -40,6 +40,10 @@ internal fun Project.configureAndroidTestConvention(
                     test.testLogging {
                         exceptionFormat = TestExceptionFormat.FULL
                     }
+                    //https://github.com/robolectric/robolectric/issues/3023
+                    test.jvmArgs.addAll(
+                        listOf("-ea", "-noverify")
+                    )
                 }
             }
         }
