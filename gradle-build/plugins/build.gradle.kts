@@ -27,6 +27,10 @@ gradlePlugin {
             id = "playmovie.android.library"
             implementationClass = "br.com.jonathanarodr.playmovie.gradlebuild.plugins.AndroidLibraryPlugin"
         }
+        register("android-library-compose") {
+            id = "playmovie.android.library.compose"
+            implementationClass = "br.com.jonathanarodr.playmovie.gradlebuild.plugins.AndroidComposePlugin"
+        }
         register("kotlin-library") {
             id = "playmovie.kotlin.library"
             implementationClass = "br.com.jonathanarodr.playmovie.gradlebuild.plugins.KotlinLibraryPlugin"

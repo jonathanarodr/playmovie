@@ -49,6 +49,9 @@ fun DependencyHandlerScope.androidTestImplementation(dependencyNotation: Any): D
 fun DependencyHandlerScope.api(dependencyNotation: Any): Dependency? =
     add("api", dependencyNotation)
 
+fun DependencyHandlerScope.debugApi(dependencyNotation: Any): Dependency? =
+    add("debugApi", dependencyNotation)
+
 fun DependencyHandlerScope.ksp(dependencyNotation: Any): Dependency? =
     add("ksp", dependencyNotation)
 

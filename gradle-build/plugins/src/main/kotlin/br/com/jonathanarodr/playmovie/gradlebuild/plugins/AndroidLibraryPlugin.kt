@@ -3,7 +3,6 @@ package br.com.jonathanarodr.playmovie.gradlebuild.plugins
 import br.com.jonathanarodr.playmovie.gradlebuild.apply
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureAndroidLibraryConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureAndroidTestConvention
-import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureComposeConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureDeviceManagerConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureKotlinConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureSourceConvention
@@ -29,7 +28,6 @@ class AndroidLibraryPlugin : Plugin<Project> {
                 configureKotlinConvention(this)
                 configureUnitTestConvention(this)
                 configureAndroidTestConvention(this)
-                configureComposeConvention(this)
                 configureDeviceManagerConvention(this)
             }
             extensions.configure<LibraryAndroidComponentsExtension> {
