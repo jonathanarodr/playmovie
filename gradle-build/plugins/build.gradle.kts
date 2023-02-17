@@ -39,5 +39,13 @@ gradlePlugin {
             id = "playmovie.codecoverage"
             implementationClass = "br.com.jonathanarodr.playmovie.gradlebuild.plugins.CodeCoveragePlugin"
         }
+        register("module-kotlin") {
+            id = "playmovie.module.kotlin"
+            implementationClass = "br.com.jonathanarodr.playmovie.gradlebuild.plugins.KotlinModulePlugin"
+        }
+        register("module-android") {
+            id = "playmovie.module.android"
+            implementationClass = "br.com.jonathanarodr.playmovie.gradlebuild.plugins.AndroidModulePlugin"
+        }
     }
 }
