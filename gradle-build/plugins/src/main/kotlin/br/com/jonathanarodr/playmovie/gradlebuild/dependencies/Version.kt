@@ -9,7 +9,8 @@ class Version {
 
     object Kotlin {
         //also change in gradle-build
-        const val CORE = "1.7.20"
+        const val CORE = "1.7.21"
+        const val KSP = "1.7.21-1.0.8"
         const val COROUTINES = "1.6.0"
     }
 
@@ -51,7 +52,7 @@ class Version {
     }
 
     object Test {
-        const val KOVER = "0.4.2"
+        const val KOVER = "0.6.1"
         const val JUNIT = "4.13.2"
         const val JUNIT_EXT = "1.1.3"
         const val TRUTH = "1.1.3"
