@@ -23,7 +23,6 @@ class AndroidLibraryPlugin : Plugin<Project> {
                 "kotlin-android",
                 "kotlin-parcelize",
                 "com.google.devtools.ksp",
-//                "androidx.navigation.safeargs.kotlin",
             )
             extensions.configure<LibraryExtension> {
                 configureAndroidLibraryConvention(this)
