@@ -1,23 +1,10 @@
-/**
- * FIXME create a plugin and configure in all modules
- * https://github.com/jonathanarodr/playmovie/issues/28
- */
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
-    id("com.google.devtools.ksp")
-    id("kotlin-parcelize")
-    id("androidx.navigation.safeargs.kotlin")
+    id("playmovie.android.module")
+    id("playmovie.android.compose")
 }
 
 android {
     namespace = "br.com.jonathanarodr.playmovie.feature"
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = Version.Compose.COMPILER
-    }
 }
 
 dependencies {

@@ -27,8 +27,8 @@ gradlePlugin {
             id = "playmovie.android.library"
             implementationClass = "br.com.jonathanarodr.playmovie.gradlebuild.plugins.AndroidLibraryPlugin"
         }
-        register("android-library-compose") {
-            id = "playmovie.android.library.compose"
+        register("android-compose") {
+            id = "playmovie.android.compose"
             implementationClass = "br.com.jonathanarodr.playmovie.gradlebuild.plugins.AndroidComposePlugin"
         }
         register("kotlin-library") {
@@ -43,12 +43,12 @@ gradlePlugin {
             id = "playmovie.codecoverage"
             implementationClass = "br.com.jonathanarodr.playmovie.gradlebuild.plugins.CodeCoveragePlugin"
         }
-        register("module-kotlin") {
-            id = "playmovie.module.kotlin"
+        register("kotlin-module") {
+            id = "playmovie.kotlin.module"
             implementationClass = "br.com.jonathanarodr.playmovie.gradlebuild.plugins.KotlinModulePlugin"
         }
-        register("module-android") {
-            id = "playmovie.module.android"
+        register("android-module") {
+            id = "playmovie.android.module"
             implementationClass = "br.com.jonathanarodr.playmovie.gradlebuild.plugins.AndroidModulePlugin"
         }
     }
