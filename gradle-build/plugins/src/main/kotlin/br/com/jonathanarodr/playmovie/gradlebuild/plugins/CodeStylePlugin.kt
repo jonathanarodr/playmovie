@@ -23,7 +23,7 @@ class CodeStylePlugin : Plugin<Project> {
                 config = files("${project.rootDir}/tools/linters/detekt-rules.yml")
                 allRules = false
                 parallel = true
-                ignoreFailures = true
+                ignoredBuildTypes = listOf("release")
             }
             tasks.withType<Detekt>().configureEach {
                 jvmTarget = platformConfig.javaVersion.toString()
