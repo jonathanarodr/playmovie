@@ -4,6 +4,7 @@ import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.variant.AndroidComponentsExtension
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.Project
+import org.gradle.api.artifacts.Dependency
 import org.gradle.api.plugins.ExtensionAware
 import org.gradle.api.plugins.PluginManager
 import org.gradle.kotlin.dsl.DependencyHandlerScope
@@ -36,11 +37,20 @@ fun PluginManager.apply(vararg plugins: String) {
     }
 }
 
-fun DependencyHandlerScope.implementation(dependencyNotation: Any) =
+fun DependencyHandlerScope.implementation(dependencyNotation: Any): Dependency? =
     add("implementation", dependencyNotation)
 
-fun DependencyHandlerScope.ksp(dependencyNotation: Any) =
+fun DependencyHandlerScope.testImplementation(dependencyNotation: Any): Dependency? =
+    add("testImplementation", dependencyNotation)
+
+fun DependencyHandlerScope.androidTestImplementation(dependencyNotation: Any): Dependency? =
+    add("androidTestImplementation", dependencyNotation)
+
+fun DependencyHandlerScope.api(dependencyNotation: Any): Dependency? =
+    add("api", dependencyNotation)
+
+fun DependencyHandlerScope.ksp(dependencyNotation: Any): Dependency? =
     add("ksp", dependencyNotation)
 
-fun DependencyHandlerScope.detektPlugins(dependencyNotation: Any) =
+fun DependencyHandlerScope.detektPlugins(dependencyNotation: Any): Dependency? =
     add("detektPlugins", dependencyNotation)
