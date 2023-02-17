@@ -6,6 +6,7 @@ import com.android.build.gradle.BaseExtension
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
 import org.gradle.api.plugins.PluginManager
+import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 @Suppress("UNCHECKED_CAST")
@@ -34,3 +35,12 @@ fun PluginManager.apply(vararg plugins: String) {
         apply(it)
     }
 }
+
+fun DependencyHandlerScope.implementation(dependencyNotation: Any) =
+    add("implementation", dependencyNotation)
+
+fun DependencyHandlerScope.ksp(dependencyNotation: Any) =
+    add("ksp", dependencyNotation)
+
+fun DependencyHandlerScope.detektPlugins(dependencyNotation: Any) =
+    add("detektPlugins", dependencyNotation)
