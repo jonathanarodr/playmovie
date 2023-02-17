@@ -18,3 +18,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version Version.Lint.DETEKT apply false
     id("androidx.navigation.safeargs.kotlin") version Version.Jetpack.NAVIGATION apply false
 }
+
+tasks.register("clean", Delete::class) {
+    delete(rootProject.buildDir)
+}
