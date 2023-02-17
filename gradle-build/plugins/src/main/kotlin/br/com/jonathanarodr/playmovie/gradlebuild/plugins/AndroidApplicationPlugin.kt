@@ -22,7 +22,8 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 "com.android.application",
                 "kotlin-android",
                 "kotlin-parcelize",
-                "androidx.navigation.safeargs.kotlin",
+                "playmovie.codestyle",
+                "playmovie.codecoverage",
             )
             extensions.configure<ApplicationExtension> {
                 configureAndroidAppicationConvention(this)
