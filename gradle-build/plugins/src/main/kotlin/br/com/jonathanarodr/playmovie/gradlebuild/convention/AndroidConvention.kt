@@ -14,10 +14,14 @@ internal fun Project.configureAndroidAppicationConvention(
         buildToolsVersion = AndroidConfig.BUILD_TOOLS
 
         defaultConfig {
+            applicationId = AndroidConfig.APPLICATION_ID
+
             versionCode = AndroidConfig.VERSION_CODE
             versionName = AndroidConfig.VERSION_NAME
+
             minSdk = AndroidConfig.SDK_MINIMUM
             targetSdk = AndroidConfig.SDK_TARGET
+
             vectorDrawables.useSupportLibrary = true
         }
 
