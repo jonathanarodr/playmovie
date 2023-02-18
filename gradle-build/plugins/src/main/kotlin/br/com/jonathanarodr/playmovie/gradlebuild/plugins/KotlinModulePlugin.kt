@@ -1,6 +1,7 @@
 package br.com.jonathanarodr.playmovie.gradlebuild.plugins
 
 import br.com.jonathanarodr.playmovie.gradlebuild.apply
+import br.com.jonathanarodr.playmovie.gradlebuild.config.Modules
 import br.com.jonathanarodr.playmovie.gradlebuild.dependencies.LibraryDependency
 import br.com.jonathanarodr.playmovie.gradlebuild.dependencies.TestDependency
 import br.com.jonathanarodr.playmovie.gradlebuild.implementation
@@ -24,6 +25,8 @@ class KotlinModulePlugin : Plugin<Project> {
                 implementation(LibraryDependency.GSON)
 
                 implementation(LibraryDependency.COROUTINES_CORE)
+
+                testImplementation(project(Modules.TESTING))
 
                 testImplementation(TestDependency.JUNIT)
                 testImplementation(TestDependency.JUNIT_EXT)

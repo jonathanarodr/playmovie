@@ -1,12 +1,12 @@
 class Version {
 
     object Gradle {
-        //also change in gradle-build
+        // also change in gradle-build
         const val ANDROID_PLUGIN = "7.4.1"
     }
 
     object Kotlin {
-        //also change in gradle-build
+        // also change in gradle-build
         const val CORE = "1.7.21"
         const val KSP = "1.7.21-1.0.8"
         const val COROUTINES = "1.6.0"
@@ -55,7 +55,7 @@ class Version {
         const val JUNIT_EXT = "1.1.3"
         const val TRUTH = "1.1.3"
         const val TRUTH_EXT = "1.4.0"
-        const val MOCKK = "1.12.1"
+        const val MOCKK = "1.13.4"
         const val ARCH = "1.6.0"
         const val ORCHESTRATOR = "1.4.0"
         const val RUNNER = "1.4.0"

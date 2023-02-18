@@ -3,9 +3,11 @@ package br.com.jonathanarodr.playmovie.gradlebuild.plugins
 import br.com.jonathanarodr.playmovie.gradlebuild.androidTestImplementation
 import br.com.jonathanarodr.playmovie.gradlebuild.androidTestUtil
 import br.com.jonathanarodr.playmovie.gradlebuild.apply
+import br.com.jonathanarodr.playmovie.gradlebuild.config.Modules
 import br.com.jonathanarodr.playmovie.gradlebuild.dependencies.LibraryDependency
 import br.com.jonathanarodr.playmovie.gradlebuild.dependencies.TestDependency
 import br.com.jonathanarodr.playmovie.gradlebuild.implementation
+import br.com.jonathanarodr.playmovie.gradlebuild.testImplementation
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
@@ -34,20 +36,10 @@ class AndroidModulePlugin : Plugin<Project> {
                 implementation(LibraryDependency.LIFECYCLE_RUNTIME)
                 implementation(LibraryDependency.LIFECYCLE_COMMON)
 
+                testImplementation(project(Modules.TESTING))
+                androidTestImplementation(project(Modules.TESTING))
+
                 androidTestUtil(TestDependency.ORCHESTRATOR)
-                androidTestImplementation(TestDependency.JUNIT)
-                androidTestImplementation(TestDependency.JUNIT_EXT)
-                androidTestImplementation(TestDependency.TRUTH_CORE)
-                androidTestImplementation(TestDependency.TRUTH_EXT)
-                androidTestImplementation(TestDependency.MOCKK_ANDROID)
-                androidTestImplementation(TestDependency.COROUTINES)
-                androidTestImplementation(TestDependency.ARCH)
-                androidTestImplementation(TestDependency.RUNNER)
-                androidTestImplementation(TestDependency.RULES)
-                androidTestImplementation(TestDependency.ROOM)
-                androidTestImplementation(TestDependency.ROBOLECTRIC_CORE)
-                androidTestImplementation(TestDependency.ROBOLECTRIC_ANNOTATIONS)
-                androidTestImplementation(TestDependency.ESPRESSO)
             }
         }
     }

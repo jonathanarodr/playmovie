@@ -25,6 +25,15 @@ internal fun Project.configureAndroidAppicationConvention(
             vectorDrawables.useSupportLibrary = true
         }
 
+        packagingOptions {
+            resources {
+                excludes.add("META-INF/*.kotlin_module")
+                excludes.add("META-INF/LICENSE**")
+                excludes.add("META-INF/AL2.0")
+                excludes.add("META-INF/LGPL2.1")
+            }
+        }
+
         buildFeatures.viewBinding = true
     }
 }
@@ -33,19 +42,28 @@ internal fun Project.configureAndroidLibraryConvention(
     extension: LibraryExtension,
 ) {
     extension.apply {
-       compileSdk = AndroidConfig.SDK_COMPILER
+        compileSdk = AndroidConfig.SDK_COMPILER
 
-       defaultConfig {
-           minSdk = AndroidConfig.SDK_MINIMUM
-           vectorDrawables.useSupportLibrary = true
-       }
+        defaultConfig {
+            minSdk = AndroidConfig.SDK_MINIMUM
+            vectorDrawables.useSupportLibrary = true
+        }
 
-       buildFeatures.viewBinding = true
-   }
+        packagingOptions {
+            resources {
+                excludes.add("META-INF/*.kotlin_module")
+                excludes.add("META-INF/LICENSE**")
+                excludes.add("META-INF/AL2.0")
+                excludes.add("META-INF/LGPL2.1")
+            }
+        }
+
+        buildFeatures.viewBinding = true
+    }
 }
 
 internal fun Project.configureSourceConvention(
-    extension: AndroidComponentsExtension<*, *, *>
+    extension: AndroidComponentsExtension<*, *, *>,
 ) {
     extension.registerSourceType(AndroidConfig.SOURCE_SHARED_TEST)
 }

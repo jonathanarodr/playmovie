@@ -57,7 +57,7 @@ class Version {
         const val JUNIT_EXT = "1.1.3"
         const val TRUTH = "1.1.3"
         const val TRUTH_EXT = "1.4.0"
-        const val MOCKK = "1.12.1"
+        const val MOCKK = "1.13.4"
         const val ARCH = "1.6.0"
         const val ORCHESTRATOR = "1.4.0"
         const val RUNNER = "1.4.0"
