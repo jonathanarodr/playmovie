@@ -3,12 +3,12 @@ package br.com.jonathanarodr.playmovie.gradlebuild.dependencies
 class Version {
 
     object Gradle {
-        //also change in gradle-build
+        // also change in gradle-build
         const val ANDROID_PLUGIN = "7.4.1"
     }
 
     object Kotlin {
-        //also change in gradle-build
+        // also change in gradle-build
         const val CORE = "1.7.21"
         const val KSP = "1.7.21-1.0.8"
         const val COROUTINES = "1.6.0"
@@ -28,14 +28,14 @@ class Version {
 
     object Compose {
         const val CORE = "2022.10.00"
-        const val COMPILER = "1.4.1"
+        const val COMPILER = "1.4.0"
         const val ACCOMPANIST = "0.27.0"
     }
 
     object Square {
         const val RETROFIT = "2.9.0"
         const val OKHTTP = "4.9.2"
-        const val LEAKCANARY = "2.7"
+        const val LEAKCANARY = "2.10"
     }
 
     object Tools {

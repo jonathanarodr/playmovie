@@ -14,8 +14,5 @@ dependencies {
     implementation(project(Modules.NETWORK))
     implementation(project(Modules.FEATURE))
 
-    implementation(LibraryDependency.KOIN)
-    implementation(LibraryDependency.TIMBER)
-
     debugImplementation(LibraryDependency.LEAKCANARY)
 }

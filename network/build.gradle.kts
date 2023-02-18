@@ -17,5 +17,4 @@ dependencies {
     implementation(platform(LibraryDependency.OKHTTP_BOM))
     implementation(LibraryDependency.OKHTTP_CORE)
     implementation(LibraryDependency.OKHTTP_LOGGING)
-    implementation(LibraryDependency.KOIN)
 }

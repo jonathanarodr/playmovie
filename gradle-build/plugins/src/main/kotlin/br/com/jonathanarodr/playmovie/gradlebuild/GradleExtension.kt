@@ -40,11 +40,17 @@ fun PluginManager.apply(vararg plugins: String) {
 fun DependencyHandlerScope.implementation(dependencyNotation: Any): Dependency? =
     add("implementation", dependencyNotation)
 
+fun DependencyHandlerScope.debugImplementation(dependencyNotation: Any): Dependency? =
+    add("debugImplementation", dependencyNotation)
+
 fun DependencyHandlerScope.testImplementation(dependencyNotation: Any): Dependency? =
     add("testImplementation", dependencyNotation)
 
 fun DependencyHandlerScope.androidTestImplementation(dependencyNotation: Any): Dependency? =
     add("androidTestImplementation", dependencyNotation)
+
+fun DependencyHandlerScope.androidTestUtil(dependencyNotation: Any): Dependency? =
+    add("androidTestUtil", dependencyNotation)
 
 fun DependencyHandlerScope.api(dependencyNotation: Any): Dependency? =
     add("api", dependencyNotation)

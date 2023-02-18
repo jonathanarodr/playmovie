@@ -7,8 +7,9 @@ android {
 }
 
 dependencies {
-    api(LibraryDependency.KOIN)
-    api(LibraryDependency.TIMBER)
+    implementation(platform(LibraryDependency.OKHTTP_BOM))
+    implementation(LibraryDependency.OKHTTP_CORE)
+    implementation(LibraryDependency.COIL_CORE)
 
     testImplementation(project(Modules.TESTING))
 }

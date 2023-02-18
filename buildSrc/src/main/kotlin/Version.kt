@@ -26,14 +26,14 @@ class Version {
 
     object Compose {
         const val CORE = "2022.10.00"
-        const val COMPILER = "1.4.1"
+        const val COMPILER = "1.4.0"
         const val ACCOMPANIST = "0.27.0"
     }
 
     object Square {
         const val RETROFIT = "2.9.0"
         const val OKHTTP = "4.9.2"
-        const val LEAKCANARY = "2.7"
+        const val LEAKCANARY = "2.10"
     }
 
     object Tools {

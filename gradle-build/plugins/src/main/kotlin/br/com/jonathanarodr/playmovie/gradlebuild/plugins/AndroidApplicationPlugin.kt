@@ -8,11 +8,14 @@ import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureBuildTypeC
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureKotlinConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureSourceConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureUnitTestConvention
+import br.com.jonathanarodr.playmovie.gradlebuild.dependencies.LibraryDependency
+import br.com.jonathanarodr.playmovie.gradlebuild.implementation
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 
 class AndroidApplicationPlugin : Plugin<Project> {
 
@@ -41,6 +44,10 @@ class AndroidApplicationPlugin : Plugin<Project> {
             }
             extensions.configure<ApplicationAndroidComponentsExtension> {
                 configureSourceConvention(this)
+            }
+            dependencies {
+                implementation(LibraryDependency.KOIN)
+                implementation(LibraryDependency.TIMBER)
             }
         }
     }
