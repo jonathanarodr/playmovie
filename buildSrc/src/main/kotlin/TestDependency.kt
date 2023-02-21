@@ -8,7 +8,8 @@ object TestDependency {
     const val TRUTH_CORE = "com.google.truth:truth:${Version.Test.TRUTH}"
     const val TRUTH_EXT = "androidx.test.ext:truth:${Version.Test.TRUTH_EXT}"
 
-    const val ARCH = "android.arch.core:core-testing:${Version.Jetpack.CORE}"
+    const val ARCH_CORE = "androidx.arch.core:core-testing:${Version.Test.ARCH_CORE}"
+    const val TEST_CORE = "androidx.test:core:${Version.Test.TEST_CORE}"
     const val ROOM = "androidx.room:room-testing:${Version.Jetpack.ROOM}"
     const val ORCHESTRATOR = "androidx.test:orchestrator:${Version.Test.ORCHESTRATOR}"
     const val RUNNER = "androidx.test:runner:${Version.Test.RUNNER}"
