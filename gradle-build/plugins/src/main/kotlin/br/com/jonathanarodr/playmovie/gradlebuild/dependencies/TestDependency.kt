@@ -1,3 +1,5 @@
+package br.com.jonathanarodr.playmovie.gradlebuild.dependencies
+
 object TestDependency {
 
     const val KOVER = "org.jetbrains.kotlinx:kover:${Version.Test.KOVER}"

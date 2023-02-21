@@ -1,6 +1,5 @@
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
+    id("playmovie.android.module")
 }
 
 android {
@@ -18,5 +17,4 @@ dependencies {
     implementation(platform(LibraryDependency.OKHTTP_BOM))
     implementation(LibraryDependency.OKHTTP_CORE)
     implementation(LibraryDependency.OKHTTP_LOGGING)
-    implementation(LibraryDependency.KOIN)
 }

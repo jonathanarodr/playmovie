@@ -1,3 +1,5 @@
+package br.com.jonathanarodr.playmovie.gradlebuild.dependencies
+
 @Suppress("MaxLineLength")
 object LibraryDependency {
 

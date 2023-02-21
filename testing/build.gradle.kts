@@ -1,6 +1,5 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id("playmovie.android.module")
 }
 
 android {
@@ -10,14 +9,13 @@ android {
 dependencies {
     implementation(LibraryDependency.LIFECYCLE_LIVEDATA)
 
-    androidTestUtil(TestDependency.ORCHESTRATOR)
-
     api(TestDependency.JUNIT)
     api(TestDependency.JUNIT_EXT)
     api(TestDependency.TRUTH_CORE)
     api(TestDependency.TRUTH_EXT)
     api(TestDependency.MOCKK)
     api(TestDependency.MOCKK_ANDROID)
+    api(TestDependency.MOCKK_AGENT)
     api(TestDependency.COROUTINES)
     api(TestDependency.ARCH)
     api(TestDependency.RUNNER)
