@@ -74,14 +74,20 @@ internal fun Project.configureBuildTypeConvention(
     extension.buildTypes {
         getByName("debug") {
             isDebuggable = true
-            isMinifyEnabled = false
             enableUnitTestCoverage = true
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
         getByName("release") {
+            isDebuggable = false
+            enableUnitTestCoverage = false
             isMinifyEnabled = true
             isShrinkResources = true
-            buildDir
             proguardFiles("proguard-rules.pro")
+            proguardFiles(
+                extension.getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }
