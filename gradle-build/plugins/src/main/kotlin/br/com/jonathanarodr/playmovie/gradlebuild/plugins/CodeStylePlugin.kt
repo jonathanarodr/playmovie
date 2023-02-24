@@ -1,17 +1,18 @@
 package br.com.jonathanarodr.playmovie.gradlebuild.plugins
 
 import br.com.jonathanarodr.playmovie.gradlebuild.config.PlatformConfig
-import br.com.jonathanarodr.playmovie.gradlebuild.dependencies.LintDependency
 import br.com.jonathanarodr.playmovie.gradlebuild.detektPlugins
+import br.com.jonathanarodr.playmovie.gradlebuild.libs
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.withType
 
+@Suppress("unused")
 class CodeStylePlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
@@ -31,8 +32,11 @@ class CodeStylePlugin : Plugin<Project> {
             tasks.withType<DetektCreateBaselineTask>().configureEach {
                 jvmTarget = platformConfig.javaVersion.toString()
             }
+
+            val libs = extensions.libs
+
             dependencies {
-                detektPlugins(LintDependency.DETEKT_FORMATTING)
+                detektPlugins(libs.findLibrary("detekt-formatting").get())
             }
         }
     }
