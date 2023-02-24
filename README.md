@@ -19,10 +19,10 @@ Playmovie utiliza como fonte de dados a API [api.themoviedb.org](https://api.the
 
 Acesse a sessão de API disponível no [thememoviedb](https://www.themoviedb.org/settings/api) e copie o token de leitura da API **(v4 auth)**.
 
-Após captura do token, acesse o arquivo `ServerConfig.kt` e configure a propriedade `AUTHORIZATION` informando sua chave de autorização:
+Após captura do token, acesse o arquivo `build.gradle.kts` do módulo `:network` e configure a propriedade `AUTHORIZATION_KEY` informando sua chave de autorização:
   
 ```kotlin
-const val AUTHORIZATION = "abc1.def2.ghi3"
+buildConfigField("String", "AUTHORIZATION_KEY", "abc1.def2.ghi3")
 ```
 
 > Para utilizar a API do thememoviedb, é necessário obter a chave de acesso *free* para desenvolvedores. Veja mais informações na [documentação themoviedb](https://developers.themoviedb.org/3/getting-started/introduction)

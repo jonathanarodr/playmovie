@@ -7,24 +7,19 @@ android {
 }
 
 dependencies {
-    implementation(project(Modules.COMMON))
-    implementation(project(Modules.NETWORK))
+    implementation(project(":common"))
+    implementation(project(":network"))
 
-    implementation(LibraryDependency.ANDROIDX_CORE)
-    implementation(LibraryDependency.ANDROIDX_APPCOMPAT)
-    implementation(LibraryDependency.ANDROIDX_RECYCLER)
-    implementation(LibraryDependency.ANDROIDX_CONSTRAINT)
-    implementation(LibraryDependency.ANDROIDX_SWIPE_REFRESH)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.swiperefreshlayout)
 
-    implementation(LibraryDependency.ROOM_CORE)
-    implementation(LibraryDependency.ROOM_RUNTIME)
-    ksp(LibraryDependency.ROOM_COMPILER)
+    implementation(libs.androidx.room.core)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
 
-    implementation(LibraryDependency.NAVIGATION_FRAGMENT)
-    implementation(LibraryDependency.NAVIGATION_UI)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
 
-    implementation(LibraryDependency.MATERIAL)
-
-    testImplementation(project(Modules.TESTING))
-    androidTestImplementation(project(Modules.TESTING))
+    implementation(libs.material)
 }

@@ -10,9 +10,9 @@ dependencies {
         )
     )
 
-    implementation(project(Modules.COMMON))
-    implementation(project(Modules.NETWORK))
-    implementation(project(Modules.FEATURE))
+    implementation(project(":common"))
+    implementation(project(":network"))
+    implementation(project(":feature"))
 
-    debugImplementation(LibraryDependency.LEAKCANARY)
+    debugImplementation(libs.leakcanary)
 }

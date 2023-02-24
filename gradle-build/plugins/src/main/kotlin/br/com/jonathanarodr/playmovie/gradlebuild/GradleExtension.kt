@@ -1,13 +1,17 @@
+@file:Suppress("TooManyFunctions")
+
 package br.com.jonathanarodr.playmovie.gradlebuild
 
 import com.android.build.api.dsl.CommonExtension
-import com.android.build.api.variant.AndroidComponentsExtension
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Dependency
+import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.plugins.ExtensionAware
+import org.gradle.api.plugins.ExtensionContainer
 import org.gradle.api.plugins.PluginManager
 import org.gradle.kotlin.dsl.DependencyHandlerScope
+import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 @Suppress("UNCHECKED_CAST")
@@ -19,10 +23,6 @@ fun Project.android(block: BaseExtension.() -> Unit) {
     findExtension("android", block)
 }
 
-fun Project.androidComponents(block: AndroidComponentsExtension<*, *, *>.() -> Unit) {
-    findExtension("androidComponents", block)
-}
-
 fun <T> CommonExtension<*, *, *, *>.findExtension(name: String, block: T.() -> Unit) {
     (this as ExtensionAware).extensions.configure(name, block)
 }
@@ -32,9 +32,11 @@ fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit
 }
 
 fun PluginManager.apply(vararg plugins: String) {
-    plugins.forEach {
-        apply(it)
-    }
+    plugins.forEach(::apply)
+}
+
+val ExtensionContainer.libs get() = run {
+    getByType<VersionCatalogsExtension>().named("libs")
 }
 
 fun DependencyHandlerScope.implementation(dependencyNotation: Any): Dependency? =
@@ -54,12 +56,6 @@ fun DependencyHandlerScope.androidTestUtil(dependencyNotation: Any): Dependency?
 
 fun DependencyHandlerScope.api(dependencyNotation: Any): Dependency? =
     add("api", dependencyNotation)
-
-fun DependencyHandlerScope.debugApi(dependencyNotation: Any): Dependency? =
-    add("debugApi", dependencyNotation)
-
-fun DependencyHandlerScope.ksp(dependencyNotation: Any): Dependency? =
-    add("ksp", dependencyNotation)
 
 fun DependencyHandlerScope.detektPlugins(dependencyNotation: Any): Dependency? =
     add("detektPlugins", dependencyNotation)

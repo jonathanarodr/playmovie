@@ -1,15 +1,14 @@
 package br.com.jonathanarodr.playmovie.gradlebuild.plugins
 
 import br.com.jonathanarodr.playmovie.gradlebuild.apply
-import br.com.jonathanarodr.playmovie.gradlebuild.config.Modules
-import br.com.jonathanarodr.playmovie.gradlebuild.dependencies.LibraryDependency
-import br.com.jonathanarodr.playmovie.gradlebuild.dependencies.TestDependency
 import br.com.jonathanarodr.playmovie.gradlebuild.implementation
+import br.com.jonathanarodr.playmovie.gradlebuild.libs
 import br.com.jonathanarodr.playmovie.gradlebuild.testImplementation
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
+@Suppress("unused")
 class KotlinModulePlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
@@ -19,21 +18,17 @@ class KotlinModulePlugin : Plugin<Project> {
                 "playmovie.codestyle",
                 "playmovie.codecoverage",
             )
+
+            val libs = extensions.libs
+
             dependencies {
-                implementation(LibraryDependency.KOIN)
-                implementation(LibraryDependency.TIMBER)
-                implementation(LibraryDependency.GSON)
+                implementation(libs.findLibrary("koin").get())
+                implementation(libs.findLibrary("timber").get())
+                implementation(libs.findLibrary("gson").get())
 
-                implementation(LibraryDependency.COROUTINES_CORE)
+                implementation(libs.findLibrary("kotlinx-coroutines-core").get())
 
-                testImplementation(project(Modules.TESTING))
-
-                testImplementation(TestDependency.JUNIT)
-                testImplementation(TestDependency.JUNIT_EXT)
-                testImplementation(TestDependency.TRUTH_CORE)
-                testImplementation(TestDependency.TRUTH_EXT)
-                testImplementation(TestDependency.MOCKK)
-                testImplementation(TestDependency.COROUTINES)
+                testImplementation(project(":testing"))
             }
         }
     }
