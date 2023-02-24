@@ -4,17 +4,13 @@ plugins {
 
 group = "br.com.jonathanarodr.playmovie.gradlebuild"
 
-/**
- * FIXME use the catalog version
- * https://github.com/jonathanarodr/playmovie/issues/41
- */
 dependencies {
-    compileOnly("com.android.tools.build:gradle:7.4.1")
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21")
-    compileOnly("org.jetbrains.kotlinx:kover:0.6.1")
-    compileOnly("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.7.21-1.0.8")
-    compileOnly("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.22.0")
-    compileOnly("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3")
+    compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.kotlinx.kover.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.detekt.gradlePlugin)
+    compileOnly(libs.androidx.navigation.safeargs.gradlePlugin)
 }
 
 gradlePlugin {

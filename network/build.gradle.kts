@@ -6,15 +6,15 @@ android {
     namespace = "br.com.jonathanarodr.playmovie.network"
 
     defaultConfig {
-        buildConfigField("String", "SERVER_URL", "\"${ServerConfig.URL}\"")
-        buildConfigField("String", "AUTHORIZATION_KEY", "\"${ServerConfig.AUTHORIZATION}\"")
+        buildConfigField("String", "SERVER_URL", "https://api.themoviedb.org")
+        buildConfigField("String", "AUTHORIZATION_KEY", "[my-authorization-key]")
     }
 }
 
 dependencies {
-    api(LibraryDependency.RETROFIT_CORE)
-    implementation(LibraryDependency.RETROFIT_CONVERTER)
-    implementation(platform(LibraryDependency.OKHTTP_BOM))
-    implementation(LibraryDependency.OKHTTP_CORE)
-    implementation(LibraryDependency.OKHTTP_LOGGING)
+    api(libs.retrofit.core)
+    implementation(libs.retrofit.converter)
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.okhttp.core)
+    implementation(libs.okhttp.logging)
 }

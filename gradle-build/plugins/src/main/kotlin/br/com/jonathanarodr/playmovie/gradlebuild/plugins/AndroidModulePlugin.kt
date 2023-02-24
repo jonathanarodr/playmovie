@@ -3,7 +3,6 @@ package br.com.jonathanarodr.playmovie.gradlebuild.plugins
 import br.com.jonathanarodr.playmovie.gradlebuild.androidTestImplementation
 import br.com.jonathanarodr.playmovie.gradlebuild.androidTestUtil
 import br.com.jonathanarodr.playmovie.gradlebuild.apply
-import br.com.jonathanarodr.playmovie.gradlebuild.config.Modules
 import br.com.jonathanarodr.playmovie.gradlebuild.implementation
 import br.com.jonathanarodr.playmovie.gradlebuild.libs
 import br.com.jonathanarodr.playmovie.gradlebuild.testImplementation
@@ -43,8 +42,8 @@ class AndroidModulePlugin : Plugin<Project> {
 
                 androidTestUtil(libs.findLibrary("androidx-test-orchestrator").get())
 
-                testImplementation(project(Modules.TESTING))
-                androidTestImplementation(project(Modules.TESTING))
+                testImplementation(project(":testing"))
+                androidTestImplementation(project(":testing"))
             }
         }
     }

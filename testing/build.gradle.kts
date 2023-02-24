@@ -6,25 +6,28 @@ android {
     namespace = "br.com.jonathanarodr.playmovie.core.testing"
 }
 
+/**
+ * FIXME create submodules to control dependencies between unitTest and androidTest
+ */
 dependencies {
-    implementation(LibraryDependency.LIFECYCLE_LIVEDATA)
+    implementation(libs.androidx.lifecycle.livedata)
 
-    api(TestDependency.JUNIT)
-    api(TestDependency.JUNIT_EXT)
-    api(TestDependency.TRUTH_CORE)
-    api(TestDependency.TRUTH_EXT)
-    api(TestDependency.MOCKK)
-    api(TestDependency.MOCKK_ANDROID)
-    api(TestDependency.MOCKK_AGENT)
-    api(TestDependency.COROUTINES)
-    api(TestDependency.ARCH_CORE)
-    api(TestDependency.TEST_CORE)
-    api(TestDependency.RUNNER)
-    api(TestDependency.RULES)
-    api(TestDependency.ROOM)
-    api(TestDependency.ROBOLECTRIC_CORE)
-    api(TestDependency.ROBOLECTRIC_ANNOTATIONS)
-    api(TestDependency.ESPRESSO) {
+    api(libs.junit)
+    api(libs.truth)
+    api(libs.mockk.core)
+    api(libs.mockk.android)
+    api(libs.mockk.agent)
+    api(libs.kotlinx.coroutines.test)
+    api(libs.androidx.test.junit)
+    api(libs.androidx.test.truth)
+    api(libs.androidx.arch.testing)
+    api(libs.androidx.test.core)
+    api(libs.androidx.test.runner)
+    api(libs.androidx.test.rules)
+    api(libs.androidx.room.testing)
+    api(libs.androidx.test.espresso) {
         exclude(group = "com.android.support", module = "support-annotations")
     }
+    api(libs.robolectric.core)
+    api(libs.robolectric.annotations)
 }

@@ -7,16 +7,17 @@ buildscript {
 }
 
 /**
- * FIXME use the catalog version
- * https://github.com/jonathanarodr/playmovie/issues/41
+ * FIXME remove suppress DSL_SCOPE_VIOLATION after fixing issue
+ * issue: https://github.com/gradle/gradle/issues/22797
  */
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.application") version Version.Gradle.ANDROID_PLUGIN apply false
-    id("org.jetbrains.kotlin.jvm") version Version.Kotlin.CORE apply false
-    id("org.jetbrains.kotlinx.kover") version Version.Test.KOVER apply false
-    id("com.google.devtools.ksp") version Version.Kotlin.KSP apply false
-    id("io.gitlab.arturbosch.detekt") version Version.Lint.DETEKT apply false
-    id("androidx.navigation.safeargs.kotlin") version Version.Jetpack.NAVIGATION apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlinx.kover) apply false
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.detekt) apply false
+    alias(libs.plugins.androidx.navigation.safeargs) apply false
 }
 
 tasks.register("clean", Delete::class) {

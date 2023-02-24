@@ -7,9 +7,7 @@ android {
 }
 
 dependencies {
-    implementation(platform(LibraryDependency.OKHTTP_BOM))
-    implementation(LibraryDependency.OKHTTP_CORE)
-    implementation(LibraryDependency.COIL_CORE)
-
-    testImplementation(project(Modules.TESTING))
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.okhttp.core)
+    implementation(libs.coil.core)
 }
