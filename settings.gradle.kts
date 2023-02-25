@@ -24,3 +24,5 @@ include(
     ":network",
     ":feature",
 )
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
