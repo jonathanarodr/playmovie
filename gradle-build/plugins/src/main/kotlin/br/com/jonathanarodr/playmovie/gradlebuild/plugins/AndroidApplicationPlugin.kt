@@ -3,6 +3,7 @@ package br.com.jonathanarodr.playmovie.gradlebuild.plugins
 import br.com.jonathanarodr.playmovie.gradlebuild.androidTestImplementation
 import br.com.jonathanarodr.playmovie.gradlebuild.apply
 import br.com.jonathanarodr.playmovie.gradlebuild.config.AndroidConfig
+import br.com.jonathanarodr.playmovie.gradlebuild.config.ModuleConfig
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureAndroidAppicationConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureAndroidTestConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureBuildTypeConvention
@@ -55,8 +56,8 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 implementation(libs.findLibrary("koin").get())
                 implementation(libs.findLibrary("timber").get())
 
-                testImplementation(project(":testing"))
-                androidTestImplementation(project(":testing"))
+                testImplementation(project(ModuleConfig.testing))
+                androidTestImplementation(project(ModuleConfig.testing))
             }
         }
     }

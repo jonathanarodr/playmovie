@@ -1,6 +1,7 @@
 package br.com.jonathanarodr.playmovie.gradlebuild.plugins
 
 import br.com.jonathanarodr.playmovie.gradlebuild.apply
+import br.com.jonathanarodr.playmovie.gradlebuild.config.ModuleConfig
 import br.com.jonathanarodr.playmovie.gradlebuild.implementation
 import br.com.jonathanarodr.playmovie.gradlebuild.libs
 import br.com.jonathanarodr.playmovie.gradlebuild.testImplementation
@@ -28,7 +29,7 @@ class KotlinModulePlugin : Plugin<Project> {
 
                 implementation(libs.findLibrary("kotlinx-coroutines-core").get())
 
-                testImplementation(project(":testing"))
+                testImplementation(project(ModuleConfig.testing))
             }
         }
     }
