@@ -1,6 +1,6 @@
 package br.com.jonathanarodr.playmovie.gradlebuild.config
 
-object AndroidConfig {
+internal object AndroidConfig {
 
     const val APPLICATION_ID = "br.com.jonathanarodr.playmovie"
 

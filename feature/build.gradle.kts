@@ -7,8 +7,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":common"))
-    implementation(project(":network"))
+    implementation(projects.common)
+    implementation(projects.network)
 
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.constraintlayout)
