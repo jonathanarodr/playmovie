@@ -6,8 +6,8 @@ android {
     namespace = "br.com.jonathanarodr.playmovie.network"
 
     defaultConfig {
-        buildConfigField("String", "SERVER_URL", "https://api.themoviedb.org")
-        buildConfigField("String", "AUTHORIZATION_KEY", "[my-authorization-key]")
+        buildConfigField("String", "SERVER_URL", "\"https://api.themoviedb.org\"")
+        buildConfigField("String", "AUTHORIZATION_KEY", "\"[my-authorization-key]\"")
     }
 }
 
