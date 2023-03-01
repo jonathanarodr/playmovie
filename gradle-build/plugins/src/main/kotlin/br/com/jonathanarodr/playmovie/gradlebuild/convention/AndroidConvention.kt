@@ -65,7 +65,7 @@ internal fun Project.configureAndroidLibraryConvention(
 internal fun Project.configureSourceConvention(
     extension: AndroidComponentsExtension<*, *, *>,
 ) {
-    extension.registerSourceType(AndroidConfig.SOURCE_SHARED_TEST)
+    extension.registerSourceType(AndroidConfig.KOTLIN_SOURCE_DIR_SHARED_TEST)
 }
 
 internal fun Project.configureBuildTypeConvention(
