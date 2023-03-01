@@ -8,6 +8,7 @@ import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.tasks.TaskProvider
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.withType
@@ -20,6 +21,7 @@ class CodeStylePlugin : Plugin<Project> {
 
         with(target) {
             pluginManager.apply("io.gitlab.arturbosch.detekt")
+
             extensions.configure<DetektExtension> {
                 config = files("${project.rootDir}/tools/linters/detekt-rules.yml")
                 allRules = false
@@ -33,11 +35,23 @@ class CodeStylePlugin : Plugin<Project> {
                 jvmTarget = platformConfig.javaVersion.toString()
             }
 
+            disableDetektOnCheck()
+
             val libs = extensions.libs
 
             dependencies {
                 detektPlugins(libs.findLibrary("detekt-formatting").get())
             }
+        }
+    }
+
+    private fun Project.disableDetektOnCheck() {
+        tasks.named("check").configure {
+            this.setDependsOn(
+                this.dependsOn.filterNot {
+                    it is TaskProvider<*> && it.name == "detekt"
+                }
+            )
         }
     }
 }
