@@ -12,7 +12,7 @@ import org.junit.runner.Description
 
 @ExperimentalCoroutinesApi
 class CoroutinesTestRule(
-    val dispatcher: TestDispatcher = UnconfinedTestDispatcher()
+    val dispatcher: TestDispatcher = UnconfinedTestDispatcher(),
 ) : TestWatcher() {
 
     val scope by lazy {
