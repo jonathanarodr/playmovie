@@ -6,7 +6,7 @@ androidGradlePlugin = "7.4.1"
 # kotlin
 kotlin = "1.7.21"
 ksp = "1.7.21-1.0.8"
-kotlinxCoroutines = "1.6.0"
+kotlinxCoroutines = "1.6.4"
 
 # jetpack
 androidxCore = "1.9.0"
