@@ -28,7 +28,7 @@ okhttp = "4.10.0"
 leakcanary = "2.10"
 
 # tools
-material = "1.4.0"
+material = "1.8.0"
 accompanist = "0.28.0"
 gson = "2.10.1"
 timber = "5.0.1"
