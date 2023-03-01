@@ -6,20 +6,20 @@ androidGradlePlugin = "7.4.1"
 # kotlin
 kotlin = "1.7.21"
 ksp = "1.7.21-1.0.8"
-kotlinxCoroutines = "1.6.0"
+kotlinxCoroutines = "1.6.4"
 
 # jetpack
-androidxCore = "1.7.0"
-androidxAppCompat = "1.4.0"
-androidxActivityCompose = "1.5.1"
+androidxCore = "1.9.0"
+androidxAppCompat = "1.6.1"
+androidxActivityCompose = "1.6.1"
 androidxRecyclerView = "1.2.1"
-androidxConstraintLayout = "2.1.2"
+androidxConstraintLayout = "2.1.4"
 androidxSwipeRefreshLayout = "1.1.0"
 androidxLifecycle = "2.5.1"
-androidxComposeBom = "2022.10.00"
+androidxComposeBom = "2022.12.00"
 androidxComposeCompiler = "1.4.0"
-androidxComposeRuntimeTracing = "1.0.0-alpha02"
-androidxRoom = "2.4.2"
+androidxComposeRuntimeTracing = "1.0.0-alpha03"
+androidxRoom = "2.5.0"
 androidxNavigation = "2.5.3"
 
 # square
@@ -28,19 +28,19 @@ okhttp = "4.10.0"
 leakcanary = "2.10"
 
 # tools
-material = "1.4.0"
+material = "1.8.0"
 accompanist = "0.28.0"
-gson = "2.8.9"
+gson = "2.10.1"
 timber = "5.0.1"
 koin = "3.1.2"
 coil = "2.2.2"
 
 # lint
-detekt = "1.22.0-RC3"
+detekt = "1.22.0"
 
 # test
 kotlinxKover = "0.6.1"
-androidxArchCore = "2.1.0"
+androidxArchCore = "2.2.0"
 androidxTestCore = "1.5.0"
 androidxTestRules = "1.5.0"
 androidxTestRunner = "1.5.2"
