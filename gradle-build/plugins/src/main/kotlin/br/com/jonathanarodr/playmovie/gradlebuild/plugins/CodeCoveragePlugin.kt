@@ -15,12 +15,18 @@ class CodeCoveragePlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply("org.jetbrains.kotlinx.kover")
             extensions.configure<KoverProjectConfig> {
+                verify {
+                    onCheck.set(false)
+                }
                 instrumentation {
                     excludeDefaultTasks()
                 }
             }
             extensions.configure<KoverMergedConfig> {
                 enable()
+                verify {
+                    onCheck.set(false)
+                }
                 filters {
                     classes {
                         excludeDefaultClasses()
