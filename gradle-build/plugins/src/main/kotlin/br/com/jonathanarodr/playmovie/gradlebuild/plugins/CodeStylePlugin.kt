@@ -1,5 +1,6 @@
 package br.com.jonathanarodr.playmovie.gradlebuild.plugins
 
+import br.com.jonathanarodr.playmovie.gradlebuild.config.AndroidConfig
 import br.com.jonathanarodr.playmovie.gradlebuild.config.PlatformConfig
 import br.com.jonathanarodr.playmovie.gradlebuild.detektPlugins
 import br.com.jonathanarodr.playmovie.gradlebuild.libs
@@ -27,6 +28,16 @@ class CodeStylePlugin : Plugin<Project> {
                 allRules = false
                 parallel = true
                 ignoredBuildTypes = listOf("release")
+                source = files(
+                    AndroidConfig.JAVA_SOURCE_DIR,
+                    AndroidConfig.JAVA_SOURCE_DIR_TEST,
+                    AndroidConfig.JAVA_SOURCE_DIR_SHARED_TEST,
+                    AndroidConfig.JAVA_SOURCE_DIR_ANDROID_TEST,
+                    AndroidConfig.KOTLIN_SOURCE_DIR,
+                    AndroidConfig.KOTLIN_SOURCE_DIR_TEST,
+                    AndroidConfig.KOTLIN_SOURCE_DIR_SHARED_TEST,
+                    AndroidConfig.KOTLIN_SOURCE_DIR_ANDROID_TEST,
+                )
             }
             tasks.withType<Detekt>().configureEach {
                 jvmTarget = platformConfig.javaVersion.toString()
