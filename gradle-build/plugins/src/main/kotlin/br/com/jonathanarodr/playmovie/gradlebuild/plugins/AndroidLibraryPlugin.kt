@@ -25,8 +25,8 @@ class AndroidLibraryPlugin : Plugin<Project> {
                 "com.google.devtools.ksp",
             )
             extensions.configure<LibraryExtension> {
-                configureAndroidLibraryConvention(this)
                 configureKotlinConvention(this)
+                configureAndroidLibraryConvention(this)
                 configureUnitTestConvention(this)
                 configureAndroidTestConvention(this)
                 configureDeviceManagerConvention(this)
