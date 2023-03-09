@@ -20,6 +20,7 @@ class AndroidLibraryPlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply(
                 "com.android.library",
+                "org.gradle.android.cache-fix",
                 "kotlin-android",
                 "kotlin-parcelize",
                 "com.google.devtools.ksp",
