@@ -1,0 +1,68 @@
+name: Developer CI
+
+on:
+  pull_request:
+
+  push:
+    branches:
+      - master
+      - feature/ci_automation
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Project checkout
+        uses: actions/checkout@v3
+
+      - name: Run detekt
+        run: ./gradlew detekt
+
+  code-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Project checkout
+        uses: actions/checkout@v3
+
+      - name: Run unitTest
+        run: echo "Run unitTest"
+
+      - name: Run sharedTest
+          run: echo "Run sharedTest"
+
+      - name: Run androidTest
+          run: echo "Run androidTest"
+
+      - name: Upload coverage reports
+          run: echo "Upload outputs"
+
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Project checkout
+        uses: actions/checkout@v3
+
+      - name: Setup jdk 11
+        uses: actions/setup-java@v3.10.0
+        with:
+          distribution: 'zulu'
+          java-version: 11
+
+      - name: Validate gradle wrapper
+        uses: gradle/wrapper-validation-action@v1.0.6
+
+      - name: Setup gradle build
+        uses: gradle/gradle-build-action@v2.4.0
+
+      - name: Build apks
+        run: ./gradlew app:assemble
+
+      - name: Upload apks
+          run: echo "Upload apks"
