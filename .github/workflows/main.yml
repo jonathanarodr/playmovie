@@ -24,6 +24,7 @@ jobs:
         run: ./gradlew detekt
 
   code-coverage:
+    needs: [code-quality]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -40,6 +41,7 @@ jobs:
         run: echo "Upload outputs"
 
   build:
+    needs: [code-quality]
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
