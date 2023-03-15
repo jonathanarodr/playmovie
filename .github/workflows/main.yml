@@ -32,13 +32,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run unitTest
-        run: echo "Run unitTest"
-
-      - name: Run androidTest
-        run: echo "Run androidTest"
-
-      - name: Upload coverage reports
-        run: echo "Upload outputs"
+        run: ./gradlew testDebug
 
   build:
     needs: [code-quality]
@@ -63,5 +57,23 @@ jobs:
       - name: Build apks
         run: ./gradlew app:assemble
 
-      - name: Upload apks
-        run: echo "Upload apks"
+      - name: Upload debug apk
+        if: success()
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: debug-apk
+          path: app/build/outputs/apk/debug
+
+      - name: Upload release apk
+        if: success()
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: release-apk
+          path: app/build/outputs/apk/release
+
+      - name: Upload R8 mappings
+        if: success()
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: release-mapping
+          path: app/build/outputs/mapping/release
