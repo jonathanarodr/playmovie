@@ -2,7 +2,10 @@ name: Developer CI
 
 on:
   pull_request:
-
+    types:
+      - opened
+      - synchronize
+      - ready_for_review
   push:
     branches:
       - master
@@ -51,10 +54,12 @@ jobs:
       - name: Validate gradle wrapper
         uses: gradle/wrapper-validation-action@v1.0.6
 
-      - name: Setup gradle config
+      - name: Setup gradle properties
         run: |
           mkdir -p ~/.gradle
           cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+          cd ~/.gradle
+          ls
 
       - name: Setup gradle build
         uses: gradle/gradle-build-action@v2.4.0
