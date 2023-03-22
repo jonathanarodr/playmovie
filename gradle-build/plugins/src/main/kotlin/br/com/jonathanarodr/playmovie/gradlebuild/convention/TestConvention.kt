@@ -47,7 +47,7 @@ internal fun Project.configureAndroidTestConvention(
                 }
             }
         }
-        // fixme https://github.com/robolectric/robolectric/issues/3023
+        // FIXME https://github.com/robolectric/robolectric/issues/3023
         tasks.withType<Test>().configureEach {
             jvmArgs("-ea", "-noverify")
         }
