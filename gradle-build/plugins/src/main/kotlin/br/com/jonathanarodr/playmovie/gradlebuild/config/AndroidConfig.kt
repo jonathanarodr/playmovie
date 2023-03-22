@@ -6,12 +6,12 @@ internal object AndroidConfig {
 
     const val SDK_COMPILER = 33
     const val SDK_TARGET = 33
-    const val SDK_MINIMUM = 21
+    const val SDK_MINIMUM = 23
 
-    const val BUILD_TOOLS = "33.0.0"
+    const val BUILD_TOOLS = "33.0.2"
 
-    const val VERSION_CODE = 7
-    const val VERSION_NAME = "2.2.4"
+    const val VERSION_CODE = 8
+    const val VERSION_NAME = "2.2.39"
 
     const val JAVA_SOURCE_DIR = "src/main/java"
     const val JAVA_SOURCE_DIR_TEST = "src/test/java"
