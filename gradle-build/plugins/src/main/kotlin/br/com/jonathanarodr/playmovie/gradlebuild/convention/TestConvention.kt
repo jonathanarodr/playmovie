@@ -4,7 +4,9 @@ import com.android.build.api.dsl.CommonExtension
 import kotlinx.kover.api.KoverClassFilter
 import kotlinx.kover.api.KoverProjectConfig
 import org.gradle.api.Project
+import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.kotlin.dsl.withType
 
 internal fun Project.configureUnitTestConvention(
     extension: CommonExtension<*, *, *, *>,
@@ -42,12 +44,12 @@ internal fun Project.configureAndroidTestConvention(
                     test.testLogging {
                         exceptionFormat = TestExceptionFormat.FULL
                     }
-                    // https://github.com/robolectric/robolectric/issues/3023
-                    test.jvmArgs.addAll(
-                        listOf("-ea", "-noverify")
-                    )
                 }
             }
+        }
+        // FIXME https://github.com/robolectric/robolectric/issues/3023
+        tasks.withType<Test>().configureEach {
+            jvmArgs("-ea", "-noverify")
         }
     }
 }
