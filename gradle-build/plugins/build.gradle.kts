@@ -11,6 +11,8 @@ dependencies {
     compileOnly(libs.ksp.gradlePlugin)
     compileOnly(libs.detekt.gradlePlugin)
     compileOnly(libs.androidx.navigation.safeargs.gradlePlugin)
+
+    implementation(libs.android.cachefix.gradlePlugin)
 }
 
 gradlePlugin {

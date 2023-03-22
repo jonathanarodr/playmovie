@@ -1,0 +1,86 @@
+name: Developer CI
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - ready_for_review
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Project checkout
+        uses: actions/checkout@v3
+
+      - name: Run detekt
+        run: ./gradlew detekt
+
+  code-coverage:
+    needs: [code-quality]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Project checkout
+        uses: actions/checkout@v3
+
+      - name: Run unitTest
+        run: ./gradlew testDebug
+
+  build-apk:
+    needs: [code-quality]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Project checkout
+        uses: actions/checkout@v3
+
+      - name: Setup JDK 11
+        uses: actions/setup-java@v3.10.0
+        with:
+          distribution: 'zulu'
+          java-version: 11
+
+      - name: Validate gradle wrapper
+        uses: gradle/wrapper-validation-action@v1.0.6
+
+      - name: Config gradle properties
+        run: |
+          mkdir -p ~/.gradle
+          cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+
+      - name: Setup gradle build
+        uses: gradle/gradle-build-action@v2.4.0
+
+      - name: Build apks
+        run: ./gradlew app:assemble
+
+      - name: Upload debug APK
+        if: success()
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: debug-apk
+          path: app/build/outputs/apk/debug
+
+      - name: Upload release APK
+        if: success()
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: release-apk
+          path: app/build/outputs/apk/release
+
+      - name: Upload R8 mappings
+        if: success()
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: release-mapping
+          path: app/build/outputs/mapping/release

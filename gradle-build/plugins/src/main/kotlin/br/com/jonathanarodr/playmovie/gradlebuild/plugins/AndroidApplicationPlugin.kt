@@ -27,6 +27,7 @@ class AndroidApplicationPlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply(
                 "com.android.application",
+                "org.gradle.android.cache-fix",
                 "kotlin-android",
                 "kotlin-parcelize",
                 "playmovie.codestyle",
