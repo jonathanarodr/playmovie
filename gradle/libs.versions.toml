@@ -1,6 +1,7 @@
 [versions]
 
 # gradle
+gradleDoctor = "0.8.1"
 androidGradlePlugin = "7.4.2"
 androidCacheFixPlugin = "2.7.0"
 
@@ -138,6 +139,7 @@ detekt-formatting  = { group = "io.gitlab.arturbosch.detekt", name = "detekt-for
 [bundles]
 
 [plugins]
+gradle-doctor = { id = "com.osacky.doctor", version.ref = "gradleDoctor" }
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
