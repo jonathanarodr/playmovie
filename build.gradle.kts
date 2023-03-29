@@ -25,6 +25,7 @@ tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
 
+
 doctor {
     warnWhenJetifierEnabled.set(false)
 }
