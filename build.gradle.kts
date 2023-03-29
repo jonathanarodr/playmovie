@@ -28,4 +28,3 @@ tasks.register("clean", Delete::class) {
 doctor {
     warnWhenJetifierEnabled.set(false)
 }
-
