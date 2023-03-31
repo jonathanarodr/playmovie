@@ -9,6 +9,7 @@ import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureAndroidTes
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureBuildTypeConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureKotlinConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureSourceConvention
+import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureTestRetryConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureUnitTestConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.implementation
 import br.com.jonathanarodr.playmovie.gradlebuild.libs
@@ -17,8 +18,10 @@ import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.withType
 
 @Suppress("unused")
 class AndroidApplicationPlugin : Plugin<Project> {
@@ -28,11 +31,13 @@ class AndroidApplicationPlugin : Plugin<Project> {
             pluginManager.apply(
                 "com.android.application",
                 "org.gradle.android.cache-fix",
+                "org.gradle.test-retry",
                 "kotlin-android",
                 "kotlin-parcelize",
                 "playmovie.codestyle",
                 "playmovie.codecoverage",
             )
+
             extensions.configure<ApplicationExtension> {
                 configureAndroidAppicationConvention(this)
                 configureBuildTypeConvention(this)
@@ -47,8 +52,13 @@ class AndroidApplicationPlugin : Plugin<Project> {
                     includeInBundle = true
                 }
             }
+
             extensions.configure<ApplicationAndroidComponentsExtension> {
                 configureSourceConvention(this)
+            }
+
+            tasks.withType<Test>().configureEach {
+                configureTestRetryConvention()
             }
 
             val libs = extensions.libs

@@ -2,6 +2,7 @@
 
 # gradle
 gradleDoctor = "0.8.1"
+gradleTestRetry = "1.5.2"
 androidGradlePlugin = "7.4.2"
 androidCacheFixPlugin = "2.7.0"
 
@@ -58,6 +59,7 @@ robolectric = "4.9.2"
 [libraries]
 
 # gradle
+gradle-testretry-gradlePlugin = { group = "org.gradle", name = "test-retry-gradle-plugin", version.ref = "gradleTestRetry" }
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 android-cachefix-gradlePlugin = { group = "org.gradle.android.cache-fix", name = "org.gradle.android.cache-fix.gradle.plugin", version.ref = "androidCacheFixPlugin" }
 
@@ -140,6 +142,7 @@ detekt-formatting  = { group = "io.gitlab.arturbosch.detekt", name = "detekt-for
 
 [plugins]
 gradle-doctor = { id = "com.osacky.doctor", version.ref = "gradleDoctor" }
+gradle-testretry = { id = "org.gradle.test-retry", version.ref = "gradleTestRetry" }
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
