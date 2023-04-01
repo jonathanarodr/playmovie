@@ -6,6 +6,7 @@ group = "br.com.jonathanarodr.playmovie.gradlebuild"
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.gradle.testretry.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.kotlinx.kover.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)

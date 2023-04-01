@@ -39,9 +39,11 @@ class CodeStylePlugin : Plugin<Project> {
                     AndroidConfig.KOTLIN_SOURCE_DIR_ANDROID_TEST,
                 )
             }
+
             tasks.withType<Detekt>().configureEach {
                 jvmTarget = platformConfig.javaVersion.toString()
             }
+
             tasks.withType<DetektCreateBaselineTask>().configureEach {
                 jvmTarget = platformConfig.javaVersion.toString()
             }

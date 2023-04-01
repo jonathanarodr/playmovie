@@ -14,6 +14,7 @@ class CodeCoveragePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply("org.jetbrains.kotlinx.kover")
+
             extensions.configure<KoverProjectConfig> {
                 verify {
                     onCheck.set(false)
@@ -22,6 +23,7 @@ class CodeCoveragePlugin : Plugin<Project> {
                     excludeDefaultTasks()
                 }
             }
+
             extensions.configure<KoverMergedConfig> {
                 enable()
                 verify {
