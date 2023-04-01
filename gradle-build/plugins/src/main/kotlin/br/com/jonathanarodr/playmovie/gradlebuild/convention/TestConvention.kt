@@ -6,6 +6,7 @@ import kotlinx.kover.api.KoverProjectConfig
 import org.gradle.api.Project
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.kotlin.dsl.retry
 import org.gradle.kotlin.dsl.withType
 
 internal fun Project.configureUnitTestConvention(
@@ -64,4 +65,13 @@ internal fun KoverClassFilter.excludeDefaultClasses(): List<String> {
     return listOf(
         "*.databinding.*"
     )
+}
+
+@Suppress("MagicNumber")
+internal fun Test.configureTestRetryConvention() {
+    retry {
+        maxRetries.set(2)
+        maxFailures.set(10)
+        failOnPassedAfterRetry.set(true)
+    }
 }
