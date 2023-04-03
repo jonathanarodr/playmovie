@@ -22,7 +22,7 @@ androidxLifecycle = "2.5.1"
 androidxComposeBom = "2023.03.00"
 androidxComposeCompiler = "1.4.3"
 androidxComposeRuntimeTracing = "1.0.0-alpha03"
-androidxRoom = "2.5.0"
+androidxRoom = "2.5.1"
 androidxNavigation = "2.5.3"
 
 # square
