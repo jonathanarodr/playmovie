@@ -35,7 +35,7 @@ material = "1.8.0"
 accompanist = "0.28.0"
 gson = "2.10.1"
 timber = "5.0.1"
-koin = "3.3.3"
+koin = "3.4.0"
 coil = "2.3.0"
 
 # lint
