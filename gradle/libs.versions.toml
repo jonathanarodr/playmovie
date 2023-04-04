@@ -7,8 +7,8 @@ androidGradlePlugin = "7.4.2"
 androidCacheFixPlugin = "2.7.0"
 
 # kotlin
-kotlin = "1.8.10"
-ksp = "1.8.10-1.0.9"
+kotlin = "1.8.20"
+ksp = "1.8.20-1.0.10"
 kotlinxCoroutines = "1.6.4"
 
 # jetpack
