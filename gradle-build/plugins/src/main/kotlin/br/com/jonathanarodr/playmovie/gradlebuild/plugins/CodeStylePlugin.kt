@@ -54,6 +54,7 @@ class CodeStylePlugin : Plugin<Project> {
 
             dependencies {
                 detektPlugins(libs.findLibrary("detekt-formatting").get())
+                detektPlugins(libs.findLibrary("detekt-compose").get())
             }
         }
     }

@@ -39,7 +39,8 @@ koin = "3.4.0"
 coil = "2.3.0"
 
 # lint
-detekt = "1.22.0"
+detektCore = "1.22.0"
+detektCompose = "0.0.26"
 
 # test
 kotlinxKover = "0.6.1"
@@ -135,8 +136,9 @@ robolectric-core = { group = "org.robolectric", name = "robolectric", version.re
 robolectric-annotations = { group = "org.robolectric", name = "annotations", version.ref = "robolectric"}
 
 # lint
-detekt-gradlePlugin = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version.ref = "detekt" }
-detekt-formatting  = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
+detekt-gradlePlugin = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version.ref = "detektCore" }
+detekt-formatting  = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detektCore" }
+detekt-compose  = { group = "com.twitter.compose.rules", name = "detekt", version.ref = "detektCompose" }
 
 [bundles]
 
@@ -149,5 +151,5 @@ android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kotlinxKover" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detektCore" }
 androidx-navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "androidxNavigation" }
