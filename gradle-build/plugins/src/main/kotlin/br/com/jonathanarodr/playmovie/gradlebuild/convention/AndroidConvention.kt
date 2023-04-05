@@ -29,8 +29,10 @@ internal fun Project.configureAndroidAppicationConvention(
             resources {
                 excludes.add("META-INF/*.kotlin_module")
                 excludes.add("META-INF/LICENSE**")
+                excludes.add("META-INF/NOTICE")
                 excludes.add("META-INF/AL2.0")
                 excludes.add("META-INF/LGPL2.1")
+                excludes.add("DebugProbesKt.bin")
             }
         }
 
@@ -53,8 +55,10 @@ internal fun Project.configureAndroidLibraryConvention(
             resources {
                 excludes.add("META-INF/*.kotlin_module")
                 excludes.add("META-INF/LICENSE**")
+                excludes.add("META-INF/NOTICE")
                 excludes.add("META-INF/AL2.0")
                 excludes.add("META-INF/LGPL2.1")
+                excludes.add("DebugProbesKt.bin")
             }
         }
 
