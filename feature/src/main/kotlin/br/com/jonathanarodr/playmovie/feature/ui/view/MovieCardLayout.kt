@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -56,6 +57,7 @@ fun MovieCardLayout(
         val imageRequest = ImageRequest.Builder(LocalContext.current)
             .data(IMAGE_LOADER_PATH + IMAGE_SIZE_HIGH + uiModel.posterUrl)
             .crossfade(true)
+            .placeholder(drawableResId = R.drawable.shape_card_movie)
             .fallback(drawableResId = R.drawable.shape_card_movie)
 
         AsyncImage(
@@ -113,15 +115,15 @@ fun MovieCardLayout(
     }
 }
 
-@Preview(showBackground = true)
 @ExperimentalMaterial3Api
 @Composable
+@Preview
 fun MovieCardLayoutPreview() {
     AppTheme {
         MovieCardLayout(
             modifier = Modifier
-                .width(dimensionResource(id = R.dimen.card_movie_width))
-                .heightIn(dimensionResource(id = R.dimen.card_movie_height)),
+                .width(120.dp)
+                .wrapContentHeight(),
             uiModel = MovieUiModel(
                 id = 0L,
                 title = "Thor: Love and Thunder",

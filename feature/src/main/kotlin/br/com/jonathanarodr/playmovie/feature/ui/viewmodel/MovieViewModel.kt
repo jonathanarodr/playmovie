@@ -5,17 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.jonathanarodr.playmovie.common.states.UiState
-import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
 import br.com.jonathanarodr.playmovie.feature.domain.usecase.MovieUseCase
+import br.com.jonathanarodr.playmovie.feature.ui.model.MovieUiModel
 import kotlinx.coroutines.launch
 
 class MovieViewModel(
     private val movieUseCase: MovieUseCase,
 ) : ViewModel() {
 
-    private val _fetchMovies = MutableLiveData<UiState<List<Movie>>>()
-    val fetchMovies: LiveData<UiState<List<Movie>>> = _fetchMovies
+    private val _fetchMovies = MutableLiveData<UiState<List<MovieUiModel>>>()
+    val fetchMovies: LiveData<UiState<List<MovieUiModel>>> = _fetchMovies
 
     fun fetchMovies(movieType: MovieType) {
         _fetchMovies.value = UiState.Loading
@@ -29,7 +29,7 @@ class MovieViewModel(
         }
     }
 
-    private fun Result<List<Movie>>.postResult() {
+    private fun Result<List<MovieUiModel>>.postResult() {
         this.onSuccess {
             _fetchMovies.value = if (it.isNotEmpty()) {
                 UiState.Success(it)

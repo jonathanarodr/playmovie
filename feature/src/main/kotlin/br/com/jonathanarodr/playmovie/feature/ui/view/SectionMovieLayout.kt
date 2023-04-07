@@ -3,7 +3,6 @@ package br.com.jonathanarodr.playmovie.feature.ui.view
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -13,7 +12,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.jonathanarodr.playmovie.common.uikit.theme.AppTheme
 import br.com.jonathanarodr.playmovie.common.uikit.token.Color
-import br.com.jonathanarodr.playmovie.common.uikit.token.Spacing
 import br.com.jonathanarodr.playmovie.feature.R
 
 @Composable
@@ -27,8 +25,7 @@ fun SectionMovieLayout(
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentHeight()
-                .padding(top = Spacing.md),
+                .wrapContentHeight(),
             text = stringResource(id = title),
             style = MaterialTheme.typography.headlineLarge.copy(
                 color = Color.neutralWhite,
