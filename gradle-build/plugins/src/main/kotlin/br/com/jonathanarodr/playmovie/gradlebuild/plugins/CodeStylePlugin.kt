@@ -27,6 +27,7 @@ class CodeStylePlugin : Plugin<Project> {
                 config = files("${project.rootDir}/tools/linters/detekt-rules.yml")
                 allRules = false
                 parallel = true
+                buildUponDefaultConfig = true
                 ignoredBuildTypes = listOf("release")
                 source = files(
                     AndroidConfig.JAVA_SOURCE_DIR,
@@ -42,6 +43,7 @@ class CodeStylePlugin : Plugin<Project> {
 
             tasks.withType<Detekt>().configureEach {
                 jvmTarget = platformConfig.javaVersion.toString()
+                classpath.setFrom(project.configurations.getByName("detekt"))
             }
 
             tasks.withType<DetektCreateBaselineTask>().configureEach {

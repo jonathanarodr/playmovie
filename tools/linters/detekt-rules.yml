@@ -622,6 +622,7 @@ potential-bugs:
     active: true
   UnsafeCallOnNullableType:
     active: true
+    severity: error
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
   UnsafeCast:
     active: true
