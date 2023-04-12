@@ -25,7 +25,7 @@ class AndroidLibraryPlugin : Plugin<Project> {
                 "com.android.library",
                 "org.gradle.android.cache-fix",
                 "org.gradle.test-retry",
-                "kotlin-android",
+                "org.jetbrains.kotlin.android",
                 "kotlin-parcelize",
                 "com.google.devtools.ksp",
             )
