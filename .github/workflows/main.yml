@@ -15,31 +15,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  code-quality:
+  setup:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Project checkout
-        uses: actions/checkout@v3
-
-      - name: Run detekt
-        run: ./gradlew detekt
-
-  code-coverage:
-    needs: [code-quality]
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Project checkout
-        uses: actions/checkout@v3
-
-      - name: Run unitTest
-        run: ./gradlew testDebug
-
-  build-apk:
-    needs: [code-quality]
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 5
     steps:
       - name: Project checkout
         uses: actions/checkout@v3
@@ -61,6 +39,27 @@ jobs:
       - name: Setup gradle build
         uses: gradle/gradle-build-action@v2.4.1
 
+  code-quality:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Run detekt
+        run: ./gradlew detekt
+
+  code-coverage:
+    needs: [code-quality]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Run unitTest
+        run: ./gradlew testDebug
+
+  build-apk:
+    needs: [code-quality]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
       - name: Build apks
         run: ./gradlew app:assemble
 
