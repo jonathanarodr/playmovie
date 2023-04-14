@@ -36,9 +36,6 @@ jobs:
           mkdir -p ~/.gradle
           cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
 
-      - name: Setup gradle build
-        uses: gradle/gradle-build-action@v2.4.1
-
       - name: Run detekt
         run: ./gradlew detekt
 
@@ -63,9 +60,6 @@ jobs:
         run: |
           mkdir -p ~/.gradle
           cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
-
-      - name: Setup gradle build
-        uses: gradle/gradle-build-action@v2.4.1
 
       - name: Run unitTest
         run: ./gradlew testDebug
