@@ -16,7 +16,6 @@ concurrency:
 
 jobs:
   code-quality:
-    needs: [setup]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
