@@ -1,7 +1,7 @@
 [versions]
 
 # gradle
-androidGradlePlugin = "7.4.2"
+androidGradlePlugin = "8.0.0"
 androidCacheFixPlugin = "2.7.0"
 gradleTestRetry = "1.5.2"
 gradleDoctor = "0.8.1"
