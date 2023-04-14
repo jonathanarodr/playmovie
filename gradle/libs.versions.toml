@@ -1,10 +1,11 @@
 [versions]
 
 # gradle
-gradleDoctor = "0.8.1"
-gradleTestRetry = "1.5.2"
 androidGradlePlugin = "7.4.2"
 androidCacheFixPlugin = "2.7.0"
+gradleTestRetry = "1.5.2"
+gradleDoctor = "0.8.1"
+gradleDependencyAnalysis = "1.19.0"
 
 # kotlin
 kotlin = "1.8.20"
@@ -143,8 +144,9 @@ detekt-compose  = { group = "com.twitter.compose.rules", name = "detekt", versio
 [bundles]
 
 [plugins]
-gradle-doctor = { id = "com.osacky.doctor", version.ref = "gradleDoctor" }
 gradle-testretry = { id = "org.gradle.test-retry", version.ref = "gradleTestRetry" }
+gradle-doctor = { id = "com.osacky.doctor", version.ref = "gradleDoctor" }
+gradle-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "gradleDependencyAnalysis" }
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
