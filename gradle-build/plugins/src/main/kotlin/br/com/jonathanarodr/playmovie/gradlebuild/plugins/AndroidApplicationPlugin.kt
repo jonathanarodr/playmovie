@@ -46,6 +46,7 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 configureAndroidTestConvention(this)
 
                 namespace = AndroidConfig.APPLICATION_ID
+                testNamespace = "${AndroidConfig.APPLICATION_ID}.test"
 
                 dependenciesInfo {
                     includeInApk = true
