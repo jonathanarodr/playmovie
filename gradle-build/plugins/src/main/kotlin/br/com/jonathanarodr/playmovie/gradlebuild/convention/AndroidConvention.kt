@@ -36,7 +36,10 @@ internal fun Project.configureAndroidAppicationConvention(
             }
         }
 
-        buildFeatures.viewBinding = true
+        buildFeatures {
+            buildConfig = true
+            viewBinding = true
+        }
     }
 }
 
