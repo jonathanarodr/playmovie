@@ -13,6 +13,7 @@ buildscript {
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.gradle.doctor) apply true
+    alias(libs.plugins.gradle.dependency.analysis) apply true
     alias(libs.plugins.gradle.testretry) apply false
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.jvm) apply false
@@ -28,4 +29,12 @@ tasks.register("clean", Delete::class) {
 
 doctor {
     warnWhenJetifierEnabled.set(false)
+}
+
+dependencyAnalysis {
+    issues {
+        all {
+            ignoreKtx(true)
+        }
+    }
 }

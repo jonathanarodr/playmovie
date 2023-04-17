@@ -32,7 +32,7 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 "com.android.application",
                 "org.gradle.android.cache-fix",
                 "org.gradle.test-retry",
-                "kotlin-android",
+                "org.jetbrains.kotlin.android",
                 "kotlin-parcelize",
                 "playmovie.codestyle",
                 "playmovie.codecoverage",
@@ -46,6 +46,7 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 configureAndroidTestConvention(this)
 
                 namespace = AndroidConfig.APPLICATION_ID
+                testNamespace = "${AndroidConfig.APPLICATION_ID}.test"
 
                 dependenciesInfo {
                     includeInApk = true

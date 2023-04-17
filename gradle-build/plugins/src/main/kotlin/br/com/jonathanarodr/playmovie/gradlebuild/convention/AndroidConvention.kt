@@ -25,7 +25,7 @@ internal fun Project.configureAndroidAppicationConvention(
             vectorDrawables.useSupportLibrary = true
         }
 
-        packagingOptions {
+        packaging {
             resources {
                 excludes.add("META-INF/*.kotlin_module")
                 excludes.add("META-INF/LICENSE**")
@@ -36,7 +36,10 @@ internal fun Project.configureAndroidAppicationConvention(
             }
         }
 
-        buildFeatures.viewBinding = true
+        buildFeatures {
+            buildConfig = true
+            viewBinding = true
+        }
     }
 }
 
@@ -51,7 +54,7 @@ internal fun Project.configureAndroidLibraryConvention(
             vectorDrawables.useSupportLibrary = true
         }
 
-        packagingOptions {
+        packaging {
             resources {
                 excludes.add("META-INF/*.kotlin_module")
                 excludes.add("META-INF/LICENSE**")
@@ -62,7 +65,9 @@ internal fun Project.configureAndroidLibraryConvention(
             }
         }
 
-        buildFeatures.viewBinding = true
+        buildFeatures {
+            viewBinding = true
+        }
     }
 }
 

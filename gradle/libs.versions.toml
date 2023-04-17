@@ -1,10 +1,11 @@
 [versions]
 
 # gradle
-gradleDoctor = "0.8.1"
+androidGradlePlugin = "8.0.0"
+androidCacheFixPlugin = "2.7.1"
 gradleTestRetry = "1.5.2"
-androidGradlePlugin = "7.4.2"
-androidCacheFixPlugin = "2.7.0"
+gradleDoctor = "0.8.1"
+gradleDependencyAnalysis = "1.19.0"
 
 # kotlin
 kotlin = "1.8.20"
@@ -12,7 +13,7 @@ ksp = "1.8.20-1.0.10"
 kotlinxCoroutines = "1.6.4"
 
 # jetpack
-androidxCore = "1.9.0"
+androidxCore = "1.10.0"
 androidxAppCompat = "1.6.1"
 androidxActivityCompose = "1.7.0"
 androidxRecyclerView = "1.3.0"
@@ -55,7 +56,7 @@ androidxEspresso = "3.5.1"
 junit = "4.13.2"
 truth = "1.1.3"
 mockk = "1.13.4"
-robolectric = "4.9.2"
+robolectric = "4.10"
 
 [libraries]
 
@@ -143,8 +144,9 @@ detekt-compose  = { group = "com.twitter.compose.rules", name = "detekt", versio
 [bundles]
 
 [plugins]
-gradle-doctor = { id = "com.osacky.doctor", version.ref = "gradleDoctor" }
 gradle-testretry = { id = "org.gradle.test-retry", version.ref = "gradleTestRetry" }
+gradle-doctor = { id = "com.osacky.doctor", version.ref = "gradleDoctor" }
+gradle-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "gradleDependencyAnalysis" }
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }

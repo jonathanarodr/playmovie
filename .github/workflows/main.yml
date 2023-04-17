@@ -22,6 +22,20 @@ jobs:
       - name: Project checkout
         uses: actions/checkout@v3
 
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3.11.0
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - name: Validate gradle wrapper
+        uses: gradle/wrapper-validation-action@v1.0.6
+
+      - name: Config gradle properties
+        run: |
+          mkdir -p ~/.gradle
+          cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+
       - name: Run detekt
         run: ./gradlew detekt
 
@@ -32,6 +46,20 @@ jobs:
     steps:
       - name: Project checkout
         uses: actions/checkout@v3
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3.11.0
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - name: Validate gradle wrapper
+        uses: gradle/wrapper-validation-action@v1.0.6
+
+      - name: Config gradle properties
+        run: |
+          mkdir -p ~/.gradle
+          cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
 
       - name: Run unitTest
         run: ./gradlew testDebug
@@ -44,11 +72,11 @@ jobs:
       - name: Project checkout
         uses: actions/checkout@v3
 
-      - name: Setup JDK 11
+      - name: Setup JDK 17
         uses: actions/setup-java@v3.11.0
         with:
           distribution: 'zulu'
-          java-version: 11
+          java-version: 17
 
       - name: Validate gradle wrapper
         uses: gradle/wrapper-validation-action@v1.0.6
@@ -59,7 +87,7 @@ jobs:
           cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
 
       - name: Setup gradle build
-        uses: gradle/gradle-build-action@v2.4.0
+        uses: gradle/gradle-build-action@v2.4.2
 
       - name: Build apks
         run: ./gradlew app:assemble
