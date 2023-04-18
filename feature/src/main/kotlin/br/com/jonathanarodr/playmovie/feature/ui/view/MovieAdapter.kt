@@ -1,5 +1,6 @@
 package br.com.jonathanarodr.playmovie.feature.ui.view
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -9,20 +10,21 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils
 import br.com.jonathanarodr.playmovie.feature.R
 import br.com.jonathanarodr.playmovie.feature.databinding.ListItemMovieBinding
-import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
+import br.com.jonathanarodr.playmovie.feature.ui.model.MovieUiModel
 
 class MovieAdapter(
     private val onClickHandler: MovieOnClickHandler,
 ) : Adapter<MovieAdapter.MovieViewHolder>() {
 
-    var movies: List<Movie> = emptyList()
+    var movies: List<MovieUiModel> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
     fun interface MovieOnClickHandler {
-        fun onMovieClickListener(movie: Movie)
+        fun onMovieClickListener(movie: MovieUiModel)
     }
 
     inner class MovieViewHolder(itemView: View) : ViewHolder(itemView), OnClickListener {
@@ -50,7 +52,7 @@ class MovieAdapter(
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         this.movies[position].apply {
-            if (!poster.isNullOrEmpty()) {
+            if (poster.isNotEmpty()) {
                 ImageLoaderUtils.load(holder.binding.poster, poster)
             }
         }
