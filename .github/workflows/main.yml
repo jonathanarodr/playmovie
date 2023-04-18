@@ -8,7 +8,7 @@ on:
       - ready_for_review
   push:
     branches:
-      - master
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -41,8 +41,11 @@ jobs:
 
   code-coverage:
     needs: [code-quality]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latestf
     timeout-minutes: 10
+    strategy:
+      matrix:
+        device-config: [ "pixel6api33aospatd" ]
     steps:
       - name: Project checkout
         uses: actions/checkout@v3
@@ -61,8 +64,17 @@ jobs:
           mkdir -p ~/.gradle
           cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
 
+      - name: Setup android sdk
+        uses: android-actions/setup-android@v2
+
       - name: Run unitTest
         run: ./gradlew testDebug
+
+      - name: Run androidTest
+        run: ./gradlew cleanManagedDevices --unused-only \
+          ./gradlew ${{ matrix.device-config }}DebugAndroidTest \
+          -Pandroid.testoptions.manageddevices.emulator.gpu="swiftshader_indirect" \
+          -Pandroid.experimental.testOptions.managedDevices.emulator.showKernelLogging=true \
 
   build-apk:
     needs: [code-quality]
