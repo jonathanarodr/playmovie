@@ -41,7 +41,7 @@ jobs:
 
   code-coverage:
     needs: [code-quality]
-    runs-on: ubuntu-latestf
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
       matrix:
