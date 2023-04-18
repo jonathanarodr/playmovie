@@ -14,7 +14,8 @@ import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_SIZE_D
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_SIZE_HIGH
 import br.com.jonathanarodr.playmovie.common.utils.ImageSize
 import br.com.jonathanarodr.playmovie.common.utils.format
-import br.com.jonathanarodr.playmovie.common.utils.getParcelableExtraCompat
+import br.com.jonathanarodr.playmovie.common.utils.putSafeArgs
+import br.com.jonathanarodr.playmovie.common.utils.safeArgs
 import br.com.jonathanarodr.playmovie.feature.R
 import br.com.jonathanarodr.playmovie.feature.databinding.ActivityDetailBinding
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
@@ -28,14 +29,12 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private val viewModel: DetailViewModel by viewModel()
-    private val movie: Movie by lazy { getExtra() }
+    private val movie: Movie by safeArgs()
 
     companion object {
-        private const val ARG_MOVIE = "ARG_MOVIE"
-
         operator fun invoke(context: Context, movie: Movie): Intent {
             return Intent(context, DetailActivity::class.java).apply {
-                this.putExtra(ARG_MOVIE, movie)
+                this.putSafeArgs(movie)
             }
         }
     }
@@ -100,10 +99,6 @@ class DetailActivity : AppCompatActivity() {
             R.string.generic_message_ops_try_again,
             Snackbar.LENGTH_LONG
         ).show()
-    }
-
-    private fun getExtra(): Movie {
-        return requireNotNull(intent.getParcelableExtraCompat(ARG_MOVIE))
     }
 
     private fun AppCompatImageView.loadImage(image: String?, size: ImageSize) {
