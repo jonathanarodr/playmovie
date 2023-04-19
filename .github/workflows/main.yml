@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 15
     strategy:
       matrix:
-        device-config: [ "pixel6api33aospatd" ]
+        device-config: [ "pixel6api30aospatd" ]
     steps:
       - name: Project checkout
         uses: actions/checkout@v3
@@ -44,15 +44,14 @@ jobs:
 
       - name: Run androidTest
         run: |
-          echo "Cleaning managed devices"
+          echo "::group::Cleaning managed devices"
           ./gradlew cleanManagedDevices --unused-only
-          
+          echo "::endgroup::"
+
           echo "Running android test"
           ./gradlew ${{ matrix.device-config }}DebugAndroidTest \
           -Pandroid.testoptions.manageddevices.emulator.gpu="swiftshader_indirect" \
           -Pandroid.experimental.testOptions.managedDevices.emulator.showKernelLogging=true
-          
-          exit 1
 
   code-quality:
     needs: [android-test-gmd]

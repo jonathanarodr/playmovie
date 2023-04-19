@@ -7,6 +7,7 @@ internal object AndroidConfig {
     const val SDK_COMPILER = 33
     const val SDK_TARGET = 33
     const val SDK_MINIMUM = 23
+    const val SDK_GRADLE_MANAGED_DEVICE_API = 30
 
     const val BUILD_TOOLS = "33.0.2"
 
