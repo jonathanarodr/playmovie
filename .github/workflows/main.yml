@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   setup-workflow:
-    if: ${{ vars.EXPERIMENTAL == true }}
+    if: ${{ vars.EXPERIMENTAL == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
