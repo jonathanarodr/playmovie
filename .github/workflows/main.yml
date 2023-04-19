@@ -8,38 +8,41 @@ on:
       - ready_for_review
   push:
     branches:
-      - master
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  setup-workflow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Project checkout
+        uses: actions/checkout@v3
+
+      - name: Setup gradle build
+        uses: ./.github/actions/setup-gradle-build
+
+      - name: Validate gradle wrapper
+        uses: gradle/wrapper-validation-action@v1.0.6
+
   code-quality:
+    needs: [setup-workflow]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Project checkout
         uses: actions/checkout@v3
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v3.11.0
-        with:
-          distribution: 'zulu'
-          java-version: 17
-
-      - name: Validate gradle wrapper
-        uses: gradle/wrapper-validation-action@v1.0.6
-
-      - name: Config gradle properties
-        run: |
-          mkdir -p ~/.gradle
-          cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+      - name: Setup gradle build
+        uses: ./.github/actions/setup-gradle-build
 
       - name: Run detekt
         run: ./gradlew detekt
 
-  code-coverage:
+  unit-test:
     needs: [code-quality]
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -47,22 +50,43 @@ jobs:
       - name: Project checkout
         uses: actions/checkout@v3
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v3.11.0
-        with:
-          distribution: 'zulu'
-          java-version: 17
+      - name: Setup gradle build
+        uses: ./.github/actions/setup-gradle-build
 
-      - name: Validate gradle wrapper
-        uses: gradle/wrapper-validation-action@v1.0.6
+      - name: Run unit tests
+        run: ./gradlew testDebug --stacktrace
 
-      - name: Config gradle properties
+  android-test:
+    if: ${{ vars.EXPERIMENTAL == 'true' }}
+    needs: [code-quality]
+    runs-on: macos-latest
+    timeout-minutes: 15
+    continue-on-error: true
+    strategy:
+      matrix:
+        device-config: [ "pixel6api30aospatd" ]
+    steps:
+      - name: Project checkout
+        uses: actions/checkout@v3
+
+      - name: Setup gradle build
+        uses: ./.github/actions/setup-gradle-build
+
+      - name: Setup android sdk
+        uses: android-actions/setup-android@v2.0.10
+
+      - name: Run android test with GMD
         run: |
-          mkdir -p ~/.gradle
-          cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+          echo "::group::Cleaning managed devices"
+          ./gradlew cleanManagedDevices --unused-only
+          echo "::endgroup::"
 
-      - name: Run unitTest
-        run: ./gradlew testDebug
+          echo "::group::Running androidTest"
+          ./gradlew ${{ matrix.device-config }}DebugAndroidTest \
+          -Pandroid.testoptions.manageddevices.emulator.gpu="swiftshader_indirect" \
+          -Pandroid.experimental.testOptions.managedDevices.emulator.showKernelLogging=true \
+          --stacktrace
+          echo "::endgroup::"
 
   build-apk:
     needs: [code-quality]
@@ -72,19 +96,8 @@ jobs:
       - name: Project checkout
         uses: actions/checkout@v3
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v3.11.0
-        with:
-          distribution: 'zulu'
-          java-version: 17
-
-      - name: Validate gradle wrapper
-        uses: gradle/wrapper-validation-action@v1.0.6
-
-      - name: Config gradle properties
-        run: |
-          mkdir -p ~/.gradle
-          cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+      - name: Setup gradle build
+        uses: ./.github/actions/setup-gradle-build
 
       - name: Setup gradle build
         uses: gradle/gradle-build-action@v2.4.2
