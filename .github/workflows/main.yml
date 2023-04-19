@@ -39,17 +39,20 @@ jobs:
           mkdir -p ~/.gradle
           cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
 
-      - name: Setup gradle build
-        uses: gradle/gradle-build-action@v2.4.2
-
       - name: Setup android sdk
         uses: android-actions/setup-android@v2.0.10
 
       - name: Run androidTest
-        run: ./gradlew cleanManagedDevices --unused-only \
+        run: |
+          echo "Cleaning managed devices"
+          ./gradlew cleanManagedDevices --unused-only
+          
+          echo "Running android test"
           ./gradlew ${{ matrix.device-config }}DebugAndroidTest \
           -Pandroid.testoptions.manageddevices.emulator.gpu="swiftshader_indirect" \
-          -Pandroid.experimental.testOptions.managedDevices.emulator.showKernelLogging=true && exit 1
+          -Pandroid.experimental.testOptions.managedDevices.emulator.showKernelLogging=true
+          
+          exit 1
 
   code-quality:
     needs: [android-test-gmd]
