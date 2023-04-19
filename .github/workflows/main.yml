@@ -30,9 +30,7 @@ jobs:
 
       - name: exit
         run: |
-          ls
-          cd ~/.gradle
-          ls
+          ls ~/.gradle
           exit 1
 
   code-quality:
