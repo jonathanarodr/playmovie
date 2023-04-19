@@ -19,6 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: check var
+        run: |
+          echo ${{ vars.EXPERIMENTAL }}
+          echo ${{ vars.EXPERIMENTAL == 'true' }}
+          exit 1
+
       - name: Project checkout
         uses: actions/checkout@v3
 
