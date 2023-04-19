@@ -16,22 +16,22 @@ concurrency:
 
 jobs:
   setup-environment:
-  runs-on: ubuntu-latest
-  timeout-minutes: 5
-  steps:
-    - name: Project checkout
-      uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Project checkout
+        uses: actions/checkout@v3
 
-    - name: Setup gradle build
-      uses: ./.github/actions/setup-gradle-build
+      - name: Setup gradle build
+        uses: ./.github/actions/setup-gradle-build
 
-    - name: Validate gradle wrapper
-      uses: gradle/wrapper-validation-action@v1.0.6
+      - name: Validate gradle wrapper
+        uses: gradle/wrapper-validation-action@v1.0.6
 
-    - name: exit
-      run: |
-        ls
-        exit 1
+      - name: exit
+        run: |
+          ls
+          exit 1
 
   code-quality:
     needs: [setup-environment]
