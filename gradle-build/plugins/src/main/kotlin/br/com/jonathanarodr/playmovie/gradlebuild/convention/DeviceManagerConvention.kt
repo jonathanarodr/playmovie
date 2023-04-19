@@ -25,7 +25,7 @@ internal fun Project.configureDeviceManagerConvention(
     commonExtension: CommonExtension<*, *, *, *>,
 ) {
     val deviceConfigs = listOf(
-        DeviceConfig("Pixel 6", AndroidConfig.SDK_GRADLE_MANAGED_DEVICE_API, "aosp-atd"),
+        DeviceConfig("Pixel 6", AndroidConfig.SDK_GMD_API, "aosp-atd"),
     )
 
     commonExtension.testOptions {
