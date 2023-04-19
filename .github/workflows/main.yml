@@ -22,7 +22,7 @@ jobs:
       - name: check var
         run: |
           echo ${{ vars.EXPERIMENTAL }}
-          if [[ ${{ vars.EXPERIMENTAL == 'true' }} ]]; then
+          if [[ ${{ vars.EXPERIMENTAL == true }} ]]; then
             echo "experimental"
           fi
           exit 1
