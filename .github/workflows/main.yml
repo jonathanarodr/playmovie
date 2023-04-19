@@ -25,8 +25,11 @@ jobs:
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
 
+      - name: check
+        run: ls
+
       - name: Validate gradle wrapper
-        uses: gradle/wrapper-validation-action@v1.0.61
+        uses: gradle/wrapper-validation-action@v1.0.6
 
   code-quality:
     needs: [setup-workflow]
