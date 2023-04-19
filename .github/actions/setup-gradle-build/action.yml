@@ -1,0 +1,18 @@
+name: "Setup Gradle build"
+
+description: "Setup common steps to running gradle builds"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup JDK 17
+      uses: actions/setup-java@v3.11.0
+      with:
+        distribution: 'zulu'
+        java-version: 17
+
+    - name: Config gradle properties
+      shell: bash
+      run: |
+        mkdir -p ~/.gradle
+        cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties

@@ -15,26 +15,34 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  setup-environment:
+  runs-on: ubuntu-latest
+  timeout-minutes: 5
+  steps:
+    - name: Project checkout
+      uses: actions/checkout@v3
+
+    - name: Setup gradle build
+      uses: ./.github/actions/setup-gradle-build
+
+    - name: Validate gradle wrapper
+      uses: gradle/wrapper-validation-action@v1.0.6
+
+    - name: exit
+      run: |
+        ls
+        exit 1
+
   code-quality:
+    needs: [setup-environment]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Project checkout
         uses: actions/checkout@v3
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v3.11.0
-        with:
-          distribution: 'zulu'
-          java-version: 17
-
-      - name: Validate gradle wrapper
-        uses: gradle/wrapper-validation-action@v1.0.6
-
-      - name: Config gradle properties
-        run: |
-          mkdir -p ~/.gradle
-          cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+      - name: Setup gradle build
+        uses: ./.github/actions/setup-gradle-build
 
       - name: Run detekt
         run: ./gradlew detekt
@@ -47,19 +55,11 @@ jobs:
       - name: Project checkout
         uses: actions/checkout@v3
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v3.11.0
-        with:
-          distribution: 'zulu'
-          java-version: 17
-
-      - name: Config gradle properties
-        run: |
-          mkdir -p ~/.gradle
-          cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+      - name: Setup gradle build
+        uses: ./.github/actions/setup-gradle-build
 
       - name: Run unitTest
-        run: ./gradlew testDebug
+        run: ./gradlew testDebug --stacktrace
 
   android-test-gmd:
     needs: [code-quality]
@@ -72,21 +72,13 @@ jobs:
       - name: Project checkout
         uses: actions/checkout@v3
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v3.11.0
-        with:
-          distribution: 'zulu'
-          java-version: 17
-
-      - name: Config gradle properties
-        run: |
-          mkdir -p ~/.gradle
-          cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+      - name: Setup gradle build
+        uses: ./.github/actions/setup-gradle-build
 
       - name: Setup android sdk
         uses: android-actions/setup-android@v2.0.10
 
-      - name: Run androidTest
+      - name: Run android test with GMD
         run: |
           echo "::group::Cleaning managed devices"
           ./gradlew cleanManagedDevices --unused-only
@@ -107,16 +99,8 @@ jobs:
       - name: Project checkout
         uses: actions/checkout@v3
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v3.11.0
-        with:
-          distribution: 'zulu'
-          java-version: 17
-
-      - name: Config gradle properties
-        run: |
-          mkdir -p ~/.gradle
-          cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+      - name: Setup gradle build
+        uses: ./.github/actions/setup-gradle-build
 
       - name: Setup gradle build
         uses: gradle/gradle-build-action@v2.4.2
