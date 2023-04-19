@@ -31,6 +31,8 @@ jobs:
       - name: exit
         run: |
           ls
+          cd ~/.gradle
+          ls
           exit 1
 
   code-quality:
