@@ -16,7 +16,6 @@ concurrency:
 
 jobs:
   setup-workflow:
-    if: ${{ vars.EXPERIMENTAL == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -34,14 +33,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: check var
-        run: |
-          echo ${{ vars.EXPERIMENTAL }}
-          if [[ ${{ vars.EXPERIMENTAL == true }} ]]; then
-            echo "experimental"
-          fi
-          exit 1
-
       - name: Project checkout
         uses: actions/checkout@v3
 
