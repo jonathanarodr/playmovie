@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  setup-environment:
+  setup-workflow:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -30,11 +30,11 @@ jobs:
 
       - name: exit
         run: |
-          ls ~/.gradle
+          cat ~/.gradle
           exit 1
 
   code-quality:
-    needs: [setup-environment]
+    needs: [setup-workflow]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
