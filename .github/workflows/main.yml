@@ -15,7 +15,41 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  android-test-gmd:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        device-config: [ "pixel6api33aospatd" ]
+    steps:
+      - name: Project checkout
+        uses: actions/checkout@v3
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3.11.0
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - name: Validate gradle wrapper
+        uses: gradle/wrapper-validation-action@v1.0.6
+
+      - name: Config gradle properties
+        run: |
+          mkdir -p ~/.gradle
+          cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+
+      - name: Setup android sdk
+        uses: android-actions/setup-android@v2.0.10
+
+      - name: Run androidTest
+        run: ./gradlew cleanManagedDevices --unused-only \
+          ./gradlew ${{ matrix.device-config }}DebugAndroidTest \
+          -Pandroid.testoptions.manageddevices.emulator.gpu="swiftshader_indirect" \
+          -Pandroid.experimental.testOptions.managedDevices.emulator.showKernelLogging=true \
+
   code-quality:
+    needs: [android-test-gmd]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
