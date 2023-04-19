@@ -25,9 +25,6 @@ jobs:
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
 
-      - name: check
-        run: ls
-
       - name: Validate gradle wrapper
         uses: gradle/wrapper-validation-action@v1.0.6
 
@@ -56,10 +53,10 @@ jobs:
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
 
-      - name: Run unitTest
+      - name: Run unit tests
         run: ./gradlew testDebug --stacktrace
 
-  android-test-gmd:
+  android-test:
     if: ${{ vars.EXPERIMENTAL == 'true' }}
     needs: [code-quality]
     runs-on: macos-latest
