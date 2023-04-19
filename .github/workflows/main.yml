@@ -38,6 +38,8 @@ jobs:
         run: |
           mkdir -p ~/.gradle
           cp $GITHUB_WORKSPACE/tools/ci/gradle-ci.properties ~/.gradle/gradle.properties
+          ls
+          exit 1
 
       - name: Setup android sdk
         uses: android-actions/setup-android@v2.0.10
