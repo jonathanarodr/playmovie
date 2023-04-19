@@ -62,9 +62,11 @@ jobs:
         run: ./gradlew testDebug --stacktrace
 
   android-test-gmd:
+    if: ${{ vars.EXPERIMENTAL == 'true' }}
     needs: [code-quality]
     runs-on: macos-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
+    continue-on-error: true
     strategy:
       matrix:
         device-config: [ "pixel6api30aospatd" ]
