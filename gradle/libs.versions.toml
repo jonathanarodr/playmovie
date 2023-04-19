@@ -9,7 +9,7 @@ gradleDependencyAnalysis = "1.19.0"
 
 # kotlin
 kotlin = "1.8.20"
-ksp = "1.8.20-1.0.10"
+ksp = "1.8.20-1.0.11"
 kotlinxCoroutines = "1.6.4"
 
 # jetpack
