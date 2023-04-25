@@ -9,11 +9,9 @@ changelog:
   categories:
     - title: New Features 🎉
       labels:
-        - major
-        - enhancement
+        - new feature
     - title: Updates 🛠
       labels:
-        - minor
         - enhancement
         - updates
     - title: Bug Fixes 🐛
