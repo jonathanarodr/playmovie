@@ -5,7 +5,7 @@ androidGradlePlugin = "8.0.0"
 androidCacheFixPlugin = "2.7.1"
 gradleTestRetry = "1.5.2"
 gradleDoctor = "0.8.1"
-gradleDependencyAnalysis = "1.19.0"
+gradleDependencyAnalysis = "1.20.0"
 
 # kotlin
 kotlin = "1.8.20"
@@ -15,12 +15,12 @@ kotlinxCoroutines = "1.6.4"
 # jetpack
 androidxCore = "1.10.0"
 androidxAppCompat = "1.6.1"
-androidxActivityCompose = "1.7.0"
+androidxActivityCompose = "1.7.1"
 androidxRecyclerView = "1.3.0"
 androidxConstraintLayout = "2.1.4"
 androidxSwipeRefreshLayout = "1.1.0"
 androidxLifecycle = "2.6.1"
-androidxComposeBom = "2023.04.00"
+androidxComposeBom = "2023.04.01"
 androidxComposeCompiler = "1.4.4"
 androidxComposeRuntimeTracing = "1.0.0-alpha03"
 androidxRoom = "2.5.1"
@@ -28,7 +28,7 @@ androidxNavigation = "2.5.3"
 
 # square
 retrofit = "2.9.0"
-okhttp = "4.10.0"
+okhttp = "4.11.0"
 leakcanary = "2.10"
 
 # tools
