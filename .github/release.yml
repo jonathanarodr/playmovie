@@ -13,10 +13,8 @@ changelog:
     - title: Updates 🛠
       labels:
         - enhancement
-        - updates
     - title: Bug Fixes 🐛
       labels:
-        - patch
         - bug
     - title: Other Changes
       labels:
