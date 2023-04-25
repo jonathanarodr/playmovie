@@ -1,0 +1,25 @@
+changelog:
+  exclude:
+    labels:
+      - wontfix
+      - duplicate
+      - question
+    authors:
+      - octocat
+  categories:
+    - title: New Features 🎉
+      labels:
+        - major
+        - enhancement
+    - title: Updates 🛠
+      labels:
+        - minor
+        - enhancement
+        - updates
+    - title: Bug Fixes 🐛
+      labels:
+        - patch
+        - bug
+    - title: Other Changes
+      labels:
+        - '*'
