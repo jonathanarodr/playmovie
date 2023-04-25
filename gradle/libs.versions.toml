@@ -28,7 +28,7 @@ androidxNavigation = "2.5.3"
 
 # square
 retrofit = "2.9.0"
-okhttp = "4.10.0"
+okhttp = "4.11.0"
 leakcanary = "2.10"
 
 # tools
