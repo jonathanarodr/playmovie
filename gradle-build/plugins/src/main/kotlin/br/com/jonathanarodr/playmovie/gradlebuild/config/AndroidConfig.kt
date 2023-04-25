@@ -12,7 +12,7 @@ internal object AndroidConfig {
     const val BUILD_TOOLS = "33.0.2"
 
     const val VERSION_CODE = 8
-    const val VERSION_NAME = "2.2.47"
+    const val VERSION_NAME = "3.12.0"
 
     const val JAVA_SOURCE_DIR = "src/main/java"
     const val JAVA_SOURCE_DIR_TEST = "src/test/java"
