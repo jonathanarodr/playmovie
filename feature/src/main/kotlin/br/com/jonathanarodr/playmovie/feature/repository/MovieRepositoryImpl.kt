@@ -19,14 +19,22 @@ class MovieRepositoryImpl(
         return remoteDataSource.searchTvSeries()
     }
 
+    override suspend fun getMovieDetail(id: Long): Result<Movie> {
+        return remoteDataSource.getMovieDetail(id)
+    }
+
+    override suspend fun getTvSerieDetail(id: Long): Result<Movie> {
+        return remoteDataSource.getTvSerieDetail(id)
+    }
+
     override suspend fun searchFavoriteMovies(): Result<List<Movie>> {
         return localDataSource.searchFavoriteMovies().mapCatching { result ->
             result.map { it.toMovie() }
         }
     }
 
-    override suspend fun getFavoriteMovie(movieId: Long): Result<Movie> {
-        return localDataSource.getFavoriteMovie(movieId).mapCatching { result ->
+    override suspend fun getFavoriteMovie(id: Long): Result<Movie> {
+        return localDataSource.getFavoriteMovie(id).mapCatching { result ->
             result.toMovie()
         }
     }

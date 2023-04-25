@@ -2,6 +2,7 @@ package br.com.jonathanarodr.playmovie.feature.domain.model
 
 import android.os.Parcelable
 import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieEntity
+import br.com.jonathanarodr.playmovie.feature.ui.model.DetailUiModel
 import br.com.jonathanarodr.playmovie.feature.ui.model.MovieUiModel
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
@@ -41,4 +42,15 @@ fun Movie.toMovieUiModel() = MovieUiModel(
     poster = this.poster.orEmpty(),
     average = this.average,
     releaseDate = this.releaseDate,
+)
+
+fun Movie.toDetailUiModel(isFavorite: Boolean) = DetailUiModel(
+    id = this.id,
+    title = this.title,
+    overview = this.overview,
+    poster = this.poster.orEmpty(),
+    backdrop = this.backdrop.orEmpty(),
+    average = this.average,
+    releaseDate = this.releaseDate,
+    isFavorite = isFavorite,
 )

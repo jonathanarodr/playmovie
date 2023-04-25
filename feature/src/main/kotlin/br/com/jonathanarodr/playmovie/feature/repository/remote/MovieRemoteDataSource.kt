@@ -19,4 +19,16 @@ class MovieRemoteDataSource(
             movieApi.searchTvSeries().results
         }
     }
+
+    suspend fun getMovieDetail(id: Long): Result<Movie> {
+        return execute {
+            movieApi.getMovieDetail(id)
+        }
+    }
+
+    suspend fun getTvSerieDetail(id: Long): Result<Movie> {
+        return execute {
+            movieApi.getTvSerieDetail(id)
+        }
+    }
 }
