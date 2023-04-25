@@ -9,7 +9,7 @@ changelog:
   categories:
     - title: New Features 🎉
       labels:
-        - 'new feature'
+        - 'new-feature'
     - title: Updates 🛠
       labels:
         - 'enhancement'
