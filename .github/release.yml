@@ -1,0 +1,22 @@
+changelog:
+  exclude:
+    labels:
+      - 'wontfix'
+      - 'duplicate'
+      - 'question'
+    authors:
+      - octocat
+  categories:
+    - title: New Features 🎉
+      labels:
+        - 'new-feature'
+    - title: Updates 🛠
+      labels:
+        - 'enhancement'
+        - 'updates'
+    - title: Bug Fixes 🐛
+      labels:
+        - 'bug'
+    - title: Other Changes
+      labels:
+        - '*'
