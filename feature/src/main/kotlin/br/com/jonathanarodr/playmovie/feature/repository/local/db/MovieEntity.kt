@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
+import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
 import java.util.Date
 
 @Entity(tableName = "movies")
@@ -23,6 +24,8 @@ data class MovieEntity(
     val average: Double,
     @ColumnInfo(name = "release")
     val releaseDate: Date,
+    @ColumnInfo(name = "type")
+    val type: MovieType,
 )
 
 fun MovieEntity.toMovie() = Movie(
@@ -33,4 +36,5 @@ fun MovieEntity.toMovie() = Movie(
     backdrop = this.backdrop,
     average = this.average,
     releaseDate = this.releaseDate,
+    type = this.type,
 )

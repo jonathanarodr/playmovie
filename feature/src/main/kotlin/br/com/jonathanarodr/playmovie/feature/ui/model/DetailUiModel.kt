@@ -1,5 +1,6 @@
 package br.com.jonathanarodr.playmovie.feature.ui.model
 
+import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
 import java.util.Date
 
 data class DetailUiModel(
@@ -10,5 +11,6 @@ data class DetailUiModel(
     val backdrop: String,
     val average: Double,
     val releaseDate: Date,
+    val type: MovieType,
     val isFavorite: Boolean,
 )
