@@ -53,8 +53,13 @@ class MovieFragment : Fragment(), MovieOnClickHandler, SwipeRefreshLayout.OnRefr
 
     override fun onMovieClickListener(movie: MovieUiModel) {
         context?.let {
-//            val intent = DetailActivity(requireContext(), movie)
-//            startActivity(intent)
+            DetailActivity(
+                context = requireContext(),
+                movieId = movie.id,
+                movieType = args.movieType,
+            ).run {
+                startActivity(this)
+            }
         }
     }
 

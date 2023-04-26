@@ -3,9 +3,11 @@ package br.com.jonathanarodr.playmovie.feature.domain.usecase
 import br.com.jonathanarodr.playmovie.common.utils.asFlow
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.domain.model.toDetailUiModel
+import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
 import br.com.jonathanarodr.playmovie.feature.repository.MovieRepository
 import br.com.jonathanarodr.playmovie.feature.ui.model.DetailUiModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 // FIXME create a mapper patner to convert objetcs
 class DetailUseCase(
@@ -31,11 +33,32 @@ class DetailUseCase(
         }.asFlow()
     }
 
-    suspend fun insertFavoriteMovie(movie: Movie): Flow<Unit> {
-        return movieRepository.insertFavoriteMovie(movie).asFlow()
+    suspend fun getFavoriteMovieDetail(id: Long): Flow<DetailUiModel> {
+        return movieRepository.getFavoriteMovie(id).mapCatching { result ->
+            result.toDetailUiModel(
+                isFavorite = true,
+            )
+        }.asFlow()
     }
 
-    suspend fun removeFavoriteMovie(movie: Movie): Flow<Unit> {
-        return movieRepository.removeFavoriteMovie(movie).asFlow()
+    suspend fun insertFavoriteMovie(id: Long, movieType: MovieType): Flow<Boolean> {
+        return findMovie(id, movieType).map {
+            movieRepository.insertFavoriteMovie(it).isSuccess
+        }
+    }
+
+    suspend fun removeFavoriteMovie(id: Long, movieType: MovieType): Flow<Boolean> {
+        return findMovie(id, movieType).map {
+            movieRepository.removeFavoriteMovie(it).isSuccess
+        }
+    }
+
+    // FIXME improve this logic with new 'FavoriteMovie' table to save movie ID instead of saving whole movie entity
+    private suspend fun findMovie(id: Long, movieType: MovieType): Flow<Movie> {
+        return if (movieType == MovieType.MOVIES) {
+            movieRepository.getMovieDetail(id)
+        } else {
+            movieRepository.getTvSerieDetail(id)
+        }.asFlow()
     }
 }
