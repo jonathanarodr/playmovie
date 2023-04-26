@@ -51,7 +51,7 @@ class DetailViewModel(
         }
     }
 
-    fun insertFavoriteMovie() {
+    private fun insertFavoriteMovie() {
         uiState.value = DetailUiState.LikedMovie
 
         viewModelScope.launch {
@@ -62,7 +62,7 @@ class DetailViewModel(
         }
     }
 
-    fun removeFavoriteMovie() {
+    private fun removeFavoriteMovie() {
         uiState.value = DetailUiState.DislikedMovie
 
         viewModelScope.launch {
