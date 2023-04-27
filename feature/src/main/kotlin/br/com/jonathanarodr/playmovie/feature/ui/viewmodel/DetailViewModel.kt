@@ -56,8 +56,7 @@ class DetailViewModel(
 
         viewModelScope.launch {
             detailUseCase.insertFavoriteMovie(movieSafeArgs.id, movieSafeArgs.type).catch {
-                uiState.value = DetailUiState.DislikedMovie
-                uiState.value = DetailUiState.Error(it as ResultException)
+                uiState.value = DetailUiState.LikedError(it as ResultException)
             }.collect()
         }
     }
@@ -67,8 +66,7 @@ class DetailViewModel(
 
         viewModelScope.launch {
             detailUseCase.removeFavoriteMovie(movieSafeArgs.id, movieSafeArgs.type).catch {
-                uiState.value = DetailUiState.LikedMovie
-                uiState.value = DetailUiState.Error(it as ResultException)
+                uiState.value = DetailUiState.DislikedError(it as ResultException)
             }.collect()
         }
     }

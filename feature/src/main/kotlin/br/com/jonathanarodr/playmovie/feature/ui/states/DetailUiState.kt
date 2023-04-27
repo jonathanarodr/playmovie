@@ -13,5 +13,9 @@ sealed interface DetailUiState {
 
     object LikedMovie : DetailUiState
 
+    data class LikedError(val exception: ResultException) : DetailUiState
+
     object DislikedMovie : DetailUiState
+
+    data class DislikedError(val exception: ResultException) : DetailUiState
 }

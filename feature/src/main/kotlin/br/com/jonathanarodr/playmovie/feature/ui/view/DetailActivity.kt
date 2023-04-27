@@ -70,8 +70,16 @@ class DetailActivity : AppCompatActivity() {
                         is DetailUiState.Success -> onSuccess(state.data)
                         is DetailUiState.Loading -> onLoading()
                         is DetailUiState.Error -> onError(state.exception)
-                        is DetailUiState.LikedMovie -> onLikedSuccess()
-                        is DetailUiState.DislikedMovie -> onDislikedSuccess()
+                        is DetailUiState.LikedMovie -> setupLikedView()
+                        is DetailUiState.LikedError -> {
+                            setupDislikedView()
+                            onError(state.exception)
+                        }
+                        is DetailUiState.DislikedMovie -> setupDislikedView()
+                        is DetailUiState.DislikedError -> {
+                            setupLikedView()
+                            onError(state.exception)
+                        }
                     }
                 }
             }
@@ -89,9 +97,9 @@ class DetailActivity : AppCompatActivity() {
             movieOverviewDescription.text = uiModel.overview
 
             if (uiModel.isFavorite) {
-                onLikedSuccess()
+                setupLikedView()
             } else {
-                onDislikedSuccess()
+                setupDislikedView()
             }
         }
     }
@@ -111,13 +119,13 @@ class DetailActivity : AppCompatActivity() {
         ).show()
     }
 
-    private fun onLikedSuccess() {
+    private fun setupLikedView() {
         binding.saveFavoriteMovie.updateView(R.drawable.ic_favorite_on) {
             viewModel.dispatchUiEvent(DetailUiEvent.RemoveFavorite)
         }
     }
 
-    private fun onDislikedSuccess() {
+    private fun setupDislikedView() {
         binding.saveFavoriteMovie.updateView(R.drawable.ic_favorite_off) {
             viewModel.dispatchUiEvent(DetailUiEvent.InsertFavorite)
         }
