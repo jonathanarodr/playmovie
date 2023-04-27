@@ -23,6 +23,8 @@ class DetailViewModel(
 
     override val uiState: MutableStateFlow<DetailUiState> = MutableStateFlow(DetailUiState.Loading)
 
+    private lateinit var uiModel: DetailUiModel
+
     override fun dispatchUiEvent(uiEvent: DetailUiEvent) {
         when (uiEvent) {
             is DetailUiEvent.Init -> getMovieDetail()
@@ -44,7 +46,8 @@ class DetailViewModel(
 
         viewModelScope.launch {
             findMovie().onEach {
-                uiState.value = DetailUiState.Success(it)
+                uiModel = it
+                uiState.value = DetailUiState.Success(uiModel)
             }.catch {
                 uiState.value = DetailUiState.Error(it as ResultException)
             }.collect()
@@ -55,7 +58,7 @@ class DetailViewModel(
         uiState.value = DetailUiState.LikedMovie
 
         viewModelScope.launch {
-            detailUseCase.insertFavoriteMovie(movieSafeArgs.id, movieSafeArgs.type).catch {
+            detailUseCase.insertFavoriteMovie(uiModel).catch {
                 uiState.value = DetailUiState.LikedError(it as ResultException)
             }.collect()
         }
@@ -65,7 +68,7 @@ class DetailViewModel(
         uiState.value = DetailUiState.DislikedMovie
 
         viewModelScope.launch {
-            detailUseCase.removeFavoriteMovie(movieSafeArgs.id, movieSafeArgs.type).catch {
+            detailUseCase.removeFavoriteMovie(uiModel).catch {
                 uiState.value = DetailUiState.DislikedError(it as ResultException)
             }.collect()
         }
