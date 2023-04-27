@@ -12,7 +12,7 @@ import br.com.jonathanarodr.playmovie.feature.ui.view.MovieSafeArgs
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
@@ -47,7 +47,7 @@ class DetailViewModel(
                 uiState.value = DetailUiState.Success(it)
             }.catch {
                 uiState.value = DetailUiState.Error(it as ResultException)
-            }.distinctUntilChanged()
+            }.collect()
         }
     }
 
@@ -58,7 +58,7 @@ class DetailViewModel(
             detailUseCase.insertFavoriteMovie(movieSafeArgs.id, movieSafeArgs.type).catch {
                 uiState.value = DetailUiState.DislikedMovie
                 uiState.value = DetailUiState.Error(it as ResultException)
-            }
+            }.collect()
         }
     }
 
@@ -69,7 +69,7 @@ class DetailViewModel(
             detailUseCase.removeFavoriteMovie(movieSafeArgs.id, movieSafeArgs.type).catch {
                 uiState.value = DetailUiState.LikedMovie
                 uiState.value = DetailUiState.Error(it as ResultException)
-            }
+            }.collect()
         }
     }
 }

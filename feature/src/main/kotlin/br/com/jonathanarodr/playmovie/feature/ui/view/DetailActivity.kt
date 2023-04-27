@@ -64,6 +64,7 @@ class DetailActivity : AppCompatActivity() {
     private fun setupObservables() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.dispatchUiEvent(DetailUiEvent.Init)
                 viewModel.uiState.collect { state ->
                     when (state) {
                         is DetailUiState.Success -> onSuccess(state.data)
@@ -86,6 +87,12 @@ class DetailActivity : AppCompatActivity() {
             movieRelease.text = uiModel.releaseDate.format()
             movieAverage.text = uiModel.average.toString()
             movieOverviewDescription.text = uiModel.overview
+
+            if (uiModel.isFavorite) {
+                onLikedSuccess()
+            } else {
+                onDislikedSuccess()
+            }
         }
     }
 
