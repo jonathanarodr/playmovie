@@ -1,15 +1,15 @@
 [versions]
 
 # gradle
-androidGradlePlugin = "8.0.0"
+androidGradlePlugin = "8.0.1"
 androidCacheFixPlugin = "2.7.1"
 gradleTestRetry = "1.5.2"
 gradleDoctor = "0.8.1"
 gradleDependencyAnalysis = "1.20.0"
 
 # kotlin
-kotlin = "1.8.20"
-ksp = "1.8.20-1.0.11"
+kotlin = "1.8.21"
+ksp = "1.8.21-1.0.11"
 kotlinxCoroutines = "1.6.4"
 
 # jetpack
