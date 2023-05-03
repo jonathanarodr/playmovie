@@ -2,6 +2,7 @@ package br.com.jonathanarodr.playmovie.feature.repository.local.db
 
 import androidx.test.filters.SmallTest
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
+import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Instant
@@ -20,6 +21,7 @@ class MovieEntityTest {
         backdrop = "backdrop",
         average = 0.0,
         releaseDate = date,
+        type = MovieType.MOVIES,
     )
 
     private val expected = Movie(
@@ -30,6 +32,7 @@ class MovieEntityTest {
         backdrop = "backdrop",
         average = 0.0,
         releaseDate = date,
+        type = MovieType.MOVIES,
     )
 
     @Test
