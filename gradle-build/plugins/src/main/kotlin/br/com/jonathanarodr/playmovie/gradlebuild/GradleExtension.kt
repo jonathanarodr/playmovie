@@ -6,6 +6,7 @@ import com.android.build.api.dsl.CommonExtension
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Dependency
+import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.plugins.ExtensionAware
 import org.gradle.api.plugins.ExtensionContainer
@@ -35,9 +36,10 @@ fun PluginManager.apply(vararg plugins: String) {
     plugins.forEach(::apply)
 }
 
-val ExtensionContainer.libs get() = run {
-    getByType<VersionCatalogsExtension>().named("libs")
-}
+val ExtensionContainer.libs: VersionCatalog
+    get() = run {
+        getByType<VersionCatalogsExtension>().named("libs")
+    }
 
 fun DependencyHandlerScope.implementation(dependencyNotation: Any): Dependency? =
     add("implementation", dependencyNotation)
@@ -59,3 +61,6 @@ fun DependencyHandlerScope.api(dependencyNotation: Any): Dependency? =
 
 fun DependencyHandlerScope.detektPlugins(dependencyNotation: Any): Dependency? =
     add("detektPlugins", dependencyNotation)
+
+fun DependencyHandlerScope.kover(dependencyNotation: Any): Dependency? =
+    add("kover", dependencyNotation)

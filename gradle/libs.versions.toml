@@ -44,7 +44,7 @@ detektCore = "1.22.0"
 detektCompose = "0.0.26"
 
 # test
-kotlinxKover = "0.6.1"
+kotlinxKover = "0.7.0-Beta"
 androidxArchCore = "2.2.0"
 androidxTestCore = "1.5.0"
 androidxTestRules = "1.5.0"
@@ -117,7 +117,7 @@ coil-core = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 
 # test
-kotlinx-kover-gradlePlugin = { group = "org.jetbrains.kotlinx", name = "kover", version.ref = "kotlinxKover" }
+kotlinx-kover-gradlePlugin = { group = "org.jetbrains.kotlinx", name = "kover-gradle-plugin", version.ref = "kotlinxKover" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 androidx-arch-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "androidxArchCore"}
 androidx-test-core = { group = "androidx.test", name = "core", version.ref = "androidxTestCore"}
