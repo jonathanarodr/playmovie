@@ -10,7 +10,7 @@ gradleDependencyAnalysis = "1.20.0"
 # kotlin
 kotlin = "1.8.21"
 ksp = "1.8.21-1.0.11"
-kotlinxCoroutines = "1.6.4"
+kotlinxCoroutines = "1.7.1"
 
 # jetpack
 androidxCore = "1.10.0"
@@ -44,7 +44,7 @@ detektCore = "1.22.0"
 detektCompose = "0.0.26"
 
 # test
-kotlinxKover = "0.7.0-Beta"
+kotlinxKover = "0.7.0"
 androidxArchCore = "2.2.0"
 androidxTestCore = "1.5.0"
 androidxTestRules = "1.5.0"
