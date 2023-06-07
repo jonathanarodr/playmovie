@@ -24,7 +24,7 @@ androidxComposeBom = "2023.05.01"
 androidxComposeCompiler = "1.4.4"
 androidxComposeRuntimeTracing = "1.0.0-alpha03"
 androidxRoom = "2.5.1"
-androidxNavigation = "2.5.3"
+androidxNavigation = "2.6.0"
 
 # square
 retrofit = "2.9.0"
