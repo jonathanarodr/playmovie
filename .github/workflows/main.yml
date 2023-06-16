@@ -45,7 +45,7 @@ jobs:
   unit-test:
     needs: [code-quality]
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Project checkout
         uses: actions/checkout@v3
@@ -60,7 +60,7 @@ jobs:
     if: ${{ vars.EXPERIMENTAL == 'true' }}
     needs: [code-quality]
     runs-on: macos-latest
-    timeout-minutes: 60
+    timeout-minutes: 55
     continue-on-error: true
     strategy:
       matrix:
