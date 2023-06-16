@@ -24,19 +24,21 @@ class CodeStylePlugin : Plugin<Project> {
             pluginManager.apply("io.gitlab.arturbosch.detekt")
 
             extensions.configure<DetektExtension> {
-                config = files("${project.rootDir}/tools/linters/detekt-rules.yml")
+                config.from(files("${project.rootDir}/tools/linters/detekt-rules.yml"))
                 allRules = false
                 parallel = true
                 ignoredBuildTypes = listOf("release")
-                source = files(
-                    AndroidConfig.JAVA_SOURCE_DIR,
-                    AndroidConfig.JAVA_SOURCE_DIR_TEST,
-                    AndroidConfig.JAVA_SOURCE_DIR_SHARED_TEST,
-                    AndroidConfig.JAVA_SOURCE_DIR_ANDROID_TEST,
-                    AndroidConfig.KOTLIN_SOURCE_DIR,
-                    AndroidConfig.KOTLIN_SOURCE_DIR_TEST,
-                    AndroidConfig.KOTLIN_SOURCE_DIR_SHARED_TEST,
-                    AndroidConfig.KOTLIN_SOURCE_DIR_ANDROID_TEST,
+                source.from(
+                    files(
+                        AndroidConfig.JAVA_SOURCE_DIR,
+                        AndroidConfig.JAVA_SOURCE_DIR_TEST,
+                        AndroidConfig.JAVA_SOURCE_DIR_SHARED_TEST,
+                        AndroidConfig.JAVA_SOURCE_DIR_ANDROID_TEST,
+                        AndroidConfig.KOTLIN_SOURCE_DIR,
+                        AndroidConfig.KOTLIN_SOURCE_DIR_TEST,
+                        AndroidConfig.KOTLIN_SOURCE_DIR_SHARED_TEST,
+                        AndroidConfig.KOTLIN_SOURCE_DIR_ANDROID_TEST,
+                    )
                 )
             }
 
