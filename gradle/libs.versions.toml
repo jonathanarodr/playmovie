@@ -29,7 +29,7 @@ androidxNavigation = "2.6.0"
 # square
 retrofit = "2.9.0"
 okhttp = "4.11.0"
-leakcanary = "2.11"
+leakcanary = "2.12"
 
 # tools
 material = "1.9.0"
