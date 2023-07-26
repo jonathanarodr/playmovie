@@ -3,16 +3,16 @@ rootProject.name = "playmovie"
 pluginManagement {
     includeBuild("gradle-build")
     repositories {
-        google()
         mavenCentral()
+        google()
         gradlePluginPortal()
     }
 }
 
 dependencyResolutionManagement {
     repositories {
-        google()
         mavenCentral()
+        google()
         gradlePluginPortal()
     }
 }
