@@ -35,12 +35,19 @@ jobs:
     steps:
       - name: Project checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
 
       - name: Run detekt
         run: ./gradlew detekt
+
+      - name: Qodana scan
+        uses: JetBrains/qodana-action@v2023.2
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
 
   unit-test:
     needs: [code-quality]
