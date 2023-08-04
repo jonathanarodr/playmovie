@@ -1,0 +1,27 @@
+name: A11y CI
+
+on:
+  issues:
+    types: [opened, edited]
+  pull_request:
+    types: [opened, edited]
+  issue_comment:
+    types: [created, edited]
+  discussion:
+    types: [created, edited]
+  discussion_comment:
+    types: [created, edited]
+
+permissions:
+  issues: write
+  pull-requests: write
+  discussions: write
+
+jobs:
+  a11y-alt-text:
+    name: Check alt text is set on issues or pull requests
+    runs-on: ubuntu-latest
+    if: ${{ github.event.issue || github.event.pull_request || github.event.discussion }}
+    steps:
+      - name: Get action 'github/accessibility-alt-text-bot'
+        uses: github/accessibility-alt-text-bot@v1.3.0
