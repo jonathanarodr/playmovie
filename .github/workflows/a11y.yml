@@ -19,7 +19,6 @@ permissions:
 
 jobs:
   a11y-alt-text:
-    name: Check alt text
     runs-on: ubuntu-latest
     if: ${{ github.event.issue || github.event.pull_request || github.event.discussion }}
     steps:
