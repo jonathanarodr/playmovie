@@ -1,11 +1,9 @@
 # Playmovie
 
-[![Workflow Status](https://github.com/jonathanarodr/playmovie/actions/workflows/android.yml/badge.svg)](https://github.com/jonathanarodr/playmovie/actions/workflows/android.yml)
-[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
-[![codecov](https://codecov.io/gh/jonathanarodr/playmovie/branch/master/graph/badge.svg)](https://codecov.io/gh/jonathanarodr/playmovie)
-[![codebeat](https://codebeat.co/badges/23b02036-2aaf-4325-a856-add0e46d6832)](https://codebeat.co/projects/github-com-jonathanarodr-playmovie-master)
-[![maintainability](https://api.codeclimate.com/v1/badges/fb72b670ebacdae2311c/maintainability)](https://codeclimate.com/github/jonathanarodr/playmovie/maintainability)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/817dc26995a949888e82adacd5d218bd)](https://www.codacy.com/manual/jonathanarodr/playmovie?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jonathanarodr/playmovie&amp;utm_campaign=Badge_Grade)
+[![Developer CI](https://github.com/jonathanarodr/playmovie/actions/workflows/main.yml/badge.svg)](https://github.com/jonathanarodr/playmovie/actions/workflows/main.yml)
+[![A11y CI](https://github.com/jonathanarodr/playmovie/actions/workflows/a11y.yml/badge.svg)](https://github.com/jonathanarodr/playmovie/actions/workflows/a11y.yml)
+[![CodeQL CI](https://github.com/jonathanarodr/playmovie/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/jonathanarodr/playmovie/actions/workflows/github-code-scanning/codeql)
+[![Build Deployment](https://github.com/jonathanarodr/playmovie/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jonathanarodr/playmovie/actions/workflows/pages/pages-build-deployment)
 
 ## About
 
