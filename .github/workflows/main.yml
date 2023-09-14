@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Project checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
 
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
@@ -34,7 +34,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Project checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
 
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
@@ -48,7 +48,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Project checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
 
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
@@ -67,7 +67,7 @@ jobs:
         device-config: [ "pixel6api30aospatd" ]
     steps:
       - name: Project checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
 
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
@@ -94,34 +94,34 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Project checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
 
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
 
       - name: Setup gradle build
-        uses: gradle/gradle-build-action@v2.7.0
+        uses: gradle/gradle-build-action@v2.8.0
 
       - name: Build apks
         run: ./gradlew app:assemble
 
       - name: Upload debug APK
         if: success()
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug
 
       - name: Upload release APK
         if: success()
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: release-apk
           path: app/build/outputs/apk/release
 
       - name: Upload R8 mappings
         if: success()
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: release-mapping
           path: app/build/outputs/mapping/release
