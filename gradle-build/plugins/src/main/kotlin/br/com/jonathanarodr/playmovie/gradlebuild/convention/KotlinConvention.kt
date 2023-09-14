@@ -1,26 +1,34 @@
 package br.com.jonathanarodr.playmovie.gradlebuild.convention
 
 import br.com.jonathanarodr.playmovie.gradlebuild.config.PlatformConfig
-import br.com.jonathanarodr.playmovie.gradlebuild.config.versionCode
 import br.com.jonathanarodr.playmovie.gradlebuild.config.versionName
-import br.com.jonathanarodr.playmovie.gradlebuild.kotlinOptions
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
-import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
+import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 internal fun Project.configureKotlinConvention(
-    extension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     val platformConfig = PlatformConfig()
 
-    extension.apply {
+    commonExtension.apply {
         compileOptions {
-            targetCompatibility = platformConfig.javaVersion
             sourceCompatibility = platformConfig.javaVersion
+            targetCompatibility = platformConfig.javaVersion
         }
+    }
+
+    extensions.configure<JavaPluginExtension> {
+        targetCompatibility = platformConfig.javaVersion
+        sourceCompatibility = platformConfig.javaVersion
+    }
+
+    tasks.withType<KotlinCompile>().configureEach {
         kotlinOptions {
             jvmTarget = platformConfig.javaVersion.versionName()
         }
-        kotlinExtension.jvmToolchain(platformConfig.javaVersion.versionCode())
     }
 }
