@@ -22,8 +22,8 @@ internal fun Project.configureKotlinConvention(
     }
 
     extensions.configure<JavaPluginExtension> {
-        targetCompatibility = platformConfig.javaVersion
         sourceCompatibility = platformConfig.javaVersion
+        targetCompatibility = platformConfig.javaVersion
     }
 
     tasks.withType<KotlinCompile>().configureEach {
