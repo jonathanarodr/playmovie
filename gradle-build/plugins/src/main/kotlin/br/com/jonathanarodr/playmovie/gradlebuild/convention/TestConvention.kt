@@ -8,9 +8,9 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.kotlin.dsl.retry
 
 internal fun Project.configureUnitTestConvention(
-    extension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
-    extension.apply {
+    commonExtension.apply {
         testOptions {
             unitTests.apply {
                 isReturnDefaultValues = true
@@ -26,9 +26,9 @@ internal fun Project.configureUnitTestConvention(
 }
 
 internal fun Project.configureAndroidTestConvention(
-    extension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
-    extension.apply {
+    commonExtension.apply {
         defaultConfig {
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
             testInstrumentationRunnerArguments["clearPackageData"] = "true"
