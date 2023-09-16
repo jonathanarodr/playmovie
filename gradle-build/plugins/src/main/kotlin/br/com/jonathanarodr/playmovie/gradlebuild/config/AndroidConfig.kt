@@ -9,7 +9,7 @@ internal object AndroidConfig {
     const val SDK_MINIMUM = 23
     const val SDK_GMD_API = 30
 
-    const val BUILD_TOOLS = "34.0.4"
+    const val BUILD_TOOLS = "34.0.0"
 
     const val VERSION_CODE = 3
     const val VERSION_NAME = "3.0.0"
