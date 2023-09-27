@@ -73,7 +73,7 @@ jobs:
         uses: ./.github/actions/setup-gradle-build
 
       - name: Setup android sdk
-        uses: android-actions/setup-android@v2
+        uses: android-actions/setup-android@v3
 
       - name: Run android test with GMD
         run: |

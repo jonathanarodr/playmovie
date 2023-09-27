@@ -22,5 +22,5 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.issue || github.event.pull_request || github.event.discussion }}
     steps:
-      - name: Get action 'github/accessibility-alt-text-bot'
-        uses: github/accessibility-alt-text-bot@v1
+      - name: Check images alt-text
+        uses: github/accessibility-alt-text-bot@v1.2.0
