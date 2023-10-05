@@ -22,7 +22,7 @@ private data class DeviceConfig(
 }
 
 internal fun Project.configureDeviceManagerConvention(
-    commonExtension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     val deviceConfigs = listOf(
         DeviceConfig("Pixel 6", AndroidConfig.SDK_GMD_API, "aosp-atd"),

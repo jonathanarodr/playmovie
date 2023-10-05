@@ -20,13 +20,13 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Project checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
 
       - name: Validate gradle wrapper
-        uses: gradle/wrapper-validation-action@v1.0.6
+        uses: gradle/wrapper-validation-action@v1
 
   code-quality:
     needs: [setup-workflow]
@@ -34,7 +34,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Project checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
@@ -45,10 +45,10 @@ jobs:
   unit-test:
     needs: [code-quality]
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Project checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
@@ -60,20 +60,20 @@ jobs:
     if: ${{ vars.EXPERIMENTAL == 'true' }}
     needs: [code-quality]
     runs-on: macos-latest
-    timeout-minutes: 15
+    timeout-minutes: 55
     continue-on-error: true
     strategy:
       matrix:
         device-config: [ "pixel6api30aospatd" ]
     steps:
       - name: Project checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
 
       - name: Setup android sdk
-        uses: android-actions/setup-android@v2.0.10
+        uses: android-actions/setup-android@v3
 
       - name: Run android test with GMD
         run: |
@@ -94,34 +94,34 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Project checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup gradle build
         uses: ./.github/actions/setup-gradle-build
 
       - name: Setup gradle build
-        uses: gradle/gradle-build-action@v2.4.2
+        uses: gradle/gradle-build-action@v2
 
       - name: Build apks
         run: ./gradlew app:assemble
 
       - name: Upload debug APK
         if: success()
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v3
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug
 
       - name: Upload release APK
         if: success()
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v3
         with:
           name: release-apk
           path: app/build/outputs/apk/release
 
       - name: Upload R8 mappings
         if: success()
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v3
         with:
           name: release-mapping
           path: app/build/outputs/mapping/release

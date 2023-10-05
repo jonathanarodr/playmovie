@@ -1,0 +1,26 @@
+name: A11y CI
+
+on:
+  issues:
+    types: [ opened, edited ]
+  pull_request:
+    types: [ opened, edited ]
+  issue_comment:
+    types: [ created, edited ]
+  discussion:
+    types: [ created, edited ]
+  discussion_comment:
+    types: [ created, edited ]
+
+permissions:
+  issues: write
+  pull-requests: write
+  discussions: write
+
+jobs:
+  alt-text:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.issue || github.event.pull_request || github.event.discussion }}
+    steps:
+      - name: Check images alt-text
+        uses: github/accessibility-alt-text-bot@v1.2.0

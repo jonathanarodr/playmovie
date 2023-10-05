@@ -2,42 +2,22 @@
 
 package br.com.jonathanarodr.playmovie.gradlebuild
 
-import com.android.build.api.dsl.CommonExtension
-import com.android.build.gradle.BaseExtension
-import org.gradle.api.Project
 import org.gradle.api.artifacts.Dependency
+import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.gradle.api.plugins.ExtensionAware
 import org.gradle.api.plugins.ExtensionContainer
 import org.gradle.api.plugins.PluginManager
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.gradle.kotlin.dsl.getByType
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-
-@Suppress("UNCHECKED_CAST")
-fun <T> Project.findExtension(name: String, block: T.() -> Unit) {
-    (extensions.findByName(name) as? T)?.run(block)
-}
-
-fun Project.android(block: BaseExtension.() -> Unit) {
-    findExtension("android", block)
-}
-
-fun <T> CommonExtension<*, *, *, *>.findExtension(name: String, block: T.() -> Unit) {
-    (this as ExtensionAware).extensions.configure(name, block)
-}
-
-fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
-    findExtension("kotlinOptions", block)
-}
 
 fun PluginManager.apply(vararg plugins: String) {
     plugins.forEach(::apply)
 }
 
-val ExtensionContainer.libs get() = run {
-    getByType<VersionCatalogsExtension>().named("libs")
-}
+val ExtensionContainer.libs: VersionCatalog
+    get() = run {
+        getByType<VersionCatalogsExtension>().named("libs")
+    }
 
 fun DependencyHandlerScope.implementation(dependencyNotation: Any): Dependency? =
     add("implementation", dependencyNotation)
@@ -59,3 +39,6 @@ fun DependencyHandlerScope.api(dependencyNotation: Any): Dependency? =
 
 fun DependencyHandlerScope.detektPlugins(dependencyNotation: Any): Dependency? =
     add("detektPlugins", dependencyNotation)
+
+fun DependencyHandlerScope.kover(dependencyNotation: Any): Dependency? =
+    add("kover", dependencyNotation)

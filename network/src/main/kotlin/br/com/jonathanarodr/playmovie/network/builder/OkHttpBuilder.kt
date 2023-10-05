@@ -13,7 +13,7 @@ class OkHttpBuilder(
     }
 
     private fun OkHttpClient.Builder.addInterceptors() {
-        interceptors.forEach {
+        interceptors.iterator().forEach {
             addInterceptor(it)
         }
     }

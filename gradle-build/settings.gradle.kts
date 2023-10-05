@@ -2,8 +2,8 @@ rootProject.name = "gradle-build"
 
 dependencyResolutionManagement {
     repositories {
-        google()
         mavenCentral()
+        google()
         gradlePluginPortal()
     }
     versionCatalogs {
