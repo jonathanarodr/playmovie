@@ -37,7 +37,7 @@ accompanist = "0.28.0"
 gson = "2.10.1"
 timber = "5.0.1"
 koin = "3.5.0"
-coil = "2.4.0"
+coil = "2.5.0"
 
 # lint
 detektCore = "1.23.1"
