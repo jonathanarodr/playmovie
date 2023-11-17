@@ -1,8 +1,8 @@
 package br.com.jonathanarodr.playmovie.feature.repository.remote
 
 import androidx.test.filters.SmallTest
-import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.repository.remote.api.MovieApi
+import br.com.jonathanarodr.playmovie.feature.repository.remote.api.DiscoverResponse
 import br.com.jonathanarodr.playmovie.feature.repository.remote.api.MovieResponse
 import io.mockk.coEvery
 import io.mockk.every
@@ -21,7 +21,7 @@ class MovieRemoteDataSourceTest {
     private val api = mockk<MovieApi>()
     private val dataSource = MovieRemoteDataSource(api)
     private val movies = listOf(
-        Movie(
+        MovieResponse(
             id = 0L,
             title = "title",
             overview = "overview",
@@ -31,7 +31,7 @@ class MovieRemoteDataSourceTest {
             releaseDate = Date.from(Instant.now()),
         )
     )
-    private val response = mockk<MovieResponse> {
+    private val response = mockk<DiscoverResponse> {
         every { results } returns movies
     }
     private val expected = Result.success(movies)

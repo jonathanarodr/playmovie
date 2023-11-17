@@ -1,50 +1,76 @@
 package br.com.jonathanarodr.playmovie.feature.ui.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.jonathanarodr.playmovie.common.states.UiState
-import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
+import br.com.jonathanarodr.playmovie.common.exception.ResultException
+import br.com.jonathanarodr.playmovie.common.states.ViewModelState
+import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
 import br.com.jonathanarodr.playmovie.feature.domain.usecase.DetailUseCase
+import br.com.jonathanarodr.playmovie.feature.ui.model.DetailUiModel
+import br.com.jonathanarodr.playmovie.feature.ui.states.DetailUiEvent
+import br.com.jonathanarodr.playmovie.feature.ui.states.DetailUiState
+import br.com.jonathanarodr.playmovie.feature.ui.view.MovieSafeArgs
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class DetailViewModel(
+    private val movieSafeArgs: MovieSafeArgs,
     private val detailUseCase: DetailUseCase,
-) : ViewModel() {
+) : ViewModelState<DetailUiState, DetailUiEvent>() {
 
-    private val _isFavorite = MutableLiveData<Boolean>()
-    val isFavorite: LiveData<Boolean> = _isFavorite
+    override val uiState: MutableStateFlow<DetailUiState> = MutableStateFlow(DetailUiState.Loading)
 
-    private val _insertedMovie = MutableLiveData<UiState<Unit>>()
-    val insertedMovie: LiveData<UiState<Unit>> = _insertedMovie
+    private lateinit var uiModel: DetailUiModel
 
-    private val _removedMovie = MutableLiveData<UiState<Unit>>()
-    val removedMovie: LiveData<UiState<Unit>> = _removedMovie
-
-    fun verifyFavoriteMovie(movieId: Long) {
-        viewModelScope.launch {
-            _isFavorite.value = detailUseCase.getFavoriteMovie(movieId).isSuccess
+    override fun dispatchUiEvent(uiEvent: DetailUiEvent) {
+        when (uiEvent) {
+            is DetailUiEvent.Init -> getMovieDetail()
+            is DetailUiEvent.InsertFavorite -> insertFavoriteMovie()
+            is DetailUiEvent.RemoveFavorite -> removeFavoriteMovie()
         }
     }
 
-    fun insertFavoriteMovie(movie: Movie) {
-        viewModelScope.launch {
-            detailUseCase.insertFavoriteMovie(movie).onSuccess {
-                _insertedMovie.value = UiState.Success(it)
-            }.onFailure {
-                _insertedMovie.value = UiState.Error(it)
-            }
+    private suspend fun findMovie(): Flow<DetailUiModel> {
+        return when (movieSafeArgs.type) {
+            MovieType.MOVIES -> detailUseCase.getMovieDetail(movieSafeArgs.id)
+            MovieType.SERIES -> detailUseCase.getTvSerieDetail(movieSafeArgs.id)
+            MovieType.FAVORITES -> detailUseCase.getFavoriteMovieDetail(movieSafeArgs.id)
         }
     }
 
-    fun removeFavoriteMovie(movie: Movie) {
+    private fun getMovieDetail() {
+        uiState.value = DetailUiState.Loading
+
         viewModelScope.launch {
-            detailUseCase.removeFavoriteMovie(movie).onSuccess {
-                _removedMovie.value = UiState.Success(it)
-            }.onFailure {
-                _removedMovie.value = UiState.Error(it)
-            }
+            findMovie().onEach {
+                uiModel = it
+                uiState.value = DetailUiState.Success(uiModel)
+            }.catch {
+                uiState.value = DetailUiState.Error(it as ResultException)
+            }.collect()
+        }
+    }
+
+    private fun insertFavoriteMovie() {
+        uiState.value = DetailUiState.LikedMovie
+
+        viewModelScope.launch {
+            detailUseCase.insertFavoriteMovie(uiModel).catch {
+                uiState.value = DetailUiState.LikedError(it as ResultException)
+            }.collect()
+        }
+    }
+
+    private fun removeFavoriteMovie() {
+        uiState.value = DetailUiState.DislikedMovie
+
+        viewModelScope.launch {
+            detailUseCase.removeFavoriteMovie(uiModel).catch {
+                uiState.value = DetailUiState.DislikedError(it as ResultException)
+            }.collect()
         }
     }
 }

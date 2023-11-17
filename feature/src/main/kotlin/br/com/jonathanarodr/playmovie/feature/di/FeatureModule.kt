@@ -8,6 +8,7 @@ import br.com.jonathanarodr.playmovie.feature.repository.local.MovieLocalDataSou
 import br.com.jonathanarodr.playmovie.feature.repository.local.db.AppDataBase
 import br.com.jonathanarodr.playmovie.feature.repository.remote.MovieRemoteDataSource
 import br.com.jonathanarodr.playmovie.feature.repository.remote.api.MovieApi
+import br.com.jonathanarodr.playmovie.feature.ui.view.MovieSafeArgs
 import br.com.jonathanarodr.playmovie.feature.ui.viewmodel.DetailViewModel
 import br.com.jonathanarodr.playmovie.feature.ui.viewmodel.MovieViewModel
 import br.com.jonathanarodr.playmovie.network.NetworkClient
@@ -26,5 +27,10 @@ val featureModule = module {
     factory { MovieUseCase(get()) }
     factory { DetailUseCase(get()) }
     viewModel { MovieViewModel(get()) }
-    viewModel { DetailViewModel(get()) }
+    viewModel { (args: MovieSafeArgs) ->
+        DetailViewModel(
+            movieSafeArgs = args,
+            detailUseCase = get(),
+        )
+    }
 }

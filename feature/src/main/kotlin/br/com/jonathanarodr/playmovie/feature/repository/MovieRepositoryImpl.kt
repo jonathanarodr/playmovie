@@ -2,9 +2,11 @@ package br.com.jonathanarodr.playmovie.feature.repository
 
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.domain.model.toMovieEntity
+import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
 import br.com.jonathanarodr.playmovie.feature.repository.local.MovieLocalDataSource
 import br.com.jonathanarodr.playmovie.feature.repository.local.db.toMovie
 import br.com.jonathanarodr.playmovie.feature.repository.remote.MovieRemoteDataSource
+import br.com.jonathanarodr.playmovie.feature.repository.remote.api.toMovie
 
 class MovieRepositoryImpl(
     private val remoteDataSource: MovieRemoteDataSource,
@@ -12,11 +14,39 @@ class MovieRepositoryImpl(
 ) : MovieRepository {
 
     override suspend fun searchMovies(): Result<List<Movie>> {
-        return remoteDataSource.searchMovies()
+        return remoteDataSource.searchMovies().mapCatching { result ->
+            result.map {
+                it.toMovie(
+                    type = MovieType.MOVIES,
+                )
+            }
+        }
     }
 
     override suspend fun searchTvSeries(): Result<List<Movie>> {
-        return remoteDataSource.searchTvSeries()
+        return remoteDataSource.searchTvSeries().mapCatching { result ->
+            result.map {
+                it.toMovie(
+                    type = MovieType.SERIES,
+                )
+            }
+        }
+    }
+
+    override suspend fun getMovieDetail(id: Long): Result<Movie> {
+        return remoteDataSource.getMovieDetail(id).mapCatching { result ->
+            result.toMovie(
+                type = MovieType.MOVIES,
+            )
+        }
+    }
+
+    override suspend fun getTvSerieDetail(id: Long): Result<Movie> {
+        return remoteDataSource.getTvSerieDetail(id).mapCatching { result ->
+            result.toMovie(
+                type = MovieType.SERIES,
+            )
+        }
     }
 
     override suspend fun searchFavoriteMovies(): Result<List<Movie>> {
@@ -25,8 +55,8 @@ class MovieRepositoryImpl(
         }
     }
 
-    override suspend fun getFavoriteMovie(movieId: Long): Result<Movie> {
-        return localDataSource.getFavoriteMovie(movieId).mapCatching { result ->
+    override suspend fun getFavoriteMovie(id: Long): Result<Movie> {
+        return localDataSource.getFavoriteMovie(id).mapCatching { result ->
             result.toMovie()
         }
     }

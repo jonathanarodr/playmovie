@@ -3,6 +3,7 @@ package br.com.jonathanarodr.playmovie.common.states
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 
+@Deprecated("Use StateFlow with ViewModelState instead")
 inline fun <T> LiveData<UiState<T>>.observeOnSuccess(
     owner: LifecycleOwner,
     crossinline handler: (T) -> Unit,
@@ -16,6 +17,7 @@ inline fun <T> LiveData<UiState<T>>.observeOnSuccess(
     return this
 }
 
+@Deprecated("Use StateFlow with ViewModelState instead")
 inline fun <T> LiveData<UiState<T>>.observeOnSuccess(
     owner: LifecycleOwner,
     crossinline handler: () -> Unit,
@@ -29,6 +31,7 @@ inline fun <T> LiveData<UiState<T>>.observeOnSuccess(
     return this
 }
 
+@Deprecated("Use StateFlow with ViewModelState instead")
 inline fun <T> LiveData<UiState<T>>.observeOnError(
     owner: LifecycleOwner,
     crossinline handler: (Throwable) -> Unit,
@@ -42,6 +45,7 @@ inline fun <T> LiveData<UiState<T>>.observeOnError(
     return this
 }
 
+@Deprecated("Use StateFlow with ViewModelState instead")
 inline fun <T> LiveData<UiState<T>>.observeOnEmpty(
     owner: LifecycleOwner,
     crossinline handler: () -> Unit,
@@ -55,6 +59,7 @@ inline fun <T> LiveData<UiState<T>>.observeOnEmpty(
     return this
 }
 
+@Deprecated("Use StateFlow with ViewModelState instead")
 inline fun <T> LiveData<UiState<T>>.observeOnLoading(
     owner: LifecycleOwner,
     crossinline handler: () -> Unit,

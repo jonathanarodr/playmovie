@@ -1,10 +1,13 @@
 package br.com.jonathanarodr.playmovie.feature.repository
 
 import androidx.test.filters.SmallTest
-import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
+import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
 import br.com.jonathanarodr.playmovie.feature.repository.local.MovieLocalDataSource
 import br.com.jonathanarodr.playmovie.feature.repository.local.db.MovieEntity
+import br.com.jonathanarodr.playmovie.feature.repository.local.db.toMovie
 import br.com.jonathanarodr.playmovie.feature.repository.remote.MovieRemoteDataSource
+import br.com.jonathanarodr.playmovie.feature.repository.remote.api.MovieResponse
+import br.com.jonathanarodr.playmovie.feature.repository.remote.api.toMovie
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -26,7 +29,7 @@ class MovieRepositoryImplTest {
     private val date = Date.from(Instant.now())
 
     private val remoteMovies = listOf(
-        Movie(
+        MovieResponse(
             id = 0L,
             title = "title",
             overview = "overview",
@@ -46,20 +49,24 @@ class MovieRepositoryImplTest {
             backdrop = "backdrop",
             average = 0.0,
             releaseDate = date,
+            type = MovieType.MOVIES,
         )
     )
 
     private val remoteResult = Result.success(remoteMovies)
     private val localResult = Result.success(localMovies)
+    private val remoteDetailResult = Result.success(remoteMovies.first())
+    private val localDetailResult = Result.success(localMovies.first())
 
     @Test
     fun `given repository when search movies then return remote list of movies`() {
         runTest {
             coEvery { remoteDataSource.searchMovies() } returns remoteResult
 
+            val expeted = remoteResult.map { result -> result.map { it.toMovie(type = MovieType.MOVIES) } }
             val result = repository.searchMovies()
 
-            assertEquals(remoteResult, result)
+            assertEquals(expeted, result)
         }
     }
 
@@ -68,9 +75,34 @@ class MovieRepositoryImplTest {
         runTest {
             coEvery { remoteDataSource.searchTvSeries() } returns remoteResult
 
+            val expeted = remoteResult.map { result -> result.map { it.toMovie(type = MovieType.SERIES) } }
             val result = repository.searchTvSeries()
 
-            assertEquals(remoteResult, result)
+            assertEquals(expeted, result)
+        }
+    }
+
+    @Test
+    fun `given repository when search movie detail then return remote detail of movie`() {
+        runTest {
+            coEvery { remoteDataSource.getMovieDetail(any()) } returns remoteDetailResult
+
+            val expeted = remoteDetailResult.map { it.toMovie(type = MovieType.MOVIES) }
+            val result = repository.getMovieDetail(id = 0L)
+
+            assertEquals(expeted, result)
+        }
+    }
+
+    @Test
+    fun `given repository when search serie detail then return remote detail of serie`() {
+        runTest {
+            coEvery { remoteDataSource.getTvSerieDetail(any()) } returns remoteDetailResult
+
+            val expeted = remoteDetailResult.map { it.toMovie(type = MovieType.SERIES) }
+            val result = repository.getTvSerieDetail(id = 0L)
+
+            assertEquals(expeted, result)
         }
     }
 
@@ -79,16 +111,29 @@ class MovieRepositoryImplTest {
         runTest {
             coEvery { localDataSource.searchFavoriteMovies() } returns localResult
 
+            val expected = localResult.map { result -> result.map { it.toMovie() } }
             val result = repository.searchFavoriteMovies()
 
-            assertEquals(remoteResult, result)
+            assertEquals(expected, result)
+        }
+    }
+
+    @Test
+    fun `given repository when search favorite movie detail then return local detail of movie`() {
+        runTest {
+            coEvery { localDataSource.getFavoriteMovie(any()) } returns localDetailResult
+
+            val expeted = localDetailResult.map { it.toMovie() }
+            val result = repository.getFavoriteMovie(id = 0L)
+
+            assertEquals(expeted, result)
         }
     }
 
     @Test
     fun `given repository when insert favorite movie then call local datasource`() {
         runTest {
-            repository.insertFavoriteMovie(remoteMovies.first())
+            repository.insertFavoriteMovie(remoteMovies.first().toMovie(type = MovieType.MOVIES))
 
             coVerify {
                 localDataSource.insertFavoriteMovie(
@@ -101,7 +146,7 @@ class MovieRepositoryImplTest {
     @Test
     fun `given repository when remove favorite movie then call local datasource`() {
         runTest {
-            repository.removeFavoriteMovie(remoteMovies.first())
+            repository.removeFavoriteMovie(remoteMovies.first().toMovie(type = MovieType.MOVIES))
 
             coVerify {
                 localDataSource.removeFavoriteMovie(

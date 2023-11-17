@@ -2,15 +2,15 @@ name: A11y CI
 
 on:
   issues:
-    types: [opened, edited]
+    types: [ opened, edited ]
   pull_request:
-    types: [opened, edited]
+    types: [ opened, edited ]
   issue_comment:
-    types: [created, edited]
+    types: [ created, edited ]
   discussion:
-    types: [created, edited]
+    types: [ created, edited ]
   discussion_comment:
-    types: [created, edited]
+    types: [ created, edited ]
 
 permissions:
   issues: write

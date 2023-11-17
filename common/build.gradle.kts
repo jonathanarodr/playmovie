@@ -9,5 +9,6 @@ android {
 dependencies {
     implementation(platform(libs.okhttp.bom))
     implementation(libs.okhttp.core)
+    implementation(libs.retrofit.core)
     implementation(libs.coil.core)
 }

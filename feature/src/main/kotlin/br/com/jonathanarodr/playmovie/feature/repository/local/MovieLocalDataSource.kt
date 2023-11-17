@@ -14,9 +14,9 @@ class MovieLocalDataSource(
         }
     }
 
-    suspend fun getFavoriteMovie(movieId: Long): Result<MovieEntity> {
+    suspend fun getFavoriteMovie(id: Long): Result<MovieEntity> {
         return execute {
-            movieDao.selectMovie(movieId)
+            movieDao.selectMovie(id)
         }
     }
 

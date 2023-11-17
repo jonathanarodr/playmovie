@@ -7,8 +7,9 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageView
-import br.com.jonathanarodr.playmovie.common.states.observeOnError
-import br.com.jonathanarodr.playmovie.common.states.observeOnSuccess
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_SIZE_DEFAULT
 import br.com.jonathanarodr.playmovie.common.utils.ImageLoaderUtils.IMAGE_SIZE_HIGH
@@ -18,23 +19,37 @@ import br.com.jonathanarodr.playmovie.common.utils.putSafeArgs
 import br.com.jonathanarodr.playmovie.common.utils.safeArgs
 import br.com.jonathanarodr.playmovie.feature.R
 import br.com.jonathanarodr.playmovie.feature.databinding.ActivityDetailBinding
-import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
+import br.com.jonathanarodr.playmovie.feature.domain.type.MovieType
+import br.com.jonathanarodr.playmovie.feature.ui.model.DetailUiModel
+import br.com.jonathanarodr.playmovie.feature.ui.states.DetailUiEvent
+import br.com.jonathanarodr.playmovie.feature.ui.states.DetailUiState
 import br.com.jonathanarodr.playmovie.feature.ui.viewmodel.DetailViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import timber.log.Timber
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
-    private val viewModel: DetailViewModel by viewModel()
-    private val movie: Movie by safeArgs()
+    private val viewModel: DetailViewModel by viewModel(parameters = { parametersOf(args) })
+    private val args: MovieSafeArgs by safeArgs()
 
     companion object {
-        operator fun invoke(context: Context, movie: Movie): Intent {
+        operator fun invoke(
+            context: Context,
+            movieId: Long,
+            movieType: MovieType,
+        ): Intent {
             return Intent(context, DetailActivity::class.java).apply {
-                this.putSafeArgs(movie)
+                this.putSafeArgs(
+                    MovieSafeArgs(
+                        id = movieId,
+                        type = movieType,
+                    )
+                )
             }
         }
     }
@@ -43,52 +58,55 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setupViews()
         setupObservables()
     }
 
-    private fun setupViews() {
-        binding.apply {
-            detailToolbar.setNavigationOnClickListener { finish() }
-            moviePoster.loadImage(movie.poster, IMAGE_SIZE_DEFAULT)
-            movieBackdrop.loadImage(movie.backdrop, IMAGE_SIZE_HIGH)
-            movieTitle.text = movie.title
-            movieRelease.text = movie.releaseDate.format()
-            movieAverage.text = movie.average.toString()
-            movieOverviewDescription.text = movie.overview
-        }
-
-        viewModel.verifyFavoriteMovie(movie.id)
-    }
-
     private fun setupObservables() {
-        viewModel.isFavorite.observe(this) { result ->
-            if (result) {
-                onInsertSuccess()
-            } else {
-                onRemoveSuccess()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.dispatchUiEvent(DetailUiEvent.Init)
+                viewModel.uiState.collect { state ->
+                    when (state) {
+                        is DetailUiState.Success -> onSuccess(state.data)
+                        is DetailUiState.Loading -> onLoading()
+                        is DetailUiState.Error -> onError(state.exception)
+                        is DetailUiState.LikedMovie -> setupLikedView()
+                        is DetailUiState.LikedError -> {
+                            setupDislikedView()
+                            onError(state.exception)
+                        }
+                        is DetailUiState.DislikedMovie -> setupDislikedView()
+                        is DetailUiState.DislikedError -> {
+                            setupLikedView()
+                            onError(state.exception)
+                        }
+                    }
+                }
             }
         }
-
-        viewModel.insertedMovie
-            .observeOnSuccess(this, ::onInsertSuccess)
-            .observeOnError(this, ::onError)
-
-        viewModel.removedMovie
-            .observeOnSuccess(this, ::onRemoveSuccess)
-            .observeOnError(this, ::onError)
     }
 
-    private fun onInsertSuccess() {
-        binding.saveFavoriteMovie.updateView(R.drawable.ic_favorite_on) {
-            viewModel.removeFavoriteMovie(movie)
+    private fun onSuccess(uiModel: DetailUiModel) {
+        binding.apply {
+            detailToolbar.setNavigationOnClickListener { finish() }
+            moviePoster.loadImage(uiModel.poster, IMAGE_SIZE_DEFAULT)
+            movieBackdrop.loadImage(uiModel.backdrop, IMAGE_SIZE_HIGH)
+            movieTitle.text = uiModel.title
+            movieRelease.text = uiModel.releaseDate.format()
+            movieAverage.text = uiModel.average.toString()
+            movieOverviewDescription.text = uiModel.overview
+
+            if (uiModel.isFavorite) {
+                setupLikedView()
+            } else {
+                setupDislikedView()
+            }
         }
     }
 
-    private fun onRemoveSuccess() {
-        binding.saveFavoriteMovie.updateView(R.drawable.ic_favorite_off) {
-            viewModel.insertFavoriteMovie(movie)
-        }
+    // TODO create a load feedback
+    private fun onLoading() {
+        Timber.i("Searching movie details by id #${args.id}")
     }
 
     private fun onError(cause: Throwable) {
@@ -99,6 +117,18 @@ class DetailActivity : AppCompatActivity() {
             R.string.generic_message_ops_try_again,
             Snackbar.LENGTH_LONG
         ).show()
+    }
+
+    private fun setupLikedView() {
+        binding.saveFavoriteMovie.updateView(R.drawable.ic_favorite_on) {
+            viewModel.dispatchUiEvent(DetailUiEvent.RemoveFavorite)
+        }
+    }
+
+    private fun setupDislikedView() {
+        binding.saveFavoriteMovie.updateView(R.drawable.ic_favorite_off) {
+            viewModel.dispatchUiEvent(DetailUiEvent.InsertFavorite)
+        }
     }
 
     private fun AppCompatImageView.loadImage(image: String?, size: ImageSize) {

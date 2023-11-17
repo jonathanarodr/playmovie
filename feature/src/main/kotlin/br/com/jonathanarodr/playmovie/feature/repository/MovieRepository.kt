@@ -8,9 +8,13 @@ interface MovieRepository {
 
     suspend fun searchTvSeries(): Result<List<Movie>>
 
+    suspend fun getMovieDetail(id: Long): Result<Movie>
+
+    suspend fun getTvSerieDetail(id: Long): Result<Movie>
+
     suspend fun searchFavoriteMovies(): Result<List<Movie>>
 
-    suspend fun getFavoriteMovie(movieId: Long): Result<Movie>
+    suspend fun getFavoriteMovie(id: Long): Result<Movie>
 
     suspend fun insertFavoriteMovie(movie: Movie): Result<Unit>
 
