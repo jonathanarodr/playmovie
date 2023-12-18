@@ -22,7 +22,7 @@ androidxSwipeRefreshLayout = "1.1.0"
 androidxLifecycle = "2.6.2"
 androidxComposeBom = "2023.10.01"
 androidxComposeCompiler = "1.4.4"
-androidxComposeRuntimeTracing = "1.0.0-alpha05"
+androidxComposeRuntimeTracing = "1.0.0-beta01"
 androidxRoom = "2.6.0"
 androidxNavigation = "2.7.5"
 
