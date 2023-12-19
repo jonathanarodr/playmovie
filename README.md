@@ -24,9 +24,7 @@ buildConfigField("String", "AUTHORIZATION_KEY", "abc1.def2.ghi3")
 ```
 
 > [!IMPORTANT]
-> Para utilizar a API do thememoviedb, é necessário obter a chave de acesso *free* para
-> desenvolvedores. Veja mais informações
-> na [documentação themoviedb](https://developers.themoviedb.org/3/getting-started/introduction)
+> Para utilizar a API do thememoviedb, é necessário obter a chave de acesso *free* para desenvolvedores. Veja mais informações na [documentação themoviedb](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## Screenshots
 
