@@ -65,7 +65,8 @@ class AndroidApplicationPlugin : Plugin<Project> {
             val libs = extensions.libs
 
             dependencies {
-                implementation(libs.findLibrary("koin").get())
+                implementation(platform(libs.findLibrary("koin-bom").get()))
+                implementation(libs.findLibrary("koin-android").get())
                 implementation(libs.findLibrary("timber").get())
 
                 testImplementation(project(ModuleConfig.testing))

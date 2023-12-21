@@ -30,4 +30,6 @@ dependencies {
     }
     api(libs.robolectric.core)
     api(libs.robolectric.annotations)
+    api(libs.koin.test)
+    api(libs.koin.android.test)
 }
