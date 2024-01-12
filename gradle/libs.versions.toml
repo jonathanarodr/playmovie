@@ -8,7 +8,7 @@ gradleDoctor = "0.9.1"
 gradleDependencyAnalysis = "1.28.0"
 
 # kotlin
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 ksp = "1.9.21-1.0.16"
 kotlinxCoroutines = "1.7.3"
 
