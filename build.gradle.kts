@@ -6,11 +6,6 @@ buildscript {
     }
 }
 
-/**
- * FIXME remove suppress DSL_SCOPE_VIOLATION after fixing issue
- * issue: https://github.com/gradle/gradle/issues/22797
- */
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.gradle.doctor) apply true
     alias(libs.plugins.gradle.dependency.analysis) apply true
