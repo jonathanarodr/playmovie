@@ -5,7 +5,7 @@ androidGradlePlugin = "8.2.1"
 androidCacheFixPlugin = "3.0"
 gradleTestRetry = "1.5.8"
 gradleDoctor = "0.9.1"
-gradleDependencyAnalysis = "1.28.0"
+gradleDependencyAnalysis = "1.29.0"
 
 # kotlin
 kotlin = "1.9.22"
