@@ -1,6 +1,6 @@
 package br.com.jonathanarodr.playmovie.common.executors
 
-import br.com.jonathanarodr.playmovie.core.testing.rules.CoroutinesTestRule
+import br.com.jonathanarodr.playmovie.testing.rules.CoroutinesTestRule
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -3,10 +3,10 @@ package br.com.jonathanarodr.playmovie.feature.ui.viewmodel
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.MediumTest
 import br.com.jonathanarodr.playmovie.common.states.UiState
-import br.com.jonathanarodr.playmovie.core.testing.ext.capture
-import br.com.jonathanarodr.playmovie.core.testing.rules.CoroutinesTestRule
 import br.com.jonathanarodr.playmovie.feature.domain.model.Movie
 import br.com.jonathanarodr.playmovie.feature.domain.usecase.DetailUseCase
+import br.com.jonathanarodr.playmovie.testing.ext.capture
+import br.com.jonathanarodr.playmovie.testing.rules.CoroutinesTestRule
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.mockk

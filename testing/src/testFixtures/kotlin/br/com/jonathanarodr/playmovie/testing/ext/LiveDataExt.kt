@@ -1,4 +1,4 @@
-package br.com.jonathanarodr.playmovie.core.testing.ext
+package br.com.jonathanarodr.playmovie.testing.ext
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

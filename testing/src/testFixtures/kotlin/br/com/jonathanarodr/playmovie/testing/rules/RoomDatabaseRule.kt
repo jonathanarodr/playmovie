@@ -1,4 +1,4 @@
-package br.com.jonathanarodr.playmovie.core.testing.rules
+package br.com.jonathanarodr.playmovie.testing.rules
 
 import android.content.Context
 import androidx.room.Room

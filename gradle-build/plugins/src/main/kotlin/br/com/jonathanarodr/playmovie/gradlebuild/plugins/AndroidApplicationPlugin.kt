@@ -69,8 +69,8 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 implementation(libs.findLibrary("koin-android").get())
                 implementation(libs.findLibrary("timber").get())
 
-                testImplementation(project(ModuleConfig.testing))
-                androidTestImplementation(project(ModuleConfig.testing))
+                testImplementation(testFixtures(project(ModuleConfig.testing)))
+                androidTestImplementation(testFixtures(project(ModuleConfig.testing)))
             }
         }
     }

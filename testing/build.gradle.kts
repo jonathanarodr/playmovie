@@ -3,7 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "br.com.jonathanarodr.playmovie.core.testing"
+    namespace = "br.com.jonathanarodr.playmovie.testing"
+
+    testFixtures {
+        enable = true
+    }
 }
 
 /**
