@@ -40,7 +40,7 @@ koin = "3.5.3"
 coil = "2.5.0"
 
 # lint
-detektCore = "1.23.5"
+detektCore = "1.23.6"
 detektCompose = "0.0.26"
 
 # test
