@@ -8,7 +8,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.kotlin.dsl.retry
 
 internal fun Project.configureUnitTestConvention(
-    commonExtension: CommonExtension<*, *, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *, *>,
 ) {
     commonExtension.apply {
         testOptions {
@@ -26,7 +26,7 @@ internal fun Project.configureUnitTestConvention(
 }
 
 internal fun Project.configureAndroidTestConvention(
-    commonExtension: CommonExtension<*, *, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *, *>,
 ) {
     commonExtension.apply {
         defaultConfig {
