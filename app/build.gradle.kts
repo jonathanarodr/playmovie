@@ -14,5 +14,7 @@ dependencies {
     implementation(projects.network)
     implementation(projects.feature)
 
+    implementation(libs.androidx.startup.runtime)
+
     debugImplementation(libs.leakcanary)
 }
