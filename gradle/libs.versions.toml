@@ -8,9 +8,9 @@ gradleDoctor = "0.10.0"
 gradleDependencyAnalysis = "1.31.0"
 
 # kotlin
-kotlin = "1.9.23"
-ksp = "1.9.23-1.0.20"
-kotlinxCoroutines = "1.8.0"
+kotlin = "1.9.24"
+ksp = "1.9.24-1.0.20"
+kotlinxCoroutines = "1.8.1"
 
 # jetpack
 androidxCore = "1.13.1"
