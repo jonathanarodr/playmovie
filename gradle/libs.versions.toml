@@ -45,7 +45,7 @@ detektCore = "1.23.6"
 detektCompose = "0.0.26"
 
 # test
-kotlinxKover = "0.7.6"
+kotlinxKover = "0.8.0"
 androidxArchCore = "2.2.0"
 androidxTestCore = "1.5.0"
 androidxTestRules = "1.5.0"
