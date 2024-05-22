@@ -8,8 +8,8 @@ gradleDoctor = "0.10.0"
 gradleDependencyAnalysis = "1.31.0"
 
 # kotlin
-kotlin = "1.9.24"
-ksp = "1.9.24-1.0.20"
+kotlin = "2.0.0"
+ksp = "2.0.0-1.0.21"
 kotlinxCoroutines = "1.8.1"
 
 # jetpack
