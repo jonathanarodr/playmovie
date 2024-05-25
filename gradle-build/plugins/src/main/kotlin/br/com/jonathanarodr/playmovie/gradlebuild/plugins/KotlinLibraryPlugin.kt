@@ -1,7 +1,7 @@
 package br.com.jonathanarodr.playmovie.gradlebuild.plugins
 
 import br.com.jonathanarodr.playmovie.gradlebuild.apply
-import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureKotlinConvention
+import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureKotlinJvmConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureTestRetryConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureUnitTestConvention
 import com.android.build.gradle.LibraryExtension
@@ -22,7 +22,7 @@ class KotlinLibraryPlugin : Plugin<Project> {
             )
 
             extensions.configure<LibraryExtension> {
-                configureKotlinConvention(this)
+                configureKotlinJvmConvention(this)
                 configureUnitTestConvention(this)
             }
 

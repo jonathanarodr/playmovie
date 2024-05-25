@@ -8,8 +8,8 @@ gradleDoctor = "0.10.0"
 gradleDependencyAnalysis = "1.32.0"
 
 # kotlin
-kotlin = "1.9.24"
-ksp = "1.9.24-1.0.20"
+kotlin = "2.0.0"
+ksp = "2.0.0-1.0.21"
 kotlinxCoroutines = "1.8.1"
 
 # jetpack
@@ -22,7 +22,6 @@ androidxSwipeRefreshLayout = "1.1.0"
 androidxLifecycle = "2.8.0"
 androidxStartupRuntime = "1.1.1"
 androidxComposeBom = "2024.05.00"
-androidxComposeCompiler = "1.4.4"
 androidxComposeRuntimeTracing = "1.0.0-beta01"
 androidxRoom = "2.6.1"
 androidxNavigation = "2.7.7"
@@ -68,6 +67,7 @@ android-cachefix-gradlePlugin = { group = "org.gradle.android.cache-fix", name =
 
 # kotlin
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-compose-gradlePlugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
@@ -157,6 +157,8 @@ android-application = { id = "com.android.application", version.ref = "androidGr
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kotlinxKover" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detektCore" }
