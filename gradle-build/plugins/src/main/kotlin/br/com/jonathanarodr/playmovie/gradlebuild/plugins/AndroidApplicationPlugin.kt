@@ -7,7 +7,7 @@ import br.com.jonathanarodr.playmovie.gradlebuild.config.ModuleConfig
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureAndroidAppicationConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureAndroidTestConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureBuildTypeConvention
-import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureKotlinConvention
+import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureKotlinAndroidConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureSourceConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureTestRetryConvention
 import br.com.jonathanarodr.playmovie.gradlebuild.convention.configureUnitTestConvention
@@ -41,7 +41,7 @@ class AndroidApplicationPlugin : Plugin<Project> {
             extensions.configure<ApplicationExtension> {
                 configureAndroidAppicationConvention(this)
                 configureBuildTypeConvention(this)
-                configureKotlinConvention(this)
+                configureKotlinAndroidConvention(this)
                 configureUnitTestConvention(this)
                 configureAndroidTestConvention(this)
 

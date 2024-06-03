@@ -1,7 +1,8 @@
 package br.com.jonathanarodr.playmovie.gradlebuild.convention
 
 import com.android.build.api.dsl.CommonExtension
-import kotlinx.kover.gradle.plugin.dsl.KoverReportExtension
+import kotlinx.kover.gradle.plugin.dsl.KoverProjectExtension
+import kotlinx.kover.gradle.plugin.dsl.KoverReportSetConfig
 import org.gradle.api.Project
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
@@ -50,25 +51,28 @@ internal fun Project.configureAndroidTestConvention(
 }
 
 @Suppress("MagicNumber")
-internal fun KoverReportExtension.configureCoverageConvention() {
-    defaults {
-        xml {
-            onCheck = false
-        }
-        html {
-            onCheck = false
-        }
-        verify {
-            onCheck = false
-            rule {
-                isEnabled = true
-                minBound(20)
+internal fun KoverProjectExtension.configureCoverageConvention() {
+    reports {
+        total {
+            configureFilterConvention()
+            html {
+                onCheck.set(false)
+            }
+            xml {
+                onCheck.set(false)
+            }
+            verify {
+                onCheck.set(false)
+                rule {
+                    disabled.set(true)
+                    minBound(20)
+                }
             }
         }
     }
 }
 
-internal fun KoverReportExtension.configureFilterConvention() {
+internal fun KoverReportSetConfig.configureFilterConvention() {
     filters {
         excludes {
             classes(
@@ -83,7 +87,7 @@ internal fun KoverReportExtension.configureFilterConvention() {
                 "androidx.room.Database",
                 "androidx.compose.ui.tooling.preview.Preview",
             )
-            packages()
+            packages("")
         }
     }
 }
