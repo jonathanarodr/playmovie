@@ -3,13 +3,19 @@ plugins {
 }
 
 android {
-    namespace = "br.com.jonathanarodr.playmovie.core.testing"
+    namespace = "br.com.jonathanarodr.playmovie.testing"
+
+    testFixtures {
+        enable = true
+    }
 }
 
 /**
  * FIXME create submodules to control dependencies between unitTest and androidTest
  */
 dependencies {
+    testFixturesImplementation(libs.kotlin.stdlib)
+
     implementation(libs.androidx.lifecycle.livedata)
 
     api(libs.junit)

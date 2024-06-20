@@ -44,8 +44,8 @@ class AndroidModulePlugin : Plugin<Project> {
 
                 androidTestUtil(libs.findLibrary("androidx-test-orchestrator").get())
 
-                testImplementation(project(ModuleConfig.testing))
-                androidTestImplementation(project(ModuleConfig.testing))
+                testImplementation(testFixtures(project(ModuleConfig.testing)))
+                androidTestImplementation(testFixtures(project(ModuleConfig.testing)))
             }
         }
     }
