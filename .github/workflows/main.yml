@@ -37,7 +37,7 @@ jobs:
       - name: Project checkout
         uses: actions/checkout@v4
 
-      - name: Generate & submit dependency graph
+      - name: Analyse dependency graph
         uses: gradle/actions/dependency-submission@v3
         with:
           build-scan-publish: true
