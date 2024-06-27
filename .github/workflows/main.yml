@@ -42,10 +42,6 @@ jobs:
 
       - name: Analyse dependency graph
         uses: gradle/actions/dependency-submission@v3
-        with:
-          build-scan-publish: true
-          build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
-          build-scan-terms-of-use-agree: "yes"
 
   code-quality:
     needs: [setup-workflow]
