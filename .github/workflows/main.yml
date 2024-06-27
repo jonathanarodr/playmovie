@@ -28,7 +28,7 @@ jobs:
       - name: Validate gradle wrapper
         uses: gradle/actions/wrapper-validation@v3
 
-  dependency-submission:
+  dependency-scan:
     needs: [ setup-workflow ]
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -37,12 +37,11 @@ jobs:
       - name: Project checkout
         uses: actions/checkout@v4
 
+      - name: Setup gradle build
+        uses: ./.github/actions/setup-gradle-build
+
       - name: Analyse dependency graph
         uses: gradle/actions/dependency-submission@v3
-        with:
-          build-scan-publish: true
-          build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
-          build-scan-terms-of-use-agree: "yes"
 
   code-quality:
     needs: [setup-workflow]
@@ -117,10 +116,6 @@ jobs:
 
       - name: Setup gradle build
         uses: gradle/actions/setup-gradle@v3
-        with:
-          build-scan-publish: true
-          build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
-          build-scan-terms-of-use-agree: "yes"
 
       - name: Build apks
         run: ./gradlew app:assemble
