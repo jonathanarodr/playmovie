@@ -43,11 +43,11 @@ class CodeStylePlugin : Plugin<Project> {
             }
 
             tasks.withType<Detekt>().configureEach {
-                jvmTarget = platformConfig.javaVersion.toString()
+                jvmTarget = platformConfig.javaJvmVersion.toString()
             }
 
             tasks.withType<DetektCreateBaselineTask>().configureEach {
-                jvmTarget = platformConfig.javaVersion.toString()
+                jvmTarget = platformConfig.javaJvmVersion.toString()
             }
 
             disableDetektOnCheck()

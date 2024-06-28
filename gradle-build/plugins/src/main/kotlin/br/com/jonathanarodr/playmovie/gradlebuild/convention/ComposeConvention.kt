@@ -1,20 +1,21 @@
 package br.com.jonathanarodr.playmovie.gradlebuild.convention
 
-import br.com.jonathanarodr.playmovie.gradlebuild.libs
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension
 
 fun Project.configureComposeConvention(
     commonExtension: CommonExtension<*, *, *, *, *, *>,
 ) {
-    val libs = extensions.libs
-
     commonExtension.apply {
         buildFeatures {
             compose = true
         }
-        composeOptions {
-            kotlinCompilerExtensionVersion = libs.findVersion("androidxComposeCompiler").get().toString()
-        }
+    }
+
+    extensions.configure<ComposeCompilerGradlePluginExtension> {
+        enableStrongSkippingMode.set(true)
+        stabilityConfigurationFile.set(rootProject.layout.projectDirectory.file("compose_compiler_config.conf"))
     }
 }
