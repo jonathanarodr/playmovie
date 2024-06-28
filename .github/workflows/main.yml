@@ -69,7 +69,7 @@ jobs:
         uses: ./.github/actions/setup-gradle-build
 
       - name: Run unit tests
-        run: ./gradlew testDebug koverHtmlReportDebug --stacktrace
+        run: ./gradlew testDebug --stacktrace
 
       - name: Run code coverage
         run: ./gradlew koverHtmlReportDebug --stacktrace
