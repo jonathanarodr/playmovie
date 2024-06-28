@@ -71,6 +71,9 @@ jobs:
       - name: Run unit tests
         run: ./gradlew testDebug --stacktrace
 
+      - name: Run code coverage
+        run: ./gradlew koverHtmlReportDebug --stacktrace
+
   android-test:
     if: ${{ vars.EXPERIMENTAL == 'true' }}
     needs: [code-quality]
