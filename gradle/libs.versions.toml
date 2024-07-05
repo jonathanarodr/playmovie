@@ -46,7 +46,7 @@ detektCompose = "0.0.26"
 # test
 kotlinxKover = "0.8.2"
 androidxArchCore = "2.2.0"
-androidxTestCore = "1.6.0"
+androidxTestCore = "1.6.1"
 androidxTestRules = "1.6.1"
 androidxTestRunner = "1.6.1"
 androidxTestOrchestrator = "1.5.0"
