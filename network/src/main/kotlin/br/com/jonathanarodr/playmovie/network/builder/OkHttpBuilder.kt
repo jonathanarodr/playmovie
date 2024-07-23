@@ -1,7 +1,9 @@
 package br.com.jonathanarodr.playmovie.network.builder
 
+import br.com.jonathanarodr.playmovie.network.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 class OkHttpBuilder(
@@ -18,6 +20,16 @@ class OkHttpBuilder(
         }
     }
 
+    private fun OkHttpClient.Builder.addHttpLoggingInterceptor() {
+        if (BuildConfig.DEBUG) {
+            addNetworkInterceptor(
+                HttpLoggingInterceptor().apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                }
+            )
+        }
+    }
+
     private fun OkHttpClient.Builder.setTimeouts() {
         connectTimeout(CLIENT_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(CLIENT_TIMEOUT, TimeUnit.SECONDS)
@@ -26,6 +38,7 @@ class OkHttpBuilder(
 
     fun build(): OkHttpClient {
         return OkHttpClient.Builder().apply {
+            addHttpLoggingInterceptor()
             addInterceptors()
             setTimeouts()
         }.build()
