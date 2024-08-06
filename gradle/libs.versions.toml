@@ -8,8 +8,8 @@ gradleDoctor = "0.10.0"
 gradleDependencyAnalysis = "1.32.0"
 
 # kotlin
-kotlin = "2.0.0"
-ksp = "2.0.0-1.0.23"
+kotlin = "2.0.10"
+ksp = "2.0.10-1.0.24"
 kotlinxCoroutines = "1.8.1"
 
 # jetpack
@@ -44,7 +44,7 @@ detektCore = "1.23.6"
 detektCompose = "0.0.26"
 
 # test
-kotlinxKover = "0.8.2"
+kotlinxKover = "0.8.3"
 androidxArchCore = "2.2.0"
 androidxTestCore = "1.6.1"
 androidxTestRules = "1.6.1"
