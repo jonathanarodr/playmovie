@@ -15,7 +15,7 @@ kotlinxCoroutines = "1.8.1"
 # jetpack
 androidxCore = "1.13.1"
 androidxAppCompat = "1.7.0"
-androidxActivityCompose = "1.9.0"
+androidxActivityCompose = "1.9.1"
 androidxRecyclerView = "1.3.2"
 androidxConstraintLayout = "2.1.4"
 androidxSwipeRefreshLayout = "1.1.0"
