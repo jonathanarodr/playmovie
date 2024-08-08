@@ -54,7 +54,7 @@ androidxJunitExt = "1.2.1"
 androidxTruthExt = "1.6.0"
 androidxEspresso = "3.6.1"
 junit = "4.13.2"
-truth = "1.4.3"
+truth = "1.4.4"
 mockk = "1.13.12"
 robolectric = "4.13"
 
