@@ -15,7 +15,6 @@ fun Project.configureComposeConvention(
     }
 
     extensions.configure<ComposeCompilerGradlePluginExtension> {
-        enableStrongSkippingMode.set(true)
         stabilityConfigurationFile.set(rootProject.layout.projectDirectory.file("compose_compiler_config.conf"))
     }
 }
