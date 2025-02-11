@@ -4,12 +4,10 @@ internal object AndroidConfig {
 
     const val APPLICATION_ID = "br.com.jonathanarodr.playmovie"
 
-    const val SDK_COMPILER = 34
-    const val SDK_TARGET = 34
+    const val SDK_COMPILER = 35
+    const val SDK_TARGET = 35
     const val SDK_MINIMUM = 23
     const val SDK_GMD_API = 30
-
-    const val BUILD_TOOLS = "34.0.0"
 
     const val VERSION_CODE = 3
     const val VERSION_NAME = "3.0.0"

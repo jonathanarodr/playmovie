@@ -6,12 +6,11 @@ import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.variant.AndroidComponentsExtension
 import org.gradle.api.Project
 
-internal fun Project.configureAndroidAppicationConvention(
+internal fun Project.configureAndroidApplicationConvention(
     extension: ApplicationExtension,
 ) {
     extension.apply {
         compileSdk = AndroidConfig.SDK_COMPILER
-        buildToolsVersion = AndroidConfig.BUILD_TOOLS
 
         defaultConfig {
             applicationId = AndroidConfig.APPLICATION_ID
