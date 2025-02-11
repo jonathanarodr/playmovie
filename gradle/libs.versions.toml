@@ -3,9 +3,9 @@
 # gradle
 androidGradlePlugin = "8.8.0"
 androidCacheFixPlugin = "3.0.1"
-gradleTestRetry = "1.5.10"
+gradleTestRetry = "1.6.2"
 gradleDoctor = "0.10.0"
-gradleDependencyAnalysis = "2.3.0"
+gradleDependencyAnalysis = "2.8.2"
 
 # kotlin
 kotlin = "2.0.21"
@@ -17,14 +17,14 @@ androidxCore = "1.13.1"
 androidxAppCompat = "1.7.0"
 androidxActivityCompose = "1.9.3"
 androidxRecyclerView = "1.3.2"
-androidxConstraintLayout = "2.1.4"
+androidxConstraintLayout = "2.2.0"
 androidxSwipeRefreshLayout = "1.1.0"
-androidxLifecycle = "2.8.6"
-androidxStartupRuntime = "1.1.1"
+androidxLifecycle = "2.8.7"
+androidxStartupRuntime = "1.2.0"
 androidxComposeBom = "2024.12.01"
-androidxComposeRuntimeTracing = "1.0.0-beta01"
+androidxComposeRuntimeTracing = "1.7.7"
 androidxRoom = "2.6.1"
-androidxNavigation = "2.8.3"
+androidxNavigation = "2.8.6"
 
 # square
 retrofit = "2.11.0"
@@ -36,7 +36,7 @@ material = "1.12.0"
 accompanist = "0.28.0"
 gson = "2.11.0"
 timber = "5.0.1"
-koin = "3.5.6"
+koin = "4.0.2"
 coil = "2.7.0"
 
 # lint
