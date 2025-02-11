@@ -12,7 +12,7 @@ import br.com.jonathanarodr.playmovie.feature.ui.viewmodel.DetailViewModel
 import br.com.jonathanarodr.playmovie.feature.ui.viewmodel.MovieViewModel
 import br.com.jonathanarodr.playmovie.network.NetworkClient
 import org.koin.android.ext.koin.androidApplication
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val featureModule = module {
